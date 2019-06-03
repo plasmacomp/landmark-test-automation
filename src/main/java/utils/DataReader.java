@@ -15,6 +15,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
+
+
 
 public class DataReader {
 
@@ -213,7 +216,30 @@ public class DataReader {
         return dataElementMap;
     }
 
-    public void setSuiteName(String suite_name) {
+    public void setSuiteName(String suite_name)
+    {
         suiteName = suite_name;
+    }
+
+    //File Reader ---Sunil
+
+    public static String readProperty(String property) {
+        Properties prop;
+        String value = null;
+        try {
+            prop = new Properties();
+            prop.load(new FileInputStream(new File("config.properties")));
+
+            value = prop.getProperty(property);
+
+            if (value == null || value.isEmpty()) {
+                throw new Exception("Value not set or empty");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return value;
     }
 }
