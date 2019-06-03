@@ -11,6 +11,8 @@ import utils.DataReader;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class TestListener implements ITestListener {
 
@@ -37,8 +39,10 @@ public class TestListener implements ITestListener {
             File file = driver.getScreenshotAs(OutputType.FILE);
 
             // the filename is the folder name on test.screenshot.path property plus the completeTestName
+            String myDate = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
             FileUtils.copyFile(file,
-                    new File(DataReader.readProperty("test.screenshot.path") + "/" + composeTestName(iTestResult) + ".png"));
+                    new File(DataReader.readProperty("test.screenshot.path") + "/" + composeTestName(iTestResult) +myDate+ ".png"));
+
 
         } catch (NoSuchFieldException e) {
             e.printStackTrace();
