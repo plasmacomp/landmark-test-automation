@@ -41,8 +41,8 @@ public class TestBase extends GlobalVars{
     public static void initialization() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", GlobalVars.deviceName);
-        capabilities.setCapability("platformVersion", GlobalVars.platformVersion);
+        capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
+        capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
         capabilities.setCapability("platformName", GlobalVars.platform);
         capabilities.setCapability("newCommandTimeout", 50000);
         capabilities.setCapability("automationName", "uiautomator");
@@ -75,6 +75,10 @@ public class TestBase extends GlobalVars{
             case "ios":
                 try
                 {
+                    capabilities.setCapability("deviceName", GlobalVars.deviceNameIOS);
+                    capabilities.setCapability("platformVersion", GlobalVars.platformVersionIOS);
+                    capabilities.setCapability("automationName", "IOS_XCUI_TEST");
+                    capabilities.setCapability("connectHardwareKeyboard", false);
                     driver = new IOSDriver<>(new URL(driverUrl), capabilities);
                     driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
                 }

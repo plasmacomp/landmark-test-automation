@@ -100,11 +100,14 @@ public class DataReader {
                 generalConfigSheet.getRow(1).getCell(1);
                 GlobalVars.platform = getCellData(generalConfigSheet.getRow(1).getCell(1));
                 GlobalVars.apkFileName = getCellData(generalConfigSheet.getRow(5).getCell(1));
-                GlobalVars.deviceName = getCellData(generalConfigSheet.getRow(6).getCell(1));
-                GlobalVars.platformVersion = getCellData(generalConfigSheet.getRow(7).getCell(1));
+                GlobalVars.deviceNameAndroid = getCellData(generalConfigSheet.getRow(6).getCell(1));
+                GlobalVars.platformVersionAndroid = getCellData(generalConfigSheet.getRow(7).getCell(1));
                 GlobalVars.platform = getCellData(generalConfigSheet.getRow(8).getCell(1));
                 GlobalVars.appiumServerIp = getCellData(generalConfigSheet.getRow(9).getCell(1));
                 GlobalVars.appiumServerPort = getCellData(generalConfigSheet.getRow(10).getCell(1));
+                GlobalVars.deviceNameIOS = getCellData(generalConfigSheet.getRow(11).getCell(1));
+                GlobalVars.platformVersionIOS = getCellData(generalConfigSheet.getRow(12).getCell(1));
+                GlobalVars.ipaFileName = getCellData(generalConfigSheet.getRow(13).getCell(1));
 
 
                 //Initializing the test cases

@@ -10,10 +10,12 @@ public class GlobalVars {
     public static Properties prop;
     public static String workingDir;
     public static String platform;
-    public static String deviceName;
-    public static String platformVersion;
+    public static String deviceNameAndroid;
+    public static String platformVersionAndroid;
     public static String appiumServerIp;
     public static String appiumServerPort;
     public static String apkFileName;
-
+    public static String deviceNameIOS;
+    public static String platformVersionIOS;
+    public static String ipaFileName;
 }
