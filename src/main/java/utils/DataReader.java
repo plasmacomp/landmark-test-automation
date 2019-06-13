@@ -29,13 +29,13 @@ public class DataReader {
 
     public void setupDataSheet() throws IOException {
 
-        String testDataPath = baseDirectory.getCanonicalPath() + File.separator + "testdata" + File.separator + "testdata_";
+        //String testDataPath = baseDirectory.getCanonicalPath() + File.separator + "Resources\\TestData" + File.separator + "testdata_";
+        String testDataPath = baseDirectory.getCanonicalPath()+"\\src\\main\\resources\\TestData\\testdata";
+        //String pageObjRepoPath=baseDirectory.getCanonicalPath() + File.separator + "ObjectRepository"+File.separator+"PageObjectRepository.xlsx";
 
-        String pageObjRepoPath=baseDirectory.getCanonicalPath() + File.separator + "ObjectRepository"+File.separator+"PageObjectRepository.xlsx";
+        setDataObject(testDataPath+ ".xlsx");
 
-        setDataObject(testDataPath+GlobalVars.prop.getProperty("environment")+ ".xlsx");
-
-        initializePageObjRepo(pageObjRepoPath);
+        //initializePageObjRepo(pageObjRepoPath);
 
     }
 
@@ -102,20 +102,21 @@ public class DataReader {
                 org.apache.poi.ss.usermodel.Sheet generalConfigSheet = workBook.getSheetAt(0);
                 generalConfigSheet.getRow(1).getCell(1);
                 GlobalVars.platform = getCellData(generalConfigSheet.getRow(1).getCell(1));
-                GlobalVars.apkFileName = getCellData(generalConfigSheet.getRow(5).getCell(1));
-                GlobalVars.deviceNameAndroid = getCellData(generalConfigSheet.getRow(6).getCell(1));
-                GlobalVars.platformVersionAndroid = getCellData(generalConfigSheet.getRow(7).getCell(1));
-                GlobalVars.platform = getCellData(generalConfigSheet.getRow(8).getCell(1));
-                GlobalVars.appiumServerIp = getCellData(generalConfigSheet.getRow(9).getCell(1));
-                GlobalVars.appiumServerPort = getCellData(generalConfigSheet.getRow(10).getCell(1));
-                GlobalVars.deviceNameIOS = getCellData(generalConfigSheet.getRow(11).getCell(1));
-                GlobalVars.platformVersionIOS = getCellData(generalConfigSheet.getRow(12).getCell(1));
-                GlobalVars.ipaFileName = getCellData(generalConfigSheet.getRow(13).getCell(1));
+                GlobalVars.apkFileName = getCellData(generalConfigSheet.getRow(2).getCell(1));
+                GlobalVars.deviceNameAndroid = getCellData(generalConfigSheet.getRow(3).getCell(1));
+                GlobalVars.platformVersionAndroid = getCellData(generalConfigSheet.getRow(4).getCell(1));
+                GlobalVars.appiumServerIp = getCellData(generalConfigSheet.getRow(5).getCell(1));
+                GlobalVars.appiumServerPort = getCellData(generalConfigSheet.getRow(6).getCell(1));
+                GlobalVars.deviceNameIOS = getCellData(generalConfigSheet.getRow(7).getCell(1));
+                GlobalVars.platformVersionIOS = getCellData(generalConfigSheet.getRow(8).getCell(1));
+                GlobalVars.ipaFileName = getCellData(generalConfigSheet.getRow(9).getCell(1));
+                GlobalVars.udid = getCellData(generalConfigSheet.getRow(10).getCell(1));
 
 
                 //Initializing the test cases
                 for (int sheetNumber = 1; sheetNumber < totalSheetCount; sheetNumber++) {
-                    Sheet sheet = (Sheet) workBook.getSheetAt(sheetNumber);
+                    //Sheet sheet = (Sheet) workBook.getSheetAt(sheetNumber);
+                    XSSFSheet sheet= (XSSFSheet) workBook.getSheetAt(sheetNumber);
                     Map<String, DataElements> dataElementsMap = getDataElements((org.apache.poi.ss.usermodel.Sheet) sheet);
 
                     dataObjectRepo.add(new Data(((XSSFSheet) sheet).getSheetName(), dataElementsMap));
@@ -208,7 +209,7 @@ public class DataReader {
      * @return org.openqa.selenium.By pageElement
      *
      */
-    protected Map<String, DataElements> getClassData(String testSuiteName) {
+    public Map<String, DataElements> getClassData(String testSuiteName) {
         //logger.debug("Finding" + testSuiteName + "in data sheet");
         Map<String, DataElements> dataElementMap = new HashMap<String, DataElements>();
         for (Data data : dataObjectRepo) {

@@ -46,10 +46,10 @@ public class TestBase extends GlobalVars{
         capabilities.setCapability("platformName", GlobalVars.platform);
         capabilities.setCapability("newCommandTimeout", 50000);
         capabilities.setCapability("automationName", "uiautomator");
-        capabilities.setCapability("appPackage", "com.irdeto.kplus.stage");
+        capabilities.setCapability("appPackage", "com.hdfcfund.investor.uat");
 
-        capabilities.setCapability("appActivity", "com.irdeto.kplus.activity.ActivitySplash");
-        capabilities.setCapability("appWaitPackage", "com.irdeto.kplus.stage");
+        capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
+        capabilities.setCapability("appWaitPackage", "com.hdfcfund.investor.uat");
         driverUrl="http://"+GlobalVars.appiumServerIp+":"+GlobalVars.appiumServerPort+"/wd/hub";
 
         switch(platform)

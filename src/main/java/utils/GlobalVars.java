@@ -18,4 +18,5 @@ public class GlobalVars {
     public static String deviceNameIOS;
     public static String platformVersionIOS;
     public static String ipaFileName;
+    public static String udid;
 }

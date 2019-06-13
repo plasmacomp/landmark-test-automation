@@ -10,8 +10,10 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import pages.DemoPage;
+import pages.LoginPage;
 import reporters.ExtentManager;
 import utils.DataElements;
+import utils.DataReader;
 import utils.GlobalVars;
 import utils.Utils;
 
@@ -25,7 +27,10 @@ public class DemoTest extends TestBase{
     Map<String, DataElements> dataElementMap = null;
     ExtentReports extent=null;
     DemoPage oDemoPage=null;
+    LoginPage oLoginPage=null;
+    DataReader oDataReader=null;
     static String methodToBeExecuted;
+
 
     @BeforeClass
     public void classDataInitializer() throws IOException
@@ -33,7 +38,10 @@ public class DemoTest extends TestBase{
         className=this.getClass().getSimpleName();
         extent= ExtentManager.getReporter();
         oDemoPage=new DemoPage();
-        DOMConfigurator.configure("log4j.xml");
+        oDataReader=new DataReader();
+        oDataReader.setupDataSheet();
+        dataElementMap = oDataReader.getClassData(className);
+        //DOMConfigurator.configure("log4j.xml");
     }
 
     @BeforeMethod
@@ -62,18 +70,22 @@ public class DemoTest extends TestBase{
         boolean isResult=false;
         SoftAssert softAssert= new SoftAssert();
         ExtentTest test=extent.createTest("loginTest |  "+ GlobalVars.platform, method.getName()+"| JIRA ID: None");
-        Log.startTestCase("loginTest");
+        String username="";
+        String password="";
+        //Log.startTestCase("loginTest");
         //end region
 
         try{
-
+            oLoginPage=new LoginPage(driver);
+            username=dataElementMap.get(method.getName()).getParams().trim().split(",")[0];
+            password=dataElementMap.get(method.getName()).getParams().trim().split(",")[1];
 //*****************************************************************************************************//
             /*
              * Step-1: Go to login page, enter the user name and password and click login button
              * 		   Verify that the user has successfully logged in.
              */
 
-            isResult = oDemoPage.login();
+            isResult = oLoginPage.login(username, password);
 
             if(isResult)
                 test.log(Status.PASS, "Step-1: User has successfully logged in");
@@ -83,9 +95,7 @@ public class DemoTest extends TestBase{
             //softAssert.assertTrue(isResult, "Step-1: User failed to login!!");
             Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
-
 //*****************************************************************************************************//
-
         }
         catch(Exception e){e.printStackTrace();}
 
