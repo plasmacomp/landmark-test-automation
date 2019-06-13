@@ -4,6 +4,7 @@
     
  	<listeners>
  		<listener class-name="listener.AnnotationTransformer"/>
+        <listener class-name="listener.TestListener"/>
  	</listeners>
  	
     <test name="DemoTestHdfc" group-by-instances="true">
