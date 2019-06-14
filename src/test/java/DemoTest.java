@@ -35,9 +35,7 @@ public class DemoTest extends TestBase{
     {
         className=this.getClass().getSimpleName();
         extent= ExtentManager.getReporter();
-        oDemoPage=new DemoPage();
         oDataReader=new DataReader();
-        oDataReader.setupDataSheet();
         dataElementMap = oDataReader.getClassData(className);
         //DOMConfigurator.configure("log4j.xml");
     }
@@ -45,11 +43,9 @@ public class DemoTest extends TestBase{
     @BeforeMethod
     public void initializeDriver(){
         System.out.println("*********Executing "+ Utils.methodToBeExecuted.get(0)+" Test Case********");
-        String params[]=dataElementMap.get(Utils.methodToBeExecuted.get(0)).getParams().trim().split(",");
-        if(driver==null){
-            initialization();
-        }
         Utils.methodToBeExecuted.remove(0);
+        if(driver==null)
+            initialization();
     }
 
 
@@ -147,7 +143,6 @@ public class DemoTest extends TestBase{
     @AfterClass
     public void closeDriver() throws IOException, InterruptedException
     {
-        System.out.println("In After class method");
         driver.quit();
     }
 

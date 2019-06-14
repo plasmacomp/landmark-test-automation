@@ -16,6 +16,12 @@ public class TestBase extends GlobalVars{
 
     static String driverUrl="";
 
+
+    public TestBase(){
+
+        initGlobalVars();
+        initialization();
+    }
     public void initGlobalVars(){
         try {
             prop=new Properties();
@@ -24,7 +30,6 @@ public class TestBase extends GlobalVars{
             String configPropFilePath = workingDir+"\\src\\main\\java\\utils\\config.properties";
             FileInputStream ip=new FileInputStream(configPropFilePath);
             prop.load(ip);
-
             //This is to initialize the test data before execution of any test case
             DataReader oDataReader=new DataReader();
             oDataReader.setupDataSheet();

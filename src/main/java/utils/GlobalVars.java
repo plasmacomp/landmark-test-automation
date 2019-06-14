@@ -2,6 +2,8 @@ package utils;
 
 
 import io.appium.java_client.AppiumDriver;
+
+import java.util.Map;
 import java.util.Properties;
 
 //This class will have all the global variables to be used across the classes and packages
@@ -19,4 +21,5 @@ public class GlobalVars {
     public static String platformVersionIOS;
     public static String ipaFileName;
     public static String udid;
+    public static Map<String, DataElements> dataElementMap = null;
 }
