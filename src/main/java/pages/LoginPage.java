@@ -34,6 +34,19 @@ public class LoginPage
     private AndroidElement passwordElement;
     @AndroidFindBy(xpath = "//*[@class='android.widget.Button' and @text='Login']")
     private AndroidElement loginElement;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/tv_skip")
+    private AndroidElement skipButton;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/ll_home_1")
+    private AndroidElement portFolio;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/iv_header_logo")
+    private AndroidElement drawerIcon;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.hdfcfund.investor.uat:id/design_menu_item_text' and @text='Logout']")
+    private AndroidElement logOut;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/btn_yes")
+    private AndroidElement yesBtnLogoutPopup;
+
+
+
     public boolean isDisplayed() {
         return loginElement.isDisplayed();
     }
@@ -50,12 +63,38 @@ public class LoginPage
             oCommonFunctions.sendKey(userIdElement, username, 5);
             oCommonFunctions.sendKey(passwordElement, password, 5);
             oCommonFunctions.clickElement(loginElement, 20);
-            isUserLoggedIn=true;//Here validation needs to be done
+            isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 20);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return isUserLoggedIn;
         //hideKeyboardIfVisible();
+    }
+
+    public boolean verifyHomePagePostLogin() {
+        boolean isUserLoggedIn=false;
+        try {
+            isUserLoggedIn=oCommonFunctions.isElementDisplayed(portFolio, 20);
+            Thread.sleep(4000);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isUserLoggedIn;
+    }
+
+    public boolean logout() {
+        boolean isUserLoggedOut=false;
+        try {
+            if(oCommonFunctions.clickElement(drawerIcon, 20)){
+                if(oCommonFunctions.clickElement(logOut, 5)){
+                    isUserLoggedOut=oCommonFunctions.clickElement(yesBtnLogoutPopup, 5);
+                }
+                Thread.sleep(5000);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return isUserLoggedOut;
     }
 }
 

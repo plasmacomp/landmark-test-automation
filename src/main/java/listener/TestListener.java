@@ -7,6 +7,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import utils.DataReader;
+import utils.GlobalVars;
 
 import java.io.File;
 import java.io.IOException;
@@ -28,27 +29,27 @@ public class TestListener implements ITestListener {
 
     @Override
     public void onTestFailure(ITestResult iTestResult) {
+        System.out.println("In Test listener class");
         Class clazz = iTestResult.getTestClass().getRealClass();
         try {
             // this field name must be present and equals in any testcase
             Field field = clazz.getDeclaredField("driver");
             field.setAccessible(true);
 
-            AppiumDriver<?> driver = (AppiumDriver<?>) field.get(iTestResult.getInstance());
+            //AppiumDriver<?> driver = (AppiumDriver<?>) field.get(iTestResult.getInstance());
 
-            File file = driver.getScreenshotAs(OutputType.FILE);
+            File file = GlobalVars.driver.getScreenshotAs(OutputType.FILE);
 
             // the filename is the folder name on test.screenshot.path property plus the completeTestName
             String myDate = new SimpleDateFormat("yyyyMMddHHmm").format(new Date());
+
+            File baseDirectory = new File(".");
+            String testDataPath = baseDirectory.getCanonicalPath()+"\\src\\main\\resources\\TestOutput";
             FileUtils.copyFile(file,
-                    new File(DataReader.readProperty("test.screenshot.path") + "/" + composeTestName(iTestResult) +myDate+ ".png"));
+                    new File(testDataPath + "/" + composeTestName(iTestResult) +myDate+ ".png"));
 
 
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
     }
