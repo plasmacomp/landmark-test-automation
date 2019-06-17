@@ -7,16 +7,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.testng.SkipException;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Properties;
-
+import java.util.*;
 
 
 public class DataReader {
@@ -26,17 +20,15 @@ public class DataReader {
     private static List<Data> dataObjectRepo = new ArrayList<Data>();
     public static Map<String, String> pageObjRepoMap=new HashMap<String, String>();
     File baseDirectory = new File(".");
+    Workbook workBook=null;
+    org.apache.poi.ss.usermodel.Sheet generalConfigSheet=null;
 
     public void setupDataSheet() throws IOException {
 
         //String testDataPath = baseDirectory.getCanonicalPath() + File.separator + "Resources\\TestData" + File.separator + "testdata_";
         String testDataPath = baseDirectory.getCanonicalPath()+"\\src\\main\\resources\\TestData\\testdata";
         //String pageObjRepoPath=baseDirectory.getCanonicalPath() + File.separator + "ObjectRepository"+File.separator+"PageObjectRepository.xlsx";
-
         setDataObject(testDataPath+ ".xlsx");
-
-        //initializePageObjRepo(pageObjRepoPath);
-
     }
 
 
@@ -93,15 +85,17 @@ public class DataReader {
         File file = new File(dataObjectFilePath);
         if (file.exists() && !file.isDirectory()) {
             FileInputStream inputStream = new FileInputStream(file);
-            @SuppressWarnings("resource")
-            Workbook workBook = new XSSFWorkbook(inputStream);
+            workBook = new XSSFWorkbook(inputStream);
             int totalSheetCount = workBook.getNumberOfSheets();
             try{
 
                 //Initializing GeneralConfig data into Global variables
-                org.apache.poi.ss.usermodel.Sheet generalConfigSheet = workBook.getSheetAt(0);
-                generalConfigSheet.getRow(1).getCell(1);
-                GlobalVars.platform = getCellData(generalConfigSheet.getRow(1).getCell(1));
+                //org.apache.poi.ss.usermodel.Sheet generalConfigSheet = workBook.getSheetAt(0);
+                generalConfigSheet =workBook.getSheet("GeneralConfig");
+
+                //This function will initialize all general config variables based on the column names
+                initializegeneralConfigData();
+                /*GlobalVars.platform = getCellData(generalConfigSheet.getRow(1).getCell(1));
                 GlobalVars.apkFileName = getCellData(generalConfigSheet.getRow(2).getCell(1));
                 GlobalVars.deviceNameAndroid = getCellData(generalConfigSheet.getRow(3).getCell(1));
                 GlobalVars.platformVersionAndroid = getCellData(generalConfigSheet.getRow(4).getCell(1));
@@ -110,7 +104,7 @@ public class DataReader {
                 GlobalVars.deviceNameIOS = getCellData(generalConfigSheet.getRow(7).getCell(1));
                 GlobalVars.platformVersionIOS = getCellData(generalConfigSheet.getRow(8).getCell(1));
                 GlobalVars.ipaFileName = getCellData(generalConfigSheet.getRow(9).getCell(1));
-                GlobalVars.udid = getCellData(generalConfigSheet.getRow(10).getCell(1));
+                GlobalVars.udid = getCellData(generalConfigSheet.getRow(10).getCell(1));*/
 
 
                 //Initializing the test cases
@@ -157,14 +151,105 @@ public class DataReader {
                     cellData="";
                     break;
             }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return cellData.trim();
+    }
+
+    /**
+     * @param
+     * @return
+     * @description: This function takes a field name as an argument and returns the cell value
+     */
+    @SuppressWarnings("deprecation")
+    public String initializegeneralConfigData(){
+        String cellData="";
+        try{
+            Iterator rowIterator=generalConfigSheet.iterator();
+            while (rowIterator.hasNext()){
+                Row row= (Row) rowIterator.next();
+                cellData=getCellData(row.getCell(0));
+                initializeGeneralConfigVariables(cellData);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return cellData.trim();
+    }
+    /**
+     * @param fieldName
+     * @return
+     * @description: This function returns the value of each field
+     */
+    @SuppressWarnings("deprecation")
+    public String getFieldValue(String fieldName){
+        String cellValue="";
+        try{
+            Iterator rowIterator=generalConfigSheet.iterator();
+            while (rowIterator.hasNext()){
+                Row row= (Row) rowIterator.next();
+                if(getCellData(row.getCell(0)).equalsIgnoreCase(fieldName))
+                    cellValue=getCellData(row.getCell(1));
+
+            }
 
         }
         catch(Exception e){
             e.printStackTrace();
         }
+        System.out.println("The value of "+fieldName+" : is: "+cellValue);
+        return cellValue.trim();
 
-        return cellData.trim();
+    }
 
+    /**
+     * @param fieldName
+     * @return
+     * @description: This function initializes the general config variables
+     */
+    public void initializeGeneralConfigVariables(String fieldName){
+        try{
+
+            switch (fieldName){
+                case Constants.PLATFORM:
+                    GlobalVars.platform=getFieldValue(fieldName);
+                    break;
+                case Constants.APK_FILE_NAME:
+                    GlobalVars.apkFileName=getFieldValue(fieldName);
+                    break;
+                case Constants.DEVICE_NAME_ANDROID:
+                    GlobalVars.deviceNameAndroid=getFieldValue(fieldName);
+                    break;
+                case Constants.PLATFORM_VERSION_ANDROID:
+                    GlobalVars.platformVersionAndroid=getFieldValue(fieldName);
+                    break;
+                case Constants.APPIUM_SERVER_IP:
+                    GlobalVars.appiumServerIp=getFieldValue(fieldName);
+                    break;
+                case Constants.APPIUM_SERVER_PORT:
+                    GlobalVars.appiumServerPort=getFieldValue(fieldName);
+                    break;
+                case Constants.DEVICE_NAME_IOS:
+                    GlobalVars.deviceNameIOS=getFieldValue(fieldName);
+                    break;
+                case Constants.PLATFORM_VERSION_IOS:
+                    GlobalVars.platformVersionIOS=getFieldValue(fieldName);
+                    break;
+                case Constants.IPA_FILE_NAME:
+                    GlobalVars.ipaFileName=getFieldValue(fieldName);
+                    break;
+                case Constants.UDID:
+                    GlobalVars.udid=getFieldValue(fieldName);
+                    break;
+
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     /**
