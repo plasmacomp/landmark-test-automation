@@ -200,7 +200,7 @@ public class DataReader {
         catch(Exception e){
             e.printStackTrace();
         }
-        System.out.println("The value of "+fieldName+" : is: "+cellValue);
+        //System.out.println("The value of "+fieldName+" : is: "+cellValue);
         return cellValue.trim();
 
     }
