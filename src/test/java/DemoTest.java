@@ -84,12 +84,6 @@ public class DemoTest extends TestBase{
             isResult = oLoginPage.login(username, password);
 
             ocommonFunctions.logStepInfo(test, isResult, stepInfo, 1);
-
-            /*if(isResult)
-                test.log(Status.PASS, "Step-1: User has successfully logged in");
-            else
-                test.log(Status.FAIL, "Step-1: User failed to login!!");*/
-
             //softAssert.assertTrue(isResult, "Step-1: User failed to login!!");
             Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
@@ -102,11 +96,6 @@ public class DemoTest extends TestBase{
             isResult = oLoginPage.verifyHomePagePostLogin();
 
             ocommonFunctions.logStepInfo(test, isResult, stepInfo, 2);
-            /*if(isResult)
-                test.log(Status.PASS, "Step-2: Home page verification post login successful");
-            else
-                test.log(Status.FAIL, "Step-2: Home page verification post login failed!!");*/
-
             Assert.isTrue(isResult, "Step-2: Home page verification post login failed!!");
 
 //*****************************************************************************************************//
@@ -118,11 +107,6 @@ public class DemoTest extends TestBase{
             isResult = oLoginPage.logout();
 
             ocommonFunctions.logStepInfo(test, isResult, stepInfo, 3);
-            /*if(isResult)
-                test.log(Status.PASS, "Step-3: User has successfully logged out");
-            else
-                test.log(Status.FAIL, "Step-3: User failed to logout!!");*/
-
             Assert.isTrue(isResult, "Step-3: User failed to logout!!");
 
 //*****************************************************************************************************//
@@ -136,16 +120,6 @@ public class DemoTest extends TestBase{
         }
 
     }
-
-
-    /*@AfterMethod
-    public void logStepInfo(ExtentTest test, boolean isResult, String stepInfo, int stepNumber) throws IOException, InterruptedException
-    {
-        if(isResult)
-            test.log(Status.PASS, "Step-"+stepNumber+": "+stepInfo+" | Status: Pass");
-        else
-            test.log(Status.FAIL, "Step-"+stepNumber+": "+stepInfo+" | Status: Fail");
-    }*/
 
     @AfterClass
     public void closeDriver() throws IOException, InterruptedException
