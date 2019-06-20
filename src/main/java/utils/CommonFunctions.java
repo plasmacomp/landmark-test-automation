@@ -1,9 +1,13 @@
 package utils;
 
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.io.IOException;
 
 public class CommonFunctions {
 
@@ -91,5 +95,14 @@ public class CommonFunctions {
             isElementDisplayed=false;
         }
         return isElementDisplayed;
+    }
+
+
+    public void logStepInfo(ExtentTest test, boolean isResult, String stepInfo, int stepNumber) throws IOException, InterruptedException
+    {
+        if(isResult)
+            test.log(Status.PASS, "Step-"+stepNumber+": "+stepInfo+" | Status: Pass");
+        else
+            test.log(Status.FAIL, "Step-"+stepNumber+": "+stepInfo+" | Status: Fail");
     }
 }

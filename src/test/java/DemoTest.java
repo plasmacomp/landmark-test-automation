@@ -9,10 +9,7 @@ import org.testng.asserts.SoftAssert;
 import pages.DemoPage;
 import pages.LoginPage;
 import reporters.ExtentManager;
-import utils.DataElements;
-import utils.DataReader;
-import utils.GlobalVars;
-import utils.Utils;
+import utils.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
@@ -27,6 +24,8 @@ public class DemoTest extends TestBase{
     DemoPage oDemoPage=null;
     LoginPage oLoginPage=null;
     DataReader oDataReader=null;
+    TestBase oTestBase=null;
+    CommonFunctions ocommonFunctions=null;
     static String methodToBeExecuted;
 
 
@@ -37,6 +36,8 @@ public class DemoTest extends TestBase{
         extent= ExtentManager.getReporter();
         oDataReader=new DataReader();
         dataElementMap = oDataReader.getClassData(className);
+        oTestBase=new TestBase();
+        ocommonFunctions=new CommonFunctions();
         //DOMConfigurator.configure("log4j.xml");
     }
 
@@ -66,6 +67,7 @@ public class DemoTest extends TestBase{
         ExtentTest test=extent.createTest("loginTest |  "+ GlobalVars.platform, method.getName()+"| JIRA ID: None");
         String username="";
         String password="";
+        String stepInfo="";
         //Log.startTestCase("loginTest");
         //end region
 
@@ -78,46 +80,50 @@ public class DemoTest extends TestBase{
              * Step-1: Go to login page, enter the user name and password and click login button
              * 		   Verify that the user has successfully logged in.
              */
-
+            stepInfo="Go to login page, enter the user name and password and click login button";
             isResult = oLoginPage.login(username, password);
 
-            if(isResult)
+            ocommonFunctions.logStepInfo(test, isResult, stepInfo, 1);
+
+            /*if(isResult)
                 test.log(Status.PASS, "Step-1: User has successfully logged in");
             else
-                test.log(Status.FAIL, "Step-1: User failed to login!!");
+                test.log(Status.FAIL, "Step-1: User failed to login!!");*/
 
             //softAssert.assertTrue(isResult, "Step-1: User failed to login!!");
             Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
 //*****************************************************************************************************//
             /*
-             * Step-1: Verify that the user has successfully logged in and home page after login is being shown
+             * Step-2: Verify that the user has successfully logged in and home page after login is being shown
              *
              */
-
+            stepInfo="Verify that the user has successfully logged in and home page after login is being shown";
             isResult = oLoginPage.verifyHomePagePostLogin();
 
-            if(isResult)
+            ocommonFunctions.logStepInfo(test, isResult, stepInfo, 2);
+            /*if(isResult)
                 test.log(Status.PASS, "Step-2: Home page verification post login successful");
             else
-                test.log(Status.FAIL, "Step-2: Home page verification post login failed!!");
+                test.log(Status.FAIL, "Step-2: Home page verification post login failed!!");*/
 
             Assert.isTrue(isResult, "Step-2: Home page verification post login failed!!");
 
 //*****************************************************************************************************//
             /*
-             * Step-1: Click on the drawer icon and logout.
+             * Step-3: Click on the drawer icon and logout.
              * 		   Verify that the user has successfully logged out.
              */
-
+            stepInfo="Click on the drawer icon and logout.";
             isResult = oLoginPage.logout();
 
-            if(isResult)
+            ocommonFunctions.logStepInfo(test, isResult, stepInfo, 3);
+            /*if(isResult)
                 test.log(Status.PASS, "Step-3: User has successfully logged out");
             else
-                test.log(Status.FAIL, "Step-3: User failed to logout!!");
+                test.log(Status.FAIL, "Step-3: User failed to logout!!");*/
 
-            Assert.isTrue(isResult, "Step-1: User failed to logout!!");
+            Assert.isTrue(isResult, "Step-3: User failed to logout!!");
 
 //*****************************************************************************************************//
         }
@@ -132,13 +138,14 @@ public class DemoTest extends TestBase{
     }
 
 
-
-    @AfterMethod
-    public void quitDriver() throws IOException, InterruptedException
+    /*@AfterMethod
+    public void logStepInfo(ExtentTest test, boolean isResult, String stepInfo, int stepNumber) throws IOException, InterruptedException
     {
-        //driver.quit();
-        System.out.println("In After method");
-    }
+        if(isResult)
+            test.log(Status.PASS, "Step-"+stepNumber+": "+stepInfo+" | Status: Pass");
+        else
+            test.log(Status.FAIL, "Step-"+stepNumber+": "+stepInfo+" | Status: Fail");
+    }*/
 
     @AfterClass
     public void closeDriver() throws IOException, InterruptedException
