@@ -6,6 +6,7 @@ import org.openqa.selenium.OutputType;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
+import org.testng.TestListenerAdapter;
 import utils.DataReader;
 import utils.GlobalVars;
 
@@ -15,7 +16,7 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestListener implements ITestListener {
+public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onTestStart(ITestResult iTestResult) {

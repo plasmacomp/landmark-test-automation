@@ -1,26 +1,46 @@
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.Status;
+import generic_pages.CommonLoginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import logger.Log;
+import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import utils.DataReader;
-import utils.GlobalVars;
-import utils.Utils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
+import org.testng.Reporter;
+import org.testng.annotations.*;
+import utils.*;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
+import java.lang.reflect.Method;
 import java.net.URL;
+import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase extends GlobalVars{
 
     static String driverUrl="";
+    private static ExtentTest test;
+    private static ExtentReports extent;
+    private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
+    private static final String BREAK_LINE = "</br>";
+    static String className = null;
+    Map<String, DataElements> dataElementMap = null;
+    //DemoPage oDemoPage = null;
+    CommonLoginPage oCommonLoginPage = null;
+    DataReader oDataReader = null;
+    TestBase oTestBase = null;
+    CommonFunctions ocommonFunctions = null;
 
 
     public TestBase(){
 
         initGlobalVars();
-        initialization();
+        //initializeDriver();
     }
     public void initGlobalVars(){
         try {
@@ -43,7 +63,7 @@ public class TestBase extends GlobalVars{
         }
     }
 
-    public static void initialization() {
+    public static void initializeDriver() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
@@ -89,7 +109,6 @@ public class TestBase extends GlobalVars{
                 }
                 catch(Exception ex)
                 {
-                    //Log code to be written here in case of failure in driver initialization
                     ex.printStackTrace();
                 }
                 break;
@@ -98,6 +117,72 @@ public class TestBase extends GlobalVars{
                 throw new IllegalStateException("Unexpected value: " + platform);
         }
 
+    }
+
+
+    @BeforeSuite
+    public void before() {
+        //extent= ExtentManager.getReporter();
+        Utils.initializeExtentReport();
+        initializeDriver();
+        DOMConfigurator.configure("log4j.xml");
+        Log.initializeLogProperties();
+        //extent = new ExtentReports("target/surefire-reports/ExtentReport.html", true);
+    }
+
+
+    @BeforeClass
+    public void classDataInitializer() throws IOException {
+        className = this.getClass().getSimpleName();
+        oDataReader = new DataReader();
+        dataElementMap = oDataReader.getClassData(className);
+        oTestBase = new TestBase();
+        ocommonFunctions = new CommonFunctions();
+    }
+
+
+    public void logStepInfo(String message) {
+        test.log(Status.PASS, message);
+        logger.info("Message: " + message);
+        Reporter.log(message);
+    }
+
+
+    @BeforeMethod
+    public void initializeExtentTest(Method method) {
+        Utils.initializeExtentTest(method.getName());
+        Log.startTestCase(method.getName());
+    }
+
+    @AfterMethod
+    public void afterMethod(ITestResult result) throws IOException, InterruptedException {
+
+        if (result.getStatus() == ITestResult.FAILURE) {
+            Utils.captureScreenshot(result);
+            //captureScreenshot(result);
+        }
+        /*extent.endTest(test);*/
+        Utils.closeExtentTest();
+        Log.endTestCase(result.getTestName());
+        //driver.quit();
+        System.out.println("****************************************");
+    }
+
+
+
+    @AfterClass
+    public void closeDriver() throws IOException, InterruptedException {
+        //driver.quit();
+    }
+
+    @AfterSuite
+    public void tearDownSuite() {
+        // extent.endReport();
+        //driver.quit();
+        Utils.closeExtentTest();
+        driver.quit();
+        //extent.flush();
+        //extent.close();
     }
 
 }

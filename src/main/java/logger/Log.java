@@ -23,11 +23,10 @@ public class Log {
             String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
             timeStamp="log_"+timeStamp;
 
-            FileAppender appender = new FileAppender(layout, timeStamp+ ".txt",false);
+            FileAppender appender = new FileAppender(layout, "target/"+timeStamp+ ".txt",false);
             Log.addAppender(appender);
 
             Log.setLevel((Level) Level.DEBUG);
-
 
         } catch (IOException e) {
             // TODO Auto-generated catch block

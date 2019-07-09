@@ -2,6 +2,7 @@ package utils;
 
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import logger.Log;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -31,11 +32,13 @@ public class CommonFunctions {
                     throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
             }
 
+            Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
             //Log.info("Successfully clicked on the element with "+locatorType.toString()+" : "+locator);
 
 
         } catch (Exception e) {
             isElementClicked=false;
+            Log.error("Exception occurred in clickElement method: "+e.getMessage());
             /*Log.error("Could not click on the element with "+locatorType.toString()+" : "+locator);
             Log.error("Exception:"+e.getMessage());*/
 
@@ -64,11 +67,10 @@ public class CommonFunctions {
                 default:
                     throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
             }
+            Utils.logFunctionLevelLogs(isKeySent, "sendKey");
         } catch (Exception e) {
             isKeySent=false;
-            /*Log.error("Could not click on the element with "+locatorType.toString()+" : "+locator);
-            Log.error("Exception:"+e.getMessage());*/
-
+            Log.error("Exception occurred in sendKey method"+e.getMessage());
         }
         return isKeySent;
     }
@@ -91,7 +93,10 @@ public class CommonFunctions {
                 default:
                     throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
             }
+            Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
+
         } catch (Exception e) {
+            Log.error("Exception occurred in isElementDisplayed method"+e.getMessage());
             isElementDisplayed=false;
         }
         return isElementDisplayed;

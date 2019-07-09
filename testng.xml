@@ -5,6 +5,8 @@
  	<listeners>
  		<listener class-name="listener.AnnotationTransformer"/>
         <listener class-name="listener.TestListener"/>
+        <!--<listener class-name="listener.Retry"/>-->
+        <!--<listener class-name="reporters.ExtentManager"/>-->
  	</listeners>
  	
     <test name="DemoTestHdfc" group-by-instances="true">
