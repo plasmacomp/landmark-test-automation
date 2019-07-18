@@ -1,6 +1,7 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HasOnScreenKeyboard;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -15,7 +16,7 @@ import utils.Utils;
 public class LoginPage
 {
     //private AndroidDriver<AndroidElement> driver;
-    private AppiumDriver driver;
+    private  AppiumDriver driver;
     static CommonFunctions oCommonFunctions=null;
     public LoginPage() {
     }
@@ -27,14 +28,15 @@ public class LoginPage
     }
 
 
-
-    @iOSXCUITFindBy(xpath = "//*[@class='android.widget.Button' and @text='Investor Login']")
+    @iOSXCUITFindBy(accessibility = "Get Started")
+    private static IOSElement getStartedButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[contains(@name,'Investor Login')]")
     private static IOSElement investorLoginElement;
-    @iOSXCUITFindBy(id = "com.hdfcfund.investor.uat:id/et_username")
+    @iOSXCUITFindBy(xpath = "//*[@value='User ID']")
     private static IOSElement userIdElement;
-    @iOSXCUITFindBy(id = "com.hdfcfund.investor.uat:id/et_password")
+    @iOSXCUITFindBy(xpath="//*[@value='Password']")
     private static IOSElement passwordElement;
-    @iOSXCUITFindBy(xpath = "//*[@class='android.widget.Button' and @text='Login']")
+    @iOSXCUITFindBy( xpath= "//*[@name='Login']")
     private static IOSElement loginElement;
     @iOSXCUITFindBy(id = "com.hdfcfund.investor.uat:id/tv_skip")
     private static IOSElement skipButton;
@@ -53,19 +55,23 @@ public class LoginPage
         return loginElement.isDisplayed();
     }
 
-    public void hideKeyboardIfVisible() {
-        /*if (keyboard != null) {
-           // driver.pressKeyCode(AndroidKeyCode.KEYCODE_ESCAPE);
-        }*/
-    }
-    public static boolean login(String username, String password) {
+    public  void hideKeyboardIfVisible() {
+    	boolean isKeyboardShown = ((HasOnScreenKeyboard) driver).isKeyboardShown();
+        if ( isKeyboardShown ==true){
+        	driver.hideKeyboard();
+       }
+        }
+    
+    public boolean login(String username, String password) {
         boolean isUserLoggedIn=false;
         try {
+        	oCommonFunctions.clickElement(getStartedButton, 20);
             oCommonFunctions.clickElement(investorLoginElement, 20);
             oCommonFunctions.sendKey(userIdElement, username, 5);
             oCommonFunctions.sendKey(passwordElement, password, 5);
+            hideKeyboardIfVisible();
             oCommonFunctions.clickElement(loginElement, 20);
-            isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 20);
+           // isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 20);
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ GlobalVars.platform);
         } catch (Exception e) {
             Log.error("Exception occurred in Login method"+e.getMessage());

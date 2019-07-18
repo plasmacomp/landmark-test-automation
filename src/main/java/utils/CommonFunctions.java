@@ -26,7 +26,9 @@ public class CommonFunctions {
                     isElementClicked=true;
                     break;
                 case "ios":
-                    //IOS code to be written here.
+                	wait.until(ExpectedConditions.visibilityOf(element));
+                    element.click();
+                    isElementClicked=true;
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
@@ -62,7 +64,9 @@ public class CommonFunctions {
                     isKeySent=true;
                     break;
                 case "ios":
-                    //IOS code to be written here.
+                	 wait.until(ExpectedConditions.visibilityOf(element));
+                     element.clear();
+                     element.sendKeys(key);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
@@ -101,6 +105,7 @@ public class CommonFunctions {
         }
         return isElementDisplayed;
     }
+    
 
 
     public void logStepInfo(ExtentTest test, boolean isResult, String stepInfo, int stepNumber) throws IOException, InterruptedException

@@ -14,6 +14,12 @@ public class Constants {
     public static final String PLATFORM_VERSION_IOS="platformVersionIOS";
     public static final String IPA_FILE_NAME="ipaFileName";
     public static final String UDID="udid";
+    public static final String PLATFORM_NAME_IOS="platformNameIOS";
+    public static final String XCODE_ORG_ID="xcodeOrgId";
+    public static final String XCODE_SIGNING_ID="xcodeSigningId";
+    public static final String UPDATE_WDA_BUNDLE_ID="updateWDABundleId";
+    public static final String CONNECT_HARDWARE_KEYBOARD="connectHardwareKeyboard";
+    public static final String AUTOMATION_NAME="automationname";
 
 
 
