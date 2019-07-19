@@ -14,6 +14,8 @@ public class Constants {
     public static final String PLATFORM_VERSION_IOS="platformVersionIOS";
     public static final String IPA_FILE_NAME="ipaFileName";
     public static final String UDID="udid";
+    public static final String JIRA_PROJECT_NAME = "projectName";
+    public static final String JIRA_DEFECT_TYPE = "defectType";
 
 
 
