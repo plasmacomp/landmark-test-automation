@@ -21,5 +21,11 @@ public class GlobalVars {
     public static String platformVersionIOS;
     public static String ipaFileName;
     public static String udid;
+    public static String xcodeOrgId;
+    public static String xcodeSigningId;
+    public static String updateWDABundleId;
+    public static String connectHardwareKeyboard;
+    public static String automationname;
+    public static String platformNameIOS;
     public static Map<String, DataElements> dataElementMap = null;
 }

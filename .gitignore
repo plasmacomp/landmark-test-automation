@@ -1,6 +1,11 @@
+
 *.class
 *.png
 *.html
 target/
 *.log
 .gitignore
+
+/target/
+/.idea/
+

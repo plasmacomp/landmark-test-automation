@@ -26,7 +26,8 @@ public class DataReader {
     public void setupDataSheet() throws IOException {
 
         //String testDataPath = baseDirectory.getCanonicalPath() + File.separator + "Resources\\TestData" + File.separator + "testdata_";
-        String testDataPath = baseDirectory.getCanonicalPath()+"\\src\\main\\resources\\TestData\\testdata";
+       // String testDataPath = baseDirectory.getCanonicalPath()+"\\src\\main\\resources\\TestData\\testdata";
+        String testDataPath = baseDirectory.getCanonicalPath()+"//src//main//resources//TestData//testdata";
         //String pageObjRepoPath=baseDirectory.getCanonicalPath() + File.separator + "ObjectRepository"+File.separator+"PageObjectRepository.xlsx";
         setDataObject(testDataPath+ ".xlsx");
     }
@@ -244,6 +245,25 @@ public class DataReader {
                 case Constants.UDID:
                     GlobalVars.udid=getFieldValue(fieldName);
                     break;
+                case Constants.PLATFORM_NAME_IOS:
+                    GlobalVars.platformNameIOS=getFieldValue(fieldName);
+                    break;
+                case Constants.XCODE_ORG_ID:
+                    GlobalVars.xcodeOrgId=getFieldValue(fieldName);
+                    break;
+                case Constants.XCODE_SIGNING_ID:
+                    GlobalVars.xcodeSigningId=getFieldValue(fieldName);
+                    break;
+                case Constants.UPDATE_WDA_BUNDLE_ID:
+                    GlobalVars.updateWDABundleId=getFieldValue(fieldName);
+                    break;
+                case Constants.CONNECT_HARDWARE_KEYBOARD:
+                    GlobalVars.connectHardwareKeyboard=getFieldValue(fieldName);
+                    break;
+                case Constants.AUTOMATION_NAME:
+                    GlobalVars.automationname=getFieldValue(fieldName);
+                    break;
+
 
             }
         }

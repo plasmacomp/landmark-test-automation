@@ -4,6 +4,8 @@ import com.aventstack.extentreports.Status;
 import generic_pages.CommonLoginPage;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.remote.AutomationName;
+import io.appium.java_client.remote.MobileCapabilityType;
 import logger.Log;
 import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -47,7 +49,8 @@ public class TestBase extends GlobalVars{
             prop=new Properties();
 
             workingDir = System.getProperty("user.dir");
-            String configPropFilePath = workingDir+"\\src\\main\\java\\utils\\config.properties";
+            //String configPropFilePath = workingDir+"\\src\\main\\java\\utils\\config.properties";
+            String configPropFilePath = workingDir+"//src//main//java//utils//config.properties";
             FileInputStream ip=new FileInputStream(configPropFilePath);
             prop.load(ip);
             //This is to initialize the test data before execution of any test case
@@ -66,15 +69,7 @@ public class TestBase extends GlobalVars{
     public static void initializeDriver() {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
-        capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
-        capabilities.setCapability("platformName", GlobalVars.platform);
-        capabilities.setCapability("newCommandTimeout", 50000);
-        capabilities.setCapability("automationName", "uiautomator");
-        capabilities.setCapability("appPackage", "com.hdfcfund.investor.uat");
-
-        capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
-        capabilities.setCapability("appWaitPackage", "com.hdfcfund.investor.uat");
+       
         driverUrl="http://"+GlobalVars.appiumServerIp+":"+GlobalVars.appiumServerPort+"/wd/hub";
 
         switch(platform)
@@ -87,6 +82,15 @@ public class TestBase extends GlobalVars{
 
                 try
                 {
+                	 capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
+                     capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
+                     capabilities.setCapability("platformName", GlobalVars.platform);
+                     capabilities.setCapability("newCommandTimeout", 50000);
+                     capabilities.setCapability("automationName", "uiautomator");
+                     capabilities.setCapability("appPackage", "com.hdfcfund.investor.uat");
+
+                     capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
+                     capabilities.setCapability("appWaitPackage", "com.hdfcfund.investor.uat");
                     driver=new AndroidDriver(new URL(driverUrl), capabilities);
                     driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
                 }
@@ -98,12 +102,20 @@ public class TestBase extends GlobalVars{
                 break;
 
             case "ios":
+                String path=System.getProperty("user.dir")+"/"+GlobalVars.ipaFileName;
+                File app = new File(path);
+
                 try
                 {
                     capabilities.setCapability("deviceName", GlobalVars.deviceNameIOS);
                     capabilities.setCapability("platformVersion", GlobalVars.platformVersionIOS);
-                    capabilities.setCapability("automationName", "IOS_XCUI_TEST");
-                    capabilities.setCapability("connectHardwareKeyboard", false);
+                    capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
+                    capabilities.setCapability("udid", GlobalVars.udid);
+                    capabilities.setCapability("xcodeOrgId", GlobalVars.xcodeOrgId);
+                    capabilities.setCapability("xcodeSigningId", GlobalVars.xcodeSigningId);
+                    capabilities.setCapability("updateWDABundleId", GlobalVars.updateWDABundleId);
+                    capabilities.setCapability("platformName", GlobalVars.platformNameIOS);
+                    capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
                     driver = new IOSDriver<>(new URL(driverUrl), capabilities);
                     driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
                 }
