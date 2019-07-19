@@ -1,0 +1,6 @@
+*.class
+*.png
+*.html
+target/
+*.log
+.gitignore
