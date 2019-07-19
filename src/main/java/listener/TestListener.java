@@ -7,8 +7,10 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+import utils.Constants;
 import utils.DataReader;
 import utils.GlobalVars;
+import utils.JiraOperationsUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -33,6 +35,15 @@ public class TestListener extends TestListenerAdapter {
         System.out.println("In Test listener class");
         Class clazz = iTestResult.getTestClass().getRealClass();
         try {
+            /*On failure of a test case, raise a bug on JIRA*/
+            JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
+                    GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
+                    GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
+            String testName=iTestResult.getName();
+            JiraOperationsUtil.createNewIssue("Test Automation Bug: " +testName ,
+                    "Test failed for test case: " + testName,
+                    "AutomatedTestExecutionBug", "ataur.rahman");
+
             // this field name must be present and equals in any testcase
             Field field = clazz.getDeclaredField("driver");
             field.setAccessible(true);
@@ -94,3 +105,4 @@ public class TestListener extends TestListenerAdapter {
         return completeFileName.toString().replace(":", "-");
     }
 }
+

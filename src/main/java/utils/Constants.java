@@ -22,6 +22,9 @@ public class Constants {
     public static final String UPDATE_WDA_BUNDLE_ID="updateWDABundleId";
     public static final String CONNECT_HARDWARE_KEYBOARD="connectHardwareKeyboard";
     public static final String AUTOMATION_NAME="automationname";
+    public static final String JIRA_URL = "jiraURL";
+    public static final String JIRA_USERNAME = "username";
+    public static final String JIRA_PASSWORD = "password";
 
 
 

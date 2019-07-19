@@ -45,7 +45,7 @@ public class DemoTest extends TestBase{
         Assert.isTrue(isResult, "Step-3: User failed to logout!!");
     }
 
-    @Test(retryAnalyzer = Retry.class,enabled = false)
+    @Test(retryAnalyzer = Retry.class)
     public void loginTest1(Method method) throws IOException, InterruptedException {
         boolean isResult=false;
         String username="";

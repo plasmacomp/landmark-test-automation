@@ -12,6 +12,7 @@
     <test name="DemoTestHdfc" group-by-instances="true">
         <classes>
             <class name="DemoTest"/>
+            <class name="TestBase"/>
         </classes>
     </test>
 </suite>

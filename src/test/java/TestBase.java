@@ -152,14 +152,6 @@ public class TestBase extends GlobalVars{
         ocommonFunctions = new CommonFunctions();
     }
 
-
-    public void logStepInfo(String message) {
-        test.log(Status.PASS, message);
-        logger.info("Message: " + message);
-        Reporter.log(message);
-    }
-
-
     @BeforeMethod
     public void initializeExtentTest(Method method) {
         Utils.initializeExtentTest(method.getName());
@@ -174,13 +166,10 @@ public class TestBase extends GlobalVars{
             //captureScreenshot(result);
         }
         /*extent.endTest(test);*/
-        Utils.closeExtentTest();
+        //Utils.closeExtentTest();
         Log.endTestCase(result.getTestName());
-        //driver.quit();
         System.out.println("****************************************");
     }
-
-
 
     @AfterClass
     public void closeDriver() throws IOException, InterruptedException {
@@ -189,12 +178,14 @@ public class TestBase extends GlobalVars{
 
     @AfterSuite
     public void tearDownSuite() {
-        // extent.endReport();
-        //driver.quit();
         Utils.closeExtentTest();
         driver.quit();
-        //extent.flush();
-        //extent.close();
+    }
+
+    public void logStepInfo(String message) {
+        test.log(Status.PASS, message);
+        logger.info("Message: " + message);
+        Reporter.log(message);
     }
 
 }

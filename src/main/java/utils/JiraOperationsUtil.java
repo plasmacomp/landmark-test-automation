@@ -31,6 +31,7 @@ public class JiraOperationsUtil {
         int startAt = 0;
         int processedRecord = 0;
         try {
+
             Issue.SearchResult searchResult = jiraClient.searchIssues(jiraQuery, Field.LABELS, maxResult, startAt);
             Log.info("Total nuber of jira tickets for the query: " + jiraQuery + " are >> " + searchResult.total);
             //testReport.get().log(LogStatus.INFO, "Total nuber of jira tickets for the query: " + jiraQuery + " are >> " + searchResult.total);
@@ -75,16 +76,21 @@ public class JiraOperationsUtil {
      */
     synchronized public static void createNewIssue(String defectSummary, String defectDescription, String label, String defectAssignee) {
         try {
-            issueAlreadyExist("project = "
-                            + GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME) +
-                            " AND issuetype = " + GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE),
-                    label);
-            Issue.FluentCreate newIssue = jiraClient.
-                    createIssue(GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME),
-                            GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE)).
-                    field(Field.SUMMARY, defectSummary).field(Field.DESCRIPTION, defectDescription).
-                    field(Field.LABELS, Collections.singletonList(label)).field(Field.ASSIGNEE, defectAssignee);
-            newIssue.execute();
+            String summary="project = "+ GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME) +
+                    " AND issuetype = " + GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE);
+            if(issueAlreadyExist(summary, label)){
+                Log.info(defectSummary+" :bug already exists");
+            }
+
+            else{
+                Issue.FluentCreate newIssue = jiraClient.
+                        createIssue(GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME),
+                                GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE)).
+                        field(Field.SUMMARY, defectSummary).field(Field.DESCRIPTION, defectDescription).
+                        field(Field.LABELS, Collections.singletonList(label)).field(Field.ASSIGNEE, defectAssignee);
+                newIssue.execute();
+            }
+
         } catch (JiraException e) {
             e.printStackTrace();
             e.getMessage();
