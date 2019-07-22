@@ -9,13 +9,14 @@
     <classes>
       <class name="DemoTest">
         <methods>
-          <include name="before"/>
+          <include name="tearDownSuite"/>
           <include name="loginTest" invocation-numbers="0"/>
+          <include name="initializeExtentTest"/>
           <include name="closeDriver"/>
           <include name="classDataInitializer"/>
-          <include name="tearDownSuite"/>
-          <include name="initializeExtentTest"/>
+          <include name="before"/>
           <include name="afterMethod"/>
+          <include name="loginTest1" invocation-numbers="0"/>
         </methods>
       </class> <!-- DemoTest -->
     </classes>

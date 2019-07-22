@@ -5,14 +5,14 @@
  	<listeners>
  		<listener class-name="listener.AnnotationTransformer"/>
         <listener class-name="listener.TestListener"/>
-        <!--<listener class-name="listener.Retry"/>-->
-        <!--<listener class-name="reporters.ExtentManager"/>-->
+<!--         <listener class-name="listener.Retry"/> -->
+<!--         <listener class-name="reporters.ExtentManager"/> -->
  	</listeners>
  	
     <test name="DemoTestHdfc" group-by-instances="true">
         <classes>
             <class name="DemoTest"/>
-            <class name="TestBase"/>
+            <class name="base.TestBase"/>
         </classes>
     </test>
 </suite>

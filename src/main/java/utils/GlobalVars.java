@@ -28,4 +28,8 @@ public class GlobalVars {
     public static String automationname;
     public static String platformNameIOS;
     public static Map<String, DataElements> dataElementMap = null;
+    public static String url;
+    public static String devKey;
+    public static String buildName;
+    public static String testPlanID;
 }

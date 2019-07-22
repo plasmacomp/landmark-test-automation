@@ -9,15 +9,29 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Demo Test Suite</th></tr>
-<tr><td><a href="#t0">DemoTestHdfc</a></td><td class="num">0</td><td class="num attn">1</td><td class="num attn">1</td><td class="num">139,564</td><td></td><td></td></tr>
+<tr><td><a href="#t0">DemoTestHdfc</a></td><td class="num">0</td><td class="num">0</td><td class="num attn">4</td><td class="num">378,644</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Demo Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">DemoTestHdfc &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">DemoTest</td><td><a href="#m0">loginTest</a></td><td rowspan="1">1563183927772</td><td rowspan="1">1</td></tr><tr><th colspan="4">DemoTestHdfc &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">DemoTest</td><td><a href="#m1">loginTest</a></td><td rowspan="1">1563183792686</td><td rowspan="1">134889</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Demo Test Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">DemoTestHdfc &#8212; failed</th></tr><tr class="failedeven"><td rowspan="4">DemoTest</td><td><a href="#m0">loginTest</a></td><td rowspan="2">1563790176571</td><td rowspan="2">1</td></tr><tr class="failedeven"><td><a href="#m1">loginTest</a></td></tr><tr class="failedeven"><td><a href="#m2">loginTest1</a></td><td rowspan="2">1563790470770</td><td rowspan="2">1</td></tr><tr class="failedeven"><td><a href="#m3">loginTest1</a></td></tr></tbody>
 </table>
 <h2>DemoTestHdfc</h2><h3 id="m0">DemoTest#loginTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IllegalArgumentException: wrong number of arguments
 ... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">DemoTest#loginTest</h3><table class="result"><tr class="param"><th>Parameter #1</th></tr><tr class="param stripe"><td>public void DemoTest.loginTest(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException</td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IllegalArgumentException: Step-1: User failed to login!!
-	at org.springframework.util.Assert.isTrue(Assert.java:118)
-	at DemoTest.loginTest(DemoTest.java:35)
+<h3 id="m1">DemoTest#loginTest</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException: The status code (n) provided is not valid!
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.checkResponseError(BaseService.java:105)
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.executeXmlRpcCall(BaseService.java:84)
+	at br.eti.kinoshita.testlinkjavaapi.TestCaseService.reportTCResult(TestCaseService.java:611)
+	at br.eti.kinoshita.testlinkjavaapi.TestLinkAPI.setTestCaseExecutionResult(TestLinkAPI.java:1034)
+	at utils.TestLinkUtil.setResult(TestLinkUtil.java:28)
+	at listener.TestListener.onTestSkipped(TestListener.java:87)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">DemoTest#loginTest1</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.IllegalArgumentException: wrong number of arguments
 ... Removed 25 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">DemoTest#loginTest1</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException: The status code (n) provided is not valid!
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.checkResponseError(BaseService.java:105)
+	at br.eti.kinoshita.testlinkjavaapi.BaseService.executeXmlRpcCall(BaseService.java:84)
+	at br.eti.kinoshita.testlinkjavaapi.TestCaseService.reportTCResult(TestCaseService.java:611)
+	at br.eti.kinoshita.testlinkjavaapi.TestLinkAPI.setTestCaseExecutionResult(TestLinkAPI.java:1034)
+	at utils.TestLinkUtil.setResult(TestLinkUtil.java:28)
+	at listener.TestListener.onTestSkipped(TestListener.java:87)
+... Removed 22 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

@@ -25,6 +25,10 @@ public class Constants {
     public static final String JIRA_URL = "jiraURL";
     public static final String JIRA_USERNAME = "username";
     public static final String JIRA_PASSWORD = "password";
+    public static String TESTLINK_URL = "url";
+    public static String TESTLINK_DEVKEY = "devKey";
+    public static String TESTLINK_BUILDNAME = "buildName";
+    public static String TESTLINK_TESTPLANID = "testPlanID";
 
 
 
