@@ -7,12 +7,17 @@ import org.springframework.util.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
+
+import base.TestBase;
 import utils.*;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class DemoTest extends TestBase{
+	
+	ArrayList<Integer> testLinkID = new ArrayList<>();
 
     /**
      * @param
@@ -30,13 +35,15 @@ public class DemoTest extends TestBase{
         String password="";
         System.out.println("In LoginTest method");
         String currentMethodName=Thread.currentThread().getStackTrace()[1].getMethodName();
+        testLinkID.add(226032);
+        testLink.set(testLinkID);
         oCommonLoginPage =new CommonLoginPage(driver);
         username=dataElementMap.get(currentMethodName).getParams().trim().split(",")[0];
         password=dataElementMap.get(currentMethodName).getParams().trim().split(",")[1];
 //*****************************************************************************************************//
         isResult = oCommonLoginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
-        Assert.isTrue(isResult, "Step-1: User failed to login!!");
+       // Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
 //*****************************************************************************************************//
         isResult = oCommonLoginPage.verifyHomePagePostLogin();
@@ -57,6 +64,7 @@ public class DemoTest extends TestBase{
         String password="";
         System.out.println("In LoginTest1 method");
         String currentMethodName=Thread.currentThread().getStackTrace()[1].getMethodName();
+        testLinkID.add(226034);
         oCommonLoginPage =new CommonLoginPage(driver);
         username=dataElementMap.get(currentMethodName).getParams().trim().split(",")[0];
         password=dataElementMap.get(currentMethodName).getParams().trim().split(",")[1];

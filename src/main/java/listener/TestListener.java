@@ -7,10 +7,14 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
+
+import base.TestBase;
+import br.eti.kinoshita.testlinkjavaapi.constants.ExecutionStatus;
 import utils.Constants;
 import utils.DataReader;
 import utils.GlobalVars;
 import utils.JiraOperationsUtil;
+import utils.TestLinkUtil;
 
 import java.io.File;
 import java.io.IOException;
@@ -18,8 +22,8 @@ import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class TestListener extends TestListenerAdapter {
-
+public class TestListener extends TestBase implements ITestListener {
+//TestListenerAdapter
     @Override
     public void onTestStart(ITestResult iTestResult) {
 
@@ -27,6 +31,11 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
+    	 if(TestLinkUtil.testLink.get()!=null){
+    	        for (Integer id : TestLinkUtil.testLink.get()) {
+    	            TestLinkUtil.setResult(id, ExecutionStatus.PASSED);
+    	        }
+    	 }
 
     }
 
@@ -45,6 +54,18 @@ public class TestListener extends TestListenerAdapter {
                         "Test failed for test case: " + testName,
                         "AutomatedTestExecutionBug", "ataur.rahman");
             }
+        	if(TestLinkUtil.testLink.get()!=null){
+                for (Integer id : TestLinkUtil.testLink.get()) {
+                    TestLinkUtil.setResult(id, ExecutionStatus.FAILED);
+
+                } }
+            JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
+                    GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
+                    GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
+            String testName=iTestResult.getName();
+            JiraOperationsUtil.createNewIssue("Test Automation Bug: " +testName ,
+                    "Test failed for test case: " + testName,
+                    "AutomatedTestExecutionBug", "ataur.rahman");
 
             // this field name must be present and equals in any testcase
             /*Field field = clazz.getDeclaredField("driver");
@@ -70,7 +91,11 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
+    	if(TestLinkUtil.testLink.get()!=null){
+            for (Integer id : TestLinkUtil.testLink.get()) {
+                TestLinkUtil.setResult(id, ExecutionStatus.NOT_RUN);
 
+            } }
     }
 
     @Override

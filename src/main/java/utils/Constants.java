@@ -27,5 +27,10 @@ public class Constants {
     public static final String JIRA_PASSWORD = "password";
     public static final String IS_CREATE_BUG = "isCreateBug";
     public static final String MAX_RETRY = "maxTry";
+    public static String TESTLINK_URL = "url";
+    public static String TESTLINK_DEVKEY = "devKey";
+    public static String TESTLINK_BUILDNAME = "buildName";
+    public static String TESTLINK_TESTPLANID = "testPlanID";
+
 
 }
