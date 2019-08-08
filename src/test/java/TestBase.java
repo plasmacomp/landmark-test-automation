@@ -163,9 +163,8 @@ public class TestBase extends GlobalVars{
 
         if (result.getStatus() == ITestResult.FAILURE) {
             Utils.captureScreenshot(result);
-            //captureScreenshot(result);
         }
-        /*extent.endTest(test);*/
+        //extent.endTest(test);
         //Utils.closeExtentTest();
         Log.endTestCase(result.getTestName());
         System.out.println("****************************************");

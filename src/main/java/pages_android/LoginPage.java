@@ -63,12 +63,12 @@ public class LoginPage
         boolean isUserLoggedIn=false;
         //Log.info("**********Login method started"+GlobalVars.platform+"*********");
         try {
-            if(oCommonFunctions.clickElement(investorLoginElement, 20)){
+            if(oCommonFunctions.clickElement(investorLoginElement, 5)){
                 oCommonFunctions.sendKey(userIdElement, username, 5);
                 oCommonFunctions.sendKey(passwordElement, password, 5);
                 driver.navigate().back();
-                if(oCommonFunctions.clickElement(loginElement, 20))
-                    isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 20);
+                if(oCommonFunctions.clickElement(loginElement, 5))
+                    isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 10);
             }
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ GlobalVars.platform);
         } catch (Exception e) {
@@ -83,7 +83,7 @@ public class LoginPage
     public boolean verifyHomePagePostLogin() {
         boolean isUserLoggedIn=false;
         try {
-            isUserLoggedIn=oCommonFunctions.isElementDisplayed(portFolio, 20);
+            isUserLoggedIn=oCommonFunctions.isElementDisplayed(portFolio, 10);
             Thread.sleep(4000);
             Utils.logFunctionLevelLogs(isUserLoggedIn, "verifyHomePagePostLogin"+ GlobalVars.platform);
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class LoginPage
     public boolean logout() {
         boolean isUserLoggedOut=false;
         try {
-            if(oCommonFunctions.clickElement(drawerIcon, 20)){
+            if(oCommonFunctions.clickElement(drawerIcon, 5)){
                 if(oCommonFunctions.clickElement(logOut, 5)){
                     isUserLoggedOut=oCommonFunctions.clickElement(yesBtnLogoutPopup, 5);
                 }

@@ -36,17 +36,19 @@ public class TestListener extends TestListenerAdapter {
         Class clazz = iTestResult.getTestClass().getRealClass();
         try {
             /*On failure of a test case, raise a bug on JIRA*/
-            JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
-                    GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
-                    GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
-            String testName=iTestResult.getName();
-            JiraOperationsUtil.createNewIssue("Test Automation Bug: " +testName ,
-                    "Test failed for test case: " + testName,
-                    "AutomatedTestExecutionBug", "ataur.rahman");
+            if(GlobalVars.prop.getProperty(Constants.IS_CREATE_BUG).equalsIgnoreCase("true")){
+                JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
+                        GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
+                        GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
+                String testName=iTestResult.getName();
+                JiraOperationsUtil.createNewIssue("Test Automation Bug: " +testName ,
+                        "Test failed for test case: " + testName,
+                        "AutomatedTestExecutionBug", "ataur.rahman");
+            }
 
             // this field name must be present and equals in any testcase
-            Field field = clazz.getDeclaredField("driver");
-            field.setAccessible(true);
+            /*Field field = clazz.getDeclaredField("driver");
+            field.setAccessible(true);*/
 
             //AppiumDriver<?> driver = (AppiumDriver<?>) field.get(iTestResult.getInstance());
 
