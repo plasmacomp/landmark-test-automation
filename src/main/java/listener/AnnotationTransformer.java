@@ -17,56 +17,6 @@ public class AnnotationTransformer extends Data implements IAnnotationTransforme
 	List<Data> list= DataReader.getDataObjectRepo();
 	DataReader db = new DataReader();
 
-    /*public boolean isTestDisabled(String testName){
-    	boolean isRunDisabled=false;
-    	Iterator<Data> itr=list.iterator();
-    	OUTER_LOOP:
-    	while(itr.hasNext()){
-    		Map<String, DataElements> dataMap=itr.next().getElementList();
-    		for(Map.Entry<String, DataElements> entry : dataMap.entrySet()){
-    			if(entry.getValue().getTestMethodName().equalsIgnoreCase(testName)){
-    				if(entry.getValue().getRunStatus().equalsIgnoreCase("skip")){
-    					isRunDisabled=true;
-    					break OUTER_LOOP;
-    				}
-    			}
-    		}
-    	}
-    	return isRunDisabled;
-    }*/
-
-	/*@SuppressWarnings("rawtypes")
-	@Override
-	public void transform(ITestAnnotation annotation, Class testClass,
-			Constructor testConstructor, Method testMethod) {
-		
-		*//*if (isTestDisabled(testMethod.getName())) {
-            annotation.setEnabled(false);
-        }
-		else{
-			Utils.methodToBeExecuted.add(testMethod.getName());
-		}*//*
-
-		List<Data> list = DataReader.getDataObjectRepo();
-		IRetryAnalyzer retry = annotation.getRetryAnalyzer();
-		Iterator<Data> itr = list.iterator();
-		OUTER_LOOP:
-		while (itr.hasNext()) {
-			Map<String, DataElements> dataMap = itr.next().getElementList();
-			for (Map.Entry<String, DataElements> entry : dataMap.entrySet()) {
-				if (entry.getValue().getTestMethodName().equalsIgnoreCase(testMethod.getName())) {
-					if (entry.getValue().getRunStatus().equalsIgnoreCase("skip")) {
-						annotation.setEnabled(false);
-					}
-				}
-			}
-		}
-
-		if (retry == null) {
-			annotation.setRetryAnalyzer(Retry.class);
-		}
-	}*/
-
 	@Override
 	public void transform(ITestAnnotation annotation, Class testClass, Constructor testConstructor, Method testMethod) {
 
@@ -91,9 +41,7 @@ public class AnnotationTransformer extends Data implements IAnnotationTransforme
 			}
 		}
 
-		if (retry == null) {
-			annotation.setRetryAnalyzer(Retry.class);
-		}
+		annotation.setRetryAnalyzer(Retry.class);
 
 	}
 	

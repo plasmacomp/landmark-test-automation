@@ -27,6 +27,8 @@ public class Constants {
     public static final String JIRA_URL = "jiraURL";
     public static final String JIRA_USERNAME = "username";
     public static final String JIRA_PASSWORD = "password";
+    public static final String IS_CREATE_BUG = "isCreateBug";
+    public static final String MAX_RETRY = "maxTry";
     public static String TESTLINK_URL = "url";
     public static String TESTLINK_DEVKEY = "devKey";
     public static String TESTLINK_BUILDNAME = "buildName";
@@ -37,7 +39,6 @@ public class Constants {
     public static String REPORT_NAME = "";
 
     public static ArrayList<String> TEST_RESULT_COUNT = new ArrayList<>();
-
 
 
 }

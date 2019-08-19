@@ -74,7 +74,7 @@ public class Utils {
     }
 
     /*Function to log the steps info in extent report*/
-    public static void logStepInfo(boolean isResult, String stepInfo) throws IOException, InterruptedException
+    public static void logStepInfo(boolean isResult, String stepInfo)
     {
         if(isResult)
             test.log(Status.PASS, stepInfo+" | Status: Pass");
@@ -168,6 +168,13 @@ public class Utils {
             e1.printStackTrace();
         }
         return buffer.toString();
+    }
+
+    public static int getMaxRetryCount(){
+        try {
+            return Integer.parseInt(GlobalVars.prop.getProperty(Constants.MAX_RETRY));
+        }
+        catch (Exception ex){ex.printStackTrace();return 0;}
     }
 
 }
