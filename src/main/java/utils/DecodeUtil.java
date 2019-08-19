@@ -1,13 +1,4 @@
-package com.ttn.framework.utils;
-
-import com.ttn.framework.tests.base.BaseClass;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Properties;
-import java.util.prefs.BackingStoreException;
+package utils;
 
 public class DecodeUtil {
 

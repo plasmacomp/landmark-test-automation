@@ -1,9 +1,8 @@
-package com.ttn.framework.utils;
+package utils;
 
-import com.ttn.framework.tests.base.BaseClass;
+import base.TestBase;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.internal.ITestResultNotifier;
+import reporters.ExtentManager;
 
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
@@ -16,7 +15,7 @@ import javax.mail.internet.MimeMultipart;
 import java.io.File;
 import java.util.Properties;
 
-public class SendMailSSLWithAttachmentUtil extends BaseClass {
+public class SendMailSSLWithAttachmentUtil extends TestBase {
 
     public static void sendEmail(ITestContext context) {
 
@@ -45,8 +44,8 @@ public class SendMailSSLWithAttachmentUtil extends BaseClass {
 
                     protected PasswordAuthentication getPasswordAuthentication() {
 
-                        return new PasswordAuthentication(properties.getProperty(GlobalContants.EMAIL_ID),
-                                DecodeUtil.decode(properties.getProperty(GlobalContants.EMAIL_PASSWORD)));
+                        return new PasswordAuthentication(GlobalVars.prop.getProperty(Constants.EMAIL_ID),
+                                DecodeUtil.decode(GlobalVars.prop.getProperty(Constants.EMAIL_PASSWORD)));
 
                     }
 
@@ -61,11 +60,12 @@ public class SendMailSSLWithAttachmentUtil extends BaseClass {
             message.setFrom(new InternetAddress("testautomationuser@tothenew.com"));
 
             // Set the recipient address
-            message.setRecipients(Message.RecipientType.TO,InternetAddress.parse("sunil.mahakur@tothenew.com, vibhor.agarwal@tothenew.com"));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sunil.mahakur@tothenew.com, vibhor.agarwal@tothenew.com, ataur.rahman@tothenew.com"));
+            //message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sunil.mahakur@tothenew.com"));
 
 
             // Add the subject link
-            message.setSubject(GlobalContants.REPORT_NAME);
+            message.setSubject("[Mobile]Test Automation Result"+Constants.REPORT_NAME);
 
             // Create object to add multimedia type content
             BodyPart messageBodyPart1 = new MimeBodyPart();
@@ -74,7 +74,7 @@ public class SendMailSSLWithAttachmentUtil extends BaseClass {
 
             messageBodyPart1.setContent(
                     "<h3>TEST EXECUTION SUMMARY</h3>\n" +
-                            "<p style=\"color:black;\"><b>TOTAL TESTCASES : "+ GlobalContants.TEST_RESULT_COUNT.size()+"</b></p>\n"+
+                            "<p style=\"color:black;\"><b>TOTAL TESTCASES : "+ Constants.TEST_RESULT_COUNT.size()+"</b></p>\n"+
                             "<p style=\"color:green;\">PASS : "+ context.getPassedTests().size()+"</p>" +
                             "<p style=\"color:red;\">FAIL : "+context.getFailedTests().size()+"</p>"+
                             "<p style=\"color:orange;\">SKIP : "+ context.getSkippedTests().size()+"</p>" +
@@ -87,20 +87,23 @@ public class SendMailSSLWithAttachmentUtil extends BaseClass {
             // Create another object to add another content
             MimeBodyPart messageBodyPart2 = new MimeBodyPart();
 
-            File file = new File(GlobalContants.REPORT_PATH);
+            File file = new File(Constants.REPORT_PATH);
 
             // Mention the file which you want to send
-            String filename = file.getPath();
+            //String filename = file.getPath();
+            String filename = ExtentManager.extentpath;
 
 
             // Create data source and pass the filename
             DataSource source = new FileDataSource(filename);
 
+
             // set the handler
             messageBodyPart2.setDataHandler(new DataHandler(source));
 
             // set the file
-            messageBodyPart2.setFileName(GlobalContants.REPORT_NAME+ ".html");
+            //messageBodyPart2.setFileName(Constants.REPORT_NAME+ ".html");
+            messageBodyPart2.setFileName(ExtentManager.extentpath);
 
             // Create object of MimeMultipart class
             Multipart multipart = new MimeMultipart();

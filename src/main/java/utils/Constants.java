@@ -1,5 +1,7 @@
 package utils;
 
+import java.util.ArrayList;
+
 public class Constants {
 
     public static final String ANDROID="android";
@@ -29,6 +31,12 @@ public class Constants {
     public static String TESTLINK_DEVKEY = "devKey";
     public static String TESTLINK_BUILDNAME = "buildName";
     public static String TESTLINK_TESTPLANID = "testPlanID";
+    public static final String EMAIL_ID = "email_id";
+    public static final String EMAIL_PASSWORD= "email_password";
+    public static String REPORT_PATH = "";
+    public static String REPORT_NAME = "";
+
+    public static ArrayList<String> TEST_RESULT_COUNT = new ArrayList<>();
 
 
 

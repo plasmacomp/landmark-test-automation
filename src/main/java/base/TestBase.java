@@ -12,6 +12,7 @@ import org.apache.log4j.xml.DOMConfigurator;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
@@ -136,7 +137,11 @@ public class TestBase extends GlobalVars{
 
 
     @BeforeSuite
-    public void before() throws MalformedURLException {
+    public void before() throws MalformedURLException
+    {
+        //Auto Start Appium Server
+        AppiumServer.startServer();
+
         //extent= ExtentManager.getReporter();
         Utils.initializeExtentReport();
         initializeDriver();
@@ -181,9 +186,15 @@ public class TestBase extends GlobalVars{
     }
 
     @AfterSuite
-    public void tearDownSuite() {
+    public void tearDownSuite(ITestContext context) {
         Utils.closeExtentTest();
+        // calling the meail send method
+        SendMailSSLWithAttachmentUtil.sendEmail(context);
         driver.quit();
+
+        //Auto Stopped Appium Server
+        AppiumServer.stopServer();
+
     }
 
     public void logStepInfo(String message) {
