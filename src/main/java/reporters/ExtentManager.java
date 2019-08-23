@@ -9,6 +9,8 @@ import java.util.Date;
 public class ExtentManager {
 	
 	private static ExtentReports extent;
+
+	public static String extentpath;
 	 
     public synchronized static ExtentReports getReporter(){
         if(extent == null){
@@ -18,7 +20,10 @@ public class ExtentManager {
             String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
             timeStamp="ExtentReport_"+timeStamp;
 
-            ExtentHtmlReporter html = new ExtentHtmlReporter(workingDir+"\\ExtentReports\\" + timeStamp + ".html");
+            extentpath = workingDir+"\\ExtentReports\\" + timeStamp + ".html";
+            ExtentHtmlReporter html = new ExtentHtmlReporter(extentpath);
+
+            //ExtentHtmlReporter html = new ExtentHtmlReporter(workingDir+"\\ExtentReports\\" + timeStamp + ".html");
             //ExtentXReporter extentx = new ExtentXReporter("localhost");
 
             extent = new ExtentReports();
@@ -26,6 +31,8 @@ public class ExtentManager {
 
         }
         return extent;
+
+
     }
     
     
