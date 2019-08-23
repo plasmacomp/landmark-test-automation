@@ -134,7 +134,6 @@ public class TestBase extends GlobalVars{
 
     }
 
-
     @BeforeSuite
     public void before() throws MalformedURLException {
         //extent= ExtentManager.getReporter();
