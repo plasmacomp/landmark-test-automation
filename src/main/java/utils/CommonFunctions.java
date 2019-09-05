@@ -1,5 +1,6 @@
 package utils;
 
+import base.TestBase;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import logger.Log;
@@ -9,8 +10,9 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
-public class CommonFunctions {
+public class CommonFunctions extends TestBase {
 
     /*Function to click on a mobile element*/
     public boolean clickElement(WebElement element, int timeOutInSsec){
@@ -18,6 +20,7 @@ public class CommonFunctions {
         boolean isElementClicked=false;
         WebDriverWait wait = null;
         try {
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);//Setting the implicit wait as zero as implicit and explicit wait do not work together
             wait=new WebDriverWait(GlobalVars.driver, timeOutInSsec);
             switch(GlobalVars.platform){
                 case "android":
@@ -41,10 +44,12 @@ public class CommonFunctions {
         } catch (Exception e) {
             isElementClicked=false;
             Log.error("Exception occurred in clickElement method: "+e.getMessage());
+            driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
             /*Log.error("Could not click on the element with "+locatorType.toString()+" : "+locator);
             Log.error("Exception:"+e.getMessage());*/
 
         }
+        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
         return isElementClicked;
 
     }
@@ -105,8 +110,34 @@ public class CommonFunctions {
         }
         return isElementDisplayed;
     }
-    
 
+    /*Function to get the text of a mobile element*/
+    public String getElementText(WebElement element, int timeOutInSsec){
+        WebDriverWait wait = null;
+        String text="";
+        try {
+            driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);//Setting the implicit wait as zero as implicit and explicit wait do not work together
+            wait=new WebDriverWait(GlobalVars.driver, timeOutInSsec);
+            switch(GlobalVars.platform){
+                case "android":
+                    wait.until(ExpectedConditions.visibilityOf(element));
+                    text=element.getText();
+                    break;
+                case "ios":
+                    //IOS code goes here
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + GlobalVars.platform);
+            }
+            Utils.logFunctionLevelLogs(true, "Text of the element is : "+text);
+        } catch (Exception e) {
+            Log.error("Exception occurred in clickElement method: "+e.getMessage());
+            driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+        }
+        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+        return text;
+
+    }
 
     public void logStepInfo(ExtentTest test, boolean isResult, String stepInfo, int stepNumber) throws IOException, InterruptedException
     {

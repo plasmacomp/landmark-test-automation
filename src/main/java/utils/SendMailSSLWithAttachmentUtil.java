@@ -60,9 +60,7 @@ public class SendMailSSLWithAttachmentUtil extends TestBase {
             message.setFrom(new InternetAddress("testautomationuser@tothenew.com"));
 
             // Set the recipient address
-            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sunil.mahakur@tothenew.com, vibhor.agarwal@tothenew.com, ataur.rahman@tothenew.com"));
-            //message.setRecipients(Message.RecipientType.TO, InternetAddress.parse("sunil.mahakur@tothenew.com"));
-
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(String.join(",", mailRecipientList)));
 
             // Add the subject link
             message.setSubject("[Mobile]Test Automation Result"+Constants.REPORT_NAME);

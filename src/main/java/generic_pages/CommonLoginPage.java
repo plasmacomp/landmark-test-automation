@@ -56,6 +56,21 @@ public class CommonLoginPage {
         return hasUserLandedOnHomePage;
     }
 
+    /*Function to check the equity amount on dashboard and inside the dashboard is same*/
+    public boolean verifyEquityFromDashboard() {
+        boolean isEquityVerificationPassed=false;
+        switch(GlobalVars.platform) {
+            case Constants.ANDROID:
+                isEquityVerificationPassed = oLoginPageAndroid.verifyEquityFromDashboard();
+                break;
+            case Constants.IOS:
+                //isEquityVerificationPassed = oLoginPageIos.verifyEquityFromDashboard();
+                break;
+        }
+        Utils.logFunctionLevelLogs(isEquityVerificationPassed, "verifyEquityFromDashboard");
+        return isEquityVerificationPassed;
+    }
+
 
     /*Function to logout*/
     public boolean logout(){

@@ -35,7 +35,7 @@ public class LoginPage
     private static AndroidElement userIdElement;
     @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/et_password")
     private static AndroidElement passwordElement;
-    @AndroidFindBy(xpath = "//*[@class='android.widget.Button' and @text='Login']")
+    @AndroidFindBy(xpath = "//*[@resource-id='com.hdfcfund.investor.uat:id/cv_login']/*[1]")////*[@class='android.widget.Button' and @text='Login']
     private static AndroidElement loginElement;
     @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/tv_skip")
     private static AndroidElement skipButton;
@@ -47,6 +47,16 @@ public class LoginPage
     private static AndroidElement logOut;
     @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/btn_yes")
     private static AndroidElement yesBtnLogoutPopup;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/et_otp_pan")
+    private static AndroidElement otpTextBox;
+    @AndroidFindBy(id = "com.hdfcfund.investor.uat:id/btn_submit")
+    private static AndroidElement loginBtnOnOtpPage;
+    @AndroidFindBy(xpath = "//*[@text='Dashboard']")
+    private static AndroidElement dashboard;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.hdfcfund.investor.uat:id/tv_investment_type']/following-sibling::*[1]")
+    private static AndroidElement equityAmountOnDashboard;
+    @AndroidFindBy(xpath = "//*[@resource-id='com.hdfcfund.investor.uat:id/tv_label_market_value']/following-sibling::*[1]")
+    private static AndroidElement equityAmountInsideDashboard;
 
 
 
@@ -67,8 +77,11 @@ public class LoginPage
                 oCommonFunctions.sendKey(userIdElement, username, 5);
                 oCommonFunctions.sendKey(passwordElement, password, 5);
                 driver.navigate().back();
-                if(oCommonFunctions.clickElement(loginElement, 5))
-                    isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 10);
+                if(oCommonFunctions.clickElement(loginElement, 5)){
+                    oCommonFunctions.sendKey(otpTextBox, "123456", 5);
+                    if(oCommonFunctions.clickElement(loginBtnOnOtpPage, 5))
+                        isUserLoggedIn=oCommonFunctions.clickElement(skipButton, 10);
+                }
             }
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ GlobalVars.platform);
         } catch (Exception e) {
@@ -77,9 +90,10 @@ public class LoginPage
         }
         //Log.info("**********Login method ended"+GlobalVars.platform+"*********");
         return isUserLoggedIn;
-        //hideKeyboardIfVisible();
     }
 
+
+    /*Function to verify whether the user has successfully logged in*/
     public boolean verifyHomePagePostLogin() {
         boolean isUserLoggedIn=false;
         try {
@@ -93,6 +107,28 @@ public class LoginPage
         return isUserLoggedIn;
     }
 
+    /*Function to verify the equity amount from dashboard*/
+    public boolean verifyEquityFromDashboard() {
+        boolean isEquityAmountCorrect=false;
+        String equityAmntOnDashboard="";
+        String equityAmntInsideDashboard="";
+        try {
+            if(oCommonFunctions.clickElement(dashboard, 5)){
+                equityAmntOnDashboard=oCommonFunctions.getElementText(equityAmountOnDashboard, 5);
+                if(oCommonFunctions.clickElement(equityAmountOnDashboard, 5)){
+                    equityAmntInsideDashboard=oCommonFunctions.getElementText(equityAmountInsideDashboard, 5);
+                    isEquityAmountCorrect=equityAmntOnDashboard.equalsIgnoreCase(equityAmntInsideDashboard);
+                    driver.navigate().back();
+                }
+            }
+            Utils.logFunctionLevelLogs(isEquityAmountCorrect, "Equity amount found to be correct on dashboard");
+        } catch (Exception e) {
+            Log.error("Exception occurred in verifyHomePagePostLogin method"+e.getMessage());
+            e.printStackTrace();
+        }
+        return isEquityAmountCorrect;
+    }
+
     public boolean logout() {
         boolean isUserLoggedOut=false;
         try {
@@ -100,7 +136,7 @@ public class LoginPage
                 if(oCommonFunctions.clickElement(logOut, 5)){
                     isUserLoggedOut=oCommonFunctions.clickElement(yesBtnLogoutPopup, 5);
                 }
-                Thread.sleep(5000);
+                Thread.sleep(2000);
             }
             Utils.logFunctionLevelLogs(isUserLoggedOut, "verifyHomePagePostLogin"+ GlobalVars.platform);
         } catch (Exception e) {

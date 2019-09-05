@@ -31,12 +31,13 @@ public class TestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSuccess(ITestResult iTestResult) {
-    	 if(TestLinkUtil.testLink.get()!=null){
-    	        for (Integer id : TestLinkUtil.testLink.get()) {
-    	            TestLinkUtil.setResult(id, ExecutionStatus.PASSED);
-    	        }
-    	 }
-
+    	 if(testLinkFlag){
+             if(TestLinkUtil.testLink.get()!=null){
+                 for (Integer id : TestLinkUtil.testLink.get()) {
+                     TestLinkUtil.setResult(id, ExecutionStatus.PASSED);
+                 }
+             }
+         }
     }
 
     @Override
@@ -45,7 +46,7 @@ public class TestListener extends TestBase implements ITestListener {
         Class clazz = iTestResult.getTestClass().getRealClass();
         try {
             /*On failure of a test case, raise a bug on JIRA*/
-            if(GlobalVars.prop.getProperty(Constants.IS_CREATE_BUG).equalsIgnoreCase("true")){
+            if(jiraFlag){ //GlobalVars.prop.getProperty(Constants.IS_CREATE_BUG).equalsIgnoreCase("true"
                 JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
                         GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
                         GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
@@ -54,18 +55,14 @@ public class TestListener extends TestBase implements ITestListener {
                         "Test failed for test case: " + testName,
                         "AutomatedTestExecutionBug", "ataur.rahman");
             }
-        	if(TestLinkUtil.testLink.get()!=null){
-                for (Integer id : TestLinkUtil.testLink.get()) {
-                    TestLinkUtil.setResult(id, ExecutionStatus.FAILED);
+            if(testLinkFlag){
+                if(TestLinkUtil.testLink.get()!=null){
+                    for (Integer id : TestLinkUtil.testLink.get()) {
+                        TestLinkUtil.setResult(id, ExecutionStatus.FAILED);
+                    }
+                }
+            }
 
-                } }
-            JiraOperationsUtil.createJiraInstance(GlobalVars.prop.getProperty(Constants.JIRA_URL),
-                    GlobalVars.prop.getProperty(Constants.JIRA_USERNAME),
-                    GlobalVars.prop.getProperty(Constants.JIRA_PASSWORD));
-            String testName=iTestResult.getName();
-            JiraOperationsUtil.createNewIssue("Test Automation Bug: " +testName ,
-                    "Test failed for test case: " + testName,
-                    "AutomatedTestExecutionBug", "ataur.rahman");
 
             // this field name must be present and equals in any testcase
             /*Field field = clazz.getDeclaredField("driver");
@@ -91,11 +88,13 @@ public class TestListener extends TestBase implements ITestListener {
 
     @Override
     public void onTestSkipped(ITestResult iTestResult) {
-    	if(TestLinkUtil.testLink.get()!=null){
-            for (Integer id : TestLinkUtil.testLink.get()) {
-                TestLinkUtil.setResult(id, ExecutionStatus.NOT_RUN);
-
-            } }
+    	if(testLinkFlag){
+            if(TestLinkUtil.testLink.get()!=null){
+                for (Integer id : TestLinkUtil.testLink.get()) {
+                    TestLinkUtil.setResult(id, ExecutionStatus.NOT_RUN);
+                }
+            }
+        }
     }
 
     @Override

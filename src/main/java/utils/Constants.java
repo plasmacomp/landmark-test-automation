@@ -39,6 +39,10 @@ public class Constants {
     public static String REPORT_NAME = "";
 
     public static ArrayList<String> TEST_RESULT_COUNT = new ArrayList<>();
+    public static final String MAIL_RECIPIENT = "mailRecipient";
+    public static final String JIRA_FLAG = "raiseIssue";
+    public static final String TESTLINK_FLAG = "updateTestLink";
+    public static final String MAIL_FLAG = "sendMail";
 
 
 }

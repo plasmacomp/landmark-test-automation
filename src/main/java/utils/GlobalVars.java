@@ -3,6 +3,8 @@ package utils;
 
 import io.appium.java_client.AppiumDriver;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 
@@ -32,4 +34,8 @@ public class GlobalVars {
     public static String devKey;
     public static String buildName;
     public static String testPlanID;
+    public static List<String> mailRecipientList=new ArrayList<String>();
+    public static boolean jiraFlag=false;
+    public static boolean testLinkFlag=false;
+    public static boolean mailFlag=false;
 }

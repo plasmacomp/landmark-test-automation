@@ -1,9 +1,20 @@
 package utils;
+import io.appium.java_client.service.local.AppiumDriverLocalService;
+import io.appium.java_client.service.local.AppiumServiceBuilder;
+import io.appium.java_client.service.local.flags.GeneralServerFlag;
+import jdk.internal.org.objectweb.asm.TypeReference;
+import org.openqa.selenium.remote.DesiredCapabilities;
+
 import java.io.*;
+import java.net.ServerSocket;
 
 public class AppiumServer
 {
-    public static void startServer() {
+
+    private static AppiumDriverLocalService service=null;
+    private static AppiumServiceBuilder builder;
+    private static DesiredCapabilities cap;
+    /*public static void startServer() {
         Runtime runtime = Runtime.getRuntime();
         try {
             runtime.exec("cmd.exe /c start cmd.exe /k \"appium -a 127.0.0.1 -p 4723 --session-override -dc \"{\"\"noReset\"\": \"\"false\"\"}\"\"");
@@ -11,9 +22,36 @@ public class AppiumServer
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
+    }*/
+
+    public static void startServer() {
+        //Set Capabilities
+        if(!checkIfServerIsRunnning(Integer.parseInt(GlobalVars.appiumServerPort))){
+            cap = new DesiredCapabilities();
+            cap.setCapability("noReset", "false");
+
+            //Build the Appium service
+            builder = new AppiumServiceBuilder();
+            builder.withIPAddress(GlobalVars.appiumServerIp);
+            builder.usingPort(Integer.parseInt(GlobalVars.appiumServerPort));
+            builder.withCapabilities(cap);
+            builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
+            builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");
+
+            //Start the server with the builder
+            try{
+                AppiumDriverLocalService service = AppiumDriverLocalService.buildService(builder);
+                service.start();
+            }
+            catch (Exception e){
+               e.printStackTrace();
+            }
+
+        }
+
     }
 
-    public static void stopServer() {
+    /*public static void stopServer() {
         Runtime runtime = Runtime.getRuntime();
         try {
             runtime.exec("taskkill /F /IM node.exe");
@@ -21,6 +59,26 @@ public class AppiumServer
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }*/
+
+    public static void stopServer() {
+        service.stop();
+    }
+
+    public static boolean checkIfServerIsRunnning(int port) {
+
+        boolean isServerRunning = false;
+        ServerSocket serverSocket;
+        try {
+            serverSocket = new ServerSocket(port);
+            serverSocket.close();
+        } catch (IOException e) {
+            //If control comes here, then it means that the port is in use
+            isServerRunning = true;
+        } finally {
+            serverSocket = null;
+        }
+        return isServerRunning;
     }
 
    /* public static void main(String[] args)

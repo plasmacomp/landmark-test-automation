@@ -264,8 +264,21 @@ public class DataReader {
                 case Constants.AUTOMATION_NAME:
                     GlobalVars.automationname=getFieldValue(fieldName);
                     break;
-
-
+                case Constants.MAIL_RECIPIENT:
+                    GlobalVars.mailRecipientList=Arrays.asList(getFieldValue(fieldName).split(","));
+                    break;
+                case Constants.JIRA_FLAG:
+                    if(getFieldValue(fieldName).toLowerCase().equalsIgnoreCase("yes"))
+                        GlobalVars.jiraFlag=true;
+                    break;
+                case Constants.TESTLINK_FLAG:
+                    if(getFieldValue(fieldName).toLowerCase().equalsIgnoreCase("yes"))
+                        GlobalVars.testLinkFlag=true;
+                    break;
+                case Constants.MAIL_FLAG:
+                    if(getFieldValue(fieldName).toLowerCase().equalsIgnoreCase("yes"))
+                        GlobalVars.mailFlag=true;
+                    break;
             }
         }
         catch(Exception e){

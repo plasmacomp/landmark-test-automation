@@ -43,12 +43,16 @@ public class DemoTest extends TestBase{
 //*****************************************************************************************************//
         isResult = oCommonLoginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
-       // Assert.isTrue(isResult, "Step-1: User failed to login!!");
+        Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
 //*****************************************************************************************************//
         isResult = oCommonLoginPage.verifyHomePagePostLogin();
         Utils.logStepInfo(isResult, "Verify that the user has successfully logged in and home page after login is being shown");
         Assert.isTrue(isResult, "Step-2: Home page verification post login failed!!");
+//*****************************************************************************************************//
+        isResult = oCommonLoginPage.verifyEquityFromDashboard();
+        Utils.logStepInfo(isResult, "Verify Equity amount from dashboard");
+        Assert.isTrue(isResult, "Step-2: Equity amount verification failed!!");
 
 //*****************************************************************************************************//
         isResult = oCommonLoginPage.logout();

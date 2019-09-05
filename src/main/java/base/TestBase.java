@@ -90,7 +90,7 @@ public class TestBase extends GlobalVars{
                      capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
                      capabilities.setCapability("platformName", GlobalVars.platform);
                      capabilities.setCapability("newCommandTimeout", 50000);
-                     capabilities.setCapability("automationName", "uiautomator");
+                     //capabilities.setCapability("automationName", "uiautomator2");
                      capabilities.setCapability("appPackage", "com.hdfcfund.investor.uat");
 
                      capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
@@ -147,7 +147,7 @@ public class TestBase extends GlobalVars{
         DOMConfigurator.configure("log4j.xml");
         Log.initializeLogProperties();
         //extent = new ExtentReports("target/surefire-reports/ExtentReport.html", true);
-        TestLinkUtil.setTestPlan();
+        //TestLinkUtil.setTestPlan();
     }
 
 
@@ -186,8 +186,10 @@ public class TestBase extends GlobalVars{
     @AfterSuite
     public void tearDownSuite(ITestContext context) {
         Utils.closeExtentTest();
-        // calling the meail send method
-        SendMailSSLWithAttachmentUtil.sendEmail(context);
+        // calling the mail send method only if mail flag is true
+        if(mailFlag)
+            SendMailSSLWithAttachmentUtil.sendEmail(context);
+
         driver.quit();
 
         //Auto Stopped Appium Server
