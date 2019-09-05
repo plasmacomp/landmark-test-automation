@@ -47,7 +47,6 @@ public class TestBase extends GlobalVars{
     public TestBase(){
 
         initGlobalVars();
-        //initializeDriver();
     }
     public void initGlobalVars(){
         try {
@@ -84,8 +83,7 @@ public class TestBase extends GlobalVars{
                 //File classpathRoot = new File(System.getProperty("user.dir"));
                 //File appDir = new File(classpathRoot, "/Apps/");
                 //File app = new File(appDir, TestUtil.apkFileName);
-                try
-                {
+                try{
                 	 capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
                      capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
                      capabilities.setCapability("platformName", GlobalVars.platform);
@@ -95,8 +93,10 @@ public class TestBase extends GlobalVars{
 
                      capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
                      capabilities.setCapability("appWaitPackage", "com.hdfcfund.investor.uat");
-                    driver=new AndroidDriver(new URL(driverUrl), capabilities);
-                    driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+                    if(driver == null){
+                        driver=new AndroidDriver(new URL(driverUrl), capabilities);
+                        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+                    }
                 }
                 catch(Exception ex)
                 {
@@ -120,8 +120,10 @@ public class TestBase extends GlobalVars{
                     capabilities.setCapability("updateWDABundleId", GlobalVars.updateWDABundleId);
                     capabilities.setCapability("platformName", GlobalVars.platformNameIOS);
                     capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-                    driver = new IOSDriver<>(new URL(driverUrl), capabilities);
-                    driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+                    if(driver==null){
+                        driver = new IOSDriver<>(new URL(driverUrl), capabilities);
+                        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
+                    }
                 }
                 catch(Exception ex)
                 {
