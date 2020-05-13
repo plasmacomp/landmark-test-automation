@@ -9,10 +9,9 @@
 <!--         <listener class-name="reporters.ExtentManager"/> -->
  	</listeners>
  	
-    <test name="DemoTestHdfc" group-by-instances="true" preserve-order="true">
+    <test name="DemoTestTab" group-by-instances="true" preserve-order="true">
         <classes>
             <class name="DemoTest"/>
-            <class name="base.TestBase"/>
         </classes>
     </test>
 </suite>

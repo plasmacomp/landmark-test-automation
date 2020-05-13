@@ -1,20 +1,18 @@
 package utils;
 
-//import com.relevantcodes.extentreports.LogStatus;
-//import com.ttn.framework.tests.base.BaseClass;
-import com.sun.xml.internal.bind.v2.runtime.reflect.opt.Const;
 import logger.Log;
 import net.rcarz.jiraclient.*;
 
 import java.io.File;
 import java.util.Collections;
 
-
 public class JiraOperationsUtil {
 
     public static JiraClient jiraClient;
+    private static GlobalVars globalVars;
 
     public static void createJiraInstance(String jiraURL, String username, String password) {
+        globalVars=GlobalVars.getInstance();
         jiraClient = new JiraClient(jiraURL, new BasicCredentials(username, password));
     }
 
@@ -76,16 +74,15 @@ public class JiraOperationsUtil {
      */
     synchronized public static void createNewIssue(String defectSummary, String defectDescription, String label, String defectAssignee) {
         try {
-            String summary="project = "+ GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME) +
-                    " AND issuetype = " + GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE);
+            String summary="project = "+ globalVars.getJiraProjectName() + " AND issuetype = " + globalVars.getJiraDefectType();
+
             if(issueAlreadyExist(summary, label)){
                 Log.info(defectSummary+" :bug already exists");
             }
 
             else{
                 Issue.FluentCreate newIssue = jiraClient.
-                        createIssue(GlobalVars.prop.getProperty(Constants.JIRA_PROJECT_NAME),
-                                GlobalVars.prop.getProperty(Constants.JIRA_DEFECT_TYPE)).
+                        createIssue(globalVars.getJiraProjectName(), globalVars.getJiraDefectType()).
                         field(Field.SUMMARY, defectSummary).field(Field.DESCRIPTION, defectDescription).
                         field(Field.LABELS, Collections.singletonList(label)).field(Field.ASSIGNEE, defectAssignee);
                 newIssue.execute();

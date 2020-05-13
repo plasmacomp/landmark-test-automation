@@ -2,7 +2,7 @@ package utils;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import jdk.internal.org.objectweb.asm.TypeReference;
+//import jdk.internal.org.objectweb.asm.TypeReference;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.*;
@@ -14,6 +14,7 @@ public class AppiumServer
     private static AppiumDriverLocalService service=null;
     private static AppiumServiceBuilder builder;
     private static DesiredCapabilities cap;
+    private static GlobalVars globalVars;
     /*public static void startServer() {
         Runtime runtime = Runtime.getRuntime();
         try {
@@ -25,15 +26,17 @@ public class AppiumServer
     }*/
 
     public static void startServer() {
+        globalVars=GlobalVars.getInstance();
+        int appiumServerPort=Integer.parseInt(globalVars.getAppiumServerPort());
         //Set Capabilities
-        if(!checkIfServerIsRunnning(Integer.parseInt(GlobalVars.appiumServerPort))){
+        if(!checkIfServerIsRunnning(appiumServerPort)){
             cap = new DesiredCapabilities();
             cap.setCapability("noReset", "false");
 
             //Build the Appium service
             builder = new AppiumServiceBuilder();
-            builder.withIPAddress(GlobalVars.appiumServerIp);
-            builder.usingPort(Integer.parseInt(GlobalVars.appiumServerPort));
+            builder.withIPAddress(globalVars.getAppiumServerIp());
+            builder.usingPort(appiumServerPort);
             builder.withCapabilities(cap);
             builder.withArgument(GeneralServerFlag.SESSION_OVERRIDE);
             builder.withArgument(GeneralServerFlag.LOG_LEVEL,"error");

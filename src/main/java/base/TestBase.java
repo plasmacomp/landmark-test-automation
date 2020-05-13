@@ -1,208 +1,125 @@
 package base;
-import com.aventstack.extentreports.ExtentReports;
-import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.Status;
-import generic_pages.CommonLoginPage;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.ios.IOSDriver;
-import io.appium.java_client.remote.AutomationName;
-import io.appium.java_client.remote.MobileCapabilityType;
+
 import logger.Log;
 import org.apache.log4j.xml.DOMConfigurator;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
-import org.testng.ITestResult;
-import org.testng.Reporter;
-import org.testng.annotations.*;
 import utils.*;
-
 import java.io.*;
-import java.lang.reflect.Method;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.Map;
 import java.util.Properties;
-import java.util.concurrent.TimeUnit;
 
-public class TestBase extends GlobalVars{
+public abstract class TestBase{
+    static InputStream input = null;
+    public static DataReader dataReader = null;
+    private static TestBase testBase=null;
+    private static GlobalVars globalVars;
+    private static Properties prop;
 
-    static String driverUrl="";
-    private static ExtentTest test;
-    private static ExtentReports extent;
-    private static final Logger logger = LoggerFactory.getLogger(TestBase.class);
-    private static final String BREAK_LINE = "</br>";
-    static String className = null;
-    protected Map<String, DataElements> dataElementMap = null;
-    //DemoPage oDemoPage = null;
-    protected CommonLoginPage oCommonLoginPage = null;
-    DataReader oDataReader = null;
-    TestBase oTestBase = null;
-    CommonFunctions ocommonFunctions = null;
-    public static ThreadLocal<ArrayList<Integer>> testLink = new ThreadLocal<ArrayList<Integer>>();
-
-
-    public TestBase(){
-
-        initGlobalVars();
-    }
-    public void initGlobalVars(){
-        try {
-            prop=new Properties();
-
-            workingDir = System.getProperty("user.dir");
-            //String configPropFilePath = workingDir+"\\src\\main\\java\\utils\\config.properties";
-            String configPropFilePath = workingDir+"//src//main//java//utils//config.properties";
-            FileInputStream ip=new FileInputStream(configPropFilePath);
-            prop.load(ip);
-            //This is to initialize the test data before execution of any test case
-            DataReader oDataReader=new DataReader();
-            oDataReader.setupDataSheet();
-
+    public static GlobalVars setup(String className){
+        instantiateClasses();
+        if(!globalVars.getTestCaseListRunModeTrue().isEmpty()){
+            testBase.initGlobalVars(className);
+            testBase.initializeDriver();
+            initializeLoggingAndReporting();
         }
-        catch(FileNotFoundException e) {
+        return globalVars;
+    }
+
+    public static void instantiateClasses(){
+        globalVars=GlobalVars.getInstance();
+        testBase= getInstance();
+        dataReader = DataReader.getInstance();
+    }
+
+    public abstract void initializeDriver();
+
+    public static TestBase getInstance(){
+        if(testBase==null) {
+            switch (globalVars.getPlatform()){
+                case Constants.ANDROID:
+                    testBase=new AndroidBase();
+                    break;
+                case Constants.IOS:
+                    testBase=new IosBase();
+                    break;
+                case Constants.WEB:
+                    testBase=new WebBase();
+                    break;
+            }
+        }
+        return testBase;
+    }
+
+    private static void initializeConfigPropertiesData(){
+        globalVars.setIsAwsRun(Boolean.parseBoolean(prop.getProperty(Constants.IS_AWS_RUN)));
+        globalVars.setIsAutoStartAppium(Boolean.parseBoolean(prop.getProperty(Constants.IS_AUTO_START_APPIUM)));
+        globalVars.setJiraUrl(prop.getProperty(Constants.JIRA_URL));
+        globalVars.setJiraUserName(prop.getProperty(Constants.JIRA_USERNAME));
+        globalVars.setJiraPassword(prop.getProperty(Constants.JIRA_PASSWORD));
+        globalVars.setJiraDefectAssignee(prop.getProperty(Constants.JIRA_DEFECT_ASSIGNEE));
+        globalVars.setAppPackage(prop.getProperty(Constants.APP_PACKAGE));
+        globalVars.setAppActivity(prop.getProperty(Constants.APP_ACTIVITY));
+        globalVars.setAppWaitPackage(prop.getProperty(Constants.APP_WAIT_PACKAGE));
+        globalVars.setUatUrl(prop.getProperty(Constants.UAT_URL));
+        globalVars.setTestLinkBuildName(prop.getProperty(Constants.TESTLINK_BUILDNAME));
+        globalVars.setTestLinkPlanId(prop.getProperty(Constants.TESTLINK_TESTPLANID));
+        globalVars.setTestLinkDevKey(prop.getProperty(Constants.TESTLINK_DEVKEY));
+        globalVars.setTestLinkUrl(prop.getProperty(Constants.TESTLINK_URL));
+        globalVars.setMaxRetry(Integer.parseInt(prop.getProperty(Constants.MAX_RETRY)));
+        globalVars.setImplicitWait(Integer.parseInt(prop.getProperty(Constants.IMPLICIT_WAIT)));
+        globalVars.setSenderEmailId(prop.getProperty(Constants.SENDER_EMAIL_ID));
+        globalVars.setSenderEmailPassword(prop.getProperty(Constants.SENDER_EMAIL_PASSWORD));
+        globalVars.setJiraProjectName(prop.getProperty(Constants.JIRA_PROJECT_NAME));
+        globalVars.setJiraDefectType(prop.getProperty(Constants.JIRA_DEFECT_TYPE));
+    }
+
+
+    public static void initGlobalVars(String className){
+        try {
+            globalVars.setClassDataElementMap(dataReader.getClassData(className));
+            globalVars.setProp(new Properties());
+            prop=globalVars.getProp();
+            globalVars.setWorkingDir(System.getProperty("user.dir"));
+            input = TestBase.class.getClassLoader().getResourceAsStream("config.properties");
+            prop.load(input);
+            initializeConfigPropertiesData();
+        }
+        catch(Exception e) {
             e.printStackTrace();
         }
-        catch(IOException ex) {
-            ex.printStackTrace();
-        }
     }
 
-    public static void initializeDriver() {
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-       
-        driverUrl="http://"+GlobalVars.appiumServerIp+":"+GlobalVars.appiumServerPort+"/wd/hub";
-
-        switch(platform)
-        {
-            case "android":
-
-                //File classpathRoot = new File(System.getProperty("user.dir"));
-                //File appDir = new File(classpathRoot, "/Apps/");
-                //File app = new File(appDir, TestUtil.apkFileName);
-                try{
-                	 capabilities.setCapability("deviceName", GlobalVars.deviceNameAndroid);
-                     capabilities.setCapability("platformVersion", GlobalVars.platformVersionAndroid);
-                     capabilities.setCapability("platformName", GlobalVars.platform);
-                     capabilities.setCapability("newCommandTimeout", 50000);
-                     //capabilities.setCapability("automationName", "uiautomator2");
-                     capabilities.setCapability("appPackage", "com.hdfcfund.investor.uat");
-
-                     capabilities.setCapability("appActivity", "com.hdfcfund.investor.splash.SplashActivity");
-                     capabilities.setCapability("appWaitPackage", "com.hdfcfund.investor.uat");
-                    if(driver == null){
-                        driver=new AndroidDriver(new URL(driverUrl), capabilities);
-                        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
-                    }
-                }
-                catch(Exception ex)
-                {
-                    //Log code to be written here in case of failure in driver initialization
-                    ex.printStackTrace();
-                }
-                break;
-
-            case "ios":
-                String path=System.getProperty("user.dir")+"/"+GlobalVars.ipaFileName;
-                File app = new File(path);
-
-                try
-                {
-                    capabilities.setCapability("deviceName", GlobalVars.deviceNameIOS);
-                    capabilities.setCapability("platformVersion", GlobalVars.platformVersionIOS);
-                    capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
-                    capabilities.setCapability("udid", GlobalVars.udid);
-                    capabilities.setCapability("xcodeOrgId", GlobalVars.xcodeOrgId);
-                    capabilities.setCapability("xcodeSigningId", GlobalVars.xcodeSigningId);
-                    capabilities.setCapability("updateWDABundleId", GlobalVars.updateWDABundleId);
-                    capabilities.setCapability("platformName", GlobalVars.platformNameIOS);
-                    capabilities.setCapability(MobileCapabilityType.APP, app.getAbsolutePath());
-                    if(driver==null){
-                        driver = new IOSDriver<>(new URL(driverUrl), capabilities);
-                        driver.manage().timeouts().implicitlyWait(Utils.IMPLICIT_WAIT, TimeUnit.SECONDS);
-                    }
-                }
-                catch(Exception ex)
-                {
-                    ex.printStackTrace();
-                }
-                break;
-
-            default:
-                throw new IllegalStateException("Unexpected value: " + platform);
-        }
-
-    }
-
-    @BeforeSuite
-    public void before() throws MalformedURLException
+    public static void initializeLoggingAndReporting()
     {
-        //Auto Start Appium Server
-        AppiumServer.startServer();
+        //********** Auto Start Appium Server ***************
+        if(!globalVars.getIsAwsRun()){
+            if(globalVars.getIsAutoStartAppium())
+                AppiumServer.startServer();
 
-        //extent= ExtentManager.getReporter();
-        Utils.initializeExtentReport();
-        initializeDriver();
-        DOMConfigurator.configure("log4j.xml");
-        Log.initializeLogProperties();
-        //extent = new ExtentReports("target/surefire-reports/ExtentReport.html", true);
-        //TestLinkUtil.setTestPlan();
-    }
-
-
-    @BeforeClass
-    public void classDataInitializer() throws IOException {
-        className = this.getClass().getSimpleName();
-        oDataReader = new DataReader();
-        dataElementMap = oDataReader.getClassData(className);
-        oTestBase = new TestBase();
-        ocommonFunctions = new CommonFunctions();
-    }
-
-    @BeforeMethod
-    public void initializeExtentTest(Method method) {
-        Utils.initializeExtentTest(method.getName());
-        Log.startTestCase(method.getName());
-    }
-
-    @AfterMethod
-    public void afterMethod(ITestResult result) throws IOException, InterruptedException {
-
-        if (result.getStatus() == ITestResult.FAILURE) {
-            Utils.captureScreenshot(result);
+            Utils.initializeExtentReport();
+            //DOMConfigurator.configure(globalVars.getLog4jPath());
+            Log.initializeLogProperties();
+            TestLinkUtil.setTestPlan();
         }
-        //extent.endTest(test);
-        //Utils.closeExtentTest();
-        Log.endTestCase(result.getTestName());
-        System.out.println("****************************************");
-    }
-
-    @AfterClass
-    public void closeDriver() throws IOException, InterruptedException {
-        //driver.quit();
-    }
-
-    @AfterSuite
-    public void tearDownSuite(ITestContext context) {
-        Utils.closeExtentTest();
-        // calling the mail send method only if mail flag is true
-        if(mailFlag)
-            SendMailSSLWithAttachmentUtil.sendEmail(context);
-
-        driver.quit();
-
-        //Auto Stopped Appium Server
-        AppiumServer.stopServer();
 
     }
 
-    public void logStepInfo(String message) {
-        test.log(Status.PASS, message);
-        logger.info("Message: " + message);
-        Reporter.log(message);
+    public static void tearDownSuite(ITestContext context) {
+        if(!globalVars.getTestCaseListRunModeTrue().isEmpty()){
+            if(!globalVars.getIsAwsRun()){
+                Utils.closeExtentTest();
+                // ***** calling the mail send method only if mail flag is true**********
+                if(globalVars.getIsMailFlag())
+                    SendMailSSLWithAttachmentUtil.sendEmail(context);
+                //************ Auto Stop Appium Server based on boolean flag ************
+                if(globalVars.getIsAutoStartAppium())
+                    AppiumServer.stopServer();
+
+            }
+            testBase.closeDriver();
+        }
     }
+
+    public abstract void closeDriver();
 
 }

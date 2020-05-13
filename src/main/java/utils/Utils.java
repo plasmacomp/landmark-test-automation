@@ -15,16 +15,14 @@ import org.testng.asserts.SoftAssert;
 import reporters.ExtentManager;
 
 import java.io.*;
-import java.lang.reflect.Method;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class Utils {
-    public static long IMPLICIT_WAIT=45;
-    public static ArrayList<String> methodToBeExecuted=new ArrayList<String>();
     private static ExtentTest test;
     private static ExtentReports extent;
+    private static GlobalVars globalVars;
 
     /*This function will initialize the ExtentReport object*/
     public static void initializeExtentReport() {
@@ -33,14 +31,15 @@ public class Utils {
 
     /*This function will initialize the ExtentTest object*/
     public static void initializeExtentTest(String methodName) {
-        test=extent.createTest(methodName+" | "+ GlobalVars.platform, methodName);
+        globalVars=GlobalVars.getInstance();
+        test=extent.createTest(methodName+" | "+ globalVars.getPlatform(), methodName);
         //test.assignAuthor("TTN || TestUser");
         //test.assignCategory(this.getClass().getSimpleName());
     }
 
     /*
-    * This function will be called after every test method
-    */
+     * This function will be called after every test method
+     */
     public static void closeExtentTest() {
         test.getExtent().flush();
     }
@@ -48,15 +47,16 @@ public class Utils {
     /*This function will log function level logs based on the result*/
     public static void logFunctionLevelLogs(boolean result, String functionName) {
         if(result)
-            Log.info(functionName+": successful!");
+            Log.getInstance().info(functionName+": successful!");
         else
-            Log.error(functionName+": failed!");
+            Log.getInstance().error(functionName+": failed!");
     }
+
 
     /*This function will log each step of a test case*/
     public static void logStepInfo(String message) {
         test.log(Status.PASS, message);
-        Log.info("Message: " + message);
+        Log.getInstance().info("Message: " + message);
         Reporter.log(message);
     }
 
@@ -76,10 +76,12 @@ public class Utils {
     /*Function to log the steps info in extent report*/
     public static void logStepInfo(boolean isResult, String stepInfo)
     {
-        if(isResult)
-            test.log(Status.PASS, stepInfo+" | Status: Pass");
-        else
-            test.log(Status.FAIL, stepInfo+" | Status: Fail");
+        if(!globalVars.getIsAwsRun()){
+            if(isResult)
+                test.log(Status.PASS, stepInfo+" | Status: Pass");
+            else
+                test.log(Status.FAIL, stepInfo+" | Status: Fail");
+        }
     }
 
 
@@ -102,11 +104,16 @@ public class Utils {
 
     /* capturing screenshot */
     public static void captureScreenshot(ITestResult result) throws IOException, InterruptedException {
+        File screenshot;
         try {
             String screenshotName = Utils.getFileName(result.getName());
-            File screenshot = ((TakesScreenshot) GlobalVars.driver).getScreenshotAs(OutputType.FILE);
+            if(globalVars.getPlatform().equalsIgnoreCase(Constants.WEB))
+                screenshot = ((TakesScreenshot) globalVars.getWebDriver()).getScreenshotAs(OutputType.FILE);
+            else
+                screenshot = ((TakesScreenshot) globalVars.getDriver()).getScreenshotAs(OutputType.FILE);
+
             String path = Utils.getPath();
-            String screen = path + "/screenshots/" + screenshotName + ".png";
+            String screen = path + File.separator+ "screenshots"+File.separator + screenshotName + ".png";
             File screenshotLocation = new File(screen);
             FileUtils.copyFile(screenshot, screenshotLocation);
             Thread.sleep(2000);
@@ -170,11 +177,5 @@ public class Utils {
         return buffer.toString();
     }
 
-    public static int getMaxRetryCount(){
-        try {
-            return Integer.parseInt(GlobalVars.prop.getProperty(Constants.MAX_RETRY));
-        }
-        catch (Exception ex){ex.printStackTrace();return 0;}
-    }
 
 }

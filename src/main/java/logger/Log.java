@@ -11,11 +11,20 @@ import java.util.Date;
 
 public class Log {
 
-    private static Logger Log = Logger.getLogger(Log.class.getName());
+    private static Logger logger;
+
+    public static Logger getInstance(){
+        if(logger==null)
+            logger = Logger.getLogger(Log.class.getName());
+        return logger;
+    }
 
 
     public static void initializeLogProperties() {
-
+        System.setProperty("org.freemarker.loggerLibrary", "none");
+        System.setProperty("org.apache.log4j", "none");
+        System.setProperty("org.apache.log4j.loggerLibrary", "none");
+        getInstance();
         // setting up a FileAppender dynamically...
         try {
             SimpleLayout layout = new SimpleLayout();
@@ -24,9 +33,9 @@ public class Log {
             timeStamp="log_"+timeStamp;
 
             FileAppender appender = new FileAppender(layout, "target/"+timeStamp+ ".txt",false);
-            Log.addAppender(appender);
+            logger.addAppender(appender);
 
-            Log.setLevel((Level) Level.DEBUG);
+            logger.setLevel((Level) Level.DEBUG);
 
         } catch (IOException e) {
             // TODO Auto-generated catch block
@@ -38,17 +47,16 @@ public class Log {
     // This is to print log for the beginning of the test case, as we usually run so many test cases as a test suite
 
     public static void startTestCase(String sTestCaseName){
-        initializeLogProperties();
 
-        Log.info("****************************************************************************************");
+        logger.info("****************************************************************************************");
 
-        Log.info("****************************************************************************************");
+        logger.info("****************************************************************************************");
 
-        Log.info("$$$$$$$$$$$$$$$$$$$$$                 "+sTestCaseName+ "       $$$$$$$$$$$$$$$$$$$$$$$$$");
+        logger.info("$$$$$$$$$$$$$$$$$$$$$                 "+sTestCaseName+ "       $$$$$$$$$$$$$$$$$$$$$$$$$");
 
-        Log.info("****************************************************************************************");
+        logger.info("****************************************************************************************");
 
-        Log.info("****************************************************************************************");
+        logger.info("****************************************************************************************");
 
     }
 
@@ -56,15 +64,15 @@ public class Log {
 
     public static void endTestCase(String sTestCaseName){
 
-        Log.info("XXXXXXXXXXXXXXXXXXXXXXX             "+"-E---N---D-"+"             XXXXXXXXXXXXXXXXXXXXXX");
+        logger.info("XXXXXXXXXXXXXXXXXXXXXXX             "+"-E---N---D-"+"             XXXXXXXXXXXXXXXXXXXXXX");
 
-        Log.info("X");
+        logger.info("X");
 
-        Log.info("X");
+        logger.info("X");
 
-        Log.info("X");
+        logger.info("X");
 
-        Log.info("X");
+        logger.info("X");
 
     }
 
@@ -72,31 +80,31 @@ public class Log {
 
     public static void info(String message) {
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
-        Log.info(timeStamp+"-"+message);
+        logger.info(timeStamp+"-"+message);
 
     }
 
     public static void warn(String message) {
 
-        Log.warn(message);
+        logger.warn(message);
 
     }
 
     public static void error(String message) {
 
-        Log.error(message);
+        logger.error(message);
 
     }
 
     public static void fatal(String message) {
 
-        Log.fatal(message);
+        logger.fatal(message);
 
     }
 
     public static void debug(String message) {
 
-        Log.debug(message);
+        logger.debug(message);
 
     }
 
