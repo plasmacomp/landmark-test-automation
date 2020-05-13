@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/test/java/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/DemoTest.java" afterDir="false" />
-    </list>
+    <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,7 +28,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1SdWbLi1bRZhuyZZ19QV9aTrk2u" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="PropertiesComponent">
