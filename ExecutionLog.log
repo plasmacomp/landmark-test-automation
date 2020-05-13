@@ -1,0 +1,186 @@
+2019-09-05 10:15:50,175 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:15:50,178 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:15:50,178 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 10:15:50,178 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:15:50,178 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:16:03,910 INFO  [Log] 2019_09_05_10_16_03-clickElement: successful! 
+2019-09-05 10:16:13,705 INFO  [Log] 2019_09_05_10_16_13-sendKey: successful! 
+2019-09-05 10:16:21,444 INFO  [Log] 2019_09_05_10_16_21-sendKey: successful! 
+2019-09-05 10:16:23,355 INFO  [Log] 2019_09_05_10_16_23-clickElement: successful! 
+2019-09-05 10:16:32,487 INFO  [Log] 2019_09_05_10_16_32-sendKey: successful! 
+2019-09-05 10:16:33,945 INFO  [Log] 2019_09_05_10_16_33-clickElement: successful! 
+2019-09-05 10:16:36,514 INFO  [Log] 2019_09_05_10_16_36-clickElement: successful! 
+2019-09-05 10:16:36,527 INFO  [Log] 2019_09_05_10_16_36-Loginandroid: successful! 
+2019-09-05 10:16:36,528 INFO  [Log] 2019_09_05_10_16_36-Login: successful! 
+2019-09-05 10:16:49,129 INFO  [Log] 2019_09_05_10_16_49-isElementDisplayed: successful! 
+2019-09-05 10:16:53,131 INFO  [Log] 2019_09_05_10_16_53-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 10:16:53,133 INFO  [Log] 2019_09_05_10_16_53-verifyHomePagePostLogin: successful! 
+2019-09-05 10:17:06,127 INFO  [Log] 2019_09_05_10_17_06-clickElement: successful! 
+2019-09-05 10:17:07,289 INFO  [Log] 2019_09_05_10_17_07-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 10:17:08,115 INFO  [Log] 2019_09_05_10_17_08-clickElement: successful! 
+2019-09-05 10:17:08,960 INFO  [Log] 2019_09_05_10_17_08-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 10:17:08,977 INFO  [Log] 2019_09_05_10_17_08-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 10:17:08,978 INFO  [Log] 2019_09_05_10_17_08-verifyEquityFromDashboard: successful! 
+2019-09-05 10:17:23,500 INFO  [Log] 2019_09_05_10_17_23-clickElement: successful! 
+2019-09-05 10:17:29,988 ERROR [Log] Exception occurred in clickElement method: Expected condition failed: waiting for visibility of Located by By.chained({By.xpath: //*[@resource-id='com.hdfcfund.investor.uat:id/design_menu_item_text' and @text='Logout']}) (tried for 5 second(s) with 500 milliseconds interval) 
+2019-09-05 10:17:35,024 ERROR [Log] verifyHomePagePostLoginandroid: failed! 
+2019-09-05 10:17:35,025 ERROR [Log] logout: failed! 
+2019-09-05 10:17:56,946 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:17:56,946 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:17:56,946 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 10:17:56,946 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:17:56,946 INFO  [Log] **************************************************************************************** 
+2019-09-05 10:20:09,465 INFO  [Log] 2019_09_05_10_20_09-clickElement: successful! 
+2019-09-05 10:20:19,142 INFO  [Log] 2019_09_05_10_20_19-sendKey: successful! 
+2019-09-05 10:20:26,732 INFO  [Log] 2019_09_05_10_20_26-sendKey: successful! 
+2019-09-05 10:20:28,617 INFO  [Log] 2019_09_05_10_20_28-clickElement: successful! 
+2019-09-05 10:20:38,765 INFO  [Log] 2019_09_05_10_20_38-sendKey: successful! 
+2019-09-05 10:20:40,234 INFO  [Log] 2019_09_05_10_20_40-clickElement: successful! 
+2019-09-05 10:20:42,832 INFO  [Log] 2019_09_05_10_20_42-clickElement: successful! 
+2019-09-05 10:20:42,838 INFO  [Log] 2019_09_05_10_20_42-Loginandroid: successful! 
+2019-09-05 10:20:42,838 INFO  [Log] 2019_09_05_10_20_42-Login: successful! 
+2019-09-05 10:21:02,005 INFO  [Log] 2019_09_05_10_21_02-isElementDisplayed: successful! 
+2019-09-05 10:21:06,006 INFO  [Log] 2019_09_05_10_21_06-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 10:21:06,006 INFO  [Log] 2019_09_05_10_21_06-verifyHomePagePostLogin: successful! 
+2019-09-05 10:21:06,468 INFO  [Log] 2019_09_05_10_21_06-clickElement: successful! 
+2019-09-05 10:21:07,554 INFO  [Log] 2019_09_05_10_21_07-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 10:21:08,597 INFO  [Log] 2019_09_05_10_21_08-clickElement: successful! 
+2019-09-05 10:21:09,546 INFO  [Log] 2019_09_05_10_21_09-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 10:21:09,559 INFO  [Log] 2019_09_05_10_21_09-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 10:21:09,560 INFO  [Log] 2019_09_05_10_21_09-verifyEquityFromDashboard: successful! 
+2019-09-05 10:21:43,367 INFO  [Log] 2019_09_05_10_21_43-clickElement: successful! 
+2019-09-05 10:21:47,788 INFO  [Log] 2019_09_05_10_21_47-clickElement: successful! 
+2019-09-05 10:21:52,773 INFO  [Log] 2019_09_05_10_21_52-clickElement: successful! 
+2019-09-05 10:21:59,001 INFO  [Log] 2019_09_05_10_21_59-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 10:22:08,538 INFO  [Log] 2019_09_05_10_22_08-logout: successful! 
+2019-09-05 14:03:08,835 INFO  [Log] **************************************************************************************** 
+2019-09-05 14:03:08,835 INFO  [Log] **************************************************************************************** 
+2019-09-05 14:03:08,835 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 14:03:08,835 INFO  [Log] **************************************************************************************** 
+2019-09-05 14:03:08,835 INFO  [Log] **************************************************************************************** 
+2019-09-05 14:03:13,815 INFO  [Log] 2019_09_05_14_03_13-clickElement: successful! 
+2019-09-05 14:03:23,532 INFO  [Log] 2019_09_05_14_03_23-sendKey: successful! 
+2019-09-05 14:03:31,733 INFO  [Log] 2019_09_05_14_03_31-sendKey: successful! 
+2019-09-05 14:03:34,240 INFO  [Log] 2019_09_05_14_03_34-clickElement: successful! 
+2019-09-05 14:03:43,637 INFO  [Log] 2019_09_05_14_03_43-sendKey: successful! 
+2019-09-05 14:03:45,151 INFO  [Log] 2019_09_05_14_03_45-clickElement: successful! 
+2019-09-05 14:03:51,328 INFO  [Log] 2019_09_05_14_03_51-clickElement: successful! 
+2019-09-05 14:03:51,336 INFO  [Log] 2019_09_05_14_03_51-Loginandroid: successful! 
+2019-09-05 14:03:51,336 INFO  [Log] 2019_09_05_14_03_51-Login: successful! 
+2019-09-05 14:03:52,040 INFO  [Log] 2019_09_05_14_03_52-isElementDisplayed: successful! 
+2019-09-05 14:03:56,040 INFO  [Log] 2019_09_05_14_03_56-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 14:03:56,041 INFO  [Log] 2019_09_05_14_03_56-verifyHomePagePostLogin: successful! 
+2019-09-05 14:03:57,044 INFO  [Log] 2019_09_05_14_03_57-clickElement: successful! 
+2019-09-05 14:03:58,150 INFO  [Log] 2019_09_05_14_03_58-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 14:03:59,241 INFO  [Log] 2019_09_05_14_03_59-clickElement: successful! 
+2019-09-05 14:04:00,078 INFO  [Log] 2019_09_05_14_04_00-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 14:04:01,139 INFO  [Log] 2019_09_05_14_04_01-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 14:04:01,140 INFO  [Log] 2019_09_05_14_04_01-verifyEquityFromDashboard: successful! 
+2019-09-05 14:04:01,510 INFO  [Log] 2019_09_05_14_04_01-clickElement: successful! 
+2019-09-05 14:04:03,462 INFO  [Log] 2019_09_05_14_04_03-clickElement: successful! 
+2019-09-05 14:04:05,652 INFO  [Log] 2019_09_05_14_04_05-clickElement: successful! 
+2019-09-05 14:04:07,660 INFO  [Log] 2019_09_05_14_04_07-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 14:04:07,660 INFO  [Log] 2019_09_05_14_04_07-logout: successful! 
+2019-09-05 14:04:09,250 INFO  [Log] 2019_09_05_14_04_09-Total nuber of jira tickets for the query: project = TGAF AND issuetype = Bug are >> 29 
+2019-09-05 14:04:10,089 INFO  [Log] 2019_09_05_14_04_10-Ticket with same label is already exist. Ticket id is: TGAF-132 
+2019-09-05 14:04:12,023 INFO  [Log] 2019_09_05_14_04_12-Please reopen the issue manually: TGAF-132 
+2019-09-05 14:04:12,023 INFO  [Log] 2019_09_05_14_04_12-Test Automation Bug: loginTest :bug already exists 
+2019-09-05 15:25:10,416 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:25:10,416 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:25:10,417 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 15:25:10,417 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:25:10,417 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:25:14,378 INFO  [Log] 2019_09_05_15_25_14-clickElement: successful! 
+2019-09-05 15:25:24,431 INFO  [Log] 2019_09_05_15_25_24-sendKey: successful! 
+2019-09-05 15:25:32,987 INFO  [Log] 2019_09_05_15_25_32-sendKey: successful! 
+2019-09-05 15:25:35,190 INFO  [Log] 2019_09_05_15_25_35-clickElement: successful! 
+2019-09-05 15:25:46,691 INFO  [Log] 2019_09_05_15_25_46-sendKey: successful! 
+2019-09-05 15:25:48,268 INFO  [Log] 2019_09_05_15_25_48-clickElement: successful! 
+2019-09-05 15:25:53,460 INFO  [Log] 2019_09_05_15_25_53-clickElement: successful! 
+2019-09-05 15:25:53,471 INFO  [Log] 2019_09_05_15_25_53-Loginandroid: successful! 
+2019-09-05 15:25:53,472 INFO  [Log] 2019_09_05_15_25_53-Login: successful! 
+2019-09-05 15:25:54,166 INFO  [Log] 2019_09_05_15_25_54-isElementDisplayed: successful! 
+2019-09-05 15:25:58,167 INFO  [Log] 2019_09_05_15_25_58-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:25:58,168 INFO  [Log] 2019_09_05_15_25_58-verifyHomePagePostLogin: successful! 
+2019-09-05 15:25:59,029 INFO  [Log] 2019_09_05_15_25_59-clickElement: successful! 
+2019-09-05 15:26:00,318 INFO  [Log] 2019_09_05_15_26_00-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:26:01,393 INFO  [Log] 2019_09_05_15_26_01-clickElement: successful! 
+2019-09-05 15:26:02,136 INFO  [Log] 2019_09_05_15_26_02-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:26:03,189 INFO  [Log] 2019_09_05_15_26_03-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 15:26:03,189 INFO  [Log] 2019_09_05_15_26_03-verifyEquityFromDashboard: successful! 
+2019-09-05 15:26:03,811 INFO  [Log] 2019_09_05_15_26_03-clickElement: successful! 
+2019-09-05 15:26:05,577 INFO  [Log] 2019_09_05_15_26_05-clickElement: successful! 
+2019-09-05 15:26:07,601 INFO  [Log] 2019_09_05_15_26_07-clickElement: successful! 
+2019-09-05 15:26:09,611 INFO  [Log] 2019_09_05_15_26_09-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:26:09,611 INFO  [Log] 2019_09_05_15_26_09-logout: successful! 
+2019-09-05 15:26:09,614 INFO  [Log] XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX 
+2019-09-05 15:26:09,615 INFO  [Log] X 
+2019-09-05 15:26:09,615 INFO  [Log] X 
+2019-09-05 15:26:09,615 INFO  [Log] X 
+2019-09-05 15:26:09,615 INFO  [Log] X 
+2019-09-05 15:28:55,229 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:28:55,230 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:28:55,230 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 15:28:55,230 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:28:55,230 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:28:59,012 INFO  [Log] 2019_09_05_15_28_59-clickElement: successful! 
+2019-09-05 15:29:09,935 INFO  [Log] 2019_09_05_15_29_09-sendKey: successful! 
+2019-09-05 15:29:17,859 INFO  [Log] 2019_09_05_15_29_17-sendKey: successful! 
+2019-09-05 15:29:20,387 INFO  [Log] 2019_09_05_15_29_20-clickElement: successful! 
+2019-09-05 15:29:32,296 INFO  [Log] 2019_09_05_15_29_32-sendKey: successful! 
+2019-09-05 15:29:33,664 INFO  [Log] 2019_09_05_15_29_33-clickElement: successful! 
+2019-09-05 15:29:38,714 INFO  [Log] 2019_09_05_15_29_38-clickElement: successful! 
+2019-09-05 15:29:38,723 INFO  [Log] 2019_09_05_15_29_38-Loginandroid: successful! 
+2019-09-05 15:29:38,724 INFO  [Log] 2019_09_05_15_29_38-Login: successful! 
+2019-09-05 15:29:39,399 INFO  [Log] 2019_09_05_15_29_39-isElementDisplayed: successful! 
+2019-09-05 15:29:43,400 INFO  [Log] 2019_09_05_15_29_43-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:29:43,400 INFO  [Log] 2019_09_05_15_29_43-verifyHomePagePostLogin: successful! 
+2019-09-05 15:29:44,480 INFO  [Log] 2019_09_05_15_29_44-clickElement: successful! 
+2019-09-05 15:29:45,639 INFO  [Log] 2019_09_05_15_29_45-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:29:46,771 INFO  [Log] 2019_09_05_15_29_46-clickElement: successful! 
+2019-09-05 15:29:47,757 INFO  [Log] 2019_09_05_15_29_47-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:29:48,814 INFO  [Log] 2019_09_05_15_29_48-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 15:29:48,814 INFO  [Log] 2019_09_05_15_29_48-verifyEquityFromDashboard: successful! 
+2019-09-05 15:29:49,937 INFO  [Log] 2019_09_05_15_29_49-clickElement: successful! 
+2019-09-05 15:29:51,885 INFO  [Log] 2019_09_05_15_29_51-clickElement: successful! 
+2019-09-05 15:29:53,769 INFO  [Log] 2019_09_05_15_29_53-clickElement: successful! 
+2019-09-05 15:29:55,777 INFO  [Log] 2019_09_05_15_29_55-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:29:55,777 INFO  [Log] 2019_09_05_15_29_55-logout: successful! 
+2019-09-05 15:29:55,780 INFO  [Log] XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX 
+2019-09-05 15:29:55,780 INFO  [Log] X 
+2019-09-05 15:29:55,780 INFO  [Log] X 
+2019-09-05 15:29:55,781 INFO  [Log] X 
+2019-09-05 15:29:55,781 INFO  [Log] X 
+2019-09-05 15:53:07,512 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:53:07,513 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:53:07,513 INFO  [Log] $$$$$$$$$$$$$$$$$$$$$                 loginTest       $$$$$$$$$$$$$$$$$$$$$$$$$ 
+2019-09-05 15:53:07,513 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:53:07,514 INFO  [Log] **************************************************************************************** 
+2019-09-05 15:53:12,259 INFO  [Log] 2019_09_05_15_53_12-clickElement: successful! 
+2019-09-05 15:53:23,537 INFO  [Log] 2019_09_05_15_53_23-sendKey: successful! 
+2019-09-05 15:53:31,612 INFO  [Log] 2019_09_05_15_53_31-sendKey: successful! 
+2019-09-05 15:53:33,749 INFO  [Log] 2019_09_05_15_53_33-clickElement: successful! 
+2019-09-05 15:53:46,210 INFO  [Log] 2019_09_05_15_53_46-sendKey: successful! 
+2019-09-05 15:53:47,828 INFO  [Log] 2019_09_05_15_53_47-clickElement: successful! 
+2019-09-05 15:53:54,311 INFO  [Log] 2019_09_05_15_53_54-clickElement: successful! 
+2019-09-05 15:53:54,318 INFO  [Log] 2019_09_05_15_53_54-Loginandroid: successful! 
+2019-09-05 15:53:54,318 INFO  [Log] 2019_09_05_15_53_54-Login: successful! 
+2019-09-05 15:53:55,132 INFO  [Log] 2019_09_05_15_53_55-isElementDisplayed: successful! 
+2019-09-05 15:53:59,132 INFO  [Log] 2019_09_05_15_53_59-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:53:59,132 INFO  [Log] 2019_09_05_15_53_59-verifyHomePagePostLogin: successful! 
+2019-09-05 15:53:59,919 INFO  [Log] 2019_09_05_15_53_59-clickElement: successful! 
+2019-09-05 15:54:00,996 INFO  [Log] 2019_09_05_15_54_00-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:54:02,636 INFO  [Log] 2019_09_05_15_54_02-clickElement: successful! 
+2019-09-05 15:54:03,429 INFO  [Log] 2019_09_05_15_54_03-Text of the element is : ₹ 2,76,47,402.66: successful! 
+2019-09-05 15:54:04,490 INFO  [Log] 2019_09_05_15_54_04-Equity amount found to be correct on dashboard: successful! 
+2019-09-05 15:54:04,491 INFO  [Log] 2019_09_05_15_54_04-verifyEquityFromDashboard: successful! 
+2019-09-05 15:54:05,206 INFO  [Log] 2019_09_05_15_54_05-clickElement: successful! 
+2019-09-05 15:54:07,668 INFO  [Log] 2019_09_05_15_54_07-clickElement: successful! 
+2019-09-05 15:54:10,476 INFO  [Log] 2019_09_05_15_54_10-clickElement: successful! 
+2019-09-05 15:54:12,484 INFO  [Log] 2019_09_05_15_54_12-verifyHomePagePostLoginandroid: successful! 
+2019-09-05 15:54:12,484 INFO  [Log] 2019_09_05_15_54_12-logout: successful! 
+2019-09-05 15:54:12,487 INFO  [Log] XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX 
+2019-09-05 15:54:12,487 INFO  [Log] X 
+2019-09-05 15:54:12,487 INFO  [Log] X 
+2019-09-05 15:54:12,487 INFO  [Log] X 
+2019-09-05 15:54:12,487 INFO  [Log] X 

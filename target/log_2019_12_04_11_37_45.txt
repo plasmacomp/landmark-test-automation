@@ -1,0 +1,18 @@
+INFO - ****************************************************************************************
+INFO - ****************************************************************************************
+INFO - $$$$$$$$$$$$$$$$$$$$$                 addRunnerToBetSlip       $$$$$$$$$$$$$$$$$$$$$$$$$
+INFO - ****************************************************************************************
+INFO - ****************************************************************************************
+INFO - ************* goToActiveRaceAndAddRunnerToBetSlip method started *************
+INFO - clickElement: successful!
+INFO - clickElement: successful!
+INFO - clickElement: successful!
+INFO - clickElement: successful!
+INFO - isElementDisplayed: successful!
+INFO - goToActiveRaceAndAddRunnerToBetSlip : web: successful!
+INFO - ************* goToActiveRaceAndAddRunnerToBetSlip method ended *************
+INFO - XXXXXXXXXXXXXXXXXXXXXXX             -E---N---D-             XXXXXXXXXXXXXXXXXXXXXX
+INFO - X
+INFO - X
+INFO - X
+INFO - X
