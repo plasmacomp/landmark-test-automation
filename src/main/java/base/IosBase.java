@@ -48,7 +48,8 @@ public class IosBase extends TestBase{
         try
         {
             capabilities.setCapability(Constants.DEVICE_NAME, globalVars.getDeviceNameIOS());
-            capabilities.setCapability(Constants.PLATFORM_VERSION, globalVars.getPlatformVersionIOS());
+            //capabilities.setCapability(Constants.PLATFORM_VERSION, globalVars.getPlatformVersionIOS());
+            capabilities.setCapability(Constants.PLATFORM_VERSION, "13.4");
             capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, AutomationName.IOS_XCUI_TEST);
             //capabilities.setCapability(Constants.UDID, globalVars.getUdid());
             //capabilities.setCapability(Constants.BUNDLE_ID, globalVars.getUpdateWDABundleId());
