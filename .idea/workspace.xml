@@ -4,7 +4,23 @@
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/base/IosBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/IosBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generic_pages/CommonDashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generic_pages/CommonDashboardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generic_pages/CommonLoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/generic_pages/CommonLoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_android/DashboardPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_android/LoginPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_web/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_web/DashboardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/utils/DataReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/DataReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/config.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/DemoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/Demo Test Suite/DemoTestHdfc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Demo Test Suite/DemoTestHdfc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/Demo Test Suite/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/Demo Test Suite/testng-failed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/junitreports/TEST-DemoTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/junitreports/TEST-DemoTest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-failed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-failed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-output/testng-results.xml" beforeDir="false" afterPath="$PROJECT_DIR$/test-output/testng-results.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,17 +55,22 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/test/java/E_Contract" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="pages_web" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java/E_Contract" />
       <recent name="$PROJECT_DIR$/src/main/resources" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/Drivers" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="pages_web" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/java" />
+      <recent name="$PROJECT_DIR$/src/test/Opportunity" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -176,19 +197,9 @@
           <option name="timeStamp" value="51" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/DemoTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/LoginTest.java</url>
           <line>31</line>
           <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/DemoTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="68" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/DemoTest.java</url>
-          <line>79</line>
-          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/base/TestBase.java</url>
@@ -196,12 +207,7 @@
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/DemoTest.java</url>
-          <line>48</line>
-          <option name="timeStamp" value="76" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/DemoTest.java</url>
+          <url>file://$PROJECT_DIR$/src/test/java/LoginTest.java</url>
           <line>27</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>

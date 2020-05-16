@@ -15,23 +15,23 @@ public class DashboardPage extends CommonDashboardPage
     static CommonFunctions commonFunctions=null;
     private static DashboardPage dashboardPage;
 
-    @iOSXCUITFindBy(xpath = "//input[@placeholder='Account number' and @data-testid]")
+    @iOSXCUITFindBy(accessibility = "menu")
     private static WebElement hamburgerIcon;
-    @iOSXCUITFindBy(xpath = "//input[@placeholder='Password' and @data-testid]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Dashboard']")
     private static WebElement dashboardLabel;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'login')]//tab-t[text()='Login']")
+    @iOSXCUITFindBy(accessibility = "notification")
     private static WebElement notificationIcon;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
+    @iOSXCUITFindBy(accessibility = "profile")
     private static WebElement userIcon;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
+    @iOSXCUITFindBy(accessibility = "new opportunity")
     private static WebElement newOpportunityTile;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
+    @iOSXCUITFindBy(accessibility = "opportunities")
     private static WebElement opportunitiesTile;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
-    private static WebElement newContactTile;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
-    private static WebElement contactsTile;
-    @iOSXCUITFindBy(xpath = "//button[contains(@class,'_')]//tab-t[text()='Login']")
+    @iOSXCUITFindBy(accessibility = "new contract")
+    private static WebElement newContractTile;
+    @iOSXCUITFindBy(accessibility = "contracts")
+    private static WebElement contractsTile;
+    @iOSXCUITFindBy(accessibility = "client search")
     private static WebElement searchTile;
 
 
@@ -50,13 +50,6 @@ public class DashboardPage extends CommonDashboardPage
     }
 
     @Override
-    public boolean verifyDashBoardElements() {
-
-        return false;
-
-    }
-
-    @Override
     public boolean verifyNewOpportunity() {
         return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
     }
@@ -67,12 +60,12 @@ public class DashboardPage extends CommonDashboardPage
     }
 
     @Override
-    public boolean verifyNewContact() {
+    public boolean verifyNewContract() {
         return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
     }
 
     @Override
-    public boolean verifyContacts() {
+    public boolean verifyContracts() {
         return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
     }
 
@@ -81,5 +74,19 @@ public class DashboardPage extends CommonDashboardPage
         return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
     }
 
+    @Override
+    public boolean verifyHamburger() {
+        return commonFunctions.isElementDisplayed(hamburgerIcon, 15);
+    }
+
+    @Override
+    public boolean verifyDashboardHeaderLabel() {
+        return commonFunctions.isElementDisplayed(dashboardLabel, 15);
+    }
+
+    @Override
+    public boolean verifyProfileIcon() {
+        return commonFunctions.isElementDisplayed(userIcon, 15);
+    }
 }
 

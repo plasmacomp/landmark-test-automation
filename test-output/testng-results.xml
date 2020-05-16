@@ -12,16 +12,16 @@
     <groups>
     </groups>
     <test name="DemoTestHdfc" duration-ms="378644" started-at="2019-07-22T10:08:25Z" finished-at="2019-07-22T10:14:44Z">
-      <class name="DemoTest">
-        <test-method status="PASS" signature="before()[pri:0, instance:DemoTest@7d20d0b]" name="before" is-config="true" duration-ms="19507" started-at="2019-07-22T10:08:05Z" finished-at="2019-07-22T10:08:25Z">
+      <class name="LoginTest">
+        <test-method status="PASS" signature="before()[pri:0, instance:LoginTest@7d20d0b]" name="before" is-config="true" duration-ms="19507" started-at="2019-07-22T10:08:05Z" finished-at="2019-07-22T10:08:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- before -->
-        <test-method status="PASS" signature="classDataInitializer()[pri:0, instance:DemoTest@7d20d0b]" name="classDataInitializer" is-config="true" duration-ms="24" started-at="2019-07-22T10:08:25Z" finished-at="2019-07-22T10:08:25Z">
+        <test-method status="PASS" signature="classDataInitializer()[pri:0, instance:LoginTest@7d20d0b]" name="classDataInitializer" is-config="true" duration-ms="24" started-at="2019-07-22T10:08:25Z" finished-at="2019-07-22T10:08:25Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- classDataInitializer -->
-        <test-method status="FAIL" signature="loginTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="loginTest" duration-ms="80070" started-at="2019-07-22T10:08:25Z" description="Test case 1" finished-at="2019-07-22T10:09:45Z">
+        <test-method status="FAIL" signature="loginTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="loginTest" duration-ms="80070" started-at="2019-07-22T10:08:25Z" description="Test case 1" finished-at="2019-07-22T10:09:45Z">
           <exception class="br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException">
             <message>
               <![CDATA[The status code (n) provided is not valid!]]>
@@ -62,29 +62,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="5" started-at="2019-07-22T10:08:25Z" finished-at="2019-07-22T10:08:25Z">
+        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="5" started-at="2019-07-22T10:08:25Z" finished-at="2019-07-22T10:08:25Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void DemoTest.loginTest(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void LoginTest.loginTest(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeExtentTest -->
-        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="1" started-at="2019-07-22T10:09:36Z" finished-at="2019-07-22T10:09:36Z">
+        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="1" started-at="2019-07-22T10:09:36Z" finished-at="2019-07-22T10:09:36Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void DemoTest.loginTest(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void LoginTest.loginTest(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeExtentTest -->
-        <test-method status="FAIL" signature="loginTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="loginTest" duration-ms="1" started-at="2019-07-22T10:09:36Z" description="Test case 1" finished-at="2019-07-22T10:09:36Z">
+        <test-method status="FAIL" signature="loginTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="loginTest" duration-ms="1" started-at="2019-07-22T10:09:36Z" description="Test case 1" finished-at="2019-07-22T10:09:36Z">
           <exception class="java.lang.IllegalArgumentException">
             <message>
               <![CDATA[wrong number of arguments]]>
@@ -122,11 +122,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:DemoTest@7d20d0b]" name="afterMethod" is-config="true" duration-ms="4354" started-at="2019-07-22T10:09:41Z" finished-at="2019-07-22T10:09:45Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:LoginTest@7d20d0b]" name="afterMethod" is-config="true" duration-ms="4354" started-at="2019-07-22T10:09:41Z" finished-at="2019-07-22T10:09:45Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginTest status=FAILURE method=DemoTest.loginTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b] output={null}]]]>
+                <![CDATA[[TestResult name=loginTest status=FAILURE method=LoginTest.loginTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b] output={null}]]]>
               </value>
             </param>
           </params>
@@ -136,7 +136,7 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </line>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="FAIL" signature="loginTest1(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="loginTest1" duration-ms="288400" started-at="2019-07-22T10:09:51Z" finished-at="2019-07-22T10:14:39Z">
+        <test-method status="FAIL" signature="loginTest1(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="loginTest1" duration-ms="288400" started-at="2019-07-22T10:09:51Z" finished-at="2019-07-22T10:14:39Z">
           <exception class="br.eti.kinoshita.testlinkjavaapi.util.TestLinkAPIException">
             <message>
               <![CDATA[The status code (n) provided is not valid!]]>
@@ -177,29 +177,29 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest1 -->
-        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="0" started-at="2019-07-22T10:09:51Z" finished-at="2019-07-22T10:09:51Z">
+        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="0" started-at="2019-07-22T10:09:51Z" finished-at="2019-07-22T10:09:51Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void DemoTest.loginTest1(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void LoginTest.loginTest1(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeExtentTest -->
-        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="1" started-at="2019-07-22T10:14:30Z" finished-at="2019-07-22T10:14:30Z">
+        <test-method status="PASS" signature="initializeExtentTest(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="initializeExtentTest" is-config="true" duration-ms="1" started-at="2019-07-22T10:14:30Z" finished-at="2019-07-22T10:14:30Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[public void DemoTest.loginTest1(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
+                <![CDATA[public void LoginTest.loginTest1(java.lang.reflect.Method) throws java.io.IOException,java.lang.InterruptedException]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- initializeExtentTest -->
-        <test-method status="FAIL" signature="loginTest1(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b]" name="loginTest1" duration-ms="1" started-at="2019-07-22T10:14:30Z" finished-at="2019-07-22T10:14:30Z">
+        <test-method status="FAIL" signature="loginTest1(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b]" name="loginTest1" duration-ms="1" started-at="2019-07-22T10:14:30Z" finished-at="2019-07-22T10:14:30Z">
           <exception class="java.lang.IllegalArgumentException">
             <message>
               <![CDATA[wrong number of arguments]]>
@@ -237,11 +237,11 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
           <reporter-output>
           </reporter-output>
         </test-method> <!-- loginTest1 -->
-        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:DemoTest@7d20d0b]" name="afterMethod" is-config="true" duration-ms="4300" started-at="2019-07-22T10:14:35Z" finished-at="2019-07-22T10:14:39Z">
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:LoginTest@7d20d0b]" name="afterMethod" is-config="true" duration-ms="4300" started-at="2019-07-22T10:14:35Z" finished-at="2019-07-22T10:14:39Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=loginTest1 status=FAILURE method=DemoTest.loginTest1(java.lang.reflect.Method)[pri:0, instance:DemoTest@7d20d0b] output={null}]]]>
+                <![CDATA[[TestResult name=loginTest1 status=FAILURE method=LoginTest.loginTest1(java.lang.reflect.Method)[pri:0, instance:LoginTest@7d20d0b] output={null}]]]>
               </value>
             </param>
           </params>
@@ -251,15 +251,15 @@ at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
             </line>
           </reporter-output>
         </test-method> <!-- afterMethod -->
-        <test-method status="PASS" signature="closeDriver()[pri:0, instance:DemoTest@7d20d0b]" name="closeDriver" is-config="true" duration-ms="0" started-at="2019-07-22T10:14:44Z" finished-at="2019-07-22T10:14:44Z">
+        <test-method status="PASS" signature="closeDriver()[pri:0, instance:LoginTest@7d20d0b]" name="closeDriver" is-config="true" duration-ms="0" started-at="2019-07-22T10:14:44Z" finished-at="2019-07-22T10:14:44Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closeDriver -->
-        <test-method status="PASS" signature="tearDownSuite()[pri:0, instance:DemoTest@7d20d0b]" name="tearDownSuite" is-config="true" duration-ms="1324" started-at="2019-07-22T10:14:44Z" finished-at="2019-07-22T10:14:45Z">
+        <test-method status="PASS" signature="tearDownSuite()[pri:0, instance:LoginTest@7d20d0b]" name="tearDownSuite" is-config="true" duration-ms="1324" started-at="2019-07-22T10:14:44Z" finished-at="2019-07-22T10:14:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDownSuite -->
-      </class> <!-- DemoTest -->
+      </class> <!-- LoginTest -->
     </test> <!-- DemoTestHdfc -->
   </suite> <!-- Demo Test Suite -->
 </testng-results>

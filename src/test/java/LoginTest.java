@@ -6,7 +6,7 @@ import org.testng.annotations.*;
 import base.TestBase;
 import utils.*;
 
-public class DemoTest{
+public class LoginTest {
     CommonLoginPage commonLoginPage;
     CommonDashboardPage commonDashboardPage;
     GlobalVars globalVars;
@@ -35,22 +35,6 @@ public class DemoTest{
         isResult = commonLoginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
         Assert.isTrue(isResult, "Step-1: User failed to login!!");
-    }
-
-    /**
-     * @summary:
-     * Pre-requisite: The application should be launched and user should be logged in
-     * Step-1: After login successfully login, verify all the tiles present on the dashboard
-     */
-    @Test
-    public void verifyDashboard() {
-        boolean isResult=false;
-
-        commonDashboardPage = CommonDashboardPage.getInstance();
-
-        isResult = commonDashboardPage.verifyNewOpportunity();
-        Utils.logStepInfo(isResult, "Go to today's racing and then go to any enabled race and click on a runner to add it to bet slip");
-        Assert.isTrue(isResult, "Step-1: Failed to add runner to bet slip !!");
     }
 
     @AfterTest

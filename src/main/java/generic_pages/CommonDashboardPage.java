@@ -18,9 +18,6 @@ public abstract class CommonDashboardPage {
         logger= Log.getInstance();
         if(commonDashboardPage ==null){
             switch(globalVars.getPlatform()){
-                case Constants.ANDROID:
-                    commonDashboardPage = pages_android.DashboardPage.getHomePageInstance();
-                    break;
                 case Constants.IOS:
                     commonDashboardPage = DashboardPage.getHomePageInstance();
                     break;
@@ -32,13 +29,14 @@ public abstract class CommonDashboardPage {
 
     }
 
-    public abstract boolean verifyDashBoardElements();
-
     public abstract boolean verifyNewOpportunity();
     public abstract boolean verifyOpportunities();
-    public abstract boolean verifyNewContact();
-    public abstract boolean verifyContacts();
+    public abstract boolean verifyNewContract();
+    public abstract boolean verifyContracts();
     public abstract boolean verifySearch();
+    public abstract boolean verifyHamburger();
+    public abstract boolean verifyDashboardHeaderLabel();
+    public abstract boolean verifyProfileIcon();
 
 }
 

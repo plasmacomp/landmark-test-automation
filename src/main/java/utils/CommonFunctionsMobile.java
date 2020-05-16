@@ -28,22 +28,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         driver=globalVars.getDriver();
     }
 
-    private void sampleFunctions() throws MalformedURLException {
-        AppiumDriver<WebElement> mobileDriver=new AppiumDriver<WebElement>(new URL(""), new DesiredCapabilities());
-        AndroidDriver andDriver=new AndroidDriver(new URL(""), new DesiredCapabilities());
-        andDriver.toggleAirplaneMode();
-        andDriver.toggleLocationServices();
-        andDriver.getScreenshotAs(OutputType.FILE);
-        andDriver.setNetworkSpeed(NetworkSpeed.LTE);
-        andDriver.getCapabilities();
-        andDriver.manage().window().maximize();
-
-        driver.executeScript("mobile: scroll", ImmutableMap.of("direction", "down"));
-
-        IOSDriver iosDriver=new IOSDriver(new URL(""), new DesiredCapabilities());
-        iosDriver.getBatteryInfo();
-    }
-
     @Override
     public boolean clickElement(WebElement element, int timeOutInSsec) {
         boolean isElementClicked=false;
@@ -60,6 +44,30 @@ public class CommonFunctionsMobile extends CommonFunctions {
         manageImplicitTimeOut(globalVars.getImplicitWait());
         Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
         return isElementClicked;
+    }
+
+    @Override
+    public boolean clickElement(WebElement element) {
+        boolean isElementClicked=false;
+        try{
+            element.click();
+            isElementClicked=true;
+        }
+        catch (Exception e) {
+            logger.error("Exception occurred in clickElement method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
+        return isElementClicked;
+    }
+
+    @Override
+    public void sendKey(WebElement element, String key) {
+        try {
+            element.clear();element.sendKeys(key);
+            Utils.logFunctionLevelLogs(true, "sendKey");
+        } catch (Exception e) {
+            logger.error("Exception occurred in sendKey method: "+e.getMessage());
+        }
     }
 
     @Override

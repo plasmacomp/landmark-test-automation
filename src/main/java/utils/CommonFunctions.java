@@ -31,7 +31,9 @@ public abstract class CommonFunctions {
     }
 
     public abstract boolean clickElement(WebElement element, int timeOutInSsec);
+    public abstract boolean clickElement(WebElement element);
     public abstract void sendKey(WebElement element, String key,  int timeOutInSsec);
+    public abstract void sendKey(WebElement element, String key);
     public abstract boolean isElementDisplayed(WebElement element,  int timeOutInSsec);
     public abstract String getElementText(WebElement element,  int timeOutInSsec);
     public abstract void manageImplicitTimeOut(long timeOutInSsec);

@@ -1,23 +1,18 @@
 package pages_web;
 
-import generic_pages.CommonDashboardPage;
-import logger.Log;
+import generic_pages.CommonNewOpportunityPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
-import utils.Constants;
-import utils.Utils;
 
 import java.util.List;
 
-
-public class DashboardPage extends CommonDashboardPage
-{
+public class NewOpportunityPage extends CommonNewOpportunityPage {
     private WebDriver webDriver;
     static CommonFunctions commonFunctions=null;
-    private static DashboardPage homePage;
+    private static NewOpportunityPage newOpportunityPage;
 
     @FindBy(className = "icon-hamburger-menu")
     private static WebElement menuToggle;
@@ -35,56 +30,20 @@ public class DashboardPage extends CommonDashboardPage
 
 
 
-    public DashboardPage() {
+    public NewOpportunityPage() {
         webDriver = globalVars.getWebDriver();
         PageFactory.initElements(webDriver, this);
         commonFunctions=CommonFunctions.getInstance();
     }
-    public static DashboardPage getHomePageInstance(){
-        if(homePage==null){
-            homePage=new DashboardPage();
+    public static NewOpportunityPage getInstance(){
+        if(newOpportunityPage==null){
+            newOpportunityPage=new NewOpportunityPage();
         }
-        return homePage;
+        return newOpportunityPage;
     }
 
     @Override
-    public boolean verifyNewOpportunity() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyOpportunities() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyNewContract() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyContracts() {
-        return false;
-    }
-
-    @Override
-    public boolean verifySearch() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyHamburger() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyDashboardHeaderLabel() {
-        return false;
-    }
-
-    @Override
-    public boolean verifyProfileIcon() {
+    public boolean verifyDashBoardElements() {
         return false;
     }
 }
-

@@ -181,7 +181,7 @@ public class DataReader{
      *
      */
     private Map<String, DataElements> getDataElements(org.apache.poi.ss.usermodel.Sheet sheet) {
-        Map<String, DataElements> dataElementsMap = new HashMap<String, DataElements>();
+        Map<String, DataElements> dataElementsMap = new LinkedHashMap<>();
         String testCaseName="";
         String runStatus="";
         String params="";

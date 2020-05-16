@@ -18,9 +18,6 @@ public abstract class CommonLoginPage{
         logger= Log.getInstance();
         if(commonLoginPage==null){
             switch(globalVars.getPlatform()){
-                case Constants.ANDROID:
-                    commonLoginPage= pages_android.LoginPage.getLoginPageInstance();
-                    break;
                 case Constants.IOS:
                     commonLoginPage= pages_ios.LoginPage.getLoginPageInstance();
                     break;
