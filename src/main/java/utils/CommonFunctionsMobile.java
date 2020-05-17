@@ -83,6 +83,33 @@ public class CommonFunctionsMobile extends CommonFunctions {
         }
         manageImplicitTimeOut(globalVars.getImplicitWait());
     }
+    @Override
+    public boolean isElementDisplayedByXpath(String xpath) {
+        boolean isElementDisplayed=false;
+        try {
+            isElementDisplayed=driver.findElement(By.xpath(xpath)).isDisplayed();
+
+        } catch (Exception e) {
+            isElementDisplayed=false;
+            logger.error("Exception occurred in isElementDisplayed method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
+        return isElementDisplayed;
+    }
+
+    @Override
+    public boolean isElementDisplayed(WebElement element) {
+        boolean isElementDisplayed=false;
+        try {
+            isElementDisplayed=element.isDisplayed();
+
+        } catch (Exception e) {
+            isElementDisplayed=false;
+            logger.error("Exception occurred in isElementDisplayed method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
+        return isElementDisplayed;
+    }
 
     @Override
     public boolean isElementDisplayed(WebElement element, int timeOutInSsec) {
@@ -95,9 +122,10 @@ public class CommonFunctionsMobile extends CommonFunctions {
         } catch (Exception e) {
             isElementDisplayed=false;
             logger.error("Exception occurred in isElementDisplayed method: "+e.getMessage());
+        }
+        finally {
             manageImplicitTimeOut(globalVars.getImplicitWait());
         }
-        manageImplicitTimeOut(globalVars.getImplicitWait());
         Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
         return isElementDisplayed;
     }

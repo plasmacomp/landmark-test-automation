@@ -12,6 +12,8 @@ public class NewOpportunityPage extends CommonNewOpportunityPage {
     private AppiumDriver driver;
     static CommonFunctions commonFunctions=null;
     private static NewOpportunityPage newOpportunityPage;
+    private String valueXpathLotsSummary="(//XCUIElementTypeStaticText[@value='###'])[1]";
+
 
     @iOSXCUITFindBy(accessibility = "new opportunity")
     private static WebElement newOpportunityTile;
@@ -76,16 +78,44 @@ public class NewOpportunityPage extends CommonNewOpportunityPage {
     private static WebElement descriptionTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Save & Review']")
     private static WebElement saveAndReviewButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='LIVESTOCK SUMMARY (SUBJECT TO DELIVERY)']")
+    private static WebElement liveStockSummaryHeader;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Quantity']")
+    private static WebElement totalQuantityLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@value,'Total Weight')]")
+    private static WebElement totalWeightLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Sale Value']")
+    private static WebElement totalSaleValueLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@value='###'])[1]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add new Lot']")
+    private static WebElement addNewLotButton;
 
+    //********* Attachments elements ************
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Upload Attachments']")
+    private static WebElement uploadAttachtmentsButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse Files']")
+    private static WebElement browseFilesButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Camera Roll']")
+    private static WebElement cameraRollButton;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[1]")
+    private static WebElement firstImage;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Continue']")
+    private static WebElement continueButtonFileUploadWindow;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[6]")
+    private static WebElement imagePreviewAttachmentsTab;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse']")
+    private static WebElement browseButton;
 
+    //******** Notes tab elements ***************
+    @iOSXCUITFindBy(accessibility = "add")
+    private static WebElement plusIconNotes;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
+    private static WebElement notesTextField;
+    @iOSXCUITFindBy(accessibility = "send")
+    private static WebElement sendIconNotes;
 
-
-
-
-
-
-
-
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit & View Record']")
+    private static WebElement submitAndViewRecordButton;
 
 
 
@@ -141,15 +171,93 @@ public class NewOpportunityPage extends CommonNewOpportunityPage {
     }
 
     @Override
-    public boolean createNewOpportunity(String title, String vendorName) {
+    public boolean addSalesInformation(String title) {
         commonFunctions.sendKey(titleTextbox, title);
         commonFunctions.clickElement(expectedSaleDateTextbox);
         commonFunctions.clickElement(nextButton);commonFunctions.clickElement(nextButton);
+        return commonFunctions.isElementDisplayed(vendorInfoTextbox);
+    }
+
+    @Override
+    public boolean addVendorInfo() {
         commonFunctions.clickElement(vendorInfoTextbox);
         commonFunctions.clickElement(vendorInfoPopupWindow);
         commonFunctions.clickElement(nextButton);
+        return commonFunctions.isElementDisplayed(quantityTextBox);
+    }
+
+    @Override
+    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+        commonFunctions.sendKey(quantityTextBox, quantity);
+        commonFunctions.clickElement(productCategoryDropdown);
+        commonFunctions.sendKey(dropdownPicker, productCategory);
+        commonFunctions.clickElement(productDropdown);
+        commonFunctions.sendKey(dropdownPicker, product);
+        commonFunctions.clickElement(breedDropdown);
+        commonFunctions.sendKey(dropdownPicker, breed);
+        commonFunctions.clickElement(priceTypeDropdown);
+        commonFunctions.sendKey(dropdownPicker, priceType);
+        commonFunctions.sendKey(priceGstTextBox, price);
+        commonFunctions.sendKey(ageTextBox1, age1);
+        commonFunctions.sendKey(ageTextBox2, age2);
+        commonFunctions.clickElement(monthsDropdown);
+        commonFunctions.sendKey(dropdownPicker, monthDropdown);
+        commonFunctions.sendKey(descriptionTextBox, description);
+        commonFunctions.clickElement(saveAndReviewButton);
+        return commonFunctions.isElementDisplayed(addNewLotButton);
+
+    }
+
+    @Override
+    public boolean verifyLotSummaryPageHeaderLabels() {
+        return (commonFunctions.isElementDisplayed(totalQuantityLabel) && commonFunctions.isElementDisplayed(totalWeightLabel) && commonFunctions.isElementDisplayed(totalSaleValueLabel));
+    }
+
+    @Override
+    public boolean verifyLotSummaryPageValues(String quantity, String totalWeight, String totalSaleValue) {
+        return commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",quantity)) &&
+                commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalWeight)) &&
+                commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalSaleValue));
+    }
 
 
-        return true;
+    @Override
+    public boolean addAttachments() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(uploadAttachtmentsButton)){
+            if(commonFunctions.clickElement(cameraRollButton)){
+                if(commonFunctions.clickElement(firstImage)){
+                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
+                }
+            }
+        }
+        return isResult;
+    }
+
+    @Override
+    public boolean verifyAttachments() {
+        boolean isResult=false;
+        if(commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab)){
+            if(commonFunctions.clickElement(nextButton)){
+                isResult=commonFunctions.isElementDisplayed(notesTextField);
+            }
+        }
+        return isResult;
+    }
+
+    @Override
+    public boolean addNotes(String note) {
+        commonFunctions.sendKey(notesTextField, note);
+        return commonFunctions.clickElement(sendIconNotes);
+    }
+
+    @Override
+    public boolean verifyNotes(String note) {
+        boolean isResult=false;
+        String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
+        if(commonFunctions.isElementDisplayedByXpath(notesTextXpath)){
+            isResult=commonFunctions.clickElement(submitAndViewRecordButton);
+        }
+        return isResult;
     }
 }

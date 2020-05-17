@@ -88,11 +88,40 @@ public class NewOpportunityTest {
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String title="Automation_Opp"+timeStamp;
         String vendorName="";
-        commonNewOpportunityPage = CommonNewOpportunityPage.getInstance();
-        isResult = commonNewOpportunityPage.createNewOpportunity(title, vendorName);
+        String quantity="10";
+        String productCategory="";
+        String product="";
+        String breed="";
+        String priceType="";
+        String price="";
+        String age1="";
+        String age2="";
+        String monthsDropdown="";
+        String description="Test Automation Description";
 
-        Utils.logStepInfo(isResult, "Create a new opportunity and verify that the opportunity is successfully created");
-        Assert.isTrue(isResult, "Step-1: New Opportunity creation failed!!");
+
+
+        commonNewOpportunityPage = CommonNewOpportunityPage.getInstance();
+
+        isResult = commonNewOpportunityPage.addSalesInformation(title);
+        Utils.logStepInfo(isResult, "Add sales information and click next");
+        Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
+
+        isResult = commonNewOpportunityPage.addVendorInfo();
+        Utils.logStepInfo(isResult, "Add Vendor information and click next");
+        Assert.isTrue(isResult, "Step-2: Adding Vendor information failed!!");
+
+        isResult = commonNewOpportunityPage.addLotsInformation(quantity, productCategory, product, breed, priceType, price, age1, age2, monthsDropdown, description);
+        Utils.logStepInfo(isResult, "Add Lots information and click next");
+        Assert.isTrue(isResult, "Step-3: Adding Lots information failed!!");
+
+        isResult = commonNewOpportunityPage.verifyLotSummaryPageHeaderLabels();
+        Utils.logStepInfo(isResult, "Verify lots summary header labels and click next");
+        Assert.isTrue(isResult, "Step-4: Lots summary header labels verification failed!!");
+
+        isResult = commonNewOpportunityPage.verifyLotSummaryPageValues(quantity, "0", price);
+        Utils.logStepInfo(isResult, "Verify lots summary page values and click next");
+        Assert.isTrue(isResult, "Step-4: Lots summary page values verification failed!!");
     }
 
 
