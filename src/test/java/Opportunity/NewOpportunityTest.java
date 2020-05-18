@@ -93,11 +93,12 @@ public class NewOpportunityTest {
         String product="";
         String breed="";
         String priceType="";
-        String price="";
-        String age1="";
-        String age2="";
-        String monthsDropdown="";
+        String price="10";
+        String age1="2";
+        String age2="5";
+        String monthsDropdown="Month";
         String description="Test Automation Description";
+        String noteText="Automation note";
 
 
 
@@ -121,7 +122,23 @@ public class NewOpportunityTest {
 
         isResult = commonNewOpportunityPage.verifyLotSummaryPageValues(quantity, "0", price);
         Utils.logStepInfo(isResult, "Verify lots summary page values and click next");
-        Assert.isTrue(isResult, "Step-4: Lots summary page values verification failed!!");
+        Assert.isTrue(isResult, "Step-5: Lots summary page values verification failed!!");
+
+        isResult = commonNewOpportunityPage.addAttachments();
+        Utils.logStepInfo(isResult, "Add an attachment file to the opportunity");
+        Assert.isTrue(isResult, "Step-6: Attachment file addition failed!!");
+
+        isResult = commonNewOpportunityPage.verifyAttachments();
+        Utils.logStepInfo(isResult, "Verify that the attachment file has been uploaded");
+        Assert.isTrue(isResult, "Step-7: Uploaded file verification in attachments tab failed!");
+
+        isResult = commonNewOpportunityPage.addNotes(noteText);
+        Utils.logStepInfo(isResult, "Add a note to the opportunity and send it");
+        Assert.isTrue(isResult, "Step-8: Adding and sending note failed!!");
+
+        isResult = commonNewOpportunityPage.verifyAttachments();
+        Utils.logStepInfo(isResult, "Verify that the note has been sent");
+        Assert.isTrue(isResult, "Step-9: Notes verification failed!!");
     }
 
 
