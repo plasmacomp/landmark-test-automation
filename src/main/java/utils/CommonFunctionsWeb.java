@@ -38,6 +38,26 @@ public class CommonFunctionsWeb extends CommonFunctions{
     }
 
     @Override
+    public boolean clickElement(WebElement element) {
+        return false;
+    }
+
+    @Override
+    public void sendKey(WebElement element, String key) {
+
+    }
+
+    @Override
+    public boolean isElementDisplayed(WebElement element) {
+        return false;
+    }
+
+    @Override
+    public boolean isElementDisplayedByXpath(String xpath) {
+        return false;
+    }
+
+    @Override
     public void sendKey(WebElement element, String key, int timeOutInSec) {
         try {
             manageImplicitTimeOut(0);//Setting the implicit wait as zero as implicit and explicit wait do not work together

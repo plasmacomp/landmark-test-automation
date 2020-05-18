@@ -43,7 +43,82 @@ public class NewOpportunityPage extends CommonNewOpportunityPage {
     }
 
     @Override
-    public boolean verifyDashBoardElements() {
+    public boolean addSalesInformation(String title) {
+        return false;
+    }
+
+    @Override
+    public boolean addVendorInfo() {
+        return false;
+    }
+
+    @Override
+    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+        return false;
+    }
+
+    @Override
+    public boolean verifyLotSummaryPageHeaderLabels() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyLotSummaryPageValues(String quantity, String totalWeight, String totalSaleValue) {
+        return false;
+    }
+
+    @Override
+    public boolean addAttachments() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyAttachments() {
+        return false;
+    }
+
+    @Override
+    public boolean addNotes(String note) {
+        return false;
+    }
+
+    @Override
+    public boolean verifyNotes(String note) {
+        return false;
+    }
+
+    @Override
+    public boolean verifyNewOpportunityHeaderLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifySalesInformationLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyVendorInfoLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyLotsLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyNotesLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyAttachmentsLabel() {
+        return false;
+    }
+
+    @Override
+    public boolean verifyNewOpportunityNavigation() {
         return false;
     }
 }
