@@ -9,9 +9,11 @@
 <!--         <listener class-name="reporters.ExtentManager"/> -->
  	</listeners>
  	
-    <test name="DemoTestTab" group-by-instances="true" preserve-order="true">
+    <test name="LandmarkTestAuto" group-by-instances="true" preserve-order="true">
         <classes>
             <class name="LoginTest"/>
+            <class name="Opportunity.Dashboard.DashboardTest"/>
+            <class name="Opportunity.NewOpportunityTest"/>
         </classes>
     </test>
 </suite>
