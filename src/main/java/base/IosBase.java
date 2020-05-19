@@ -43,8 +43,6 @@ public class IosBase extends TestBase{
     }
 
     public static void initializeDriverWithCapabilities() {
-        /*String path=globalVars.getWorkingDir()+File.separator+globalVars.getIpaFileName();
-        File app = new File(path);*/
         try
         {
             capabilities.setCapability(Constants.DEVICE_NAME, globalVars.getDeviceNameIOS());
@@ -55,6 +53,8 @@ public class IosBase extends TestBase{
             //capabilities.setCapability(Constants.BUNDLE_ID, globalVars.getUpdateWDABundleId());
             capabilities.setCapability(Constants.PLATFORM_NAME, Constants.IOS.toUpperCase());
             capabilities.setCapability(Constants.APP, globalVars.getIpaFileName());
+            //capabilities.setCapability(Constants.APP, "/Users/ataurrahman/Documents/Landmark.app");
+
             //capabilities.setCapability("xcodeOrgId", GlobalVars.xcodeOrgId);
             //capabilities.setCapability("xcodeSigningId", GlobalVars.xcodeSigningId);
             //capabilities.setCapability("updateWDABundleId", GlobalVars.updateWDABundleId);

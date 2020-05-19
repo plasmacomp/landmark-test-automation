@@ -83,7 +83,7 @@ public class NewOpportunityTest {
 
 
     @Test
-    public void verifyNewOpprtunityCreation() {
+    public void verifyNewOpportunityCreation() {
         boolean isResult=false;
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String title="Automation_Opp"+timeStamp;

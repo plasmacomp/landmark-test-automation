@@ -56,13 +56,11 @@ public class LoginPage extends CommonLoginPage
         logger.info("**********Login method started"+globalVars.getPlatform()+"*********");
         //Log.info("**********Login method started"+GlobalVars.platform+"*********");
         try {
-            commonFunctions.sendKey(emailTextbox, username, 5);
-            commonFunctions.sendKey(passwordTextbox, password, 5);
-            if(commonFunctions.clickElement(loginButton, 5)){
-                isUserLoggedIn=true;
-                //isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 30);
+            commonFunctions.sendKey(emailTextbox, username);
+            commonFunctions.sendKey(passwordTextbox, password);
+            if(commonFunctions.clickElement(loginButton)){
+                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 50);
             }
-            //Thread.sleep(1000);
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ globalVars.getPlatform());
         } catch (Exception e) {
             Log.error("Exception occurred in Login method"+e.getMessage());
