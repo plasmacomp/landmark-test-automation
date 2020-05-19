@@ -56,22 +56,22 @@ public class DashboardPage extends CommonDashboardPage
 
     @Override
     public boolean verifyOpportunities() {
-        return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
+        return commonFunctions.isElementDisplayed(opportunitiesTile, 15);
     }
 
     @Override
     public boolean verifyNewContract() {
-        return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
+        return commonFunctions.isElementDisplayed(newContractTile, 15);
     }
 
     @Override
     public boolean verifyContracts() {
-        return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
+        return commonFunctions.isElementDisplayed(contractsTile, 15);
     }
 
     @Override
     public boolean verifySearch() {
-        return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
+        return commonFunctions.isElementDisplayed(searchTile, 15);
     }
 
     @Override

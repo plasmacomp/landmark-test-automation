@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_web/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_web/NewOpportunityPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -96,8 +95,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SampleTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generic_pages.SampleTest" />
+    <configuration name="WithoutCollection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="generic_pages.WithoutCollection" />
       <module name="LandmarkTestAutomation" />
       <extension name="coverage">
         <pattern>
@@ -109,15 +108,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="WithoutCollection" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generic_pages.WithoutCollection" />
+    <configuration name="LoginTest.loginTest" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="LandmarkTestAutomation" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="generic_pages.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="LoginTest" />
+      <option name="METHOD_NAME" value="loginTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,10 +133,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG./Users/ataurrahman/Documents/TabTestAutomation/TabTestAutomation/testng.xml" />
+        <item itemvalue="TestNG.LoginTest.loginTest" />
         <item itemvalue="Application.WithoutCollection" />
         <item itemvalue="Application.ArrayOutput" />
         <item itemvalue="Application.Palindrome" />
-        <item itemvalue="Application.SampleTest" />
       </list>
     </recent_temporary>
   </component>
@@ -196,14 +194,14 @@
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/base/IosBase.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="80" />
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>28</line>
+          <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/utils/DataReader.java</url>
-          <line>125</line>
-          <option name="timeStamp" value="81" />
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
