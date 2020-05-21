@@ -1,7 +1,6 @@
 package base;
 
 import logger.Log;
-import org.apache.log4j.xml.DOMConfigurator;
 import org.testng.ITestContext;
 import utils.*;
 import java.io.*;
