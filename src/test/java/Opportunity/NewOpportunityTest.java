@@ -75,7 +75,7 @@ public class NewOpportunityTest {
 
 
     @Test
-    public void verifyNewOpportunityCreation() {
+    public void verifyNewOpportunityCreation() throws InterruptedException {
         boolean isResult=false;
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String title="Automation_Opp_"+timeStamp;
