@@ -1,19 +1,19 @@
-import generic_pages.CommonDashboardPage;
-import generic_pages.CommonLoginPage;
 import org.springframework.util.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import base.TestBase;
+import pages_ios.LoginPage;
 import utils.*;
 
 public class LoginTest {
-    CommonLoginPage commonLoginPage;
-    CommonDashboardPage commonDashboardPage;
+
+    LoginPage loginPage;
     GlobalVars globalVars;
 
     @BeforeTest
     public void initialization(){
        globalVars = TestBase.setup(this.getClass().getSimpleName());
+       loginPage=LoginPage.getInstance();
     }
 
     /**
@@ -28,11 +28,10 @@ public class LoginTest {
         String username="";
         String password="";
         String currentMethodName="loginTest";
-        commonLoginPage =CommonLoginPage.getInstance();
         username=globalVars.getUsername(currentMethodName);
         password=globalVars.getPassword(currentMethodName);
 
-        isResult = commonLoginPage.login(username, password);
+        isResult = loginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
         Assert.isTrue(isResult, "Step-1: User failed to login!!");
     }

@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generic_pages/CommonDashboardPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generic_pages/CommonLoginPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/generic_pages/CommonNewOpportunityPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_web/DashboardPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_web/LoginPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_web/NewOpportunityPage.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -181,7 +192,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/LoginTest.java</url>
-          <line>31</line>
+          <line>30</line>
           <option name="timeStamp" value="58" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -196,12 +207,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
-          <line>28</line>
+          <line>24</line>
           <option name="timeStamp" value="82" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java</url>
-          <line>25</line>
+          <line>23</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -211,32 +222,32 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/LoginTest.java</url>
-          <line>34</line>
+          <line>33</line>
           <option name="timeStamp" value="87" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
-          <line>36</line>
+          <line>31</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java</url>
-          <line>33</line>
+          <line>31</line>
           <option name="timeStamp" value="89" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java</url>
-          <line>81</line>
+          <line>79</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
-          <line>87</line>
+          <line>76</line>
           <option name="timeStamp" value="91" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
-          <line>45</line>
+          <line>39</line>
           <option name="timeStamp" value="92" />
         </line-breakpoint>
       </breakpoints>

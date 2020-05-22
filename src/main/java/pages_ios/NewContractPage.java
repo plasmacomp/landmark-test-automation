@@ -8,11 +8,11 @@ import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
 import utils.GlobalVars;
 
-public class NewOpportunityPage {
+public class NewContractPage {
     private AppiumDriver driver;
     static CommonFunctions commonFunctions=null;
     private static GlobalVars globalVars;
-    private static NewOpportunityPage newOpportunityPage;
+    private static NewContractPage newContractPage;
     private String valueXpathLotsSummary="(//XCUIElementTypeStaticText[@value='###'])[1]";
 
 
@@ -121,20 +121,18 @@ public class NewOpportunityPage {
 
 
 
-
-
-
-    public NewOpportunityPage() {
+    public NewContractPage() {
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         commonFunctions=CommonFunctions.getInstance();
+        
     }
-    public static NewOpportunityPage getInstance(){
-        if(newOpportunityPage ==null){
-            newOpportunityPage =new NewOpportunityPage();
+    public static NewContractPage getInstance(){
+        if(newContractPage ==null){
+            newContractPage =new NewContractPage();
         }
-        return newOpportunityPage;
+        return newContractPage;
     }
 
     
@@ -189,19 +187,15 @@ public class NewOpportunityPage {
     }
 
     
-    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) throws InterruptedException {
+    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         commonFunctions.sendKey(quantityTextBox, quantity);
         commonFunctions.clickElement(productCategoryDropdown);
-        Thread.sleep(2000);
         commonFunctions.sendKey(dropdownPicker, productCategory);
         commonFunctions.clickElement(productDropdown);
-        Thread.sleep(2000);
         commonFunctions.sendKey(dropdownPicker, product);
         commonFunctions.clickElement(breedDropdown);
-        Thread.sleep(2000);
         commonFunctions.sendKey(dropdownPicker, breed);
         commonFunctions.clickElement(priceTypeDropdown);
-        Thread.sleep(2000);
         commonFunctions.sendKey(dropdownPicker, priceType);
         commonFunctions.sendKey(priceGstTextBox, price);
         commonFunctions.sendKey(ageTextBox1, age1);
@@ -266,4 +260,5 @@ public class NewOpportunityPage {
         }
         return isResult;
     }
+    
 }

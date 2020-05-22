@@ -1,18 +1,20 @@
 package pages_ios;
 
-import generic_pages.CommonDashboardPage;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
 import utils.CommonFunctions;
+import utils.GlobalVars;
 
 
-public class DashboardPage extends CommonDashboardPage
+public class DashboardPage
 {
     private AppiumDriver driver;
     static CommonFunctions commonFunctions=null;
+    private static GlobalVars globalVars;
     private static DashboardPage dashboardPage;
 
     @iOSXCUITFindBy(accessibility = "menu")
@@ -38,53 +40,54 @@ public class DashboardPage extends CommonDashboardPage
 
 
     public DashboardPage() {
+        globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         commonFunctions=CommonFunctions.getInstance();
     }
-    public static DashboardPage getHomePageInstance(){
+    public static DashboardPage getInstance(){
         if(dashboardPage ==null){
             dashboardPage =new DashboardPage();
         }
         return dashboardPage;
     }
 
-    @Override
+    
     public boolean verifyNewOpportunity() {
         return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
     }
 
-    @Override
+    
     public boolean verifyOpportunities() {
         return commonFunctions.isElementDisplayed(opportunitiesTile, 15);
     }
 
-    @Override
+    
     public boolean verifyNewContract() {
         return commonFunctions.isElementDisplayed(newContractTile, 15);
     }
 
-    @Override
+    
     public boolean verifyContracts() {
         return commonFunctions.isElementDisplayed(contractsTile, 15);
     }
 
-    @Override
+    
     public boolean verifySearch() {
         return commonFunctions.isElementDisplayed(searchTile, 15);
     }
 
-    @Override
+    
     public boolean verifyHamburger() {
         return commonFunctions.isElementDisplayed(hamburgerIcon, 15);
     }
 
-    @Override
+    
     public boolean verifyDashboardHeaderLabel() {
         return commonFunctions.isElementDisplayed(dashboardLabel, 15);
     }
 
-    @Override
+    
     public boolean verifyProfileIcon() {
         return commonFunctions.isElementDisplayed(userIcon, 15);
     }
