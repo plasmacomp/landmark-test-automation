@@ -86,13 +86,13 @@ public class NewOpportunityTest {
     public void verifyNewOpportunityCreation() {
         boolean isResult=false;
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
-        String title="Automation_Opp"+timeStamp;
+        String title="Automation_Opp_"+timeStamp;
         String vendorName="";
         String quantity="10";
-        String productCategory="";
-        String product="";
-        String breed="";
-        String priceType="";
+        String productCategory="CSI";
+        String product="Agistment - Buyer";
+        String breed="Test_Breed";
+        String priceType="$/head";
         String price="10";
         String age1="2";
         String age2="5";

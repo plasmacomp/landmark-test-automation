@@ -13,7 +13,18 @@
         <classes>
             <class name="LoginTest"/>
             <class name="Opportunity.Dashboard.DashboardTest"/>
-            <class name="Opportunity.NewOpportunityTest"/>
+            <class name="Opportunity.NewOpportunityTest">
+            <methods>
+                <include name="verifyNewOpportunityNavigation"/>
+                <include name="verifyNewOpportunityHeaderLabel"/>
+                <include name="verifySalesInformationLabel"/>
+                <include name="verifyVendorInfoLabel"/>
+                <include name="verifyLotsLabel"/>
+                <include name="verifyNotesLabel"/>
+                <include name="verifyAttachmentsLabel"/>
+                <include name="verifyNewOpportunityCreation"/>
+            </methods>
+            </class>
         </classes>
     </test>
 </suite>
