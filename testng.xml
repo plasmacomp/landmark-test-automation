@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="DemoTestSuite" >
+<suite name="LandmarkTestSuite" >
     
  	<listeners>
  		<listener class-name="listener.AnnotationTransformer"/>
         <listener class-name="listener.TestListener"/>
-<!--         <listener class-name="listener.Retry"/> -->
-<!--         <listener class-name="reporters.ExtentManager"/> -->
  	</listeners>
  	
     <test name="LandmarkTestAuto" group-by-instances="true" preserve-order="true">
@@ -22,7 +20,15 @@
                 <include name="verifyLotsLabel"/>
                 <include name="verifyNotesLabel"/>
                 <include name="verifyAttachmentsLabel"/>
-                <include name="verifyNewOpportunityCreation"/>
+                <include name="verifyAddSalesInformation"/>
+                <include name="verifyAddVendorInfo"/>
+                <include name="verifyAddLotsInfo"/>
+                <include name="verifyLotSummaryPageHeaderLabels"/>
+                <include name="verifyLotSummaryPageValues"/>
+                <include name="verifyAddAttachments"/>
+                <include name="verifyAttachments"/>
+                <include name="verifyAddNotes"/>
+                <include name="verifyNotes"/>
             </methods>
             </class>
         </classes>
