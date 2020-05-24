@@ -3,6 +3,8 @@ package utils;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
+import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.HasOnScreenKeyboard;
 import logger.Log;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.util.IOUtils;
@@ -175,6 +177,12 @@ public class Utils {
             e1.printStackTrace();
         }
         return buffer.toString();
+    }
+    public static void hideKeyboardIfVisible(AppiumDriver driver) {
+        boolean isKeyboardShown = ((HasOnScreenKeyboard) driver).isKeyboardShown();
+        if ( isKeyboardShown ==true){
+            driver.hideKeyboard();
+        }
     }
 
 

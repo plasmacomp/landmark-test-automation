@@ -1,12 +1,20 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
 import utils.GlobalVars;
+import utils.Utils;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
+import java.util.HashMap;
 
 public class NewOpportunityPage {
     private AppiumDriver driver;
@@ -28,7 +36,7 @@ public class NewOpportunityPage {
     private static WebElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
     private static WebElement notesLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='New Opportunity']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='New Opportunity']")
     private static WebElement newOpportunityHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
     private static WebElement doneButton;
@@ -50,6 +58,9 @@ public class NewOpportunityPage {
     private static WebElement vendorInfoTextboxPopup;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther")
     private static WebElement vendorInfoPopupWindow;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField")
+    private static WebElement vendorInfoSearchBoxPopupWindow;
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
     private static WebElement vendorName; //to get the name attribute's value for the name of the vendor
     //******Lots page elements**********
@@ -57,15 +68,19 @@ public class NewOpportunityPage {
     private static WebElement quantityTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
     private static WebElement dropdownPicker;
+    @iOSXCUITFindBy(accessibility = "Paste")
+    private static WebElement pasteIconWheelPicker;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
     private static WebElement productCategoryDropdown;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]")
     private static WebElement productDropdown;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[4]")
     private static WebElement breedDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[5]")
-    private static WebElement priceTypeDropdown;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
+    private static WebElement doneButtonWheelPicker;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[6]")
+    private static WebElement priceTypeDropdown;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[5]")
     private static WebElement priceGstTextBox;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[7]")
     private static WebElement sexDropdown;
@@ -87,7 +102,6 @@ public class NewOpportunityPage {
     private static WebElement totalWeightLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Sale Value']")
     private static WebElement totalSaleValueLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@value='###'])[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add new Lot']")
     private static WebElement addNewLotButton;
 
@@ -114,7 +128,6 @@ public class NewOpportunityPage {
     private static WebElement notesTextField;
     @iOSXCUITFindBy(accessibility = "send")
     private static WebElement sendIconNotes;
-
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit & View Record']")
     private static WebElement submitAndViewRecordButton;
 
@@ -181,35 +194,96 @@ public class NewOpportunityPage {
     }
 
     
-    public boolean addVendorInfo() {
+    public boolean addVendorInfo(String searchText) {
+        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]";
         commonFunctions.clickElement(vendorInfoTextbox);
-        commonFunctions.clickElement(vendorInfoPopupWindow);
+        commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+        commonFunctions.clickElementByXpath(vendorNameXpath);
+        //commonFunctions.clickElement(vendorInfoPopupWindow);
         commonFunctions.clickElement(nextButton);
         return commonFunctions.isElementDisplayed(quantityTextBox);
     }
 
     
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+        boolean isResult=false;
         commonFunctions.sendKey(quantityTextBox, quantity);
-        commonFunctions.clickElement(productCategoryDropdown);
-        commonFunctions.clickElement(productCategoryDropdown);
-        //Thread.sleep(1000);
-        commonFunctions.sendKey(dropdownPicker, productCategory);
-        commonFunctions.clickElement(productDropdown);
-        commonFunctions.sendKey(dropdownPicker, product);
-        commonFunctions.clickElement(breedDropdown);
-        commonFunctions.sendKey(dropdownPicker, breed);
-        commonFunctions.clickElement(priceTypeDropdown);
-        commonFunctions.sendKey(dropdownPicker, priceType);
-        commonFunctions.sendKey(priceGstTextBox, price);
-        commonFunctions.sendKey(ageTextBox1, age1);
-        commonFunctions.sendKey(ageTextBox2, age2);
-        commonFunctions.clickElement(monthsDropdown);
-        commonFunctions.sendKey(dropdownPicker, monthDropdown);
-        commonFunctions.sendKey(descriptionTextBox, description);
-        commonFunctions.clickElement(saveAndReviewButton);
-        return commonFunctions.isElementDisplayed(addNewLotButton);
 
+        commonFunctions.clickElement(productCategoryDropdown);
+        movePickerWheel(productCategoryDropdown, productCategory);
+
+        commonFunctions.clickElement(productDropdown);
+        movePickerWheel(productDropdown, product);
+
+        commonFunctions.clickElement(breedDropdown);
+        movePickerWheel(breedDropdown, breed);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.clickElement(priceTypeDropdown);
+        movePickerWheel(priceTypeDropdown, priceType);
+
+        commonFunctions.sendKey(priceGstTextBox, price);
+        //commonFunctions.scrollDownToElement(ageTextBox1);
+        Utils.hideKeyboardIfVisible(driver);
+        commonFunctions.sendKey(ageTextBox1, age1);
+        Utils.hideKeyboardIfVisible(driver);
+        commonFunctions.sendKey(ageTextBox2, age2);
+        Utils.hideKeyboardIfVisible(driver);
+
+        commonFunctions.clickElement(monthsDropdown);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        movePickerWheelMonthDropdown(monthsDropdown, monthDropdown);
+
+        commonFunctions.sendKey(descriptionTextBox, description);
+        Utils.hideKeyboardIfVisible(driver);
+        commonFunctions.clickElement(saveAndReviewButton);
+        isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
+        return isResult;
+
+    }
+
+    private void movePickerWheel(WebElement element, String val){
+        for(int i=0; i<10; i++) {
+
+            //String pickerValue=dropdownPicker.getAttribute("value");
+            String pickerValue=commonFunctions.getElementText(element, 10);
+            if(pickerValue.trim().contains(val)) {
+                break;
+            }
+            else{
+                commonFunctions.clickElement(element);
+                pickerWheelStep(dropdownPicker, "next", 0.15);
+            }
+        }
+    }
+
+    private void movePickerWheelMonthDropdown(WebElement element, String val){
+        for(int i=0; i<2; i++) {
+
+            //String pickerValue=dropdownPicker.getAttribute("value");
+            String pickerValue=commonFunctions.getElementText(element, 10);
+            if(pickerValue.trim().contains(val)) {
+                break;
+            }
+            else{
+                commonFunctions.clickElement(element);
+                pickerWheelStep(dropdownPicker, "next", 0.15);
+            }
+        }
+    }
+
+    private void pickerWheelStep(WebElement element, String direction, double offset) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("order", direction);
+        params.put("offset", offset);
+        params.put("element", ((RemoteWebElement) element).getId());
+        driver.executeScript("mobile: selectPickerWheelValue", params);
+    }
+
+    public static void copyStringToClipboard(String text){
+        StringSelection stringSelection = new StringSelection(text);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
     }
 
     
@@ -219,17 +293,27 @@ public class NewOpportunityPage {
 
     
     public boolean verifyLotSummaryPageValues(String quantity, String totalWeight, String totalSaleValue) {
-        return commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",quantity)) &&
+        boolean isResult=false;
+        isResult= commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",quantity)) &&
                 commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalWeight)) &&
                 commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalSaleValue));
+        commonFunctions.clickElement(nextButton);
+        return isResult;
     }
 
 
     
     public boolean addAttachments() {
         boolean isResult=false;
+        //commonFunctions.clickElement(nextButton);
         if(commonFunctions.clickElement(uploadAttachtmentsButton)){
             if(commonFunctions.clickElement(cameraRollButton)){
+                try{
+                    Thread.sleep(2000);
+                }
+                catch (InterruptedException ex){
+                    ex.printStackTrace();
+                }
                 if(commonFunctions.clickElement(firstImage)){
                     isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
                 }
@@ -238,30 +322,30 @@ public class NewOpportunityPage {
         return isResult;
     }
 
-    
     public boolean verifyAttachments() {
-        boolean isResult=false;
-        if(commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab)){
-            if(commonFunctions.clickElement(nextButton)){
-                isResult=commonFunctions.isElementDisplayed(notesTextField);
-            }
+        boolean isResult1=false;
+        boolean isResult2=false;
+        isResult1= commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab);
+        if(commonFunctions.clickElement(nextButton)){
+            isResult2=commonFunctions.isElementDisplayed(notesTextField);
         }
+        return isResult1 && isResult2;
+    }
+
+    public boolean addNotes(String note) {
+        boolean isResult=false;
+        commonFunctions.clickElement(notesTextField);
+        commonFunctions.sendKey(notesTextField, note);
+        commonFunctions.clickElement(sendIconNotes);
+        isResult= commonFunctions.clickElement(sendIconNotes);
         return isResult;
     }
 
-    
-    public boolean addNotes(String note) {
-        commonFunctions.sendKey(notesTextField, note);
-        return commonFunctions.clickElement(sendIconNotes);
-    }
-
-    
     public boolean verifyNotes(String note) {
         boolean isResult=false;
         String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
-        if(commonFunctions.isElementDisplayedByXpath(notesTextXpath)){
-            isResult=commonFunctions.clickElement(submitAndViewRecordButton);
-        }
+        isResult=commonFunctions.isElementDisplayedByXpath(notesTextXpath);
+        commonFunctions.clickElement(submitAndViewRecordButton);
         return isResult;
     }
 }

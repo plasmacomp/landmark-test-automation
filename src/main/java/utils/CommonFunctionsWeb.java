@@ -38,6 +38,16 @@ public class CommonFunctionsWeb extends CommonFunctions{
     }
 
     @Override
+    public void scrollDownToElement(WebElement element) {
+
+    }
+
+    @Override
+    public boolean clickElementByXpath(String xpath) {
+        return false;
+    }
+
+    @Override
     public boolean clickElement(WebElement element) {
         return false;
     }

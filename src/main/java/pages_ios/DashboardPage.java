@@ -19,7 +19,7 @@ public class DashboardPage
 
     @iOSXCUITFindBy(accessibility = "menu")
     private static WebElement hamburgerIcon;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Dashboard']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Dashboard']")
     private static WebElement dashboardLabel;
     @iOSXCUITFindBy(accessibility = "notification")
     private static WebElement notificationIcon;

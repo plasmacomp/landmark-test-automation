@@ -85,7 +85,8 @@ public class NewOpportunityTest {
     @Test
     public void verifyAddVendorInfo() {
         boolean isResult=false;
-        isResult = newOpportunityPage.addVendorInfo();
+        String searchText="AJ Pointon & AW Pointon";
+        isResult = newOpportunityPage.addVendorInfo(searchText);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
         Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
     }

@@ -10,11 +10,13 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -61,9 +63,26 @@ public class CommonFunctionsMobile extends CommonFunctions {
     }
 
     @Override
+    public boolean clickElementByXpath(String xpath) {
+        boolean isElementClicked=false;
+        try{
+            driver.findElement(By.xpath(xpath)).click();
+            isElementClicked=true;
+        }
+        catch (Exception e) {
+            logger.error("Exception occurred in clickElement method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
+        return isElementClicked;
+    }
+
+    @Override
     public void sendKey(WebElement element, String key) {
         try {
-            element.clear();element.sendKeys(key);
+
+            element.click();
+            element.clear();
+            element.sendKeys(key);
             Utils.logFunctionLevelLogs(true, "sendKey");
         } catch (Exception e) {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
@@ -156,4 +175,14 @@ public class CommonFunctionsMobile extends CommonFunctions {
         }
     }
 
+
+    @Override
+    public void scrollDownToElement(WebElement elementToScroll) {
+        RemoteWebElement element = (RemoteWebElement)elementToScroll;
+        String elementID = element.getId();
+        HashMap<String, String> scrollObject = new HashMap<String, String>();
+        scrollObject.put("element", elementID); // Only for ‘scroll in element’
+        scrollObject.put("direction", "down");
+        driver.executeScript("mobile:scroll", scrollObject);
+    }
 }
