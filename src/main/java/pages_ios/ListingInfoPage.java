@@ -496,8 +496,5 @@ public class ListingInfoPage {
         commonFunctions.clickElement(listingInformationLabel);
         return commonFunctions.isElementDisplayed(listingOverviewHeaderLabel, 25);
     }
-    public boolean verifyListingInfoNavigation() {
-        commonFunctions.clickElement(listingInformationLabel);
-        return commonFunctions.isElementDisplayed(listingOverviewHeaderLabel, 25);
-    }
+
 }
