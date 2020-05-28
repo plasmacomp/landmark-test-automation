@@ -31,6 +31,14 @@
                 <include name="verifyNotes"/>
             </methods>
             </class>
+            <class name="Opportunity.Opp_Record_Listing_Info.ListingInfoTest">
+                <methods>
+                    <include name="verifyListingTypeOptions"/>
+                    <include name="verifyClassifiedListingType"/>
+                    <include name="verifyBidAndOfferListingType"/>
+                    <include name="verifyListingTypeSelection"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

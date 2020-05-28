@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/base/IosBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/IosBase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Utils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,7 +43,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../HT_Old_Framework/htDigitalQA" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/sampleInternalProject" />
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">

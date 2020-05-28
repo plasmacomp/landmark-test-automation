@@ -124,4 +124,9 @@ public class CommonFunctionsWeb extends CommonFunctions{
             logger.error("Exception occurred in manageImplicitTimeOut method: "+e.getMessage());
         }
     }
+
+    @Override
+    public void clickElementByCoordinates(int x, int y) {
+
+    }
 }

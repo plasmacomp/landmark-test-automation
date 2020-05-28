@@ -118,6 +118,8 @@ public class NewOpportunityPage {
     private static WebElement continueButtonFileUploadWindow;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[6]")
     private static WebElement imagePreviewAttachmentsTab;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[6]/*[5]")
+    private static WebElement tripleDotImagePreview;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse']")
     private static WebElement browseButton;
 
@@ -325,11 +327,11 @@ public class NewOpportunityPage {
     public boolean verifyAttachments() {
         boolean isResult1=false;
         boolean isResult2=false;
-        isResult1= commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab);
+        //isResult1= commonFunctions.isElementDisplayed(tripleDotImagePreview);
         if(commonFunctions.clickElement(nextButton)){
-            isResult2=commonFunctions.isElementDisplayed(notesTextField);
+            isResult2=commonFunctions.isElementDisplayed(notesTextField, 10);
         }
-        return isResult1 && isResult2;
+        return isResult2;
     }
 
     public boolean addNotes(String note) {

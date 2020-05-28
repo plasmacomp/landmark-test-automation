@@ -42,5 +42,6 @@ public abstract class CommonFunctions {
     public abstract void manageImplicitTimeOut(long timeOutInSsec);
     public abstract void assignDriverObject();
     public abstract void scrollDownToElement(WebElement element);
+    public abstract void clickElementByCoordinates(int x, int y);
 
 }

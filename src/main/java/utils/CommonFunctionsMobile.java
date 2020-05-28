@@ -6,6 +6,9 @@ import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.NetworkSpeed;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSTouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -16,6 +19,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -184,5 +188,19 @@ public class CommonFunctionsMobile extends CommonFunctions {
         scrollObject.put("element", elementID); // Only for ‘scroll in element’
         scrollObject.put("direction", "down");
         driver.executeScript("mobile:scroll", scrollObject);
+    }
+
+    @Override
+    public void clickElementByCoordinates(int x, int y) {
+//        TouchAction touchAction=new TouchAction(driver);
+//        PointOption pointOption=new PointOption();
+//        pointOption.withCoordinates(x, y);
+//        touchAction.tap(pointOption).perform();
+
+        TouchAction action = new TouchAction<>(driver);
+        action.press(PointOption.point(x, y));
+        action.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)));
+        action.release();
+        action.perform();
     }
 }
