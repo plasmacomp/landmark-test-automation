@@ -9,6 +9,8 @@ import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSTouchAction;
 import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
+import logger.Log;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebElement;
@@ -24,17 +26,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-public class CommonFunctionsMobile extends CommonFunctions {
+public class CommonFunctionsMobile {
     static AppiumDriver driver;
+    private static GlobalVars globalVars;
     WebDriverWait wait;
+    private static CommonFunctionsMobile commonFunctionsMobile;
+    public static Logger logger;
 
-
-    @Override
-    public void assignDriverObject() {
+    public static CommonFunctionsMobile getInstance(){
+        globalVars=GlobalVars.getInstance();
         driver=globalVars.getDriver();
+        logger= Log.getInstance();
+        if(commonFunctionsMobile==null){
+            commonFunctionsMobile=new CommonFunctionsMobile();
+        }
+        return commonFunctionsMobile;
     }
-
-    @Override
     public boolean clickElement(WebElement element, int timeOutInSsec) {
         boolean isElementClicked=false;
         try{
@@ -51,8 +58,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
         return isElementClicked;
     }
-
-    @Override
     public boolean clickElement(WebElement element) {
         boolean isElementClicked=false;
         try{
@@ -65,8 +70,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
         return isElementClicked;
     }
-
-    @Override
     public boolean clickElementByXpath(String xpath) {
         boolean isElementClicked=false;
         try{
@@ -80,11 +83,10 @@ public class CommonFunctionsMobile extends CommonFunctions {
         return isElementClicked;
     }
 
-    @Override
+
     public void sendKey(WebElement element, String key) {
         try {
-
-            element.click();
+            //element.click();
             element.clear();
             element.sendKeys(key);
             Utils.logFunctionLevelLogs(true, "sendKey");
@@ -92,8 +94,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
         }
     }
-
-    @Override
     public void sendKey(WebElement element, String key, int timeOutInSsec) {
         try {
             manageImplicitTimeOut(0);//Setting the implicit wait as zero as implicit and explicit wait do not work together
@@ -106,7 +106,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         }
         manageImplicitTimeOut(globalVars.getImplicitWait());
     }
-    @Override
     public boolean isElementDisplayedByXpath(String xpath) {
         boolean isElementDisplayed=false;
         try {
@@ -119,8 +118,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
         return isElementDisplayed;
     }
-
-    @Override
     public boolean isElementDisplayed(WebElement element) {
         boolean isElementDisplayed=false;
         try {
@@ -133,8 +130,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
         return isElementDisplayed;
     }
-
-    @Override
     public boolean isElementDisplayed(WebElement element, int timeOutInSsec) {
         boolean isElementDisplayed=false;
         try {
@@ -152,8 +147,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         Utils.logFunctionLevelLogs(isElementDisplayed, "isElementDisplayed");
         return isElementDisplayed;
     }
-
-    @Override
     public String getElementText(WebElement element, int timeOutInSsec) {
         String text="";
         try {
@@ -169,8 +162,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         logger.info("Element text found :"+ text);
         return text;
     }
-
-    @Override
     public void manageImplicitTimeOut(long timeOutInSsec) {
         try {
             driver.manage().timeouts().implicitlyWait(timeOutInSsec, TimeUnit.SECONDS);//Setting the implicit wait as zero as implicit and explicit wait do not work together
@@ -178,9 +169,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
             logger.error("Exception occurred in manageImplicitTimeOut method: "+e.getMessage());
         }
     }
-
-
-    @Override
     public void scrollDownToElement(WebElement elementToScroll) {
         RemoteWebElement element = (RemoteWebElement)elementToScroll;
         String elementID = element.getId();
@@ -190,7 +178,6 @@ public class CommonFunctionsMobile extends CommonFunctions {
         driver.executeScript("mobile:scroll", scrollObject);
     }
 
-    @Override
     public void clickElementByCoordinates(int x, int y) {
 //        TouchAction touchAction=new TouchAction(driver);
 //        PointOption pointOption=new PointOption();

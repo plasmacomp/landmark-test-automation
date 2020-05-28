@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
+import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
 import utils.Utils;
 
@@ -18,7 +19,8 @@ import java.util.HashMap;
 
 public class NewOpportunityPage {
     private AppiumDriver driver;
-    static CommonFunctions commonFunctions=null;
+    //static CommonFunctions commonFunctions=null;
+    static CommonFunctionsMobile commonFunctions=null;
     private static GlobalVars globalVars;
     private static NewOpportunityPage newOpportunityPage;
     private String valueXpathLotsSummary="(//XCUIElementTypeStaticText[@value='###'])[1]";
@@ -143,7 +145,8 @@ public class NewOpportunityPage {
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        commonFunctions=CommonFunctions.getInstance();
+        //commonFunctions=CommonFunctions.getInstance();
+        commonFunctions=CommonFunctionsMobile.getInstance();
     }
     public static NewOpportunityPage getInstance(){
         if(newOpportunityPage ==null){
@@ -206,7 +209,6 @@ public class NewOpportunityPage {
         return commonFunctions.isElementDisplayed(quantityTextBox);
     }
 
-    
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
         commonFunctions.sendKey(quantityTextBox, quantity);
@@ -261,7 +263,6 @@ public class NewOpportunityPage {
 
     private void movePickerWheelMonthDropdown(WebElement element, String val){
         for(int i=0; i<2; i++) {
-
             //String pickerValue=dropdownPicker.getAttribute("value");
             String pickerValue=commonFunctions.getElementText(element, 10);
             if(pickerValue.trim().contains(val)) {
@@ -303,11 +304,8 @@ public class NewOpportunityPage {
         return isResult;
     }
 
-
-    
     public boolean addAttachments() {
         boolean isResult=false;
-        //commonFunctions.clickElement(nextButton);
         if(commonFunctions.clickElement(uploadAttachtmentsButton)){
             if(commonFunctions.clickElement(cameraRollButton)){
                 try{

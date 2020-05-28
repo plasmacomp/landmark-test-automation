@@ -56,6 +56,13 @@ public class ListingInfoTest {
         Utils.logStepInfo(isResult, "Select the required listing type option given as parameter");
         Assert.isTrue(isResult, "Step-1: Required listing type selection failed!!");
     }
+    @Test
+    public void verifyListingInfoNavigation() {
+        boolean isResult=false;
+        isResult = listingInfoPage.verifyListingInfoNavigation();
+        Utils.logStepInfo(isResult, "Click on the listing info tab to navigate to listing info page");
+        Assert.isTrue(isResult, "Step-1: Failed to navigate to listing info page!!");
+    }
 
 
     @AfterTest

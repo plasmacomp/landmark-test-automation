@@ -7,13 +7,14 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.aop.framework.adapter.GlobalAdvisorAdapterRegistry;
 import utils.CommonFunctions;
+import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
 
 
 public class DashboardPage
 {
     private AppiumDriver driver;
-    static CommonFunctions commonFunctions=null;
+    static CommonFunctionsMobile commonFunctions=null;
     private static GlobalVars globalVars;
     private static DashboardPage dashboardPage;
 
@@ -43,7 +44,7 @@ public class DashboardPage
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        commonFunctions=CommonFunctions.getInstance();
+        commonFunctions=CommonFunctionsMobile.getInstance();
     }
     public static DashboardPage getInstance(){
         if(dashboardPage ==null){

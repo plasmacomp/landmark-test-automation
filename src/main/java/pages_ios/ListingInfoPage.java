@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
+import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
 
 import java.util.HashMap;
@@ -15,7 +16,7 @@ import java.util.HashMap;
 public class ListingInfoPage {
 
     private AppiumDriver driver;
-    static CommonFunctions commonFunctions=null;
+    static CommonFunctionsMobile commonFunctions=null;
     private static GlobalVars globalVars;
     private static ListingInfoPage listingInfoPage;
 
@@ -390,7 +391,7 @@ public class ListingInfoPage {
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        commonFunctions=CommonFunctions.getInstance();
+        commonFunctions=CommonFunctionsMobile.getInstance();
     }
     public static ListingInfoPage getInstance(){
         if(listingInfoPage ==null){
@@ -424,7 +425,7 @@ public class ListingInfoPage {
     }
 
     public boolean verifyListingTypeOptions() {
-        return commonFunctions.isElementDisplayed(bidAndOfferLabel, 15) && commonFunctions.isElementDisplayed(classifiedLabel, 15);
+        return commonFunctions.isElementDisplayed(bidAndOfferLabel, 30) && commonFunctions.isElementDisplayed(classifiedLabel, 30);
     }
     public boolean verifyClassifiedListingType() {
         Point point=classifiedLabel.getLocation();
@@ -489,5 +490,14 @@ public class ListingInfoPage {
         params.put("offset", offset);
         params.put("element", ((RemoteWebElement) element).getId());
         driver.executeScript("mobile: selectPickerWheelValue", params);
+    }
+
+    public boolean verifyListingInfoNavigation() {
+        commonFunctions.clickElement(listingInformationLabel);
+        return commonFunctions.isElementDisplayed(listingOverviewHeaderLabel, 25);
+    }
+    public boolean verifyListingInfoNavigation() {
+        commonFunctions.clickElement(listingInformationLabel);
+        return commonFunctions.isElementDisplayed(listingOverviewHeaderLabel, 25);
     }
 }

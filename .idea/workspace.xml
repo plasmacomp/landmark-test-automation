@@ -1,17 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/DashboardPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctions.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsWeb.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +51,6 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="excludeTargetFolder" value="false" />
-        <option name="importAutomatically" value="true" />
         <option name="jdkForImporter" value="1.8" />
       </MavenImportingSettings>
     </option>
@@ -60,18 +78,6 @@
       <recent name="$PROJECT_DIR$/src/test/java" />
       <recent name="$PROJECT_DIR$/src/test/Opportunity" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="TestNG./Users/ataurrahman/Documents/TabTestAutomation/TabTestAutomation/testng.xml">
     <configuration name="ArrayOutput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -163,17 +169,42 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="458" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590677560462">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="458" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.797@0.23.1440.797" timestamp="1590677560462" />
+    <state width="1398" height="311" key="GridCell.Tab.0.bottom" timestamp="1590681164696">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1398" height="311" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1590681164696" />
+    <state width="1398" height="311" key="GridCell.Tab.0.center" timestamp="1590681164694">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1398" height="311" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1590681164694" />
+    <state width="1398" height="311" key="GridCell.Tab.0.left" timestamp="1590681164691">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1398" height="311" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1590681164691" />
+    <state width="1398" height="311" key="GridCell.Tab.0.right" timestamp="1590681164695">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state width="1398" height="311" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1590681164695" />
+    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup" timestamp="1590681855798">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1590681855798" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -11,22 +11,21 @@ public abstract class CommonFunctions {
     public static CommonFunctions commonFunctions;
     public static Logger logger;
 
-
     public static CommonFunctions getInstance(){
         globalVars=GlobalVars.getInstance();
         logger= Log.getInstance();
-        if(commonFunctions==null){
-            switch(globalVars.getPlatform()){
-                case Constants.ANDROID:
-                case Constants.IOS:
-                    commonFunctions=new CommonFunctionsMobile();
-                    break;
-                case Constants.WEB:
-                    commonFunctions=new CommonFunctionsWeb();
-                    break;
-            }
-        }
-        commonFunctions.assignDriverObject();
+//        if(commonFunctions==null){
+//            switch(globalVars.getPlatform()){
+//                case Constants.ANDROID:
+//                case Constants.IOS:
+//                    commonFunctions=new CommonFunctionsMobile();
+//                    break;
+//                case Constants.WEB:
+//                    commonFunctions=new CommonFunctionsWeb();
+//                    break;
+//            }
+//        }
+        //commonFunctions.assignDriverObject();
         return commonFunctions;
     }
 

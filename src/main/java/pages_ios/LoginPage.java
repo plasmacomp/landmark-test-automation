@@ -8,6 +8,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import logger.Log;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
+import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
 import utils.Utils;
 
@@ -15,7 +16,7 @@ import utils.Utils;
 public class LoginPage
 {
     private  AppiumDriver driver;
-    static CommonFunctions commonFunctions=null;
+    static CommonFunctionsMobile commonFunctions=null;
     private static GlobalVars globalVars;
     private static LoginPage loginPage;
 
@@ -23,7 +24,7 @@ public class LoginPage
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
-        commonFunctions=CommonFunctions.getInstance();
+        commonFunctions=CommonFunctionsMobile.getInstance();
     }
 
     public static LoginPage getInstance(){
