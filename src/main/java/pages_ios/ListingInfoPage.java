@@ -491,10 +491,91 @@ public class ListingInfoPage {
         params.put("element", ((RemoteWebElement) element).getId());
         driver.executeScript("mobile: selectPickerWheelValue", params);
     }
-
     public boolean verifyListingInfoNavigation() {
         commonFunctions.clickElement(listingInformationLabel);
         return commonFunctions.isElementDisplayed(listingOverviewHeaderLabel, 25);
+    }
+    public boolean fillListingOverviewDetails(String biddingDuration, String closingSoonStatusDuration, String startingPrice, String description, String reservePrice, String town) {
+        String townText="";
+        commonFunctions.clickElement(biddingStartDateTimeDropdown);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        movePickerWheel(biddingDurationDropdown, biddingDuration);
+        movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
+        commonFunctions.sendKey(startingPriceTextBox, startingPrice);
+        commonFunctions.sendKey(descriptionTextView, description);
+        commonFunctions.sendKey(reservePriceTextBox, reservePrice);
+        commonFunctions.clickElement(townTextBoxButton);
+        commonFunctions.sendKey(townSearchBox, town);
+        townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
+        return town.contains(townText);
+    }
+    public boolean fillLotDetails(String pregStatus) {
+        commonFunctions.sendKey(pregnancyStatusTextBox, pregStatus);
+        return commonFunctions.getElementText(pregnancyStatusTextBox, 10).trim().equalsIgnoreCase(pregStatus);
+    }
+    public boolean enterLiveWeightToPopulate() {
+        commonFunctions.clickElement(enterLiveWeightToPopulateButton);
+        return true;
+    }
+    public boolean fillWeightSummaryDetails(int numberOfHeadWeighted, int hoursOffFeed, int estimatedDressing, int estimatedDaysToDelivery, int estimatedWeightGain, int deliveryAdjustment) {
+        commonFunctions.scrollDownToElement(highKgLabel);
+        commonFunctions.sendKey(numberOfHeadWeighedTextBox, numberOfHeadWeighted+"");
+        commonFunctions.scrollDownToElement(estimatedDaysToDeliveryLabel);
+        commonFunctions.sendKey(hoursOffFeedTextBox, hoursOffFeed+"");
+        commonFunctions.sendKey(estimatedDressingTextBox, estimatedDressing+"");
+        commonFunctions.sendKey(estimatedDaysToDeliveryTextBox, estimatedDaysToDelivery+"");
+        commonFunctions.sendKey(estimatedWeightGainTextBox, estimatedWeightGain+"");
+        commonFunctions.sendKey(deliveryAdjustmentTextBox, deliveryAdjustment+"");
+        return !commonFunctions.getElementText(deliveryAdjustmentTextBox, 10).isEmpty();
+    }
+    public boolean fillAssessmentOverviewDetails(String frame, String condition, String agentComments) {
+        commonFunctions.scrollDownToElement(agentCommentsLabel);
+        commonFunctions.clickElement(frameTextBox);
+        movePickerWheel(frameTextBox, frame);
+        commonFunctions.clickElement(conditionTextBox);
+        movePickerWheel(conditionTextBox, condition);
+        commonFunctions.sendKey(agentCommentsTextView, agentComments);
+        return !commonFunctions.getElementText(agentCommentsTextView, 10).isEmpty();
+    }
+    public boolean fillAdditionalLotDetails() {
+        return false;
+    }
+    public boolean fillNumberOfHeadsMouthedDetails() {
+        return false;
+    }
+    public boolean fillBreedingOverviewDetails(String vendorBred, String temprament) {
+        commonFunctions.scrollDownToElement(additionalStockHistoryLabel);
+        commonFunctions.clickElement(vendorBredDropdown);
+        movePickerWheel(vendorBredDropdown, vendorBred);
+        commonFunctions.clickElement(temperamentDropdown);
+        movePickerWheel(temperamentDropdown, temprament);
+        return !commonFunctions.getElementText(temperamentDropdown, 10).isEmpty();
+    }
+    public boolean addBreedingDetailsDetails() {
+        return false;
+    }
+    public boolean addHealthVetDetailsDetails(String hgpTreated, String withinWithholdingPeriod) {
+        commonFunctions.scrollDownToElement(withinWithholdingPeriodOrExportSlaughterIntervalsLabel);
+        commonFunctions.clickElement(hgpTreatedDropdown);
+        movePickerWheel(hgpTreatedDropdown, hgpTreated);
+        commonFunctions.clickElement(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown);
+        movePickerWheel(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, withinWithholdingPeriod);
+        return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
+    }
+    public boolean fillTreatmentDetails() {
+        return false;
+    }
+    public boolean fillAccreditationDetails() {
+        return false;
+    }
+    public boolean fillSpecialConditionsDetails() {
+        return false;
+    }
+    public boolean fillDeliveryDetails() {
+        commonFunctions.scrollDownToElement(weighingInstructionsLabel);
+        commonFunctions.clickElement(estimatedFinalDeliveryDateTextBox);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        return !commonFunctions.getElementText(estimatedFinalDeliveryDateTextBox, 10).isEmpty();
     }
 
 }

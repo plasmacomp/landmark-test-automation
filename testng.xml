@@ -37,6 +37,13 @@
                     <include name="verifyClassifiedListingType"/>
                     <include name="verifyBidAndOfferListingType"/>
                     <include name="verifyListingTypeSelection"/>
+                    <include name="verifyListingInfoNavigation"/>
+                    <include name="verifyFillingListingOverviewDetails"/>
+                    <include name="verifyFillingWeightsSummaryDetails"/>
+                    <include name="verifyFillingAssessmentOverviewDetails"/>
+                    <include name="verifyFillingBreedingOverviewDetails"/>
+                    <include name="verifyFillingHealthVetDetails"/>
+                    <include name="verifyFillingDeliveryDetails"/>
                 </methods>
             </class>
         </classes>

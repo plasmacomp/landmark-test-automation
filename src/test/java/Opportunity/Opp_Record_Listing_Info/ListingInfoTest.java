@@ -64,6 +64,67 @@ public class ListingInfoTest {
         Assert.isTrue(isResult, "Step-1: Failed to navigate to listing info page!!");
     }
 
+    @Test
+    public void verifyFillingListingOverviewDetails() {
+        boolean isResult=false;
+        String biddingDuration="24 hours";
+        String closingSoonStatusDuration="3 hours";
+        String startingPrice="200";
+        String description="Test Description";
+        String reservePrice="215";
+        String town="BRISBANE";
+        isResult = listingInfoPage.fillListingOverviewDetails(biddingDuration, closingSoonStatusDuration, startingPrice, description, reservePrice, town);
+        Utils.logStepInfo(isResult, "Fill listing overview details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill listing overview details!!");
+    }
+    @Test
+    public void verifyFillingWeightsSummaryDetails() {
+        boolean isResult=false;
+        int numberOfHeadWeighted=2;
+        int hoursOffFeed=4;
+        int estimatedDressing=12;
+        int estimatedDaysToDelivery=5;
+        int estimatedWeightGain=4;
+        int deliveryAdjustment=10;
+        isResult = listingInfoPage.fillWeightSummaryDetails(numberOfHeadWeighted, hoursOffFeed, estimatedDressing, estimatedDaysToDelivery, estimatedWeightGain, deliveryAdjustment);
+        Utils.logStepInfo(isResult, "Fill Weights Summary details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill weights summary details!!");
+    }
+    @Test
+    public void verifyFillingAssessmentOverviewDetails() {
+        boolean isResult=false;
+        String frame="Small";
+        String condition="Prime";
+        String agentComment="Test agent comment";
+        isResult = listingInfoPage.fillAssessmentOverviewDetails(frame, condition, agentComment);
+        Utils.logStepInfo(isResult, "Fill Assessment overview details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Assessment overview details!!");
+    }
+    @Test
+    public void verifyFillingBreedingOverviewDetails() {
+        boolean isResult=false;
+        String vendorBred="Yes";
+        String temperament="Quiet";
+        isResult = listingInfoPage.fillBreedingOverviewDetails(vendorBred, temperament);
+        Utils.logStepInfo(isResult, "Fill Breeding overview details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
+    }
+    @Test
+    public void verifyFillingHealthVetDetails() {
+        boolean isResult=false;
+        String hgpTreated="Yes";
+        String withinWithholdingPeriod="Yes";
+        isResult = listingInfoPage.addHealthVetDetailsDetails(hgpTreated, withinWithholdingPeriod);
+        Utils.logStepInfo(isResult, "Fill Health Vet details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Health Vet details!!");
+    }
+    @Test
+    public void verifyFillingDeliveryDetails() {
+        boolean isResult=false;
+        isResult = listingInfoPage.fillDeliveryDetails();
+        Utils.logStepInfo(isResult, "Fill Delivery details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Delivery details!!");
+    }
 
     @AfterTest
     public void closeDriver(ITestContext context){
