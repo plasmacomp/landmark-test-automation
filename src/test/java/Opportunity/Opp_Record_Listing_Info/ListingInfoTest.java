@@ -125,6 +125,13 @@ public class ListingInfoTest {
         Utils.logStepInfo(isResult, "Fill Delivery details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Delivery details!!");
     }
+    @Test
+    public void verifyPublishListing() {
+        boolean isResult=false;
+        isResult = listingInfoPage.publishListing();
+        Utils.logStepInfo(isResult, "Click on publish listing to publish the opportunity");
+        Assert.isTrue(isResult, "Step-1: Failed to publish listing!!");
+    }
 
     @AfterTest
     public void closeDriver(ITestContext context){

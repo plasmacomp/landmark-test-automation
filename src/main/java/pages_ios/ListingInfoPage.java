@@ -381,6 +381,11 @@ public class ListingInfoPage {
     private static WebElement weighingInstructionsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weighing Instructions ']//preceding-sibling::XCUIElementTypeTextView")
     private static WebElement weighingInstructionsTextView;
+    @iOSXCUITFindBy(accessibility = "Actions")
+    private static WebElement actionButtonListingInfoPage;
+    @iOSXCUITFindBy(accessibility = "Publish Listing")
+    private static WebElement publishListingLink;
+
 
 
 
@@ -497,6 +502,7 @@ public class ListingInfoPage {
     }
     public boolean fillListingOverviewDetails(String biddingDuration, String closingSoonStatusDuration, String startingPrice, String description, String reservePrice, String town) {
         String townText="";
+        String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
         commonFunctions.clickElement(biddingStartDateTimeDropdown);
         commonFunctions.clickElement(doneButtonWheelPicker);
         movePickerWheel(biddingDurationDropdown, biddingDuration);
@@ -506,6 +512,7 @@ public class ListingInfoPage {
         commonFunctions.sendKey(reservePriceTextBox, reservePrice);
         commonFunctions.clickElement(townTextBoxButton);
         commonFunctions.sendKey(townSearchBox, town);
+        commonFunctions.clickElementByXpath(townNameXpath);
         townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
         return town.contains(townText);
     }
@@ -576,6 +583,10 @@ public class ListingInfoPage {
         commonFunctions.clickElement(estimatedFinalDeliveryDateTextBox);
         commonFunctions.clickElement(doneButtonWheelPicker);
         return !commonFunctions.getElementText(estimatedFinalDeliveryDateTextBox, 10).isEmpty();
+    }
+    public boolean publishListing() {
+        commonFunctions.clickElement(actionButtonListingInfoPage);
+        return commonFunctions.clickElement(publishListingLink);
     }
 
 }
