@@ -7,7 +7,6 @@ import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
-import utils.CommonFunctions;
 import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
 
@@ -113,29 +112,33 @@ public class ListingInfoPage {
     private static WebElement weightsSummaryHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Enter liveweight to populate")
     private static WebElement enterLiveWeightToPopulateButton;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Liveweight (kg)'])[1]")
+    private static WebElement liveWeightKgLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Liveweight (kg)'])[1]//following-sibling::XCUIElementTypeTextField")
+    private static WebElement liveWeightKgTextField;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Fat Score'])[1]")
+    private static WebElement fatScoreLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Fat Score'])[1]//following-sibling::XCUIElementTypeTextField")
+    private static WebElement fatScoreTextField;
+    @iOSXCUITFindBy(accessibility = "add 1")
+    private static WebElement plusIcon;
+
+
     @iOSXCUITFindBy(accessibility = "Number of Head Weighed *")
     private static WebElement numberOfHeadWeighedLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[9]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Number of Head Weighed *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement numberOfHeadWeighedTextBox;
-    @iOSXCUITFindBy(accessibility = "Low kg *")
-    private static WebElement lowKgLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[10]")
-    private static WebElement lowKgTextBox;
-    @iOSXCUITFindBy(accessibility = "Average kg *")
-    private static WebElement averageKgLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[11]")
-    private static WebElement averageKgTextBox;
     @iOSXCUITFindBy(accessibility = "High kg *")
     private static WebElement highKgLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[12]")
     private static WebElement highKgTextBox;
     @iOSXCUITFindBy(accessibility = "Hours off Feed *")
     private static WebElement hoursOffFeedLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[13]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Hours off Feed *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement hoursOffFeedTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Dressing % *")
     private static WebElement estimatedDressingLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[14]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Dressing % *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement estimatedDressingTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Average Dressed Weight at Assessment (kg) *")
     private static WebElement estimatedAverageDressedWeightAtAssessmentLabel;
@@ -143,15 +146,15 @@ public class ListingInfoPage {
     private static WebElement estimatedAverageDressedWeightAtAssessmentTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Days to Delivery *")
     private static WebElement estimatedDaysToDeliveryLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[16]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Days to Delivery *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement estimatedDaysToDeliveryTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Weight Gain (kg/Day) *")
     private static WebElement estimatedWeightGainLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[17]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Weight Gain (kg/Day) *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement estimatedWeightGainTextBox;
     @iOSXCUITFindBy(accessibility = "Delivery Adjustment % *")
     private static WebElement deliveryAdjustmentLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[18]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Delivery Adjustment % *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement deliveryAdjustmentTextBox;
 
     @iOSXCUITFindBy(accessibility = "Estimated Average Live Weight at Delivery (kg) *")
@@ -167,15 +170,15 @@ public class ListingInfoPage {
     private static WebElement assessmentOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Frame")
     private static WebElement frameLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[21]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Frame ']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement frameTextBox;
     @iOSXCUITFindBy(accessibility = "Condition")
     private static WebElement conditionLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[22]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Condition ']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement conditionTextBox;
     @iOSXCUITFindBy(accessibility = "Agent Comments *")
     private static WebElement agentCommentsLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[2]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Agent Comments *']//preceding-sibling::XCUIElementTypeTextView")
     private static WebElement agentCommentsTextView;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='ADDITIONAL LOT DETAILS']")
@@ -228,7 +231,7 @@ public class ListingInfoPage {
     private static WebElement breedingOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Bred *")
     private static WebElement vendorBredLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[32]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement vendorBredDropdown;
     @iOSXCUITFindBy(accessibility = "Bloodlines")
     private static WebElement bloodLinesLabel;
@@ -248,7 +251,7 @@ public class ListingInfoPage {
     private static WebElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament *")
     private static WebElement temperamentLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[36]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Temperament *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement temperamentDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament in Crush")
     private static WebElement temperamentInCrushLabel;
@@ -268,7 +271,7 @@ public class ListingInfoPage {
     private static WebElement healthVetDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
     private static WebElement hgpTreatedLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[39]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='HGP Treated *']//following-sibling::XCUIElementTypeTextField")
     private static WebElement hgpTreatedDropdown;
     @iOSXCUITFindBy(accessibility = "Product")
     private static WebElement productLabel;
@@ -276,7 +279,7 @@ public class ListingInfoPage {
     private static WebElement productTextBox;
     @iOSXCUITFindBy(accessibility = "Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *")
     private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[41]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsDropdown;
     @iOSXCUITFindBy(accessibility = "Market Eligibility Details")
     private static WebElement marketEligibilityLabel;
@@ -385,9 +388,38 @@ public class ListingInfoPage {
     private static WebElement actionButtonListingInfoPage;
     @iOSXCUITFindBy(accessibility = "Publish Listing")
     private static WebElement publishListingLink;
+    @iOSXCUITFindBy(accessibility = "Hide keyboard")  ////XCUIElementTypeKey[@name='space']//following-sibling::*[3]
+    private static WebElement hideKeyboardButton;
 
-
-
+    //************ Classified type specific locators
+    @iOSXCUITFindBy(accessibility = "Classified Duration *")
+    private static WebElement classifiedDurationLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Classified Duration *']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement classifiedDurationDropdown;
+    @iOSXCUITFindBy(accessibility = "Price (ex GST) *")
+    private static WebElement priceLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Price (ex GST) *']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement priceTextBox;
+    @iOSXCUITFindBy(accessibility = "Description *")
+    private static WebElement descriptionClassifiedLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[1]")
+    private static WebElement descriptionClassifiedTextView;
+    @iOSXCUITFindBy(accessibility = "Weight Range - Low *")
+    private static WebElement weightRangeLowLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField")
+    private static WebElement weightRangeLowTextBox;
+    @iOSXCUITFindBy(accessibility = "Weight Range - High *")
+    private static WebElement weightRangeHighLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement weightRangeHighTextBox;
+    @iOSXCUITFindBy(accessibility = "HGP Treated *")
+    private static WebElement hgpTreatedClassifiedLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[17]")
+    private static WebElement hgpTreatedClassifiedDropdown;
+    @iOSXCUITFindBy(accessibility = "Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *")
+    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[18]")
+    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedDropdown;
 
 
 
@@ -489,6 +521,16 @@ public class ListingInfoPage {
         }
     }
 
+    private void movePickerWheelFatScore(WebElement element, String val){
+        for(int i=0; i<7; i++) {
+            pickerWheelStep(dropdownPicker, "next", 0.15);
+            String pickerValue=commonFunctions.getElementText(element, 10);
+            if(pickerValue.trim().contains(val)) {
+                break;
+            }
+        }
+    }
+
     private void pickerWheelStep(WebElement element, String direction, double offset) {
         HashMap<String, Object> params = new HashMap<>();
         params.put("order", direction);
@@ -520,28 +562,59 @@ public class ListingInfoPage {
         commonFunctions.sendKey(pregnancyStatusTextBox, pregStatus);
         return commonFunctions.getElementText(pregnancyStatusTextBox, 10).trim().equalsIgnoreCase(pregStatus);
     }
-    public boolean enterLiveWeightToPopulate() {
-        commonFunctions.clickElement(enterLiveWeightToPopulateButton);
-        return true;
+    public boolean enterLiveWeightToPopulate(int liveWeightKg, String fatScore) {
+        boolean isResult=false;
+        commonFunctions.scrollUpToElement(enterLiveWeightToPopulateButton);
+        if(commonFunctions.clickElement(enterLiveWeightToPopulateButton)){
+            commonFunctions.sendKey(liveWeightKgTextField, liveWeightKg+"");
+            commonFunctions.clickElement(fatScoreTextField);
+            movePickerWheelFatScore(fatScoreTextField, fatScore);
+            //commonFunctions.clickElement(doneButtonWheelPicker);
+            //commonFunctions.sendKey(fatScoreTextField, fatScore+"");
+            isResult=commonFunctions.clickElement(plusIcon);
+            commonFunctions.dragAndDropFromTopToBottom();
+        }
+        return isResult;
     }
     public boolean fillWeightSummaryDetails(int numberOfHeadWeighted, int hoursOffFeed, int estimatedDressing, int estimatedDaysToDelivery, int estimatedWeightGain, int deliveryAdjustment) {
-        commonFunctions.scrollDownToElement(highKgLabel);
+        commonFunctions.scrollDownToElement(numberOfHeadWeighedTextBox);
         commonFunctions.sendKey(numberOfHeadWeighedTextBox, numberOfHeadWeighted+"");
-        commonFunctions.scrollDownToElement(estimatedDaysToDeliveryLabel);
+
+        commonFunctions.clickElement(hideKeyboardButton);
+
+        commonFunctions.scrollDownToElement(hoursOffFeedTextBox);
         commonFunctions.sendKey(hoursOffFeedTextBox, hoursOffFeed+"");
+
+
         commonFunctions.sendKey(estimatedDressingTextBox, estimatedDressing+"");
+
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton);
+        //commonFunctions.scrollDownToElement(estimatedDaysToDeliveryTextBox);
+
         commonFunctions.sendKey(estimatedDaysToDeliveryTextBox, estimatedDaysToDelivery+"");
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton);
         commonFunctions.sendKey(estimatedWeightGainTextBox, estimatedWeightGain+"");
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton);
         commonFunctions.sendKey(deliveryAdjustmentTextBox, deliveryAdjustment+"");
-        return !commonFunctions.getElementText(deliveryAdjustmentTextBox, 10).isEmpty();
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton);
+        return true;
+        //return !commonFunctions.getElementText(deliveryAdjustmentTextBox, 10).isEmpty();
     }
     public boolean fillAssessmentOverviewDetails(String frame, String condition, String agentComments) {
-        commonFunctions.scrollDownToElement(agentCommentsLabel);
-        commonFunctions.clickElement(frameTextBox);
-        movePickerWheel(frameTextBox, frame);
-        commonFunctions.clickElement(conditionTextBox);
-        movePickerWheel(conditionTextBox, condition);
+        commonFunctions.scrollDownToElement(agentCommentsTextView);
+//        commonFunctions.clickElement(frameTextBox);
+//        movePickerWheel(frameTextBox, frame);
+//        commonFunctions.clickElement(doneButtonWheelPicker);
+//        commonFunctions.clickElement(conditionTextBox);
+//        movePickerWheel(conditionTextBox, condition);
+//        commonFunctions.clickElement(doneButtonWheelPicker);
         commonFunctions.sendKey(agentCommentsTextView, agentComments);
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton);
         return !commonFunctions.getElementText(agentCommentsTextView, 10).isEmpty();
     }
     public boolean fillAdditionalLotDetails() {
@@ -550,24 +623,33 @@ public class ListingInfoPage {
     public boolean fillNumberOfHeadsMouthedDetails() {
         return false;
     }
-    public boolean fillBreedingOverviewDetails(String vendorBred, String temprament) {
-        commonFunctions.scrollDownToElement(additionalStockHistoryLabel);
+    public boolean fillBreedingOverviewDetails(String vendorBred, String temperament) {
+        commonFunctions.scrollDownToElement(vendorBredDropdown);
         commonFunctions.clickElement(vendorBredDropdown);
         movePickerWheel(vendorBredDropdown, vendorBred);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.scrollDownToElement(temperamentDropdown);
         commonFunctions.clickElement(temperamentDropdown);
-        movePickerWheel(temperamentDropdown, temprament);
+        movePickerWheel(temperamentDropdown, temperament);
+        commonFunctions.clickElement(doneButtonWheelPicker);
         return !commonFunctions.getElementText(temperamentDropdown, 10).isEmpty();
     }
     public boolean addBreedingDetailsDetails() {
         return false;
     }
     public boolean addHealthVetDetailsDetails(String hgpTreated, String withinWithholdingPeriod) {
-        commonFunctions.scrollDownToElement(withinWithholdingPeriodOrExportSlaughterIntervalsLabel);
-        commonFunctions.clickElement(hgpTreatedDropdown);
-        movePickerWheel(hgpTreatedDropdown, hgpTreated);
+        commonFunctions.scrollDownToElement(hgpTreatedDropdown);
+        //movePickerWheel(hgpTreatedDropdown, hgpTreated);
+        //commonFunctions.clickElement(doneButtonWheelPicker, 10);
         commonFunctions.clickElement(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown);
         movePickerWheel(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, withinWithholdingPeriod);
-        return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        commonFunctions.clickElement(hgpTreatedDropdown);
+        return true;
+
+        //return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
     }
     public boolean fillTreatmentDetails() {
         return false;
@@ -579,14 +661,38 @@ public class ListingInfoPage {
         return false;
     }
     public boolean fillDeliveryDetails() {
-        commonFunctions.scrollDownToElement(weighingInstructionsLabel);
+        commonFunctions.scrollDownToElement(estimatedFinalDeliveryDateTextBox);
         commonFunctions.clickElement(estimatedFinalDeliveryDateTextBox);
         commonFunctions.clickElement(doneButtonWheelPicker);
         return !commonFunctions.getElementText(estimatedFinalDeliveryDateTextBox, 10).isEmpty();
     }
     public boolean publishListing() {
-        commonFunctions.clickElement(actionButtonListingInfoPage);
-        return commonFunctions.clickElement(publishListingLink);
+        boolean isResult=false;
+        if(commonFunctions.clickElement(actionButtonListingInfoPage)){
+            isResult=commonFunctions.clickElement(publishListingLink);
+            try{
+                Thread.sleep(3000);
+            }
+            catch (InterruptedException ex){
+                ex.printStackTrace();
+            }
+        }
+        return isResult;
+    }
+
+    public boolean fillClassifiedListingOverviewDetails(String classifiedDuration, int price, String description) {
+        commonFunctions.clickElement(classifiedDurationDropdown);
+        movePickerWheel(classifiedDurationDropdown, classifiedDuration);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.sendKey(priceTextBox, price+"");
+        commonFunctions.sendKey(descriptionTextView, description);
+        return commonFunctions.clickElement(hideKeyboardButton, 8);
+    }
+    public boolean fillClassifiedLotDetails(String weightRangeLow, String weightRangeHigh) {
+        commonFunctions.scrollDownToElement(weightRangeLowLabel);
+        commonFunctions.sendKey(weightRangeLowTextBox, weightRangeLow);
+        commonFunctions.sendKey(weightRangeHighTextBox, weightRangeHigh);
+        return commonFunctions.clickElement(hideKeyboardButton, 8);
     }
 
 }

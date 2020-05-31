@@ -20,7 +20,7 @@ public class DashboardPage
 
     @iOSXCUITFindBy(accessibility = "menu")
     private static WebElement hamburgerIcon;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='Dashboard']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Dashboard']")
     private static WebElement dashboardLabel;
     @iOSXCUITFindBy(accessibility = "notification")
     private static WebElement notificationIcon;
@@ -55,7 +55,7 @@ public class DashboardPage
 
     
     public boolean verifyNewOpportunity() {
-        return commonFunctions.isElementDisplayed(newOpportunityTile, 15);
+        return commonFunctions.isElementDisplayed(newOpportunityTile, 20);
     }
 
     
@@ -85,7 +85,7 @@ public class DashboardPage
 
     
     public boolean verifyDashboardHeaderLabel() {
-        return commonFunctions.isElementDisplayed(dashboardLabel, 15);
+        return commonFunctions.isElementDisplayed(dashboardLabel, 25);
     }
 
     

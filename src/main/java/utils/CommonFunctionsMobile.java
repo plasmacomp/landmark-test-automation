@@ -2,6 +2,7 @@ package utils;
 
 import com.google.common.collect.ImmutableMap;
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.NetworkSpeed;
@@ -11,9 +12,7 @@ import io.appium.java_client.touch.WaitOptions;
 import io.appium.java_client.touch.offset.PointOption;
 import logger.Log;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -94,6 +93,22 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
         }
     }
+
+    public void sendKeyByJs(WebElement element, String key) {
+        try {
+            JavascriptExecutor jsExec = (JavascriptExecutor) driver;
+            try {
+                jsExec.executeScript("arguments[0].setAttribute('value', 'abcd');");
+                element.sendKeys(key);
+            } finally {
+                jsExec.executeScript("arguments[0].setAttribute('style', arguments[1]);", element,
+                        "abcde");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public void sendKey(WebElement element, String key, int timeOutInSsec) {
         try {
             manageImplicitTimeOut(0);//Setting the implicit wait as zero as implicit and explicit wait do not work together
@@ -104,7 +119,9 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
             manageImplicitTimeOut(globalVars.getImplicitWait());
         }
-        manageImplicitTimeOut(globalVars.getImplicitWait());
+        finally {
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+        }
     }
     public boolean isElementDisplayedByXpath(String xpath) {
         boolean isElementDisplayed=false;
@@ -170,24 +187,67 @@ public class CommonFunctionsMobile {
         }
     }
     public void scrollDownToElement(WebElement elementToScroll) {
+        /*JavascriptExecutor js=(JavascriptExecutor)driver;
         RemoteWebElement element = (RemoteWebElement)elementToScroll;
-        String elementID = element.getId();
+        String elementID=element.getId();
         HashMap<String, String> scrollObject = new HashMap<String, String>();
         scrollObject.put("element", elementID); // Only for ‘scroll in element’
         scrollObject.put("direction", "down");
-        driver.executeScript("mobile:scroll", scrollObject);
+        scrollObject.put("predicateString","label == 'elementLabel'");
+        driver.executeScript("mobile:swipe", scrollObject);
+        driver.executeScript("mobile:scroll", scrollObject);*/
+
+        for(int i=0; i<4; i++){
+            new TouchAction(driver).press(PointOption.point(500, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
+                    moveTo(PointOption.point(500, 400)).release().perform();
+            if(isElementDisplayed(elementToScroll, 8))
+                break;
+        }
+
+    }
+    public void scrollUpToElement(WebElement elementToScroll) {
+        for(int i=0; i<7; i++){
+            new TouchAction(driver).press(PointOption.point(500, 400)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
+                    moveTo(PointOption.point(500, 1000)).release().perform();
+            if(isElementDisplayed(elementToScroll, 8))
+                break;
+        }
+
     }
 
     public void clickElementByCoordinates(int x, int y) {
-//        TouchAction touchAction=new TouchAction(driver);
-//        PointOption pointOption=new PointOption();
-//        pointOption.withCoordinates(x, y);
-//        touchAction.tap(pointOption).perform();
-
         TouchAction action = new TouchAction<>(driver);
         action.press(PointOption.point(x, y));
         action.waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)));
         action.release();
         action.perform();
     }
+
+    public void dragAndDropFromTopToBottom() {
+
+//        WebElement Panel = element;
+//        Dimension dimension = Panel.getSize();
+//
+//        int Anchor = Panel.getSize().getHeight() / 2;
+//
+//        Double ScreenWidthStart = dimension.getWidth() * 0.8;
+//        int scrollStart = ScreenWidthStart.intValue();
+//
+//        Double ScreenWidthEnd = dimension.getWidth() * 0.2;
+//        int scrollEnd = ScreenWidthEnd.intValue();
+//
+//        TouchAction ts = new TouchAction(driver);
+//
+//        ts.press(PointOption.point(scrollStart, Anchor))
+//                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
+//                .moveTo(PointOption.point(scrollEnd, Anchor))
+//                .release().perform();
+
+        new TouchAction(driver).press(PointOption.point(500, 300)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).
+                moveTo(PointOption.point(500, 1000)).release().perform();
+
+//        TouchAction action = new TouchAction(driver);
+//        action.longPress(elem1).waitAction(3000).moveTo(elem2).perform().release();
+    }
+
 }

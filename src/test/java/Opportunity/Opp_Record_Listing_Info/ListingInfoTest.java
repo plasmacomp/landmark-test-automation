@@ -7,12 +7,8 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages_ios.ListingInfoPage;
-import pages_ios.NewOpportunityPage;
 import utils.GlobalVars;
 import utils.Utils;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ListingInfoTest {
 
@@ -86,10 +82,12 @@ public class ListingInfoTest {
         int estimatedDaysToDelivery=5;
         int estimatedWeightGain=4;
         int deliveryAdjustment=10;
+
         isResult = listingInfoPage.fillWeightSummaryDetails(numberOfHeadWeighted, hoursOffFeed, estimatedDressing, estimatedDaysToDelivery, estimatedWeightGain, deliveryAdjustment);
         Utils.logStepInfo(isResult, "Fill Weights Summary details");
         Assert.isTrue(isResult, "Step-1: Failed to fill weights summary details!!");
     }
+
     @Test
     public void verifyFillingAssessmentOverviewDetails() {
         boolean isResult=false;
@@ -125,6 +123,16 @@ public class ListingInfoTest {
         Utils.logStepInfo(isResult, "Fill Delivery details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Delivery details!!");
     }
+    @Test
+    public void verifyFillingLiveWeightDetails() {
+        boolean isResult=false;
+        int liveWeight=20;
+        String fatScore="Fat score 1 (0-2mm)";
+        isResult = listingInfoPage.enterLiveWeightToPopulate(liveWeight, fatScore);
+        Utils.logStepInfo(isResult, "Fill Live Weight details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Live Weight details!!");
+    }
+
     @Test
     public void verifyPublishListing() {
         boolean isResult=false;

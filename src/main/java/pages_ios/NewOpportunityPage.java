@@ -38,7 +38,7 @@ public class NewOpportunityPage {
     private static WebElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
     private static WebElement notesLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='New Opportunity']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='New Opportunity']")
     private static WebElement newOpportunityHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
     private static WebElement doneButton;
@@ -228,18 +228,18 @@ public class NewOpportunityPage {
 
         commonFunctions.sendKey(priceGstTextBox, price);
         //commonFunctions.scrollDownToElement(ageTextBox1);
-        Utils.hideKeyboardIfVisible(driver);
+        driver.hideKeyboard();
         commonFunctions.sendKey(ageTextBox1, age1);
-        Utils.hideKeyboardIfVisible(driver);
+        driver.hideKeyboard();
         commonFunctions.sendKey(ageTextBox2, age2);
-        Utils.hideKeyboardIfVisible(driver);
+        driver.hideKeyboard();
 
         commonFunctions.clickElement(monthsDropdown);
         commonFunctions.clickElement(doneButtonWheelPicker);
         movePickerWheelMonthDropdown(monthsDropdown, monthDropdown);
 
         commonFunctions.sendKey(descriptionTextBox, description);
-        Utils.hideKeyboardIfVisible(driver);
+        driver.hideKeyboard();
         commonFunctions.clickElement(saveAndReviewButton);
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
         return isResult;

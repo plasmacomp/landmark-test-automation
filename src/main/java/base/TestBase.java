@@ -121,4 +121,11 @@ public abstract class TestBase{
 
     public abstract void closeDriver();
 
+    public static void quitDriver(){
+        globalVars.getDriver().quit();
+        globalVars.setDriver(null);
+        IosBase.driver.quit();
+        IosBase.driver=null;
+    }
+
 }

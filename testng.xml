@@ -44,7 +44,19 @@
                     <include name="verifyFillingBreedingOverviewDetails"/>
                     <include name="verifyFillingHealthVetDetails"/>
                     <include name="verifyFillingDeliveryDetails"/>
+                    <include name="verifyFillingLiveWeightDetails"/>
                     <include name="verifyPublishListing"/>
+                </methods>
+            </class>
+            <class name="Opportunity.Opp_Record_Listing_Info.ListingInfoClassifiedTest">
+                <methods>
+                    <include name="CreateOpportunityForClassified"/>
+                    <include name="verifyListingTypeSelectionClassified"/>
+                    <include name="verifyListingInfoNavigationClassified"/>
+                    <include name="verifyFillingClassifiedListingOverviewDetails"/>
+                    <include name="verifyFillingClassifiedLotDetails"/>
+                    <include name="verifyFillingClassifiedHealthVetDetails"/>
+                    <include name="verifyClassifiedPublishListing"/>
                 </methods>
             </class>
         </classes>
