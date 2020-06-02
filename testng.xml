@@ -59,6 +59,13 @@
                     <include name="verifyClassifiedPublishListing"/>
                 </methods>
             </class>
+            <class name="E_Contract.Econtract_Creation_Wizard.NewContractTest">
+                <methods>
+                    <include name="verifyOpportunityIdNavigationFromGridPage"/>
+                    <include name="verifyNewContractNavigationFromListingPage"/>
+                    <include name="verifyFillingNewContract"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

@@ -24,7 +24,6 @@ public class DashboardTest {
     @Test
     public void verifyNewOpportunity() {
         boolean isResult=false;
-        
         isResult = dashboardPage.verifyNewOpportunity();
         Utils.logStepInfo(isResult, "Verify that New Opportunity tile is present");
         Assert.isTrue(isResult, "Step-1: New Opportunity tile verification failed!!");
@@ -32,7 +31,6 @@ public class DashboardTest {
     @Test
     public void verifyOpportunities() {
         boolean isResult=false;
-        
         isResult = dashboardPage.verifyOpportunities();
         Utils.logStepInfo(isResult, "Verify that Opportunities tile is present");
         Assert.isTrue(isResult, "Step-1: Opportunities tile verification failed!!");

@@ -114,6 +114,8 @@ public class NewOpportunityPage {
     private static WebElement browseFilesButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Camera Roll']")
     private static WebElement cameraRollButton;
+    @iOSXCUITFindBy(accessibility = "Photo Gallery")
+    private static WebElement photoGalleryButton;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[1]")
     private static WebElement firstImage;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Continue']")
@@ -200,7 +202,8 @@ public class NewOpportunityPage {
 
     
     public boolean addVendorInfo(String searchText) {
-        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]";
+        //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]"; ************* For STG3
+        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
         commonFunctions.clickElement(vendorInfoTextbox);
         commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
         commonFunctions.clickElementByXpath(vendorNameXpath);
@@ -307,7 +310,7 @@ public class NewOpportunityPage {
     public boolean addAttachments() {
         boolean isResult=false;
         if(commonFunctions.clickElement(uploadAttachtmentsButton)){
-            if(commonFunctions.clickElement(cameraRollButton)){
+            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
                 try{
                     Thread.sleep(2000);
                 }

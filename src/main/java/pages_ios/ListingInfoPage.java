@@ -420,6 +420,8 @@ public class ListingInfoPage {
     private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[18]")
     private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedDropdown;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Vendor Name']//following-sibling::XCUIElementTypeStaticText[1]")
+    private static WebElement recordIdText;
 
 
 
@@ -668,6 +670,7 @@ public class ListingInfoPage {
     }
     public boolean publishListing() {
         boolean isResult=false;
+        globalVars.setRecordId(commonFunctions.getElementText(recordIdText, 10).trim());
         if(commonFunctions.clickElement(actionButtonListingInfoPage)){
             isResult=commonFunctions.clickElement(publishListingLink);
             try{

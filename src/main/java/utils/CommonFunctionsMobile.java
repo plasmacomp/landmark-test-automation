@@ -81,6 +81,18 @@ public class CommonFunctionsMobile {
         Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
         return isElementClicked;
     }
+    public boolean clickElementByAccessibilityId(String id) {
+        boolean isElementClicked=false;
+        try{
+            driver.findElementByAccessibilityId(id).click();
+            isElementClicked=true;
+        }
+        catch (Exception e) {
+            logger.error("Exception occurred in clickElementByAccessibilityId method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementClicked, "clickElementByAccessibilityId");
+        return isElementClicked;
+    }
 
 
     public void sendKey(WebElement element, String key) {
@@ -224,30 +236,29 @@ public class CommonFunctionsMobile {
     }
 
     public void dragAndDropFromTopToBottom() {
-
-//        WebElement Panel = element;
-//        Dimension dimension = Panel.getSize();
-//
-//        int Anchor = Panel.getSize().getHeight() / 2;
-//
-//        Double ScreenWidthStart = dimension.getWidth() * 0.8;
-//        int scrollStart = ScreenWidthStart.intValue();
-//
-//        Double ScreenWidthEnd = dimension.getWidth() * 0.2;
-//        int scrollEnd = ScreenWidthEnd.intValue();
-//
-//        TouchAction ts = new TouchAction(driver);
-//
-//        ts.press(PointOption.point(scrollStart, Anchor))
-//                .waitAction(WaitOptions.waitOptions(Duration.ofSeconds(1)))
-//                .moveTo(PointOption.point(scrollEnd, Anchor))
-//                .release().perform();
-
         new TouchAction(driver).press(PointOption.point(500, 300)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).
                 moveTo(PointOption.point(500, 1000)).release().perform();
+    }
 
-//        TouchAction action = new TouchAction(driver);
-//        action.longPress(elem1).waitAction(3000).moveTo(elem2).perform().release();
+    public void movePickerWheel(WebElement dropdownPicker, WebElement element, String val){
+        for(int i=0; i<10; i++) {
+            String pickerValue=getElementText(element, 10);
+            if(pickerValue.trim().contains(val)) {
+                break;
+            }
+            else{
+                clickElement(element);
+                pickerWheelStep(dropdownPicker, "next", 0.15);
+            }
+        }
+    }
+
+    public void pickerWheelStep(WebElement element, String direction, double offset) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put("order", direction);
+        params.put("offset", offset);
+        params.put("element", ((RemoteWebElement) element).getId());
+        driver.executeScript("mobile: selectPickerWheelValue", params);
     }
 
 }

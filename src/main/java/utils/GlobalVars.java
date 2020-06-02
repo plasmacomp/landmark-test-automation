@@ -59,7 +59,15 @@ public class GlobalVars {
     private String senderEmailPassword;
     private String jiraProjectName;
     private String jiraDefectType;
+    private String recordId;
 
+    public String getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(String recordId) {
+        this.recordId = recordId;
+    }
 
     public static GlobalVars getInstance() {
         if (globalVars == null)
