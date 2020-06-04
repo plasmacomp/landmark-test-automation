@@ -247,7 +247,7 @@ public class ListingInfoPage {
     private static WebElement breedingQualityDropdown;
     @iOSXCUITFindBy(accessibility = "Horn Status")
     private static WebElement hornStatusLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[35]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling::XCUIElementTypeTextField")
     private static WebElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament *")
     private static WebElement temperamentLabel;
@@ -674,7 +674,7 @@ public class ListingInfoPage {
         if(commonFunctions.clickElement(actionButtonListingInfoPage)){
             isResult=commonFunctions.clickElement(publishListingLink);
             try{
-                Thread.sleep(3000);
+                Thread.sleep(7000);
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();
@@ -691,7 +691,9 @@ public class ListingInfoPage {
         commonFunctions.sendKey(descriptionTextView, description);
         return commonFunctions.clickElement(hideKeyboardButton, 8);
     }
-    public boolean fillClassifiedLotDetails(String weightRangeLow, String weightRangeHigh) {
+    public boolean fillClassifiedLotDetails(String hornStatus, String weightRangeLow, String weightRangeHigh) {
+        movePickerWheel(hornStatusDropdown, hornStatus);
+        commonFunctions.clickElement(doneButtonWheelPicker);
         commonFunctions.scrollDownToElement(weightRangeLowLabel);
         commonFunctions.sendKey(weightRangeLowTextBox, weightRangeLow);
         commonFunctions.sendKey(weightRangeHighTextBox, weightRangeHigh);

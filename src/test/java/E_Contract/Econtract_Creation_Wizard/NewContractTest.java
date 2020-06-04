@@ -49,6 +49,7 @@ public class NewContractTest {
         String branchName="Alexandra";
         String buyerName="AJ Pointon & AW Pointon";
         String deliveryPoint="Test Point";
+        globalVars.setRecordId("0000005387");
         String updatedRecordId=globalVars.getRecordId();
         isResult = gridPage.fillContractDetailsFromListingPage(updatedRecordId, salesType, branchName, buyerName, deliveryPoint);
         Utils.logStepInfo(isResult, "Verify that Sales Information label is present");

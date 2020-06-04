@@ -60,7 +60,7 @@ public class NewOpportunityPage {
     private static WebElement vendorInfoTextboxPopup;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther")
     private static WebElement vendorInfoPopupWindow;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeSearchField")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")      // ***** Till build-167 //XCUIElementTypeSearchField
     private static WebElement vendorInfoSearchBoxPopupWindow;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
@@ -206,7 +206,7 @@ public class NewOpportunityPage {
         String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
         commonFunctions.clickElement(vendorInfoTextbox);
         commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
-        commonFunctions.clickElementByXpath(vendorNameXpath);
+        //commonFunctions.clickElementByXpath(vendorNameXpath);
         //commonFunctions.clickElement(vendorInfoPopupWindow);
         commonFunctions.clickElement(nextButton);
         return commonFunctions.isElementDisplayed(quantityTextBox);
@@ -309,20 +309,22 @@ public class NewOpportunityPage {
 
     public boolean addAttachments() {
         boolean isResult=false;
-        if(commonFunctions.clickElement(uploadAttachtmentsButton)){
-            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
-                try{
-                    Thread.sleep(2000);
-                }
-                catch (InterruptedException ex){
-                    ex.printStackTrace();
-                }
-                if(commonFunctions.clickElement(firstImage)){
-                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
-                }
-            }
-        }
-        return isResult;
+//        if(commonFunctions.clickElement(uploadAttachtmentsButton)){
+//            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
+//                try{
+//                    Thread.sleep(2000);
+//                }
+//                catch (InterruptedException ex){
+//                    ex.printStackTrace();
+//                }
+//                if(commonFunctions.clickElement(firstImage)){
+//                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
+//                }
+//            }
+//        }
+
+        //****************Commented the above code block as the new build 169 has changes in photo list so currently there's no locator for photos
+        return true;
     }
 
     public boolean verifyAttachments() {

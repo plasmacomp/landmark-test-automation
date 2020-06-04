@@ -20,7 +20,7 @@ public class GridPage {
     private static WebElement dropdownPicker;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
     private static WebElement doneButtonWheelPicker;
-    @iOSXCUITFindBy(accessibility = "Actions")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Actions']")
     private static WebElement actionButtonListingInfoPage;
     @iOSXCUITFindBy(accessibility = "New Contract")
     private static WebElement newContractLink;
@@ -40,6 +40,8 @@ public class GridPage {
     private static WebElement buyerInfoSearchButton;
     @iOSXCUITFindBy(accessibility = "Delivery")
     private static WebElement deliveryHeaderLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement hornStatusDropdown;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Delivery Point *']//preceding-sibling:: XCUIElementTypeTextField")
     private static WebElement deliveryPointTextField;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Est. Final Delivery Date *']//following-sibling:: XCUIElementTypeTextField")
@@ -81,41 +83,44 @@ public class GridPage {
 
     public boolean fillContractDetailsFromListingPage(String oppId, String salesType, String branchName, String buyerName, String deliveryPoint){
         boolean isResult=false;
+        String recordIdXpath="//*[@value='"+oppId+"']";
         String branchNameXpath="//XCUIElementTypeStaticText[@name='"+branchName+"']";
         String buyerhNameXpath="//XCUIElementTypeStaticText[@name='"+buyerName+"']";
 
-        if(commonFunctions.clickElementByAccessibilityId(oppId)){
-            commonFunctions.clickElement(contractDateDropdown);
+//        if(commonFunctions.clickElementByXpath(recordIdXpath)){
+//        }
+
+        commonFunctions.clickElementByXpath(recordIdXpath);
+        commonFunctions.clickElement(contractDateDropdown);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(salesTypeDropdown);
+        commonFunctions.movePickerWheel(dropdownPicker, salesTypeDropdown, salesType);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        if(commonFunctions.clickElement(branchSearchButton)) {
+            commonFunctions.sendKey(searchTextBoxPopupWindowBranch, branchName);
+            commonFunctions.clickElementByXpath(branchNameXpath);
+        }
+
+        if(commonFunctions.clickElement(buyerInfoHeaderLabel)){
+            commonFunctions.clickElement(buyerInfoSearchButton);
+            commonFunctions.sendKey(searchTextBoxPopupWindowBranch, buyerName, 15);
+            commonFunctions.clickElementByXpath(buyerhNameXpath);
+        }
+
+        if(commonFunctions.clickElement(deliveryHeaderLabel)){
+            commonFunctions.sendKey(deliveryPointTextField, deliveryPoint);
+            commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown);
             commonFunctions.clickElement(doneButtonWheelPicker);
-            commonFunctions.clickElement(salesTypeDropdown);
-            commonFunctions.movePickerWheel(dropdownPicker, salesTypeDropdown, salesType);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-            if(commonFunctions.clickElement(branchSearchButton)) {
-                commonFunctions.sendKey(searchTextBoxPopupWindowBranch, branchName);
-                commonFunctions.clickElementByXpath(branchNameXpath);
+        if(commonFunctions.clickElement(actionButtonListingInfoPage)){
+            isResult=commonFunctions.clickElement(submitLink);
+            try{
+                Thread.sleep(10000);
             }
-
-            if(commonFunctions.clickElement(buyerInfoHeaderLabel)){
-                commonFunctions.clickElement(buyerInfoSearchButton);
-                commonFunctions.sendKey(searchTextBoxPopupWindowBranch, buyerName, 15);
-                commonFunctions.clickElementByXpath(buyerhNameXpath);
-            }
-
-            if(commonFunctions.clickElement(deliveryHeaderLabel)){
-                commonFunctions.sendKey(deliveryPointTextField, deliveryPoint);
-                commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown);
-                commonFunctions.clickElement(doneButtonWheelPicker);
-            }
-
-            if(commonFunctions.clickElement(actionButtonListingInfoPage)){
-                isResult=commonFunctions.clickElement(submitLink);
-                try{
-                    Thread.sleep(10000);
-                }
-                catch (InterruptedException ex){
-                    ex.printStackTrace();
-                }
+            catch (InterruptedException ex){
+                ex.printStackTrace();
             }
         }
         return isResult;

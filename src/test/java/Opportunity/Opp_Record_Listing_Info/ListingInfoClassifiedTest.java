@@ -127,9 +127,10 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyFillingClassifiedLotDetails() {
         boolean isResult=false;
+        String hornStatus="Polled";
         int weightRangeLow=10;
         int weightRangeHigh=20;
-        isResult = listingInfoPage.fillClassifiedLotDetails(weightRangeLow+"", weightRangeHigh+"");
+        isResult = listingInfoPage.fillClassifiedLotDetails(hornStatus,weightRangeLow+"", weightRangeHigh+"");
         Utils.logStepInfo(isResult, "Fill Breeding overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
     }
