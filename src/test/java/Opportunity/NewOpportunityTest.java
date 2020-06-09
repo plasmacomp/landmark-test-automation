@@ -86,7 +86,8 @@ public class NewOpportunityTest {
     public void verifyAddVendorInfo() {
         boolean isResult=false;
         //String searchText="AJ Pointon & AW Pointon";
-        String searchText="A Rigano Farms";
+        String[] params=globalVars.getParamsData("verifyAddVendorInfo");
+        String searchText=params[0];
         isResult = newOpportunityPage.addVendorInfo(searchText);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
         Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
@@ -94,17 +95,23 @@ public class NewOpportunityTest {
     @Test
     public void verifyAddLotsInfo() {
         boolean isResult=false;
-        String vendorName="";
-        String quantity="10";
-        String productCategory="Cattle";
-        String product="Buffalo";
-        String breed="Angus";
-        String priceType="$/head";
-        String price="10";
-        String age1="2";
-        String age2="5";
-        String monthsDropdown="Month";
-        String description="Test Automation Description";
+        String[] params=globalVars.getParamsData("verifyAddLotsInfo");
+        String quantity = "",productCategory="",product="",breed="",priceType="",price="",age1="",age2="",monthsDropdown="",description="";
+        try{
+            quantity=params[0];
+            productCategory=params[1];
+            product=params[2];
+            breed=params[3];
+            priceType=params[4];
+            price=params[5];
+            age1=params[6];
+            age2=params[7];
+            monthsDropdown=params[8];
+            description=params[9];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
 
         isResult = newOpportunityPage.addLotsInformation(quantity, productCategory, product, breed, priceType, price, age1, age2, monthsDropdown, description);
         Utils.logStepInfo(isResult, "Add Lots information and click next");
@@ -120,9 +127,17 @@ public class NewOpportunityTest {
     @Test
     public void verifyLotSummaryPageValues() {
         boolean isResult=false;
-        String quantity="10";
-        String price="10";
-        isResult = newOpportunityPage.verifyLotSummaryPageValues(quantity, "0", price);
+        String[] params=globalVars.getParamsData("verifyLotSummaryPageValues");
+        String quantity="",price="", weight="";
+        try{
+            quantity=params[0];
+            price=params[1];
+            weight=params[2];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
+        isResult = newOpportunityPage.verifyLotSummaryPageValues(quantity, weight, price);
         Utils.logStepInfo(isResult, "Verify lots summary page values and click next");
         Assert.isTrue(isResult, "Step-1: Lots summary page values verification failed!!");
     }
@@ -143,7 +158,8 @@ public class NewOpportunityTest {
     @Test
     public void verifyAddNotes() {
         boolean isResult=false;
-        String noteText="Automation note";
+        String[] params=globalVars.getParamsData("verifyAddNotes");
+        String noteText=params[0];
         isResult = newOpportunityPage.addNotes(noteText);
         Utils.logStepInfo(isResult, "Add a note to the opportunity and send it");
         Assert.isTrue(isResult, "Step-8: Adding and sending note failed!!");
@@ -151,7 +167,8 @@ public class NewOpportunityTest {
     @Test
     public void verifyNotes() {
         boolean isResult=false;
-        String noteText="Automation note";
+        String[] params=globalVars.getParamsData("verifyNotes");
+        String noteText=params[0];
         isResult = newOpportunityPage.verifyNotes(noteText);
         Utils.logStepInfo(isResult, "Verify that the note has been sent");
         Assert.isTrue(isResult, "Step-9: Notes verification failed!!");

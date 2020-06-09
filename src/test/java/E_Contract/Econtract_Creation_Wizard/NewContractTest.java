@@ -45,12 +45,21 @@ public class NewContractTest {
     @Test
     public void verifyFillingNewContract() {
         boolean isResult=false;
-        String salesType="Agent settlement";
-        String branchName="Alexandra";
-        String buyerName="AJ Pointon & AW Pointon";
-        String deliveryPoint="Test Point";
-        globalVars.setRecordId("0000005387");
+        //globalVars.setRecordId("0000005387");
         String updatedRecordId=globalVars.getRecordId();
+
+        String[] params=globalVars.getParamsData("verifyFillingNewContract");
+        String salesType="",branchName="", buyerName="", deliveryPoint="";
+        try{
+            salesType=params[0];
+            branchName=params[1];
+            buyerName=params[2];
+            deliveryPoint=params[3];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
+
         isResult = gridPage.fillContractDetailsFromListingPage(updatedRecordId, salesType, branchName, buyerName, deliveryPoint);
         Utils.logStepInfo(isResult, "Verify that Sales Information label is present");
         Assert.isTrue(isResult, "Step-1:  Sales Information label verification failed!!");

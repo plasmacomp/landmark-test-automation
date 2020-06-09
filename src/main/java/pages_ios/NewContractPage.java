@@ -5,9 +5,10 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-import utils.CommonFunctions;
 import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
+
+import java.util.List;
 
 public class NewContractPage {
     private AppiumDriver driver;
@@ -17,20 +18,30 @@ public class NewContractPage {
     private String valueXpathLotsSummary="(//XCUIElementTypeStaticText[@value='###'])[1]";
 
 
-    @iOSXCUITFindBy(accessibility = "new opportunity")
-    private static WebElement newOpportunityTile;
+    @iOSXCUITFindBy(accessibility = "new contract")
+    private static WebElement newContractTile;
     @iOSXCUITFindBy(accessibility = "Sale Information")
     private static WebElement salesInformationLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Info")
     private static WebElement vendorInfoLabel;
+    @iOSXCUITFindBy(accessibility = "Buyer Info")
+    private static WebElement buyerInfoLabel;
+    @iOSXCUITFindBy(accessibility = "Delivery")
+    private static WebElement deliveryInfoLabel;
+    @iOSXCUITFindBy(accessibility = "Additional Charges")
+    private static WebElement additionalChargesLabel;
     @iOSXCUITFindBy(accessibility = "Lots")
     private static WebElement lotsLabel;
+    @iOSXCUITFindBy(accessibility = "Additional Charges")
+    private static WebElement additionalChargeLabel;
+    @iOSXCUITFindBy(accessibility = "Commission & Agents")
+    private static WebElement commissionAndAgentsLabel;
     @iOSXCUITFindBy(accessibility = "Attachments")
     private static WebElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
     private static WebElement notesLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='New Opportunity']")
-    private static WebElement newOpportunityHeaderLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='New Contract']")
+    private static WebElement newContractHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
     private static WebElement doneButton;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]") //*** //XCUIElementTypeStaticText[@value='Title *']//preceding-sibling::XCUIElementTypeTextField
@@ -53,11 +64,15 @@ public class NewContractPage {
     private static WebElement vendorInfoPopupWindow;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
     private static WebElement vendorName; //to get the name attribute's value for the name of the vendor
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")      // ***** Till build-167 //XCUIElementTypeSearchField
+    private static WebElement vendorInfoSearchBoxPopupWindow;
     //******Lots page elements**********
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]")
     private static WebElement quantityTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
     private static WebElement dropdownPicker;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
+    private static List<WebElement> dropdownPickers;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
     private static WebElement productCategoryDropdown;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]")
@@ -78,6 +93,28 @@ public class NewContractPage {
     private static WebElement monthsDropdown;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
     private static WebElement descriptionTextBox;
+    @iOSXCUITFindBy(accessibility = "Live Weight Range")
+    private static WebElement liveWeightRangeLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Live Weight Range ']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement liveWeightRangeTextField;
+    @iOSXCUITFindBy(accessibility = "Fat Score Range")
+    private static WebElement fatScoreRangeLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Fat Score Range ']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement fatScoreRangeTextField;
+    @iOSXCUITFindBy(accessibility = "Have Hormone Growth Promotants Been Used")
+    private static WebElement haveHormoneGrowthPromotantsBeenUsedLabel;
+    @iOSXCUITFindBy(accessibility = "Additional Information")
+    private static WebElement additionalInformationLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Additional Information ']//preceding-sibling:: XCUIElementTypeTextView")
+    private static WebElement additionalInformationTextView;
+    @iOSXCUITFindBy(accessibility = "Carthage Required")
+    private static WebElement carthageRequiredLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='COMMISSION']")
+    private static WebElement commissionHeaderLabel;
+
+
+
+
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Save & Review']")
     private static WebElement saveAndReviewButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='LIVESTOCK SUMMARY (SUBJECT TO DELIVERY)']")
@@ -115,9 +152,88 @@ public class NewContractPage {
     private static WebElement notesTextField;
     @iOSXCUITFindBy(accessibility = "send")
     private static WebElement sendIconNotes;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Validate & Sign Contract']")
+    private static WebElement validateAndSignContractButton;
+
+
+
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit & View Record']")
     private static WebElement submitAndViewRecordButton;
+//******* New contract sales information elements
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Contract Date *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement contractDateDropdown;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement salesTypeDropdown;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name=' Branch *']//following-sibling:: XCUIElementTypeButton")
+    private static WebElement branchSearchButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
+    private static WebElement searchTextBoxPopupWindowBranch;
+    @iOSXCUITFindBy(accessibility = "Buyer Info")
+    private static WebElement buyerInfoHeaderLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Buyer *']//following-sibling::XCUIElementTypeButton")
+    private static WebElement buyerInfoSearchButton;
+    @iOSXCUITFindBy(accessibility = "Delivery")
+    private static WebElement deliveryHeaderLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement hornStatusDropdown;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Delivery Point *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement deliveryPointTextField;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Est. Final Delivery Date *']//following-sibling:: XCUIElementTypeTextField")
+    private static WebElement estimatedFinalDeliveryDateDropdown;
+    @iOSXCUITFindBy(accessibility = "Multiple Deliveries?")
+    private static WebElement multipleDeliveriesLabel;
+    @iOSXCUITFindBy(accessibility = "Pickup/Delivery Notes")
+    private static WebElement pickUpDeliveryNotesLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pickup/Delivery Notes ']//preceding-sibling::XCUIElementTypeTextView")
+    private static WebElement pickUpDeliveryNotesTextView;
+    @iOSXCUITFindBy(accessibility = "Date of Inspection")
+    private static WebElement dateOfInspectionLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Date of Inspection ']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement dateOfInspectionDropDown;
+    @iOSXCUITFindBy(accessibility = "Location of Inspection")
+    private static WebElement locationOfInspectionLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Location of Inspection ']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement locationOfInspectionTextField;
+    @iOSXCUITFindBy(accessibility = "Location of Livestock Until Delivery")
+    private static WebElement locationOfLiveStockUntilDeliveryLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Location of Livestock Until Delivery ']//preceding-sibling::XCUIElementTypeTextField")
+    private static WebElement locationOfLiveStockUntilDeliveryTextField;
+
+    @iOSXCUITFindBy(accessibility = "Submit")
+    private static WebElement submitLink;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
+    private static WebElement doneButtonWheelPicker;
+    @iOSXCUITFindBy(accessibility = "Is this an AuctionPlus Sale?")
+    private static WebElement isThisAnAuctionPlusSaleLabel;
+    @iOSXCUITFindBy(accessibility = "Split Agreement Proceeds?")
+    private static WebElement SpitAgreementsProceedsLabel;
+    @iOSXCUITFindBy(accessibility = "Add Authorised Representative")
+    private static WebElement addAuthorisedRepresentativeLabel;
+    @iOSXCUITFindBy(accessibility = "Split Proceeds With *")
+    private static WebElement splitProceedsWithLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Split Proceeds With *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement splitProceedsWithTextField;
+    @iOSXCUITFindBy(accessibility = "Add Authorised Representative")
+    private static WebElement AddAuthorisedRepresentativeLabel;
+    @iOSXCUITFindBy(accessibility = "First Name *")
+    private static WebElement firstNameLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='First Name *']//following-sibling:: XCUIElementTypeTextField")
+    private static WebElement firstNameTextField;
+    @iOSXCUITFindBy(accessibility = "Last Name *")
+    private static WebElement lastNameLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Last Name *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement lastNameTextField;
+    @iOSXCUITFindBy(accessibility = "Email *")
+    private static WebElement emailLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Email *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement emailTextField;
+    @iOSXCUITFindBy(accessibility = "Phone *")
+    private static WebElement phoneLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Phone *']//preceding-sibling:: XCUIElementTypeTextField")
+    private static WebElement phoneTextField;
+
+
 
 
 
@@ -136,9 +252,13 @@ public class NewContractPage {
         return newContractPage;
     }
 
+    public boolean verifyNewContractNavigation() {
+        return commonFunctions.clickElement(newContractTile, 15);
+    }
+
     
-    public boolean verifyNewOpportunityHeaderLabel() {
-        return commonFunctions.isElementDisplayed(newOpportunityHeaderLabel, 15);
+    public boolean verifyNewContractHeaderLabel() {
+        return commonFunctions.isElementDisplayed(newContractHeaderLabel, 15);
     }
 
     
@@ -150,8 +270,19 @@ public class NewContractPage {
     public boolean verifyVendorInfoLabel() {
         return commonFunctions.isElementDisplayed(vendorInfoLabel, 15);
     }
+    public boolean verifyBuyerInfoLabel() {
+        return commonFunctions.isElementDisplayed(buyerInfoLabel, 15);
+    }
+    public boolean verifyDeliveryInfoLabel() {
+        return commonFunctions.isElementDisplayed(deliveryInfoLabel, 15);
+    }
+    public boolean verifyAdditionalChargesLabel() {
+        return commonFunctions.isElementDisplayed(additionalChargeLabel, 15);
+    }
+    public boolean verifyCommissionAndAgentsLabel() {
+        return commonFunctions.isElementDisplayed(commissionAndAgentsLabel, 15);
+    }
 
-    
     public boolean verifyLotsLabel() {
         return commonFunctions.isElementDisplayed(lotsLabel, 15);
     }
@@ -165,30 +296,47 @@ public class NewContractPage {
     public boolean verifyAttachmentsLabel() {
         return commonFunctions.isElementDisplayed(attachmentsLabel, 15);
     }
-
     
-    public boolean verifyNewOpportunityNavigation() {
-        return commonFunctions.clickElement(newOpportunityTile, 15);
-    }
-
-    
-    public boolean addSalesInformation(String title) {
-        commonFunctions.sendKey(titleTextbox, title);
-        commonFunctions.clickElement(expectedSaleDateTextbox);
-        commonFunctions.clickElement(nextButton);commonFunctions.clickElement(nextButton);
-        return commonFunctions.isElementDisplayed(vendorInfoTextbox);
-    }
-
-    
-    public boolean addVendorInfo() {
+    public boolean addVendorInfo(String searchText) {
+        boolean isResult=false;
+        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
         commonFunctions.clickElement(vendorInfoTextbox);
-        commonFunctions.clickElement(vendorInfoPopupWindow);
-        commonFunctions.clickElement(nextButton);
-        return commonFunctions.isElementDisplayed(quantityTextBox);
+        commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+        commonFunctions.clickElementByXpath(vendorNameXpath);
+        //commonFunctions.clickElement(vendorInfoPopupWindow);
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(buyerInfoSearchButton, 15);
+        }
+        return isResult;
+    }
+    public boolean addBuyerInfo(String searchText) {
+        boolean isResult=false;
+        String buyerNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
+        commonFunctions.clickElement(buyerInfoSearchButton);
+        commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+        commonFunctions.clickElementByXpath(buyerNameXpath);
+        //commonFunctions.clickElement(vendorInfoPopupWindow);
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(deliveryPointTextField, 15);
+        }
+        return isResult;
+    }
+
+    public boolean addDeliveryInfo(String deliveryPoint, String month, int day, int year) {
+        boolean isResult=false;
+        commonFunctions.sendKey(deliveryPointTextField, deliveryPoint);
+        commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown);
+        //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(quantityTextBox, 15);
+        }
+        return isResult;
     }
 
     
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+        boolean isResult=false;
         commonFunctions.sendKey(quantityTextBox, quantity);
         commonFunctions.clickElement(productCategoryDropdown);
         commonFunctions.sendKey(dropdownPicker, productCategory);
@@ -205,8 +353,25 @@ public class NewContractPage {
         commonFunctions.sendKey(dropdownPicker, monthDropdown);
         commonFunctions.sendKey(descriptionTextBox, description);
         commonFunctions.clickElement(saveAndReviewButton);
-        return commonFunctions.isElementDisplayed(addNewLotButton);
+        //isResult= commonFunctions.isElementDisplayed(addNewLotButton);
+        commonFunctions.clickElement(nextButton);
+        isResult= commonFunctions.isElementDisplayed(carthageRequiredLabel);
+        return isResult;
 
+    }
+    public boolean addAdditionalCharges() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(commissionHeaderLabel, 10);
+        }
+        return isResult;
+    }
+    public boolean addCommissionAndAgent() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(attachmentsLabel, 10);
+        }
+        return isResult;
     }
 
     
@@ -222,7 +387,6 @@ public class NewContractPage {
     }
 
 
-    
     public boolean addAttachments() {
         boolean isResult=false;
         if(commonFunctions.clickElement(uploadAttachtmentsButton)){
@@ -238,10 +402,14 @@ public class NewContractPage {
     
     public boolean verifyAttachments() {
         boolean isResult=false;
-        if(commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab)){
-            if(commonFunctions.clickElement(nextButton)){
-                isResult=commonFunctions.isElementDisplayed(notesTextField);
-            }
+//        if(commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab)){
+//            if(commonFunctions.clickElement(nextButton)){
+//                isResult=commonFunctions.isElementDisplayed(notesTextField);
+//            }
+//        }
+
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(notesTextField);
         }
         return isResult;
     }
@@ -256,8 +424,28 @@ public class NewContractPage {
     public boolean verifyNotes(String note) {
         boolean isResult=false;
         String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
-        if(commonFunctions.isElementDisplayedByXpath(notesTextXpath)){
-            isResult=commonFunctions.clickElement(submitAndViewRecordButton);
+        commonFunctions.isElementDisplayedByXpath(notesTextXpath);
+        isResult=commonFunctions.clickElement(validateAndSignContractButton);
+        return isResult;
+    }
+
+    public boolean fillSalesInformation(String month, int day, int year, String salesType, String branchName){
+        boolean isResult=false;
+        String branchNameXpath="//XCUIElementTypeStaticText[@name='"+branchName+"']";
+
+        commonFunctions.clickElement(contractDateDropdown);
+        //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(salesTypeDropdown);
+        commonFunctions.movePickerWheel(dropdownPicker, salesTypeDropdown, salesType);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        if(commonFunctions.clickElement(branchSearchButton)) {
+            commonFunctions.sendKey(searchTextBoxPopupWindowBranch, branchName);
+            commonFunctions.clickElementByXpath(branchNameXpath);
+        }
+        if(commonFunctions.clickElement(nextButton)){
+            isResult=commonFunctions.isElementDisplayed(vendorInfoTextbox, 15);
         }
         return isResult;
     }

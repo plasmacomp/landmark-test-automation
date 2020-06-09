@@ -493,4 +493,8 @@ public class GlobalVars {
         this.jiraDefectType = jiraDefectType;
     }
 
+    public String[] getParamsData(String methodName) {
+        return getClassDataElementMap().get(methodName).getParams().trim().split(",");
+    }
+
 }

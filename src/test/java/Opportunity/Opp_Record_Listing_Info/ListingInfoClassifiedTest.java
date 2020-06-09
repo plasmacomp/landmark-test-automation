@@ -34,34 +34,31 @@ public class ListingInfoClassifiedTest {
         loginPage=new LoginPage();
         newOpportunityPage=new NewOpportunityPage();
         boolean isResult=false;
-        String transactionType="Online";
-        String saleType="Dairy";
-        String username="";
-        String password="";
-        String currentMethodName="loginTest";
-        username=globalVars.getUsername(currentMethodName);
-        password=globalVars.getPassword(currentMethodName);
+        String username=globalVars.getUsername("loginTest");
+        String password=globalVars.getPassword("loginTest");
 
         String timeStamp = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
         String title="Automation_Opp_"+timeStamp;
 
-        String searchText="AJ Pointon & AW Pointon";
-        //String searchText="A Rigano Farms";
-
-        String vendorName="";
-        String quantity="10";
-        String productCategory="Cattle";
-        String product="Buffalo";
-        String breed="Angus";
-        String priceType="$/head";
-        String price="10";
-        String age1="2";
-        String age2="5";
-        String monthsDropdown="Month";
-        String description="Test Automation Description";
-
-        String noteText="Automation note";
-
+        String[] params=globalVars.getParamsData("CreateOpportunityForClassified");
+        String vendorName="", quantity = "",productCategory="",product="",breed="",priceType="",price="",age1="",age2="",monthsDropdown="",description="",noteText="";
+        try{
+            vendorName=params[0];
+            quantity=params[1];
+            productCategory=params[2];
+            product=params[3];
+            breed=params[4];
+            priceType=params[5];
+            price=params[6];
+            age1=params[7];
+            age2=params[8];
+            monthsDropdown=params[9];
+            description=params[10];
+            noteText=params[11];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
 
         isResult = loginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
@@ -75,7 +72,7 @@ public class ListingInfoClassifiedTest {
         Utils.logStepInfo(isResult, "Add sales information and click next");
         //Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
 
-        isResult = newOpportunityPage.addVendorInfo(searchText);
+        isResult = newOpportunityPage.addVendorInfo(vendorName);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
         //Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
 
@@ -99,8 +96,16 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyListingTypeSelectionClassified() {
         boolean isResult=false;
-        String transactionType="Online";
-        String saleType="Dairy";
+        String transactionType="";
+        String saleType="";
+        String[] params=globalVars.getParamsData("verifyListingTypeSelectionClassified");
+        try{
+            transactionType=params[0];
+            saleType=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.verifyListingTypeSelection(true, transactionType, saleType);
         Utils.logStepInfo(isResult, "Select the required listing type option given as parameter");
         Assert.isTrue(isResult, "Step-1: Required listing type selection failed!!");
@@ -116,9 +121,18 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyFillingClassifiedListingOverviewDetails() {
         boolean isResult=false;
-        String classifiedDuration="14 days";
+        String classifiedDuration="";
         int price=150;
-        String description="Test Description";
+        String description="";
+        String[] params=globalVars.getParamsData("verifyFillingClassifiedListingOverviewDetails");
+        try{
+            classifiedDuration=params[0];
+            price=Integer.parseInt(params[1]);
+            description=params[2];
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.fillClassifiedListingOverviewDetails(classifiedDuration, price, description);
         Utils.logStepInfo(isResult, "Fill listing overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill listing overview details!!");
@@ -127,9 +141,18 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyFillingClassifiedLotDetails() {
         boolean isResult=false;
-        String hornStatus="Polled";
-        int weightRangeLow=10;
-        int weightRangeHigh=20;
+        String hornStatus="";
+        int weightRangeLow=0;
+        int weightRangeHigh=0;
+        String[] params=globalVars.getParamsData("verifyFillingClassifiedLotDetails");
+        try{
+            hornStatus=params[0];
+            weightRangeLow=Integer.parseInt(params[1]);
+            weightRangeHigh=Integer.parseInt(params[2]);
+        }
+        catch (Exception ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.fillClassifiedLotDetails(hornStatus,weightRangeLow+"", weightRangeHigh+"");
         Utils.logStepInfo(isResult, "Fill Breeding overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
@@ -137,8 +160,16 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyFillingClassifiedHealthVetDetails() {
         boolean isResult=false;
-        String hgpTreated="Yes";
-        String withinWithholdingPeriod="Yes";
+        String hgpTreated="";
+        String withinWithholdingPeriod="";
+        String[] params=globalVars.getParamsData("verifyFillingClassifiedHealthVetDetails");
+        try{
+            hgpTreated=params[0];
+            withinWithholdingPeriod=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.addHealthVetDetailsDetails(hgpTreated, withinWithholdingPeriod);
         Utils.logStepInfo(isResult, "Fill Health Vet details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Health Vet details!!");

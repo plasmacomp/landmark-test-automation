@@ -66,6 +66,31 @@
                     <include name="verifyFillingNewContract"/>
                 </methods>
             </class>
+            <class name="E_Contract.Econtract_Creation_Wizard.NewContractDashboardTest">
+                <methods>
+                    <include name="verifyNewContractNavigation"/>
+                    <include name="verifyNewContractHeaderLabel"/>
+                    <include name="verifyNewContractSalesInformationLabel"/>
+                    <include name="verifyNewContractVendorInfoLabel"/>
+                    <include name="verifyBuyerInfoLabel"/>
+                    <include name="verifyDeliveryInfoLabel"/>
+                    <include name="verifyNewContractLotsLabel"/>
+                    <include name="verifyAdditionalChargesLabel"/>
+                    <include name="verifyCommissionAndAgentsLabel"/>
+                    <include name="verifyNewContractNotesLabel"/>
+                    <include name="verifyNewContractAttachmentsLabel"/>
+                    <include name="verifyNewContractAddSalesInformation"/>
+                    <include name="verifyNewContractAddVendorInfo"/>
+                    <include name="verifyAddBuyerInfo"/>
+                    <include name="verifyAddDeliveryInfo"/>
+                    <include name="verifyNewContractAddLotsInfo"/>
+                    <include name="verifyAddAdditionalCharges"/>
+                    <include name="verifyAddCommissionAndAgents"/>
+                    <include name="verifyNewContractAttachments"/>
+                    <include name="verifyNewContractAddNotes"/>
+                    <include name="verifyNewContractNotes"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

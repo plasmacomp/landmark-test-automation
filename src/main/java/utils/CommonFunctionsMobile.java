@@ -1,6 +1,7 @@
 package utils;
 
 import com.google.common.collect.ImmutableMap;
+import freemarker.template.utility.DateUtil;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
@@ -238,6 +239,36 @@ public class CommonFunctionsMobile {
     public void dragAndDropFromTopToBottom() {
         new TouchAction(driver).press(PointOption.point(500, 300)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(2000))).
                 moveTo(PointOption.point(500, 1000)).release().perform();
+    }
+
+    public void selectDateFromDatePicker(List<WebElement> dropdownPickers, String month, int day, int year){
+        for(int i=0; i<10; i++) {
+            String monthValue=dropdownPickers.get(0).getAttribute("value");
+            if(monthValue.trim().equalsIgnoreCase(month)){
+                break;
+            }
+            else{
+                pickerWheelStep(dropdownPickers.get(0), "next", 0.15);
+            }
+        }
+        for(int i=0; i<10; i++) {
+            String dayValue=dropdownPickers.get(1).getAttribute("value");
+            if(dayValue.trim().equalsIgnoreCase(day+"")){
+                break;
+            }
+            else{
+                pickerWheelStep(dropdownPickers.get(1), "next", 0.15);
+            }
+        }
+        for(int i=0; i<10; i++) {
+            String yearValue=dropdownPickers.get(2).getAttribute("value");
+            if(yearValue.trim().equalsIgnoreCase(year+"")){
+                break;
+            }
+            else{
+                pickerWheelStep(dropdownPickers.get(2), "next", 0.15);
+            }
+        }
     }
 
     public void movePickerWheel(WebElement dropdownPicker, WebElement element, String val){

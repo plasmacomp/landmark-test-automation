@@ -46,8 +46,16 @@ public class ListingInfoTest {
     @Test
     public void verifyListingTypeSelection() {
         boolean isResult=false;
-        String transactionType="Online";
-        String saleType="Dairy";
+        String transactionType="";
+        String saleType="";
+        String[] params=globalVars.getParamsData("verifyListingTypeSelection");
+        try{
+            transactionType=params[0];
+            saleType=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.verifyListingTypeSelection(false, transactionType, saleType);
         Utils.logStepInfo(isResult, "Select the required listing type option given as parameter");
         Assert.isTrue(isResult, "Step-1: Required listing type selection failed!!");
@@ -63,12 +71,20 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingListingOverviewDetails() {
         boolean isResult=false;
-        String biddingDuration="24 hours";
-        String closingSoonStatusDuration="3 hours";
-        String startingPrice="200";
-        String description="Test Description";
-        String reservePrice="215";
-        String town="BRISBANE";
+        String[] params=globalVars.getParamsData("verifyFillingListingOverviewDetails");
+        String biddingDuration = "",closingSoonStatusDuration="",startingPrice="",description="",reservePrice="",town="";
+        try{
+            biddingDuration=params[0];
+            closingSoonStatusDuration=params[1];
+            startingPrice=params[2];
+            description=params[3];
+            reservePrice=params[4];
+            town=params[5];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
+
         isResult = listingInfoPage.fillListingOverviewDetails(biddingDuration, closingSoonStatusDuration, startingPrice, description, reservePrice, town);
         Utils.logStepInfo(isResult, "Fill listing overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill listing overview details!!");
@@ -76,12 +92,19 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingWeightsSummaryDetails() {
         boolean isResult=false;
-        int numberOfHeadWeighted=2;
-        int hoursOffFeed=4;
-        int estimatedDressing=12;
-        int estimatedDaysToDelivery=5;
-        int estimatedWeightGain=4;
-        int deliveryAdjustment=10;
+        String[] params=globalVars.getParamsData("verifyFillingWeightsSummaryDetails");
+        int numberOfHeadWeighted = 0,hoursOffFeed=0,estimatedDressing=0,estimatedDaysToDelivery=0,estimatedWeightGain=0,deliveryAdjustment=0;
+        try{
+            numberOfHeadWeighted=Integer.parseInt(params[0]);
+            hoursOffFeed=Integer.parseInt(params[1]);
+            estimatedDressing=Integer.parseInt(params[2]);
+            estimatedDaysToDelivery=Integer.parseInt(params[3]);
+            estimatedWeightGain=Integer.parseInt(params[4]);
+            deliveryAdjustment=Integer.parseInt(params[5]);
+        }
+        catch (Exception ex){ //It can throw numberFormat as well as ArrayIndexOutOfBounds exceptions
+            ex.printStackTrace();
+        }
 
         isResult = listingInfoPage.fillWeightSummaryDetails(numberOfHeadWeighted, hoursOffFeed, estimatedDressing, estimatedDaysToDelivery, estimatedWeightGain, deliveryAdjustment);
         Utils.logStepInfo(isResult, "Fill Weights Summary details");
@@ -91,9 +114,16 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingAssessmentOverviewDetails() {
         boolean isResult=false;
-        String frame="Small";
-        String condition="Prime";
-        String agentComment="Test agent comment";
+        String[] params=globalVars.getParamsData("verifyFillingAssessmentOverviewDetails");
+        String frame="",condition="", agentComment="";
+        try{
+            frame=params[0];
+            condition=params[1];
+            agentComment=params[2];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.fillAssessmentOverviewDetails(frame, condition, agentComment);
         Utils.logStepInfo(isResult, "Fill Assessment overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Assessment overview details!!");
@@ -101,8 +131,15 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingBreedingOverviewDetails() {
         boolean isResult=false;
-        String vendorBred="Yes";
-        String temperament="Quiet";
+        String[] params=globalVars.getParamsData("verifyFillingBreedingOverviewDetails");
+        String vendorBred="",temperament="";
+        try{
+            vendorBred=params[0];
+            temperament=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.fillBreedingOverviewDetails(vendorBred, temperament);
         Utils.logStepInfo(isResult, "Fill Breeding overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
@@ -110,8 +147,15 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingHealthVetDetails() {
         boolean isResult=false;
-        String hgpTreated="Yes";
-        String withinWithholdingPeriod="Yes";
+        String[] params=globalVars.getParamsData("verifyFillingHealthVetDetails");
+        String hgpTreated="",withinWithholdingPeriod="";
+        try{
+            hgpTreated=params[0];
+            withinWithholdingPeriod=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.addHealthVetDetailsDetails(hgpTreated, withinWithholdingPeriod);
         Utils.logStepInfo(isResult, "Fill Health Vet details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Health Vet details!!");
@@ -126,8 +170,16 @@ public class ListingInfoTest {
     @Test
     public void verifyFillingLiveWeightDetails() {
         boolean isResult=false;
-        int liveWeight=20;
-        String fatScore="Fat score 1 (0-2mm)";
+        int liveWeight=0;
+        String fatScore="";
+        String[] params=globalVars.getParamsData("verifyFillingLiveWeightDetails");
+        try{
+            liveWeight=Integer.parseInt(params[0]);
+            fatScore=params[1];
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
         isResult = listingInfoPage.enterLiveWeightToPopulate(liveWeight, fatScore);
         Utils.logStepInfo(isResult, "Fill Live Weight details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Live Weight details!!");
