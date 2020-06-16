@@ -40,9 +40,9 @@ public class ListingInfoPage {
     private static WebElement bidAndOfferLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Classified'])[2]")
     private static WebElement classifiedLabel;
-    @iOSXCUITFindBy(xpath = "###################################")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmololistingtype-Bid & Offer")
     private static WebElement bidAndOfferRadioButton;
-    @iOSXCUITFindBy(xpath = "################################")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmololistingtype-Classified")
     private static WebElement classifiedRadioButton;
     @iOSXCUITFindBy(accessibility = "Transaction Type")
     private static WebElement transactionTypeLabel;
@@ -58,6 +58,10 @@ public class ListingInfoPage {
     private static WebElement availableLabel;
     @iOSXCUITFindBy(accessibility = "Sold")
     private static WebElement soldLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmolistingstatus-Available")
+    private static WebElement availableRadioButton;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmolistingstatus-Sold")
+    private static WebElement soldRadioButton;
 
     //*********Listing info tab locators
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='LISTING OVERVIEW']")
@@ -467,35 +471,37 @@ public class ListingInfoPage {
         return commonFunctions.isElementDisplayed(bidAndOfferLabel, 30) && commonFunctions.isElementDisplayed(classifiedLabel, 30);
     }
     public boolean verifyClassifiedListingType() {
-        Point point=classifiedLabel.getLocation();
-        int x=point.x-8;
-        int y=point.y;
-        commonFunctions.clickElementByCoordinates(x, y);
+//        Point point=classifiedLabel.getLocation();
+//        int x=point.x-8;
+//        int y=point.y;
+//        commonFunctions.clickElementByCoordinates(x, y);
 //        return commonFunctions.isElementDisplayed(classifiedListingStatusLabel, 8) && commonFunctions.isElementDisplayed(availableLabel, 8)
 //                && commonFunctions.isElementDisplayed(soldLabel, 8);
-        return true;
+        return commonFunctions.clickElement(classifiedRadioButton);
     }
     public boolean verifyBidAndOfferListingType() {
-        Point point=bidAndOfferLabel.getLocation();
-        int x=point.x-8;
-        int y=point.y;
-        commonFunctions.clickElementByCoordinates(x, y);
-//        return commonFunctions.isElementDisplayed(transactionTypeLabel, 8) && commonFunctions.isElementDisplayed(transactionTypeDropdown, 8)
-//                && commonFunctions.isElementDisplayed(saleTypeLabel, 8) && commonFunctions.isElementDisplayed(saleTypeDropdown, 8);
-        return true;
+//        Point point=bidAndOfferLabel.getLocation();
+//        int x=point.x-8;
+//        int y=point.y;
+//        commonFunctions.clickElementByCoordinates(x, y);
+//        return true;
+        return commonFunctions.clickElement(bidAndOfferRadioButton);
     }
 
     public boolean verifyListingTypeSelection(boolean isClassifiedTrue, String transactionType, String saleType) {
         boolean isResult=false;
         if(isClassifiedTrue){
-            Point point=classifiedLabel.getLocation();
-            int x=point.x-8;
-            int y=point.y;
-            commonFunctions.clickElementByCoordinates(x, y);
-            Point point1=availableLabel.getLocation();
-            int x1=point1.x-8;
-            int y1=point1.y;
-            commonFunctions.clickElementByCoordinates(x1, y1);
+//            Point point=classifiedLabel.getLocation();
+//            int x=point.x-8;
+//            int y=point.y;
+//            commonFunctions.clickElementByCoordinates(x, y);
+//            Point point1=availableLabel.getLocation();
+//            int x1=point1.x-8;
+//            int y1=point1.y;
+//            commonFunctions.clickElementByCoordinates(x1, y1);
+            if(commonFunctions.clickElement(classifiedRadioButton)){
+                commonFunctions.clickElement(availableRadioButton);
+            }
             isResult=commonFunctions.isElementDisplayed(availableLabel, 10);
 
         }
