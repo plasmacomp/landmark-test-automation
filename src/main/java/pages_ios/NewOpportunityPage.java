@@ -88,6 +88,8 @@ public class NewOpportunityPage {
     private static WebElement priceTypeDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmopriceaud") //(//XCUIElementTypeTextField)[6]
     private static WebElement priceGstTextBox;
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmotweight") //(//XCUIElementTypeTextField)[6]
+    private static WebElement totalWeightTextField;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmosex") //## (//XCUIElementTypeTextField)[7]
     private static WebElement sexDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoage-from") //## (//XCUIElementTypeTextField)[8]
@@ -422,43 +424,108 @@ public class NewOpportunityPage {
     }
     public boolean addLotsInformationTwice(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
-        for(int i=0; i<2; i++){
-            commonFunctions.sendKey(quantityTextBox, quantity);
-            commonFunctions.clickElement(productCategoryDropdown);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        String quantity2="15";
+        String productCategory2="Sheep";
+        String product2="Ewe";
+        String breed2="Bond";
+        String price2="900";
 
-            commonFunctions.clickElement(productDropdown);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, product);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.sendKey(quantityTextBox, quantity);
+        commonFunctions.clickElement(productCategoryDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
-            commonFunctions.clickElement(breedDropdown);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(productDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
-            commonFunctions.clickElement(priceTypeDropdown);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(breedDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
-            commonFunctions.sendKey(priceGstTextBox, price);
-            commonFunctions.sendKey(ageTextBox1, age1);
-            commonFunctions.sendKey(ageTextBox2, age2);
+        commonFunctions.clickElement(priceTypeDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
-            commonFunctions.clickElement(monthsDropdown);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
-            commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.sendKey(priceGstTextBox, price);
+        commonFunctions.sendKey(ageTextBox1, age1);
+        commonFunctions.sendKey(ageTextBox2, age2);
 
-            commonFunctions.sendKey(descriptionTextBox, description);
-            driver.hideKeyboard();
-            commonFunctions.clickElement(saveAndReviewButton);
-            if(i<1)
-                commonFunctions.clickElement(addNewLotButton);
-        }
+        commonFunctions.clickElement(monthsDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.sendKey(descriptionTextBox, description);
+        driver.hideKeyboard();
+        commonFunctions.clickElement(saveAndReviewButton);
+        commonFunctions.clickElement(addNewLotButton);
 
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
         commonFunctions.clickElement(nextButton);
         return isResult;
 
+    }
+    public boolean selectPerKgInPriceTypeDropDown(String quantity, String productCategory, String product, String breed) {
+        String priceType="c/kg";
+        boolean isResult=false;
+        commonFunctions.sendKey(quantityTextBox, quantity);
+        commonFunctions.clickElement(productCategoryDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.clickElement(productDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.clickElement(breedDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(priceTypeDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+        isResult=commonFunctions.isElementDisplayed(totalWeightTextField, 10);
+        return isResult;
+
+    }
+    public boolean addValueToPerKgWeightField(String weight) {
+        boolean isResult=false;
+        commonFunctions.sendKey(totalWeightTextField, weight);
+        driver.hideKeyboard();
+        isResult=totalWeightTextField.getAttribute("value").trim().equalsIgnoreCase(weight);
+        commonFunctions.clickElement(saveAndReviewButton);
+        return isResult;
+
+    }
+
+    public boolean addAnotherLotWithExistingLot(String quantity, String productCategory, String product, String breed) {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(addNewLotButton)){
+            isResult=addLotsInformationOnlyMandatoryFields(quantity, productCategory, product, breed);
+        }
+        return isResult;
+
+    }
+    public boolean SubmitAndViewRecord() {
+        boolean isResult=false;
+        commonFunctions.clickElement(nextButton);
+        isResult=commonFunctions.clickElement(submitAndViewRecordButton);
+        return isResult;
+    }
+    public boolean editLotInfo(String newBreed) {
+        boolean isResult=false;
+        commonFunctions.clickElement(breedDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, newBreed);
+        commonFunctions.clickElement(doneButton);
+        isResult=commonFunctions.getElementText(breedDropdown, 10).trim().equalsIgnoreCase(newBreed);
+        commonFunctions.clickElement(submitAndViewRecordButton);
+        return isResult;
+    }
+    public boolean verifyWeightValueOnLotGridPage(String totalWeight) {
+        boolean isResult=false;
+//        String value="";
+//        value=commonFunctions.getElementTextByXpath(valueXpathLotsSummary.replace("###",totalWeight), 10);
+        isResult= commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalWeight));
+        return isResult;
     }
 }

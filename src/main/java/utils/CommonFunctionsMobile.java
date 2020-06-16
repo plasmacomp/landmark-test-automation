@@ -210,6 +210,20 @@ public class CommonFunctionsMobile {
         logger.info("Element text found :"+ text);
         return text;
     }
+    public String getElementTextByXpath(String xpath, int timeOutInSsec) {
+        String text="";
+        try {
+            manageImplicitTimeOut(0);
+            wait=new WebDriverWait(driver, timeOutInSsec);
+            text=wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(xpath)))).getText();
+        } catch (Exception e) {
+            logger.error("Exception occurred in getElementText method: "+e.getMessage());
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+        }
+        manageImplicitTimeOut(globalVars.getImplicitWait());
+        logger.info("Element text found :"+ text);
+        return text;
+    }
     public void manageImplicitTimeOut(long timeOutInSsec) {
         try {
             driver.manage().timeouts().implicitlyWait(timeOutInSsec, TimeUnit.SECONDS);//Setting the implicit wait as zero as implicit and explicit wait do not work together

@@ -62,6 +62,15 @@ public class ListingInfoPage {
     private static WebElement availableRadioButton;
     @iOSXCUITFindBy(accessibility = "lmkopesdmolistingstatus-Sold")
     private static WebElement soldRadioButton;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='elipsis'])[1]")
+    private static WebElement firstEllipsisLotsPage;
+    @iOSXCUITFindBy(accessibility = "Edit Lot")
+    private static WebElement editLinkLotsPagePopup;
+    @iOSXCUITFindBy(accessibility = "Delete Lot")
+    private static WebElement deleteLinkLotsPagePopup;
+
+
+
 
     //*********Listing info tab locators
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='LISTING OVERVIEW']")
@@ -704,6 +713,34 @@ public class ListingInfoPage {
         commonFunctions.sendKey(weightRangeLowTextBox, weightRangeLow);
         commonFunctions.sendKey(weightRangeHighTextBox, weightRangeHigh);
         return commonFunctions.clickElement(hideKeyboardButton, 8);
+    }
+    public boolean checkListingTypeDisabled() {
+        return bidAndOfferRadioButton.getAttribute("enabled").trim().equalsIgnoreCase("false") &&
+                classifiedRadioButton.getAttribute("enabled").trim().equalsIgnoreCase("false");
+    }
+    public boolean checkListingTypeEnabled() {
+        return bidAndOfferRadioButton.getAttribute("enabled").trim().equalsIgnoreCase("true") &&
+                classifiedRadioButton.getAttribute("enabled").trim().equalsIgnoreCase("true");
+    }
+    public boolean moveToLotsSection() {
+        return commonFunctions.clickElement(lotsLabel);
+    }
+    public boolean moveToSalesInformationSection() {
+        return commonFunctions.clickElement(salesInformationLabel);
+    }
+    public boolean ClickEditLot() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(firstEllipsisLotsPage)){
+            isResult=commonFunctions.clickElement(editLinkLotsPagePopup);
+        }
+        return isResult;
+    }
+    public boolean deleteFirstLot() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(firstEllipsisLotsPage)){
+            isResult=commonFunctions.clickElement(deleteLinkLotsPagePopup);
+        }
+        return isResult;
     }
 
 }

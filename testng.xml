@@ -94,7 +94,15 @@
             </class>
             <class name="Opportunity.NewOpportunityConditionalTest">
                 <methods>
-                    <include name="VerifyCreateNewOpportunityWithTwoLots"/>
+                    <include name="VerifyAddingSalesAndVendorInfo"/>
+                    <include name="verifyPerKGConditionInLot"/>
+                    <include name="verifyAddingValueToPerKGFieldInLot"/>
+                    <include name="verifyWeightValueOnLotGridPage"/>
+                    <include name="verifyAddingSecondLotInTheSameOpportunity"/>
+                    <include name="verifyDisabledListingType"/>
+                    <include name="VerifyEditingLotsInfo"/>
+                    <include name="VerifyDeletingLot"/>
+                    <include name="verifyEnabledListingType"/>
                 </methods>
             </class>
         </classes>
