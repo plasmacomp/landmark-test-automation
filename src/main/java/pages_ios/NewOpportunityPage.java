@@ -16,6 +16,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.util.HashMap;
+import java.util.List;
 
 public class NewOpportunityPage {
     private AppiumDriver driver;
@@ -42,9 +43,9 @@ public class NewOpportunityPage {
     private static WebElement newOpportunityHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
     private static WebElement doneButton;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]") //*** //XCUIElementTypeStaticText[@value='Title *']//preceding-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotitle") //*** //XCUIElementTypeStaticText[@value='Title *']//preceding-sibling::XCUIElementTypeTextField
     private static WebElement titleTextbox;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]") //****//XCUIElementTypeStaticText[@value='Expected Sale Date ']//preceding-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkoppdmoexpsldt") //****//XCUIElementTypeStaticText[@value='Expected Sale Date ']//preceding-sibling::XCUIElementTypeTextField
     private static WebElement expectedSaleDateTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Next']")
     private static WebElement nextButton;
@@ -54,7 +55,7 @@ public class NewOpportunityPage {
     private static WebElement deleteButtonPopup;
     @iOSXCUITFindBy(accessibility = "Cancel")
     private static WebElement cancelButtonPopup;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopecesdmovendor") //## //XCUIElementTypeTextField
     private static WebElement vendorInfoTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     private static WebElement vendorInfoTextboxPopup;
@@ -66,33 +67,36 @@ public class NewOpportunityPage {
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
     private static WebElement vendorName; //to get the name attribute's value for the name of the vendor
     //******Lots page elements**********
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]")
+    @iOSXCUITFindBy(accessibility = "Paste")
+    private static WebElement pasteIconWheelPicker;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
+    private static WebElement doneButtonWheelPicker;
+
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoquantity") //## (//XCUIElementTypeTextField)[1]
     private static WebElement quantityTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
     private static WebElement dropdownPicker;
-    @iOSXCUITFindBy(accessibility = "Paste")
-    private static WebElement pasteIconWheelPicker;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
+    private static List<WebElement> dropdownPickers;
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoproductcat") //# (//XCUIElementTypeTextField)[2]
     private static WebElement productCategoryDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoproduct") //## (//XCUIElementTypeTextField)[3]
     private static WebElement productDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[4]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmobreed") //## (//XCUIElementTypeTextField)[4]
     private static WebElement breedDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
-    private static WebElement doneButtonWheelPicker;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[6]")
+    @iOSXCUITFindBy(accessibility = "lmkfmdmocostper") //## (//XCUIElementTypeTextField)[5]
     private static WebElement priceTypeDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[5]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmopriceaud") //(//XCUIElementTypeTextField)[6]
     private static WebElement priceGstTextBox;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[7]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmosex") //## (//XCUIElementTypeTextField)[7]
     private static WebElement sexDropdown;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[8]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoage-from") //## (//XCUIElementTypeTextField)[8]
     private static WebElement ageTextBox1;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[9]")//****** Index of this drop down to be checked
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoage-to") //(//XCUIElementTypeTextField)[9]
     private static WebElement ageTextBox2;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[10]")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmoagemonyr") //## (//XCUIElementTypeTextField)[10]
     private static WebElement monthsDropdown;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
+    @iOSXCUITFindBy(accessibility = "lmkoeelotdmolistgdesc") //## //XCUIElementTypeTextView
     private static WebElement descriptionTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Save & Review']")
     private static WebElement saveAndReviewButton;
@@ -104,7 +108,7 @@ public class NewOpportunityPage {
     private static WebElement totalWeightLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Sale Value']")
     private static WebElement totalSaleValueLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add new Lot']")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add New Lot']") //XCUIElementTypeButton[@name='Add new Lot']
     private static WebElement addNewLotButton;
 
     //********* Attachments elements ************
@@ -196,7 +200,9 @@ public class NewOpportunityPage {
     public boolean addSalesInformation(String title) {
         commonFunctions.sendKey(titleTextbox, title);
         commonFunctions.clickElement(expectedSaleDateTextbox);
-        commonFunctions.clickElement(nextButton);commonFunctions.clickElement(nextButton);
+        commonFunctions.clickElement(nextButton);
+        //commonFunctions.selectDateBySendingKeysToDropDown(dropdownPickers, month, day, year);
+        commonFunctions.clickElement(nextButton);
         return commonFunctions.isElementDisplayed(vendorInfoTextbox);
     }
 
@@ -212,39 +218,76 @@ public class NewOpportunityPage {
         return commonFunctions.isElementDisplayed(quantityTextBox);
     }
 
+//    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+//        boolean isResult=false;
+//        commonFunctions.sendKey(quantityTextBox, quantity);
+//
+//        commonFunctions.clickElement(productCategoryDropdown);
+//        movePickerWheel(productCategoryDropdown, productCategory);
+//
+//        commonFunctions.clickElement(productDropdown);
+//        movePickerWheel(productDropdown, product);
+//
+//        commonFunctions.clickElement(breedDropdown);
+//        movePickerWheel(breedDropdown, breed);
+//        commonFunctions.clickElement(doneButtonWheelPicker);
+//
+//        commonFunctions.clickElement(priceTypeDropdown);
+//        movePickerWheel(priceTypeDropdown, priceType);
+//
+//        commonFunctions.sendKey(priceGstTextBox, price);
+//        //commonFunctions.scrollDownToElement(ageTextBox1);
+//        driver.hideKeyboard();
+//        commonFunctions.sendKey(ageTextBox1, age1);
+//        driver.hideKeyboard();
+//        commonFunctions.sendKey(ageTextBox2, age2);
+//        driver.hideKeyboard();
+//
+//        commonFunctions.clickElement(monthsDropdown);
+//        commonFunctions.clickElement(doneButtonWheelPicker);
+//        movePickerWheelMonthDropdown(monthsDropdown, monthDropdown);
+//
+//        commonFunctions.sendKey(descriptionTextBox, description);
+//        driver.hideKeyboard();
+//        commonFunctions.clickElement(saveAndReviewButton);
+//        isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
+//        return isResult;
+//
+//    }
+
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
         commonFunctions.sendKey(quantityTextBox, quantity);
-
         commonFunctions.clickElement(productCategoryDropdown);
-        movePickerWheel(productCategoryDropdown, productCategory);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
         commonFunctions.clickElement(productDropdown);
-        movePickerWheel(productDropdown, product);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
         commonFunctions.clickElement(breedDropdown);
-        movePickerWheel(breedDropdown, breed);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
         commonFunctions.clickElement(doneButtonWheelPicker);
 
         commonFunctions.clickElement(priceTypeDropdown);
-        movePickerWheel(priceTypeDropdown, priceType);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+        commonFunctions.clickElement(doneButtonWheelPicker);
 
         commonFunctions.sendKey(priceGstTextBox, price);
-        //commonFunctions.scrollDownToElement(ageTextBox1);
-        driver.hideKeyboard();
         commonFunctions.sendKey(ageTextBox1, age1);
-        driver.hideKeyboard();
         commonFunctions.sendKey(ageTextBox2, age2);
-        driver.hideKeyboard();
 
         commonFunctions.clickElement(monthsDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
         commonFunctions.clickElement(doneButtonWheelPicker);
-        movePickerWheelMonthDropdown(monthsDropdown, monthDropdown);
 
         commonFunctions.sendKey(descriptionTextBox, description);
         driver.hideKeyboard();
         commonFunctions.clickElement(saveAndReviewButton);
+
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
+        commonFunctions.clickElement(nextButton);
         return isResult;
 
     }
@@ -352,5 +395,70 @@ public class NewOpportunityPage {
         isResult=commonFunctions.isElementDisplayedByXpath(notesTextXpath);
         commonFunctions.clickElement(submitAndViewRecordButton);
         return isResult;
+    }
+
+    public boolean addLotsInformationOnlyMandatoryFields(String quantity, String productCategory, String product, String breed) {
+        boolean isResult=false;
+        commonFunctions.sendKey(quantityTextBox, quantity);
+        commonFunctions.clickElement(productCategoryDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.clickElement(productDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.clickElement(breedDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        driver.hideKeyboard();
+        commonFunctions.clickElement(saveAndReviewButton);
+
+        isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
+        commonFunctions.clickElement(nextButton);
+        return isResult;
+
+    }
+    public boolean addLotsInformationTwice(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
+        boolean isResult=false;
+        for(int i=0; i<2; i++){
+            commonFunctions.sendKey(quantityTextBox, quantity);
+            commonFunctions.clickElement(productCategoryDropdown);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+
+            commonFunctions.clickElement(productDropdown);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+
+            commonFunctions.clickElement(breedDropdown);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+
+            commonFunctions.clickElement(priceTypeDropdown);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+
+            commonFunctions.sendKey(priceGstTextBox, price);
+            commonFunctions.sendKey(ageTextBox1, age1);
+            commonFunctions.sendKey(ageTextBox2, age2);
+
+            commonFunctions.clickElement(monthsDropdown);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+
+            commonFunctions.sendKey(descriptionTextBox, description);
+            driver.hideKeyboard();
+            commonFunctions.clickElement(saveAndReviewButton);
+            if(i<1)
+                commonFunctions.clickElement(addNewLotButton);
+        }
+
+
+        isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
+        commonFunctions.clickElement(nextButton);
+        return isResult;
+
     }
 }

@@ -21,14 +21,14 @@
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/GlobalVars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/GlobalVars.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoClassifiedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoClassifiedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
@@ -195,42 +195,46 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state x="98" y="122" key="#xdebugger.evaluate/0.23.1440.797@0.23.1440.797" timestamp="1591284211482" />
-    <state width="1398" height="230" key="GridCell.Tab.0.bottom" timestamp="1591704258752">
+    <state width="868" height="230" key="GridCell.Tab.0.bottom" timestamp="1592221964143">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1591704258752" />
-    <state width="1398" height="230" key="GridCell.Tab.0.center" timestamp="1591704258751">
+    <state width="868" height="230" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1592221964143" />
+    <state width="868" height="230" key="GridCell.Tab.0.center" timestamp="1592221964140">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1591704258751" />
-    <state width="1398" height="230" key="GridCell.Tab.0.left" timestamp="1591704258750">
+    <state width="868" height="230" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1592221964140" />
+    <state width="868" height="230" key="GridCell.Tab.0.left" timestamp="1592221964136">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1591704258750" />
-    <state width="1398" height="230" key="GridCell.Tab.0.right" timestamp="1591704258752">
+    <state width="868" height="230" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1592221964136" />
+    <state width="868" height="230" key="GridCell.Tab.0.right" timestamp="1592221964141">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="230" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1591704258752" />
-    <state width="1398" height="260" key="GridCell.Tab.1.bottom" timestamp="1591295159796">
+    <state width="868" height="230" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1592221964141" />
+    <state width="1398" height="260" key="GridCell.Tab.1.bottom" timestamp="1591983284334">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1591295159796" />
-    <state width="1398" height="260" key="GridCell.Tab.1.center" timestamp="1591295159795">
+    <state width="1398" height="260" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1591983284334" />
+    <state width="1398" height="260" key="GridCell.Tab.1.center" timestamp="1591983284333">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1591295159795" />
-    <state width="1398" height="260" key="GridCell.Tab.1.left" timestamp="1591295159795">
+    <state width="1398" height="260" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1591983284333" />
+    <state width="1398" height="260" key="GridCell.Tab.1.left" timestamp="1591983284332">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1591295159795" />
-    <state width="1398" height="260" key="GridCell.Tab.1.right" timestamp="1591295159796">
+    <state width="1398" height="260" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1591983284332" />
+    <state width="1398" height="260" key="GridCell.Tab.1.right" timestamp="1591983284333">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1591295159796" />
-    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup" timestamp="1591678793942">
+    <state width="1398" height="260" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1591983284333" />
+    <state x="327" y="39" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592139094261">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1591678793942" />
+    <state x="327" y="39" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.797@0.23.1440.797" timestamp="1592139094261" />
+    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup" timestamp="1592325526461">
+      <screen x="0" y="23" width="1440" height="797" />
+    </state>
+    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1592325526461" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -262,12 +266,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java</url>
-          <line>209</line>
+          <line>227</line>
           <option name="timeStamp" value="109" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java</url>
-          <line>202</line>
+          <line>220</line>
           <option name="timeStamp" value="110" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -277,13 +281,78 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
-          <line>115</line>
+          <line>106</line>
           <option name="timeStamp" value="135" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java</url>
           <line>39</line>
           <option name="timeStamp" value="142" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>113</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>135</line>
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>153</line>
+          <option name="timeStamp" value="146" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="147" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="148" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>205</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>220</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>227</line>
+          <option name="timeStamp" value="151" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>236</line>
+          <option name="timeStamp" value="152" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>245</line>
+          <option name="timeStamp" value="153" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>146</line>
+          <option name="timeStamp" value="154" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>166</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java</url>
+          <line>191</line>
+          <option name="timeStamp" value="156" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

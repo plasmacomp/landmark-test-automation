@@ -43,18 +43,8 @@ public class ListingInfoClassifiedTest {
         String[] params=globalVars.getParamsData("CreateOpportunityForClassified");
         String vendorName="", quantity = "",productCategory="",product="",breed="",priceType="",price="",age1="",age2="",monthsDropdown="",description="",noteText="";
         try{
-            vendorName=params[0];
-            quantity=params[1];
-            productCategory=params[2];
-            product=params[3];
-            breed=params[4];
-            priceType=params[5];
-            price=params[6];
-            age1=params[7];
-            age2=params[8];
-            monthsDropdown=params[9];
-            description=params[10];
-            noteText=params[11];
+            vendorName=params[0];quantity=params[1];productCategory=params[2];product=params[3];breed=params[4];priceType=params[5];
+            price=params[6];age1=params[7];age2=params[8];monthsDropdown=params[9];description=params[10];noteText=params[11];
         }
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();

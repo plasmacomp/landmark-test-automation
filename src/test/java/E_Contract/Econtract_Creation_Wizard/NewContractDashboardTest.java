@@ -8,6 +8,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import pages_ios.GridPage;
 import pages_ios.NewContractPage;
+import pages_ios.ReviewAndSignPage;
 import utils.GlobalVars;
 import utils.Utils;
 
@@ -17,6 +18,7 @@ import java.util.Date;
 public class NewContractDashboardTest {
     private static NewContractPage newContractPage;
     private static GridPage gridPage;
+    private static ReviewAndSignPage reviewAndSignPage;
     GlobalVars globalVars;
 
 
@@ -26,6 +28,7 @@ public class NewContractDashboardTest {
         globalVars = TestBase.setup(this.getClass().getSimpleName());
         newContractPage = NewContractPage.getInstance();
         gridPage=GridPage.getInstance();
+        reviewAndSignPage=ReviewAndSignPage.getInstance();
     }
 
     @Test
@@ -137,7 +140,7 @@ public class NewContractDashboardTest {
         Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
     }
     @Test
-    public void c() {
+    public void verifyAddBuyerInfo() {
         boolean isResult=false;
         String[] params=globalVars.getParamsData("verifyAddBuyerInfo");
         String buyerName=params[0];
@@ -237,6 +240,16 @@ public class NewContractDashboardTest {
         Utils.logStepInfo(isResult, "Verify that the note has been sent");
         Assert.isTrue(isResult, "Step-9: Notes verification failed!!");
     }
+    @Test
+    public void verifyValidateContract() {
+        boolean isResult=false;
+        String[] params=globalVars.getParamsData("verifyValidateContract");
+        String signatureText=params[0];
+        isResult = reviewAndSignPage.signedForAndOnBehalfOfLandmarkAsAgent(signatureText);
+        Utils.logStepInfo(isResult, "Verify that user is able to sign the contract");
+        Assert.isTrue(isResult, "Step-9: Failed to sign contract!!");
+    }
+
 
     @AfterTest
     public void closeDriver(ITestContext context){

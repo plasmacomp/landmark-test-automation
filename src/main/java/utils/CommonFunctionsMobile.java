@@ -106,6 +106,24 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
         }
     }
+    public void sendKeyToDropDown(WebElement pickerWheelElement, String key) {
+        try {
+            pickerWheelElement.sendKeys(key);
+            Utils.logFunctionLevelLogs(true, "sendKey");
+        } catch (Exception e) {
+            logger.error("Exception occurred in sendKey method: "+e.getMessage());
+        }
+    }
+    public void selectDateBySendingKeysToDropDown(List<WebElement> pickerWheelElementList, String month, String day, String year) {
+        try {
+            pickerWheelElementList.get(0).sendKeys(month);
+            pickerWheelElementList.get(1).sendKeys(day);
+            pickerWheelElementList.get(2).sendKeys(year);
+            Utils.logFunctionLevelLogs(true, "selectDateBySendingKeysToDropDown");
+        } catch (Exception e) {
+            logger.error("Exception occurred in selectDateBySendingKeysToDropDown method: "+e.getMessage());
+        }
+    }
 
     public void sendKeyByJs(WebElement element, String key) {
         try {

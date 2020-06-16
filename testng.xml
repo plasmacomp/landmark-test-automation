@@ -89,6 +89,12 @@
                     <include name="verifyNewContractAttachments"/>
                     <include name="verifyNewContractAddNotes"/>
                     <include name="verifyNewContractNotes"/>
+                    <include name="verifyValidateContract"/>
+                </methods>
+            </class>
+            <class name="Opportunity.NewOpportunityConditionalTest">
+                <methods>
+                    <include name="VerifyCreateNewOpportunityWithTwoLots"/>
                 </methods>
             </class>
         </classes>

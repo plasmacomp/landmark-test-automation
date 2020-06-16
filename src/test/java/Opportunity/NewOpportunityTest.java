@@ -85,7 +85,6 @@ public class NewOpportunityTest {
     @Test
     public void verifyAddVendorInfo() {
         boolean isResult=false;
-        //String searchText="AJ Pointon & AW Pointon";
         String[] params=globalVars.getParamsData("verifyAddVendorInfo");
         String searchText=params[0];
         isResult = newOpportunityPage.addVendorInfo(searchText);
@@ -98,16 +97,8 @@ public class NewOpportunityTest {
         String[] params=globalVars.getParamsData("verifyAddLotsInfo");
         String quantity = "",productCategory="",product="",breed="",priceType="",price="",age1="",age2="",monthsDropdown="",description="";
         try{
-            quantity=params[0];
-            productCategory=params[1];
-            product=params[2];
-            breed=params[3];
-            priceType=params[4];
-            price=params[5];
-            age1=params[6];
-            age2=params[7];
-            monthsDropdown=params[8];
-            description=params[9];
+            quantity=params[0];productCategory=params[1];product=params[2];breed=params[3];priceType=params[4];
+            price=params[5];age1=params[6];age2=params[7];monthsDropdown=params[8];description=params[9];
         }
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();

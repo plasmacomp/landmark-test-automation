@@ -45,13 +45,6 @@ public class LoginPage
     private static IOSElement userIcon;
 
 
-    public  void hideKeyboardIfVisible() {
-    	boolean isKeyboardShown = ((HasOnScreenKeyboard) driver).isKeyboardShown();
-        if ( isKeyboardShown ==true){
-        	driver.hideKeyboard();
-       }
-    }
-
     public boolean login(String username, String password) {
         boolean isUserLoggedIn=false;
         //Log.info("**********Login method started"+GlobalVars.platform+"*********");
@@ -67,10 +60,6 @@ public class LoginPage
             e.printStackTrace();
         }
         return isUserLoggedIn;
-    }
-
-    public boolean logout() {
-        return false;
     }
 
 }
