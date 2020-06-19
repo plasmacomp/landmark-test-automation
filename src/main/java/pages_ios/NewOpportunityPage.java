@@ -146,9 +146,6 @@ public class NewOpportunityPage {
 
 
 
-
-
-
     public NewOpportunityPage() {
         globalVars=GlobalVars.getInstance();
         this.driver = globalVars.getDriver();
@@ -213,7 +210,7 @@ public class NewOpportunityPage {
         //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]"; ************* For STG3
         String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
         commonFunctions.clickElement(vendorInfoTextbox);
-        commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+        //commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
         //commonFunctions.clickElementByXpath(vendorNameXpath);
         //commonFunctions.clickElement(vendorInfoPopupWindow);
         commonFunctions.clickElement(nextButton);
@@ -289,7 +286,7 @@ public class NewOpportunityPage {
         commonFunctions.clickElement(saveAndReviewButton);
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
-        commonFunctions.clickElement(nextButton);
+        //commonFunctions.clickElement(nextButton);
         return isResult;
 
     }
@@ -518,7 +515,7 @@ public class NewOpportunityPage {
         commonFunctions.sendKeyToDropDown(dropdownPicker, newBreed);
         commonFunctions.clickElement(doneButton);
         isResult=commonFunctions.getElementText(breedDropdown, 10).trim().equalsIgnoreCase(newBreed);
-        commonFunctions.clickElement(submitAndViewRecordButton);
+        commonFunctions.clickElement(saveAndReviewButton);
         return isResult;
     }
     public boolean verifyWeightValueOnLotGridPage(String totalWeight) {

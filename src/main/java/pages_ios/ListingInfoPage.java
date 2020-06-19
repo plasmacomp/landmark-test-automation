@@ -480,34 +480,15 @@ public class ListingInfoPage {
         return commonFunctions.isElementDisplayed(bidAndOfferLabel, 30) && commonFunctions.isElementDisplayed(classifiedLabel, 30);
     }
     public boolean verifyClassifiedListingType() {
-//        Point point=classifiedLabel.getLocation();
-//        int x=point.x-8;
-//        int y=point.y;
-//        commonFunctions.clickElementByCoordinates(x, y);
-//        return commonFunctions.isElementDisplayed(classifiedListingStatusLabel, 8) && commonFunctions.isElementDisplayed(availableLabel, 8)
-//                && commonFunctions.isElementDisplayed(soldLabel, 8);
         return commonFunctions.clickElement(classifiedRadioButton);
     }
     public boolean verifyBidAndOfferListingType() {
-//        Point point=bidAndOfferLabel.getLocation();
-//        int x=point.x-8;
-//        int y=point.y;
-//        commonFunctions.clickElementByCoordinates(x, y);
-//        return true;
         return commonFunctions.clickElement(bidAndOfferRadioButton);
     }
 
     public boolean verifyListingTypeSelection(boolean isClassifiedTrue, String transactionType, String saleType) {
         boolean isResult=false;
         if(isClassifiedTrue){
-//            Point point=classifiedLabel.getLocation();
-//            int x=point.x-8;
-//            int y=point.y;
-//            commonFunctions.clickElementByCoordinates(x, y);
-//            Point point1=availableLabel.getLocation();
-//            int x1=point1.x-8;
-//            int y1=point1.y;
-//            commonFunctions.clickElementByCoordinates(x1, y1);
             if(commonFunctions.clickElement(classifiedRadioButton)){
                 commonFunctions.clickElement(availableRadioButton);
             }
@@ -516,10 +497,15 @@ public class ListingInfoPage {
         }
         else{
             commonFunctions.clickElement(transactionTypeDropdown);
-            movePickerWheel(transactionTypeDropdown, transactionType);
-            commonFunctions.clickElement(saleTypeDropdown);
-            movePickerWheel(saleTypeDropdown, saleType);
+            //movePickerWheel(transactionTypeDropdown, transactionType);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, transactionType);
             commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+            commonFunctions.clickElement(saleTypeDropdown);
+            //movePickerWheel(saleTypeDropdown, saleType);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, saleType);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
             isResult=commonFunctions.getElementText(saleTypeDropdown, 10).trim().equalsIgnoreCase(saleType);
         }
         return isResult;
@@ -564,8 +550,16 @@ public class ListingInfoPage {
         String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
         commonFunctions.clickElement(biddingStartDateTimeDropdown);
         commonFunctions.clickElement(doneButtonWheelPicker);
-        movePickerWheel(biddingDurationDropdown, biddingDuration);
-        movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
+        //movePickerWheel(biddingDurationDropdown, biddingDuration);
+        commonFunctions.clickElement(biddingDurationDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, biddingDuration);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        commonFunctions.clickElement(closingSoonStatusDurationDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, closingSoonStatusDuration);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        //movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
         commonFunctions.sendKey(startingPriceTextBox, startingPrice);
         commonFunctions.sendKey(descriptionTextView, description);
         commonFunctions.sendKey(reservePriceTextBox, reservePrice);
@@ -585,7 +579,9 @@ public class ListingInfoPage {
         if(commonFunctions.clickElement(enterLiveWeightToPopulateButton)){
             commonFunctions.sendKey(liveWeightKgTextField, liveWeightKg+"");
             commonFunctions.clickElement(fatScoreTextField);
-            movePickerWheelFatScore(fatScoreTextField, fatScore);
+            //movePickerWheelFatScore(fatScoreTextField, fatScore);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, fatScore);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
             //commonFunctions.clickElement(doneButtonWheelPicker);
             //commonFunctions.sendKey(fatScoreTextField, fatScore+"");
             isResult=commonFunctions.clickElement(plusIcon);
@@ -642,30 +638,37 @@ public class ListingInfoPage {
     }
     public boolean fillBreedingOverviewDetails(String vendorBred, String temperament) {
         commonFunctions.scrollDownToElement(vendorBredDropdown);
+
         commonFunctions.clickElement(vendorBredDropdown);
-        movePickerWheel(vendorBredDropdown, vendorBred);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        //movePickerWheel(vendorBredDropdown, vendorBred);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, vendorBred);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
         commonFunctions.scrollDownToElement(temperamentDropdown);
         commonFunctions.clickElement(temperamentDropdown);
-        movePickerWheel(temperamentDropdown, temperament);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        //movePickerWheel(temperamentDropdown, temperament);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, temperament);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
         return !commonFunctions.getElementText(temperamentDropdown, 10).isEmpty();
     }
     public boolean addBreedingDetailsDetails() {
         return false;
     }
     public boolean addHealthVetDetailsDetails(String hgpTreated, String withinWithholdingPeriod) {
+        boolean isResult=false;
         commonFunctions.scrollDownToElement(hgpTreatedDropdown);
         //movePickerWheel(hgpTreatedDropdown, hgpTreated);
         //commonFunctions.clickElement(doneButtonWheelPicker, 10);
         commonFunctions.clickElement(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown);
-        movePickerWheel(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, withinWithholdingPeriod);
+        //movePickerWheel(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, withinWithholdingPeriod);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, withinWithholdingPeriod);
         commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
         commonFunctions.clickElement(hgpTreatedDropdown);
-        return true;
-
+        commonFunctions.sendKeyToDropDown(dropdownPicker, hgpTreated);
+        isResult=commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        return isResult;
         //return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
     }
     public boolean fillTreatmentDetails() {
@@ -689,7 +692,7 @@ public class ListingInfoPage {
         if(commonFunctions.clickElement(actionButtonListingInfoPage)){
             isResult=commonFunctions.clickElement(publishListingLink);
             try{
-                Thread.sleep(7000);
+                Thread.sleep(5000); //Static wait to see the screen after publishing
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();
@@ -700,15 +703,20 @@ public class ListingInfoPage {
 
     public boolean fillClassifiedListingOverviewDetails(String classifiedDuration, int price, String description) {
         commonFunctions.clickElement(classifiedDurationDropdown);
-        movePickerWheel(classifiedDurationDropdown, classifiedDuration);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
+        //movePickerWheel(classifiedDurationDropdown, classifiedDuration);
         commonFunctions.clickElement(doneButtonWheelPicker);
+
         commonFunctions.sendKey(priceTextBox, price+"");
         commonFunctions.sendKey(descriptionTextView, description);
         return commonFunctions.clickElement(hideKeyboardButton, 8);
     }
     public boolean fillClassifiedLotDetails(String hornStatus, String weightRangeLow, String weightRangeHigh) {
-        movePickerWheel(hornStatusDropdown, hornStatus);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        //movePickerWheel(hornStatusDropdown, hornStatus);
+        commonFunctions.clickElement(hornStatusDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, hornStatus);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
         commonFunctions.scrollDownToElement(weightRangeLowLabel);
         commonFunctions.sendKey(weightRangeLowTextBox, weightRangeLow);
         commonFunctions.sendKey(weightRangeHighTextBox, weightRangeHigh);

@@ -33,6 +33,7 @@ public class NewOpportunityConditionalTest {
         initialization();
         loginPage=new LoginPage();
         newOpportunityPage=new NewOpportunityPage();
+        listingInfoPage=new ListingInfoPage();
         SoftAssert softAssert=new SoftAssert();
         boolean isResult=false;
         String username=globalVars.getUsername("loginTest");
@@ -59,21 +60,6 @@ public class NewOpportunityConditionalTest {
         isResult = newOpportunityPage.addVendorInfo(vendorName);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
         softAssert.assertTrue(isResult, "Step-1: Adding Vendor information failed!!");
-
-//        isResult = newOpportunityPage.addLotsInformationTwice(quantity, productCategory, product, breed, priceType, price, age1, age2, monthsDropdown, description);
-//        newOpportunityPage.verifyLotSummaryPageValues(quantity, "0", price);
-//        Utils.logStepInfo(isResult, "Add Lots information and click next");
-//        softAssert.assertTrue(isResult, "Step-1: Adding Lots information failed!!");
-
-//        isResult = newOpportunityPage.addAttachments();
-//        newOpportunityPage.verifyAttachments();
-//        Utils.logStepInfo(isResult, "Add an attachment file to the opportunity");
-//        softAssert.assertTrue(isResult, "Step-1: Attachment file addition failed!!");
-//
-//        isResult = newOpportunityPage.addNotes(noteText);
-//        newOpportunityPage.verifyNotes(noteText);
-//        Utils.logStepInfo(isResult, "Add a note to the opportunity and send it");
-//        softAssert.assertTrue(isResult, "Step-8: Adding and sending note failed!!");
 
     }
     @Test
@@ -110,8 +96,10 @@ public class NewOpportunityConditionalTest {
         String perHeadWeight = "", quantity="";
         int totalWeight=0;
         try{
-            quantity=params[0];perHeadWeight=params[1];
-            totalWeight=Integer.parseInt(quantity)*Integer.parseInt(perHeadWeight);
+            //quantity=params[0];
+            perHeadWeight=params[0];
+            //totalWeight=Integer.parseInt(quantity)*Integer.parseInt(perHeadWeight);
+            totalWeight=Integer.parseInt(perHeadWeight);
         }
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();
@@ -139,8 +127,6 @@ public class NewOpportunityConditionalTest {
     @Test
     public void verifyDisabledListingType() {
         boolean isResult=false;
-        listingInfoPage=ListingInfoPage.getInstance();
-
         if(newOpportunityPage.SubmitAndViewRecord()){
             isResult=listingInfoPage.checkListingTypeDisabled();
         }
@@ -150,7 +136,6 @@ public class NewOpportunityConditionalTest {
     @Test
     public void VerifyEditingLotsInfo() {
         boolean isResult=false;
-        listingInfoPage=ListingInfoPage.getInstance();
         String[] params=globalVars.getParamsData("VerifyEditingLotsInfo");
         String newBreed =params[0];
 
@@ -165,8 +150,6 @@ public class NewOpportunityConditionalTest {
     @Test
     public void VerifyDeletingLot() {
         boolean isResult=false;
-        listingInfoPage=ListingInfoPage.getInstance();
-
         isResult= listingInfoPage.deleteFirstLot();
 
         Utils.logStepInfo(isResult, "Delete lot and verify that the lot info has been deleted successfully");
@@ -175,8 +158,6 @@ public class NewOpportunityConditionalTest {
     @Test
     public void verifyEnabledListingType() {
         boolean isResult=false;
-        listingInfoPage=ListingInfoPage.getInstance();
-
         if(listingInfoPage.moveToSalesInformationSection()){
             isResult= listingInfoPage.checkListingTypeEnabled();
         }
