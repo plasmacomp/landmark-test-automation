@@ -23,21 +23,21 @@ public class ListingInfoTest {
 
     @Test
     public void verifyListingTypeOptions() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.verifyListingTypeOptions();
         Utils.logStepInfo(isResult, "Verify that the page has two listing options: Bid & Offer and Classified");
         Assert.isTrue(isResult, "Step-1: Listing type options verification failed!!");
     }
     @Test
     public void verifyClassifiedListingType() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.verifyClassifiedListingType();
         Utils.logStepInfo(isResult, "Click on the classified listing type radio button and verify that the respective options appear");
         Assert.isTrue(isResult, "Step-1: Classified listing type verification failed!!");
     }
     @Test
     public void verifyBidAndOfferListingType() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.verifyBidAndOfferListingType();
         Utils.logStepInfo(isResult, "Click on the Bid & Offer listing type radio button and verify that the respective options appear");
         Assert.isTrue(isResult, "Step-1: Bid & Offer listing type verification failed!!");
@@ -45,7 +45,7 @@ public class ListingInfoTest {
 
     @Test
     public void verifyListingTypeSelection() {
-        boolean isResult=false;
+        boolean isResult;
         String transactionType="";
         String saleType="";
         String[] params=globalVars.getParamsData("verifyListingTypeSelection");
@@ -62,7 +62,7 @@ public class ListingInfoTest {
     }
     @Test
     public void verifyListingInfoNavigation() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.verifyListingInfoNavigation();
         Utils.logStepInfo(isResult, "Click on the listing info tab to navigate to listing info page");
         Assert.isTrue(isResult, "Step-1: Failed to navigate to listing info page!!");
@@ -70,7 +70,7 @@ public class ListingInfoTest {
 
     @Test
     public void verifyFillingListingOverviewDetails() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyFillingListingOverviewDetails");
         String biddingDuration = "",closingSoonStatusDuration="",startingPrice="",description="",reservePrice="",town="";
         try{
@@ -84,7 +84,6 @@ public class ListingInfoTest {
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();
         }
-
         isResult = listingInfoPage.fillListingOverviewDetails(biddingDuration, closingSoonStatusDuration, startingPrice, description, reservePrice, town);
         Utils.logStepInfo(isResult, "Fill listing overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill listing overview details!!");
@@ -105,7 +104,6 @@ public class ListingInfoTest {
         catch (Exception ex){ //It can throw numberFormat as well as ArrayIndexOutOfBounds exceptions
             ex.printStackTrace();
         }
-
         isResult = listingInfoPage.fillWeightSummaryDetails(numberOfHeadWeighted, hoursOffFeed, estimatedDressing, estimatedDaysToDelivery, estimatedWeightGain, deliveryAdjustment);
         Utils.logStepInfo(isResult, "Fill Weights Summary details");
         Assert.isTrue(isResult, "Step-1: Failed to fill weights summary details!!");
@@ -113,7 +111,7 @@ public class ListingInfoTest {
 
     @Test
     public void verifyFillingAssessmentOverviewDetails() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyFillingAssessmentOverviewDetails");
         String frame="",condition="", agentComment="";
         try{
@@ -130,7 +128,7 @@ public class ListingInfoTest {
     }
     @Test
     public void verifyFillingBreedingOverviewDetails() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyFillingBreedingOverviewDetails");
         String vendorBred="",temperament="";
         try{
@@ -146,7 +144,7 @@ public class ListingInfoTest {
     }
     @Test
     public void verifyFillingHealthVetDetails() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyFillingHealthVetDetails");
         String hgpTreated="",withinWithholdingPeriod="";
         try{
@@ -162,14 +160,14 @@ public class ListingInfoTest {
     }
     @Test
     public void verifyFillingDeliveryDetails() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.fillDeliveryDetails();
         Utils.logStepInfo(isResult, "Fill Delivery details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Delivery details!!");
     }
     @Test
     public void verifyFillingLiveWeightDetails() {
-        boolean isResult=false;
+        boolean isResult;
         int liveWeight=0;
         String fatScore="";
         String[] params=globalVars.getParamsData("verifyFillingLiveWeightDetails");
@@ -187,7 +185,7 @@ public class ListingInfoTest {
 
     @Test
     public void verifyPublishListing() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = listingInfoPage.publishListing();
         Utils.logStepInfo(isResult, "Click on publish listing to publish the opportunity");
         Assert.isTrue(isResult, "Step-1: Failed to publish listing!!");

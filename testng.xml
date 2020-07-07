@@ -105,6 +105,34 @@
                     <include name="verifyEnabledListingType"/>
                 </methods>
             </class>
+            <class name="Opportunity.Opp_Record_Listing_Info.ListingInfoSheepBidAndOfferTest">
+                <methods>
+                    <include name="verifyBidAndOfferListingTypeSelection"/>
+                    <include name="verifyFillingListingOverviewDetailsForSheep"/>
+                    <include name="verifyFillingWeightsSummaryDetailsForSheep"/>
+                    <include name="verifyFillingAssessmentOverviewDetailsForSheep"/>
+                    <include name="verifyFillingLambsAtFootDetailsForSheep"/>
+                    <include name="verifyFillingBreedingOverviewDetailsForSheep"/>
+                    <include name="verifyFillingWoolSkinDetailsForSheep"/>
+                    <include name="verifyFillingJoiningDetailsForSheep"/>
+                    <include name="verifyFillingHealthVetDetailsForSheep"/>
+                    <include name="verifyFillingAccreditationDetailsForSheep"/>
+                    <include name="verifyFillingDeliveryDetailsForSheep"/>
+                    <include name="verifyFillingLiveWeightDetailsForSheep"/>
+                    <include name="verifyPublishListingForSheep"/>
+                </methods>
+            </class>
+            <class name="Opportunity.Opp_Record_Listing_Info.ListingInfoSheepClassified">
+                <methods>
+                    <include name="verifyListingTypeSelectionClassifiedSheep"/>
+                    <include name="verifyListingInfoNavigationClassifiedSheep"/>
+                    <include name="verifyFillingClassifiedListingOverviewDetailsSheep"/>
+                    <include name="verifyFillingClassifiedLotDetailsSheep"/>
+                    <include name="verifyFillingClassifiedHealthVetDetailsSheep"/>
+                    <include name="verifyFillingClassifiedAccreditationDetailsForSheep"/>
+                    <include name="verifyClassifiedPublishListingSheep"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>

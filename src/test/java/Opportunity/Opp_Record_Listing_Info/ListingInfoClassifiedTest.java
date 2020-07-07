@@ -33,7 +33,7 @@ public class ListingInfoClassifiedTest {
         listingInfoPage=new ListingInfoPage();
         loginPage=new LoginPage();
         newOpportunityPage=new NewOpportunityPage();
-        boolean isResult=false;
+        boolean isResult;
         String username=globalVars.getUsername("loginTest");
         String password=globalVars.getPassword("loginTest");
 
@@ -110,7 +110,7 @@ public class ListingInfoClassifiedTest {
 
     @Test
     public void verifyFillingClassifiedListingOverviewDetails() {
-        boolean isResult=false;
+        boolean isResult;
         String classifiedDuration="";
         int price=150;
         String description="";
@@ -143,6 +143,7 @@ public class ListingInfoClassifiedTest {
         catch (Exception ex){
             ex.printStackTrace();
         }
+
         isResult = listingInfoPage.fillClassifiedLotDetails(hornStatus,weightRangeLow+"", weightRangeHigh+"");
         Utils.logStepInfo(isResult, "Fill Breeding overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
@@ -168,6 +169,7 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyClassifiedPublishListing() {
         boolean isResult=false;
+
         isResult = listingInfoPage.publishListing();
         Utils.logStepInfo(isResult, "Click on publish listing to publish the opportunity");
         Assert.isTrue(isResult, "Step-1: Failed to publish listing!!");

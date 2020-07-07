@@ -24,13 +24,11 @@ public class LoginTest {
      */
     @Test
     public void loginTest() {
-        boolean isResult=false;
-        String username="";
-        String password="";
+        boolean isResult;
+        String username, password;
         String currentMethodName="loginTest";
         username=globalVars.getUsername(currentMethodName);
         password=globalVars.getPassword(currentMethodName);
-
         isResult = loginPage.login(username, password);
         Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
         Assert.isTrue(isResult, "Step-1: User failed to login!!");

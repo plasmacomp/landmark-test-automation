@@ -64,7 +64,7 @@ public class NewOpportunityConditionalTest {
     }
     @Test
     public void verifyPerKGConditionInLot() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyPerKGConditionInLot");
         String quantity = "",productCategory="",product="",breed="";
         try{
@@ -73,24 +73,22 @@ public class NewOpportunityConditionalTest {
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();
         }
-
         isResult = newOpportunityPage.selectPerKgInPriceTypeDropDown(quantity, productCategory, product, breed);
         Utils.logStepInfo(isResult, "Select per kg in the price type drop down and verify that a new text field for total weight appears");
         Assert.isTrue(isResult, "Step-1: Per kg text field verification failed !!!!");
     }
     @Test
     public void verifyAddingValueToPerKGFieldInLot() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyAddingValueToPerKGFieldInLot");
         String weight =params[0];
-
         isResult = newOpportunityPage.addValueToPerKgWeightField(weight);
         Utils.logStepInfo(isResult, "Enter value in Total weight text field and verify that the value has been successfully entered ");
         Assert.isTrue(isResult, "Step-1: Total weight value enter failed !!!!");
     }
     @Test
     public void verifyWeightValueOnLotGridPage() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyWeightValueOnLotGridPage");
         String weight =params[0];
         String perHeadWeight = "", quantity="";
@@ -110,7 +108,7 @@ public class NewOpportunityConditionalTest {
     }
     @Test
     public void verifyAddingSecondLotInTheSameOpportunity() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyAddingSecondLotInTheSameOpportunity");
         String quantity = "",productCategory="",product="",breed="";
         try{
@@ -119,7 +117,6 @@ public class NewOpportunityConditionalTest {
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();
         }
-
         isResult = newOpportunityPage.addAnotherLotWithExistingLot(quantity, productCategory, product, breed);
         Utils.logStepInfo(isResult, "Add all mandatory fields on new lot screen");
         Assert.isTrue(isResult, "Step-1: Adding values to all mandatory fields on new lot screen failed !!!!");
@@ -138,7 +135,6 @@ public class NewOpportunityConditionalTest {
         boolean isResult=false;
         String[] params=globalVars.getParamsData("VerifyEditingLotsInfo");
         String newBreed =params[0];
-
         if(listingInfoPage.moveToLotsSection()){
             if(listingInfoPage.ClickEditLot()){
                 isResult= newOpportunityPage.editLotInfo(newBreed);
@@ -149,9 +145,8 @@ public class NewOpportunityConditionalTest {
     }
     @Test
     public void VerifyDeletingLot() {
-        boolean isResult=false;
-        isResult= listingInfoPage.deleteFirstLot();
-
+        boolean isResult;
+        isResult= listingInfoPage.deleteSecondLot();
         Utils.logStepInfo(isResult, "Delete lot and verify that the lot info has been deleted successfully");
         Assert.isTrue(isResult, "Step-1: Deletion of lot failed !!!!");
     }

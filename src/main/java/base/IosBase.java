@@ -66,8 +66,7 @@ public class IosBase extends TestBase{
                 driver.manage().timeouts().implicitlyWait(globalVars.getImplicitWait(), TimeUnit.SECONDS);
             }
         }
-        catch(Exception ex)
-        {
+        catch(Exception ex) {
             ex.printStackTrace();
         }
     }

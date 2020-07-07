@@ -33,84 +33,84 @@ public class NewContractDashboardTest {
 
     @Test
     public void verifyNewContractNavigation() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyNewContractNavigation();
         Utils.logStepInfo(isResult, "Click on New Contract tile");
         Assert.isTrue(isResult, "Step-1: Could not click on new Contract tile!!");
     }
     @Test
     public void verifyNewContractHeaderLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyNewContractHeaderLabel();
         Utils.logStepInfo(isResult, "Verify that New Contract Header label is present");
         Assert.isTrue(isResult, "Step-1:  New Contract Header label verification failed!!");
     }
     @Test
     public void verifyNewContractSalesInformationLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifySalesInformationLabel();
         Utils.logStepInfo(isResult, "Verify that Sales Information label is present");
         Assert.isTrue(isResult, "Step-1:  Sales Information label verification failed!!");
     }
     @Test
     public void verifyNewContractVendorInfoLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyVendorInfoLabel();
         Utils.logStepInfo(isResult, "Verify that Vendor Information label is present");
         Assert.isTrue(isResult, "Step-1:  Vendor Information label verification failed!!");
     }
     @Test
     public void verifyBuyerInfoLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyBuyerInfoLabel();
         Utils.logStepInfo(isResult, "Verify that Buyer Information label is present");
         Assert.isTrue(isResult, "Step-1:  Buyer Information label verification failed!!");
     }
     @Test
     public void verifyDeliveryInfoLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyDeliveryInfoLabel();
         Utils.logStepInfo(isResult, "Verify that Delivery Information label is present");
         Assert.isTrue(isResult, "Step-1:  Delivery Information label verification failed!!");
     }
     @Test
     public void verifyNewContractLotsLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyLotsLabel();
         Utils.logStepInfo(isResult, "Verify that Lots label is present");
         Assert.isTrue(isResult, "Step-1:  Lots label verification failed!!");
     }
     @Test
     public void verifyAdditionalChargesLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyAdditionalChargesLabel();
         Utils.logStepInfo(isResult, "Verify that additional charges label is present");
         Assert.isTrue(isResult, "Step-1:  additional charges label verification failed!!");
     }
     @Test
     public void verifyCommissionAndAgentsLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyCommissionAndAgentsLabel();
         Utils.logStepInfo(isResult, "Verify that Commission And Agents label is present");
         Assert.isTrue(isResult, "Step-1:  Commission And Agents label verification failed!!");
     }
     @Test
     public void verifyNewContractNotesLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyNotesLabel();
         Utils.logStepInfo(isResult, "Verify that Notes label is present");
         Assert.isTrue(isResult, "Step-1:  Notes label verification failed!!");
     }
     @Test
     public void verifyNewContractAttachmentsLabel() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyAttachmentsLabel();
         Utils.logStepInfo(isResult, "Verify that Attachments label is present");
         Assert.isTrue(isResult, "Step-1:  Attachments label verification failed!!");
     }
     @Test
     public void verifyNewContractAddSalesInformation() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyNewContractAddSalesInformation");
         String salesType="",branchName="", month="";
         int day=0;
@@ -125,14 +125,13 @@ public class NewContractDashboardTest {
         catch (Exception ex){
             ex.printStackTrace();
         }
-
         isResult = newContractPage.fillSalesInformation(month, day, year, salesType, branchName);
         Utils.logStepInfo(isResult, "Add sales information and click next");
         Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
     }
     @Test
     public void verifyNewContractAddVendorInfo() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyNewContractAddVendorInfo");
         String vendorName=params[0];
         isResult = newContractPage.addVendorInfo(vendorName);
@@ -141,7 +140,7 @@ public class NewContractDashboardTest {
     }
     @Test
     public void verifyAddBuyerInfo() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyAddBuyerInfo");
         String buyerName=params[0];
         isResult = newContractPage.addBuyerInfo(buyerName);
@@ -150,7 +149,7 @@ public class NewContractDashboardTest {
     }
     @Test
     public void verifyAddDeliveryInfo() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyAddDeliveryInfo");
         String deliveryPoint="",month="";
         int day=0;

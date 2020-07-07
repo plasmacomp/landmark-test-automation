@@ -1,9 +1,9 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -21,420 +21,497 @@ public class ListingInfoPage {
 
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
-    private static WebElement dropdownPicker;
+    private static IOSElement dropdownPicker;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
-    private static WebElement doneButtonWheelPicker;
+    private static IOSElement doneButtonWheelPicker;
     @iOSXCUITFindBy(accessibility = "Sale Information")
-    private static WebElement salesInformationLabel;
+    private static IOSElement salesInformationLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Info")
-    private static WebElement vendorInfoLabel;
+    private static IOSElement vendorInfoLabel;
     @iOSXCUITFindBy(accessibility = "Lots")
-    private static WebElement lotsLabel;
+    private static IOSElement lotsLabel;
     @iOSXCUITFindBy(accessibility = "Listing Information")
-    private static WebElement listingInformationLabel;
+    private static IOSElement listingInformationLabel;
     @iOSXCUITFindBy(accessibility = "Attachments")
-    private static WebElement attachmentsLabel;
+    private static IOSElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
-    private static WebElement notesLabel;
+    private static IOSElement notesLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Bid & Offer'])[2]")
-    private static WebElement bidAndOfferLabel;
+    private static IOSElement bidAndOfferLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Classified'])[2]")
-    private static WebElement classifiedLabel;
+    private static IOSElement classifiedLabel;
     @iOSXCUITFindBy(accessibility = "lmkopesdmololistingtype-Bid & Offer")
-    private static WebElement bidAndOfferRadioButton;
+    private static IOSElement bidAndOfferRadioButton;
     @iOSXCUITFindBy(accessibility = "lmkopesdmololistingtype-Classified")
-    private static WebElement classifiedRadioButton;
+    private static IOSElement classifiedRadioButton;
     @iOSXCUITFindBy(accessibility = "Transaction Type")
-    private static WebElement transactionTypeLabel;
+    private static IOSElement transactionTypeLabel;
     @iOSXCUITFindBy(accessibility = "Sale Type *")
-    private static WebElement saleTypeLabel;
+    private static IOSElement saleTypeLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Transaction Type ']//preceding-sibling::*")
-    private static WebElement transactionTypeDropdown;
+    private static IOSElement transactionTypeDropdown;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling::*")
-    private static WebElement saleTypeDropdown;
+    private static IOSElement saleTypeDropdown;
     @iOSXCUITFindBy(accessibility = "Classified Listing Status")
-    private static WebElement classifiedListingStatusLabel;
+    private static IOSElement classifiedListingStatusLabel;
     @iOSXCUITFindBy(accessibility = "Available")
-    private static WebElement availableLabel;
+    private static IOSElement availableLabel;
     @iOSXCUITFindBy(accessibility = "Sold")
-    private static WebElement soldLabel;
+    private static IOSElement soldLabel;
     @iOSXCUITFindBy(accessibility = "lmkopesdmolistingstatus-Available")
-    private static WebElement availableRadioButton;
+    private static IOSElement availableRadioButton;
     @iOSXCUITFindBy(accessibility = "lmkopesdmolistingstatus-Sold")
-    private static WebElement soldRadioButton;
+    private static IOSElement soldRadioButton;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='elipsis'])[1]")
-    private static WebElement firstEllipsisLotsPage;
+    private static IOSElement firstEllipsisLotsPage;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='elipsis'])[2]")
+    private static IOSElement secondEllipsisLotsPage;
     @iOSXCUITFindBy(accessibility = "Edit Lot")
-    private static WebElement editLinkLotsPagePopup;
+    private static IOSElement editLinkLotsPagePopup;
     @iOSXCUITFindBy(accessibility = "Delete Lot")
-    private static WebElement deleteLinkLotsPagePopup;
-
-
-
+    private static IOSElement deleteLinkLotsPagePopup;
 
     //*********Listing info tab locators
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='LISTING OVERVIEW']")
-    private static WebElement listingOverviewHeaderLabel;
+    private static IOSElement listingOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Bidding Start Date/Time *")
-    private static WebElement biddingStartDateTimeLabel;
+    private static IOSElement biddingStartDateTimeLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
-    private static WebElement biddingStartDateTimeDropdown;
+    private static IOSElement biddingStartDateTimeDropdown;
     @iOSXCUITFindBy(accessibility = "Bidding Duration *")
-    private static WebElement biddingDurationLabel;
+    private static IOSElement biddingDurationLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]")
-    private static WebElement biddingDurationDropdown;
+    private static IOSElement biddingDurationDropdown;
 
     @iOSXCUITFindBy(accessibility = "Closing Soon Status Duration *")
-    private static WebElement closingSoonStatusDurationLabel;
+    private static IOSElement closingSoonStatusDurationLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]")
-    private static WebElement closingSoonStatusDurationDropdown;
+    private static IOSElement closingSoonStatusDurationDropdown;
 
     @iOSXCUITFindBy(accessibility = "Starting Price (exGST) *")
-    private static WebElement startingPriceLabel;
+    private static IOSElement startingPriceLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[4]")
-    private static WebElement startingPriceTextBox;
+    private static IOSElement startingPriceTextBox;
 
     @iOSXCUITFindBy(accessibility = "Description *")
-    private static WebElement descriptionLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[1]")
-    private static WebElement descriptionTextView;
+    private static IOSElement descriptionLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmolistingdesc") //(//XCUIElementTypeTextView)[1]
+    private static IOSElement descriptionTextView;
 
     @iOSXCUITFindBy(accessibility = "Reserve Price (exGST) *")
-    private static WebElement reservePriceLabel;
+    private static IOSElement reservePriceLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[5]")
-    private static WebElement reservePriceTextBox;
+    private static IOSElement reservePriceTextBox;
 
     @iOSXCUITFindBy(accessibility = "Town")
-    private static WebElement townLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton)[6]")
-    private static WebElement townTextBoxButton;
+    private static IOSElement townLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotown-town-btn") //(//XCUIElementTypeButton)[6]
+    private static IOSElement townTextBoxButton;
     @iOSXCUITFindBy(className = "XCUIElementTypeSearchField")
-    private static WebElement townSearchBox;
+    private static IOSElement townSearchBox;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotown-post-btn")
+    private static IOSElement postCodeTextField;
 
     //Xpath of search result on town search window: //XCUIElementTypeStaticText[@value="BRISBANE QLD, 9010"]
     //************* Need to search with the place name only, however, for clicking on the search result, need to provide name, region and pin
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='LOT DETAILS']")
-    private static WebElement lotDetailsHeaderLabel;
+    private static IOSElement lotDetailsHeaderLabel;
 
     @iOSXCUITFindBy(accessibility = "Pregnancy Status")
-    private static WebElement pregnancyStatusLabel;
+    private static IOSElement pregnancyStatusLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[8]")
-    private static WebElement pregnancyStatusTextBox;
+    private static IOSElement pregnancyStatusTextBox;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='WEIGHTS SUMMARY']")
-    private static WebElement weightsSummaryHeaderLabel;
-    @iOSXCUITFindBy(accessibility = "Enter liveweight to populate")
-    private static WebElement enterLiveWeightToPopulateButton;
+    private static IOSElement weightsSummaryHeaderLabel;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Enter liveweight to populate']") //Enter liveweight to populate
+    private static IOSElement enterLiveWeightToPopulateButton;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Liveweight (kg)'])[1]")
-    private static WebElement liveWeightKgLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Liveweight (kg)'])[1]//following-sibling::XCUIElementTypeTextField")
-    private static WebElement liveWeightKgTextField;
+    private static IOSElement liveWeightKgLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]") //(//XCUIElementTypeStaticText[@name='Liveweight (kg)'])[1]//following-sibling::XCUIElementTypeTextField
+    private static IOSElement liveWeightKgTextField;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Number of Head'])[1]")
+    private static IOSElement numberOfHeadLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
+    private static IOSElement numberOfHeadTextField;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Fat Score'])[1]")
-    private static WebElement fatScoreLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Fat Score'])[1]//following-sibling::XCUIElementTypeTextField")
-    private static WebElement fatScoreTextField;
+    private static IOSElement fatScoreLabel;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]") //(//XCUIElementTypeStaticText[@name='Fat Score'])[1]//following-sibling::XCUIElementTypeTextField
+    private static IOSElement fatScoreTextField;
     @iOSXCUITFindBy(accessibility = "add 1")
-    private static WebElement plusIcon;
-
+    private static IOSElement plusIcon;
 
     @iOSXCUITFindBy(accessibility = "Number of Head Weighed *")
-    private static WebElement numberOfHeadWeighedLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Number of Head Weighed *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement numberOfHeadWeighedTextBox;
+    private static IOSElement numberOfHeadWeighedLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesnumfheadsweighed") ////XCUIElementTypeStaticText[@name='Number of Head Weighed *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement numberOfHeadWeighedTextBox;
     @iOSXCUITFindBy(accessibility = "High kg *")
-    private static WebElement highKgLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[12]")
-    private static WebElement highKgTextBox;
+    private static IOSElement highKgLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoweightshighkg") //(//XCUIElementTypeTextField)[12]
+    private static IOSElement highKgTextBox;
+    @iOSXCUITFindBy(accessibility = "Low kg *") //(//XCUIElementTypeTextField)[12]
+    private static IOSElement lowKgLabel;
+    @iOSXCUITFindBy(xpath = "lmkopesdmoweightslowkg")
+    private static IOSElement lowKgTextBox;
+    @iOSXCUITFindBy(accessibility = "Average kg *") //(//XCUIElementTypeTextField)[12]
+    private static IOSElement averageKgLabel;
+    @iOSXCUITFindBy(xpath = "lmkopesdmoaveragekg")
+    private static IOSElement averageKgTextField;
+
     @iOSXCUITFindBy(accessibility = "Hours off Feed *")
-    private static WebElement hoursOffFeedLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Hours off Feed *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement hoursOffFeedTextBox;
+    private static IOSElement hoursOffFeedLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmohoursofffeed") //XCUIElementTypeStaticText[@name='Hours off Feed *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement hoursOffFeedTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Dressing % *")
-    private static WebElement estimatedDressingLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Dressing % *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement estimatedDressingTextBox;
+    private static IOSElement estimatedDressingLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmodressing") //XCUIElementTypeStaticText[@name='Estimated Dressing % *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement estimatedDressingTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Average Dressed Weight at Assessment (kg) *")
-    private static WebElement estimatedAverageDressedWeightAtAssessmentLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[15]")
-    private static WebElement estimatedAverageDressedWeightAtAssessmentTextBox;
+    private static IOSElement estimatedAverageDressedWeightAtAssessmentLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesestavgdrssdwght") //(//XCUIElementTypeTextField)[15]
+    private static IOSElement estimatedAverageDressedWeightAtAssessmentTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Days to Delivery *")
-    private static WebElement estimatedDaysToDeliveryLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Days to Delivery *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement estimatedDaysToDeliveryTextBox;
+    private static IOSElement estimatedDaysToDeliveryLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoestdaystodlvry") //XCUIElementTypeStaticText[@name='Estimated Days to Delivery *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement estimatedDaysToDeliveryTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Weight Gain (kg/Day) *")
-    private static WebElement estimatedWeightGainLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Weight Gain (kg/Day) *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement estimatedWeightGainTextBox;
+    private static IOSElement estimatedWeightGainLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoestweightgain") //XCUIElementTypeStaticText[@name='Estimated Weight Gain (kg/Day) *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement estimatedWeightGainTextBox;
     @iOSXCUITFindBy(accessibility = "Delivery Adjustment % *")
-    private static WebElement deliveryAdjustmentLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Delivery Adjustment % *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement deliveryAdjustmentTextBox;
+    private static IOSElement deliveryAdjustmentLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdeladjustpercent") //XCUIElementTypeStaticText[@name='Delivery Adjustment % *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement deliveryAdjustmentTextBox;
 
     @iOSXCUITFindBy(accessibility = "Estimated Average Live Weight at Delivery (kg) *")
-    private static WebElement estimatedAverageLiveWeightAtDeliveryLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[19]")
-    private static WebElement estimatedAverageLiveWeightAtDeliveryTextBox;
+    private static IOSElement estimatedAverageLiveWeightAtDeliveryLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesestavglivedelwght") //(//XCUIElementTypeTextField)[19]
+    private static IOSElement estimatedAverageLiveWeightAtDeliveryTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Average Dressed Weight at Delivery (kg) *")
-    private static WebElement estimatedAverageDressedWeightAtDeliveryLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[20]")
-    private static WebElement estimatedAverageDressedWeightAtDeliveryTextBox;
+    private static IOSElement estimatedAverageDressedWeightAtDeliveryLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesestavgdrssdelwght") //(//XCUIElementTypeTextField)[20]
+    private static IOSElement estimatedAverageDressedWeightAtDeliveryTextBox;
+    @iOSXCUITFindBy(accessibility = "Shedding Breed *")
+    private static IOSElement sheddingBreedLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoshddngbreed")
+    private static IOSElement sheddingBreedDropDown;
+    @iOSXCUITFindBy(accessibility = "Any Known Contact With Shedding Breeds? *")
+    private static IOSElement anyKnownContactWithSheddingBreedsLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesanyknowncontct")
+    private static IOSElement anyKnownContactWithSheddingBreedsDropDown;
+    @iOSXCUITFindBy(accessibility = "Last Shearing Date *")
+    private static IOSElement lastShearingDateLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmolastsheardate")
+    private static IOSElement lastShearingDateDropDown;
+    @iOSXCUITFindBy(accessibility = "Approximate Wool Cut (kg/head)")
+    private static IOSElement approximateWoolCutLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoapproxwoolcut")
+    private static IOSElement approximateWoolCutTextField;
+    @iOSXCUITFindBy(accessibility = "Mulesed *")
+    private static IOSElement mulesedLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmomulesed")
+    private static IOSElement mulesedDropDown;
+    @iOSXCUITFindBy(accessibility = "Crutched *")
+    private static IOSElement crutchedLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmocrutched")
+    private static IOSElement crutchedDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmodegreeofburr")
+    private static IOSElement degreeOfBurrDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotypeofburr")
+    private static IOSElement typeOfBurrTextField;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmodegreeofseed")
+    private static IOSElement degreeOfSeedDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotypeofseed")
+    private static IOSElement typeOfSeedTextField;
+    @iOSXCUITFindBy(accessibility = "lmkopesgenwoolskincomm")
+    private static IOSElement generalWoolCommentsTextField;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoshjoiningstats")
+    private static IOSElement joiningStatusDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoshlotnohpg")
+    private static IOSElement numberOfHeadScannedInLambTextField;
+    @iOSXCUITFindBy(accessibility = "lmkopesflockfreevfootrot")
+    private static IOSElement sheepAreFreeOfFootrotDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesflockfreebfootrot")
+    private static IOSElement sheepHaveNoHistoryOfFootrotDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopessheeplicefreeflck")
+    private static IOSElement sheepAreFreeOfLicetDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopeswthwithholdgprd")
+    private static IOSElement withinWithHoldingPeriodDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesbioseplanavail")
+    private static IOSElement bioSecurityPlanAvailableDropDown;
+    @iOSXCUITFindBy(accessibility = "lmkopesapprvdojdvaccnts")
+    private static IOSElement approvedOJDVaccineDropDown;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='ASSESSMENT OVERVIEW']")
-    private static WebElement assessmentOverviewHeaderLabel;
+    private static IOSElement assessmentOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Frame")
-    private static WebElement frameLabel;
+    private static IOSElement frameLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Frame ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement frameTextBox;
+    private static IOSElement frameTextBox;
     @iOSXCUITFindBy(accessibility = "Condition")
-    private static WebElement conditionLabel;
+    private static IOSElement conditionLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Condition ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement conditionTextBox;
+    private static IOSElement conditionTextBox;
     @iOSXCUITFindBy(accessibility = "Agent Comments *")
-    private static WebElement agentCommentsLabel;
+    private static IOSElement agentCommentsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Agent Comments *']//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement agentCommentsTextView;
+    private static IOSElement agentCommentsTextView;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='ADDITIONAL LOT DETAILS']")
-    private static WebElement additionalLotDetailsHeaderLabel;
+    private static IOSElement additionalLotDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Dentition")
-    private static WebElement durationLabel;
+    private static IOSElement durationLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[23]")
-    private static WebElement durationTextBox;
+    private static IOSElement durationTextBox;
     @iOSXCUITFindBy(accessibility = "Describe Any Worn or Broken Mouths")
-    private static WebElement describeAnyWornOrBrokenMouthsLabel;
+    private static IOSElement describeAnyWornOrBrokenMouthsLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[3]")
-    private static WebElement describeAnyWornOrBrokenMouthsTextView;
+    private static IOSElement describeAnyWornOrBrokenMouthsTextView;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='NUMBER OF HEADS MOUTHED']")
-    private static WebElement numberOfHeadsMouthedHeaderLabel;
+    private static IOSElement numberOfHeadsMouthedHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Milk")
-    private static WebElement milkLabel;
+    private static IOSElement milkLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[24]")
-    private static WebElement milkTextBox;
+    private static IOSElement milkTextBox;
     @iOSXCUITFindBy(accessibility = "2T")
-    private static WebElement twoTLabel;
+    private static IOSElement twoTLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[25]")
-    private static WebElement twoTTextBox;
+    private static IOSElement twoTTextBox;
     @iOSXCUITFindBy(accessibility = "4T")
-    private static WebElement fourTLabel;
+    private static IOSElement fourTLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[26]")
-    private static WebElement fourTTextBox;
+    private static IOSElement fourTTextBox;
     @iOSXCUITFindBy(accessibility = "6T")
-    private static WebElement sixTLabel;
+    private static IOSElement sixTLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[27]")
-    private static WebElement sixTTextBox;
+    private static IOSElement sixTTextBox;
     @iOSXCUITFindBy(accessibility = "8T")
-    private static WebElement eightTLabel;
+    private static IOSElement eightTLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[28]")
-    private static WebElement eightTTextBox;
+    private static IOSElement eightTTextBox;
     @iOSXCUITFindBy(accessibility = "Worn")
-    private static WebElement wornLabel;
+    private static IOSElement wornLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[29]")
-    private static WebElement wornTextBox;
+    private static IOSElement wornTextBox;
     @iOSXCUITFindBy(accessibility = "Broken")
-    private static WebElement brokenLabel;
+    private static IOSElement brokenLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[30]")
-    private static WebElement brokenTextBox;
+    private static IOSElement brokenTextBox;
     @iOSXCUITFindBy(accessibility = "Total")
-    private static WebElement totalLabel;
+    private static IOSElement totalLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[31]")
-    private static WebElement totalTextBox;
+    private static IOSElement totalTextBox;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='BREEDING OVERVIEW']")
-    private static WebElement breedingOverviewHeaderLabel;
+    private static IOSElement breedingOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Bred *")
-    private static WebElement vendorBredLabel;
+    private static IOSElement vendorBredLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement vendorBredDropdown;
+    private static IOSElement vendorBredDropdown;
     @iOSXCUITFindBy(accessibility = "Bloodlines")
-    private static WebElement bloodLinesLabel;
+    private static IOSElement bloodLinesLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[33]")
-    private static WebElement bloodLinesTextBox;
+    private static IOSElement bloodLinesTextBox;
     @iOSXCUITFindBy(accessibility = "Additional Stock History")
-    private static WebElement additionalStockHistoryLabel;
+    private static IOSElement additionalStockHistoryLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[4]")
-    private static WebElement additionalStockHistoryTextBox;
+    private static IOSElement additionalStockHistoryTextBox;
     @iOSXCUITFindBy(accessibility = "Breeding Quality")
-    private static WebElement breedingQualityLabel;
+    private static IOSElement breedingQualityLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[34]")
-    private static WebElement breedingQualityDropdown;
+    private static IOSElement breedingQualityDropdown;
     @iOSXCUITFindBy(accessibility = "Horn Status")
-    private static WebElement hornStatusLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement hornStatusDropdown;
+    private static IOSElement hornStatusLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoshhornstatus") ////XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament *")
-    private static WebElement temperamentLabel;
+    private static IOSElement temperamentLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Temperament *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement temperamentDropdown;
+    private static IOSElement temperamentDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament in Crush")
-    private static WebElement temperamentInCrushLabel;
+    private static IOSElement temperamentInCrushLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[37]")
-    private static WebElement temperamentInCrushTextBox;
+    private static IOSElement temperamentInCrushTextBox;
     @iOSXCUITFindBy(accessibility = "Temperament in Yards")
-    private static WebElement temperamentInYardsLabel;
+    private static IOSElement temperamentInYardsLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[38]")
-    private static WebElement temperamentInYardsTextBox;
+    private static IOSElement temperamentInYardsTextBox;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='BREEDING DETAILS']")
-    private static WebElement breedingDetailsHeaderLabel;
+    private static IOSElement breedingDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Add details")
-    private static WebElement addDetailsButton;
+    private static IOSElement addDetailsButton;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='HEALTH VET DETAILS']")
-    private static WebElement healthVetDetailsHeaderLabel;
+    private static IOSElement healthVetDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
-    private static WebElement hgpTreatedLabel;
+    private static IOSElement hgpTreatedLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='HGP Treated *']//following-sibling::XCUIElementTypeTextField")
-    private static WebElement hgpTreatedDropdown;
+    private static IOSElement hgpTreatedDropdown;
     @iOSXCUITFindBy(accessibility = "Product")
-    private static WebElement productLabel;
+    private static IOSElement productLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[40]")
-    private static WebElement productTextBox;
+    private static IOSElement productTextBox;
     @iOSXCUITFindBy(accessibility = "Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *")
-    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsLabel;
+    private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsDropdown;
+    private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsDropdown;
     @iOSXCUITFindBy(accessibility = "Market Eligibility Details")
-    private static WebElement marketEligibilityLabel;
+    private static IOSElement marketEligibilityLabel;
     @iOSXCUITFindBy(accessibility = "PCAS eligible")
-    private static WebElement PCASEligibleLabel;
+    private static IOSElement PCASEligibleLabel;
     @iOSXCUITFindBy(accessibility = "Russian eligible")
-    private static WebElement russianEligibleLabel;
+    private static IOSElement russianEligibleLabel;
     @iOSXCUITFindBy(accessibility = "Saudi eligible")
-    private static WebElement saudiEligibleLabel;
+    private static IOSElement saudiEligibleLabel;
     @iOSXCUITFindBy(accessibility = "Slaughter only")
-    private static WebElement slaughterOnlyLabel;
+    private static IOSElement slaughterOnlyLabel;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='TREATMENTS']")
-    private static WebElement treatmentsHeaderLabel;
+    private static IOSElement treatmentsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Dipped")
-    private static WebElement dippedLabel;
+    private static IOSElement dippedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[42]")
-    private static WebElement dippedDropdown;
+    private static IOSElement dippedDropdown;
     @iOSXCUITFindBy(accessibility = "Drenched")
-    private static WebElement drenchedLabel;
+    private static IOSElement drenchedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[43]")
-    private static WebElement drenchedDropdown;
+    private static IOSElement drenchedDropdown;
     @iOSXCUITFindBy(accessibility = "Vaccinated")
-    private static WebElement vaccinatedLabel;
+    private static IOSElement vaccinatedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[44]")
-    private static WebElement vaccinatedDropdown;
+    private static IOSElement vaccinatedDropdown;
     @iOSXCUITFindBy(accessibility = "Backlined")
-    private static WebElement backLinedLabel;
+    private static IOSElement backLinedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[45]")
-    private static WebElement backLinedDropdown;
+    private static IOSElement backLinedDropdown;
     @iOSXCUITFindBy(accessibility = "Other")
-    private static WebElement otherLabel;
+    private static IOSElement otherLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[46]")
-    private static WebElement otherDropdown;
+    private static IOSElement otherDropdown;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[1]")
-    private static WebElement productsUsedLabel1;
+    private static IOSElement productsUsedLabel1;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[1]//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement productsUsedTextView1;
+    private static IOSElement productsUsedTextView1;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[2]")
-    private static WebElement productsUsedLabel2;
+    private static IOSElement productsUsedLabel2;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[2]//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement productsUsedTextView2;
+    private static IOSElement productsUsedTextView2;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[1]")
-    private static WebElement productsUsedLabel3;
+    private static IOSElement productsUsedLabel3;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[3]//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement productsUsedTextView3;
+    private static IOSElement productsUsedTextView3;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[4]")
-    private static WebElement productsUsedLabel4;
+    private static IOSElement productsUsedLabel4;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Products Used '])[4]//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement productsUsedTextView4;
+    private static IOSElement productsUsedTextView4;
 
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='ACCREDITATIONS']")
-    private static WebElement accreditationsHeaderLabel;
+    private static IOSElement accreditationsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "National Cattle Health Declaration Available")
-    private static WebElement nationalCattleHealthDeclarationAvailableLabel;
+    private static IOSElement nationalCattleHealthDeclarationAvailableLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[47]")
-    private static WebElement nationalCattleHealthDeclarationAvailableDropdown;
+    private static IOSElement nationalCattleHealthDeclarationAvailableDropdown;
     @iOSXCUITFindBy(accessibility = "JBAS Score")
-    private static WebElement JBASScoreLabel;
+    private static IOSElement JBASScoreLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[48]")
-    private static WebElement JBASScoreDropdown;
+    private static IOSElement JBASScoreDropdown;
     @iOSXCUITFindBy(accessibility = "Accreditations")
-    private static WebElement accreditationsLabel;
+    private static IOSElement accreditationsLabel;
     @iOSXCUITFindBy(accessibility = "EU")
-    private static WebElement EULabel;
+    private static IOSElement EULabel;
     @iOSXCUITFindBy(accessibility = "MSA")
-    private static WebElement MSALabel;
+    private static IOSElement MSALabel;
     @iOSXCUITFindBy(accessibility = "LPA")
-    private static WebElement LPALabel;
+    private static IOSElement LPALabel;
     @iOSXCUITFindBy(accessibility = "Organic")
-    private static WebElement organicLabel;
+    private static IOSElement organicLabel;
     @iOSXCUITFindBy(accessibility = "PCAS")
-    private static WebElement PCASLabel;
+    private static IOSElement PCASLabel;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='SPECIAL CONDITIONS']")
-    private static WebElement specialConditionsHeaderLabel;
+    private static IOSElement specialConditionsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Special Conditions")
-    private static WebElement specialConditionsLabel;
+    private static IOSElement specialConditionsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Special Conditions ']//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement specialConditionsTextView;
+    private static IOSElement specialConditionsTextView;
     @iOSXCUITFindBy(accessibility = "Movement Restrictions")
-    private static WebElement movementRestrictionsLabel;
+    private static IOSElement movementRestrictionsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Movement Restrictions ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement movementRestrictionTextBox;
+    private static IOSElement movementRestrictionTextBox;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='DELIVERY DETAILS']")
-    private static WebElement deliveryDetailsHeaderLabel;
+    private static IOSElement deliveryDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Forward Supply")
-    private static WebElement forwardSupplyLabel;
+    private static IOSElement forwardSupplyLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Forward Supply ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement forwardSupplyTextBox;
+    private static IOSElement forwardSupplyTextBox;
     @iOSXCUITFindBy(accessibility = "Estimated Final Delivery Date *")
-    private static WebElement estimatedFinalDeliveryDateLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Estimated Final Delivery Date *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement estimatedFinalDeliveryDateTextBox;
+    private static IOSElement estimatedFinalDeliveryDateLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesexpdeliverydate") ////XCUIElementTypeStaticText[@name='Estimated Final Delivery Date *']//preceding-sibling::XCUIElementTypeTextField
+    private static IOSElement estimatedFinalDeliveryDateTextBox;
     @iOSXCUITFindBy(accessibility = "Comments")
-    private static WebElement commentsLabel;
+    private static IOSElement commentsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Comments ']//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement commentsTextView;
+    private static IOSElement commentsTextView;
     @iOSXCUITFindBy(accessibility = "Weighing Instructions")
-    private static WebElement weighingInstructionsLabel;
+    private static IOSElement weighingInstructionsLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weighing Instructions ']//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement weighingInstructionsTextView;
+    private static IOSElement weighingInstructionsTextView;
     @iOSXCUITFindBy(accessibility = "Actions")
-    private static WebElement actionButtonListingInfoPage;
+    private static IOSElement actionButtonListingInfoPage;
     @iOSXCUITFindBy(accessibility = "Publish Listing")
-    private static WebElement publishListingLink;
+    private static IOSElement publishListingLink;
     @iOSXCUITFindBy(accessibility = "Hide keyboard")  ////XCUIElementTypeKey[@name='space']//following-sibling::*[3]
-    private static WebElement hideKeyboardButton;
+    private static IOSElement hideKeyboardButton;
 
     //************ Classified type specific locators
     @iOSXCUITFindBy(accessibility = "Classified Duration *")
-    private static WebElement classifiedDurationLabel;
+    private static IOSElement classifiedDurationLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Classified Duration *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement classifiedDurationDropdown;
+    private static IOSElement classifiedDurationDropdown;
     @iOSXCUITFindBy(accessibility = "Price (ex GST) *")
-    private static WebElement priceLabel;
+    private static IOSElement priceLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Price (ex GST) *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement priceTextBox;
+    private static IOSElement priceTextBox;
     @iOSXCUITFindBy(accessibility = "Description *")
-    private static WebElement descriptionClassifiedLabel;
+    private static IOSElement descriptionClassifiedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextView)[1]")
-    private static WebElement descriptionClassifiedTextView;
+    private static IOSElement descriptionClassifiedTextView;
     @iOSXCUITFindBy(accessibility = "Weight Range - Low *")
-    private static WebElement weightRangeLowLabel;
+    private static IOSElement weightRangeLowLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField")
-    private static WebElement weightRangeLowTextBox;
+    private static IOSElement weightRangeLowTextBox;
     @iOSXCUITFindBy(accessibility = "Weight Range - High *")
-    private static WebElement weightRangeHighLabel;
+    private static IOSElement weightRangeHighLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement weightRangeHighTextBox;
+    private static IOSElement weightRangeHighTextBox;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
-    private static WebElement hgpTreatedClassifiedLabel;
+    private static IOSElement hgpTreatedClassifiedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[17]")
-    private static WebElement hgpTreatedClassifiedDropdown;
+    private static IOSElement hgpTreatedClassifiedDropdown;
     @iOSXCUITFindBy(accessibility = "Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *")
-    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedLabel;
+    private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedLabel;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[18]")
-    private static WebElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedDropdown;
+    private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsClassifiedDropdown;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Vendor Name']//following-sibling::XCUIElementTypeStaticText[1]")
-    private static WebElement recordIdText;
+    private static IOSElement recordIdText;
+
+    //********** Sheep specific locators *****************
+    @iOSXCUITFindBy(accessibility = "Number of Lambs at Foot *")
+    private static IOSElement numberOfLambsAtFootLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmonumlambsfoot")
+    private static IOSElement numberOfLambsAtFootTextField;
+    @iOSXCUITFindBy(accessibility = "Lambs at Foot Sired By *")
+    private static IOSElement lambsAtFootSiredByLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopeslabmsatftsiredby")
+    private static IOSElement lambsAtFootSiredByTextField;
+    @iOSXCUITFindBy(accessibility = "Age of Lambs *")
+    private static IOSElement ageOfLambsLabel;
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoageoflambs")
+    private static IOSElement ageOfLambsTextField;
 
 
 
@@ -561,8 +638,8 @@ public class ListingInfoPage {
 
         //movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
         commonFunctions.sendKey(startingPriceTextBox, startingPrice);
-        commonFunctions.sendKey(descriptionTextView, description);
         commonFunctions.sendKey(reservePriceTextBox, reservePrice);
+        commonFunctions.sendKey(descriptionTextView, description);
         commonFunctions.clickElement(townTextBoxButton);
         commonFunctions.sendKey(townSearchBox, town);
         commonFunctions.clickElementByXpath(townNameXpath);
@@ -582,13 +659,28 @@ public class ListingInfoPage {
             //movePickerWheelFatScore(fatScoreTextField, fatScore);
             commonFunctions.sendKeyToDropDown(dropdownPicker, fatScore);
             commonFunctions.clickElement(doneButtonWheelPicker, 10);
-            //commonFunctions.clickElement(doneButtonWheelPicker);
-            //commonFunctions.sendKey(fatScoreTextField, fatScore+"");
             isResult=commonFunctions.clickElement(plusIcon);
             commonFunctions.dragAndDropFromTopToBottom();
         }
         return isResult;
     }
+
+    public boolean enterLiveWeightToPopulateForSheep(String liveWeightKg, String numberOfHead, String fatScore) {
+        boolean isResult=false;
+        commonFunctions.scrollUpToElement(enterLiveWeightToPopulateButton);
+        if(commonFunctions.clickElement(enterLiveWeightToPopulateButton)){
+            commonFunctions.sendKey(liveWeightKgTextField, liveWeightKg);
+            commonFunctions.sendKey(numberOfHeadTextField, numberOfHead);
+            if(commonFunctions.clickElement(fatScoreTextField)){
+                commonFunctions.sendKeyToDropDown(dropdownPicker, fatScore);
+                commonFunctions.clickElement(doneButtonWheelPicker);
+            }
+            isResult=commonFunctions.clickElement(plusIcon);
+            commonFunctions.dragAndDropFromTopToBottom();
+        }
+        return isResult;
+    }
+
     public boolean fillWeightSummaryDetails(int numberOfHeadWeighted, int hoursOffFeed, int estimatedDressing, int estimatedDaysToDelivery, int estimatedWeightGain, int deliveryAdjustment) {
         commonFunctions.scrollDownToElement(numberOfHeadWeighedTextBox);
         commonFunctions.sendKey(numberOfHeadWeighedTextBox, numberOfHeadWeighted+"");
@@ -630,6 +722,12 @@ public class ListingInfoPage {
         commonFunctions.clickElement(hideKeyboardButton);
         return !commonFunctions.getElementText(agentCommentsTextView, 10).isEmpty();
     }
+    public boolean fillAssessmentOverviewDetailsForSheep(String agentComments) {
+        commonFunctions.scrollDownToElement(agentCommentsTextView);
+        commonFunctions.sendKey(agentCommentsTextView, agentComments);
+        return commonFunctions.clickElement(hideKeyboardButton);
+        //return !commonFunctions.getElementText(agentCommentsTextView, 10).isEmpty();
+    }
     public boolean fillAdditionalLotDetails() {
         return false;
     }
@@ -652,6 +750,24 @@ public class ListingInfoPage {
 
         return !commonFunctions.getElementText(temperamentDropdown, 10).isEmpty();
     }
+    public boolean fillBreedingOverviewDetailsForSheep(String vendorBred, String sheddingBreed, String anyKnownContactWithSheddingBreed) {
+        commonFunctions.scrollDownToElement(vendorBredDropdown);
+
+        commonFunctions.clickElement(vendorBredDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, vendorBred);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        commonFunctions.scrollDownToElement(sheddingBreedLabel);
+        commonFunctions.clickElement(sheddingBreedDropDown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, sheddingBreed);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        commonFunctions.clickElement(anyKnownContactWithSheddingBreedsDropDown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, anyKnownContactWithSheddingBreed);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        return !commonFunctions.getElementText(anyKnownContactWithSheddingBreedsDropDown, 10).isEmpty();
+    }
     public boolean addBreedingDetailsDetails() {
         return false;
     }
@@ -672,9 +788,6 @@ public class ListingInfoPage {
         //return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
     }
     public boolean fillTreatmentDetails() {
-        return false;
-    }
-    public boolean fillAccreditationDetails() {
         return false;
     }
     public boolean fillSpecialConditionsDetails() {
@@ -710,6 +823,27 @@ public class ListingInfoPage {
         commonFunctions.sendKey(priceTextBox, price+"");
         commonFunctions.sendKey(descriptionTextView, description);
         return commonFunctions.clickElement(hideKeyboardButton, 8);
+    }
+    public boolean fillClassifiedListingOverviewDetailsForSheep(String classifiedDuration, String price, String description, String town) {
+        String townText="";
+        String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
+
+        commonFunctions.clickElement(classifiedDurationDropdown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
+        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        commonFunctions.sendKey(priceTextBox, price);
+        commonFunctions.sendKey(descriptionTextView, description);
+        commonFunctions.clickElement(hideKeyboardButton);
+
+        if(commonFunctions.clickElement(townTextBoxButton)){
+            commonFunctions.sendKey(townSearchBox, town);
+            if(commonFunctions.clickElementByXpath(townNameXpath)){
+                townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
+            }
+        }
+        return town.contains(townText);
+
     }
     public boolean fillClassifiedLotDetails(String hornStatus, String weightRangeLow, String weightRangeHigh) {
         //movePickerWheel(hornStatusDropdown, hornStatus);
@@ -748,6 +882,124 @@ public class ListingInfoPage {
         if(commonFunctions.clickElement(firstEllipsisLotsPage)){
             isResult=commonFunctions.clickElement(deleteLinkLotsPagePopup);
         }
+        return isResult;
+    }
+    public boolean deleteSecondLot() {
+        boolean isResult=false;
+        if(commonFunctions.clickElement(secondEllipsisLotsPage)){
+            isResult=commonFunctions.clickElement(deleteLinkLotsPagePopup);
+        }
+        return isResult;
+    }
+
+    public boolean fillLambsAtFootDetailsForSheep(String numberOfLambsAtFoot, String lambsAtFootSiredBy, String ageOfLambs) {
+        commonFunctions.scrollDownToElement(ageOfLambsTextField);
+        commonFunctions.sendKey(numberOfLambsAtFootTextField, numberOfLambsAtFoot);
+        commonFunctions.clickElement(hideKeyboardButton);
+        commonFunctions.sendKey(lambsAtFootSiredByTextField, lambsAtFootSiredBy);
+        commonFunctions.clickElement(hideKeyboardButton);
+        commonFunctions.sendKey(ageOfLambsTextField, ageOfLambs);
+        commonFunctions.clickElement(hideKeyboardButton);
+        return !commonFunctions.getElementText(ageOfLambsTextField, 10).isEmpty();
+    }
+
+    public boolean fillWoolSkinDetailsForSheep(String lastShearingDate, String mulesed, String crutched, String degreeOfBurr, String typeOfBurr, String degreeOfSeed, String typeOfSeed, String comments) {
+        commonFunctions.scrollDownToElement(lastShearingDateLabel);
+        if(commonFunctions.clickElement(lastShearingDateDropDown)){
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        //commonFunctions.selectDateBySendingKeysToDropDown(dropdownPickers, lastShearingDate);
+
+        commonFunctions.scrollDownToElement(mulesedDropDown);
+
+        if(commonFunctions.clickElement(mulesedDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, mulesed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        commonFunctions.clickElement(crutchedDropDown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, crutched);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        if(commonFunctions.clickElement(degreeOfBurrDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, degreeOfBurr);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+
+        //commonFunctions.scrollDownToElement(typeOfBurrTextField);
+
+        commonFunctions.sendKey(typeOfBurrTextField, typeOfBurr);
+        commonFunctions.clickElement(hideKeyboardButton);
+
+        if(commonFunctions.clickElement(degreeOfSeedDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, degreeOfSeed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+
+        commonFunctions.sendKey(typeOfSeedTextField, typeOfSeed);
+        commonFunctions.clickElement(hideKeyboardButton);
+
+        commonFunctions.sendKey(generalWoolCommentsTextField, comments);
+        commonFunctions.clickElement(hideKeyboardButton);
+
+        return !commonFunctions.getElementText(typeOfSeedTextField, 10).isEmpty();
+    }
+
+    public boolean fillJoiningDetails(String joiningStatus, String numberOfHeadsScanned) {
+        commonFunctions.scrollDownToElement(joiningStatusDropDown);
+
+        commonFunctions.clickElement(joiningStatusDropDown);
+        commonFunctions.sendKeyToDropDown(dropdownPicker, joiningStatus);
+        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        commonFunctions.sendKey(numberOfHeadScannedInLambTextField, numberOfHeadsScanned);
+        return commonFunctions.clickElement(hideKeyboardButton);
+    }
+
+    public boolean fillHealthVetDetailsDetails(String sheepAreFreeOfFootrot, String sheepHaveNoHistoryOfFootrot, String sheepAreFreeOfLice, String withinWithHoldingPeriod) {
+        boolean isResult=false;
+        commonFunctions.scrollDownToElement(sheepHaveNoHistoryOfFootrotDropDown);
+
+        if(commonFunctions.clickElement(sheepAreFreeOfFootrotDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepAreFreeOfFootrot);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(sheepHaveNoHistoryOfFootrotDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepHaveNoHistoryOfFootrot);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(sheepAreFreeOfLicetDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepAreFreeOfLice);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(withinWithHoldingPeriodDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, withinWithHoldingPeriod);
+            isResult=commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        return isResult;
+    }
+
+    public boolean fillAccreditationDetails(String bioSecurityPlanAvailable, String approvedOJDVaccines) {
+
+        boolean isResult=false;
+        commonFunctions.scrollDownToElement(bioSecurityPlanAvailableDropDown);
+
+        if(commonFunctions.clickElement(bioSecurityPlanAvailableDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, bioSecurityPlanAvailable);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+        if(commonFunctions.clickElement(approvedOJDVaccineDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, approvedOJDVaccines);
+            isResult=commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
         return isResult;
     }
 
