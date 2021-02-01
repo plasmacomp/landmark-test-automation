@@ -6,6 +6,7 @@ import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import logger.Log;
+import org.omg.PortableServer.THREAD_POLICY_ID;
 import org.openqa.selenium.support.PageFactory;
 import utils.CommonFunctions;
 import utils.CommonFunctionsMobile;
@@ -43,16 +44,26 @@ public class LoginPage
     private static IOSElement loginButton;
     @iOSXCUITFindBy(accessibility = "profile")
     private static IOSElement userIcon;
+    @iOSXCUITFindBy(accessibility = "LoginButton")
+    private static IOSElement loginButtonNew;
+
 
 
     public boolean login(String username, String password) {
         boolean isUserLoggedIn=false;
         //Log.info("**********Login method started"+GlobalVars.platform+"*********");
         try {
-            commonFunctions.sendKey(emailTextbox, username);
-            commonFunctions.sendKey(passwordTextbox, password);
-            if(commonFunctions.clickElement(loginButton)){
-                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 55);
+//            commonFunctions.sendKey(emailTextbox, username);
+//            commonFunctions.sendKey(passwordTextbox, password);
+//            if(commonFunctions.clickElement(loginButton)){
+//                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 55);
+//            }
+
+            //***** After new build changes of SSO removal
+
+            if(commonFunctions.clickElement(loginButtonNew)){
+                Thread.sleep(40000);
+                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 59);
             }
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ globalVars.getPlatform());
         } catch (Exception e) {

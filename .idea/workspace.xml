@@ -23,16 +23,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/base/IosBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/base/IosBase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractDashboardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/LoginTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Dashboard/DashboardTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityConditionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityConditionalTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoClassifiedTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoClassifiedTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testng.xml" beforeDir="false" afterPath="$PROJECT_DIR$/testng.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoConditionalTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoConditionalTest.java" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,12 +82,12 @@
     </key>
   </component>
   <component name="RunManager" selected="TestNG./Users/ataurrahman/Documents/TabTestAutomation/TabTestAutomation/testng.xml">
-    <configuration name="ArrayOutput" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="generic_pages.ArrayOutput" />
+    <configuration name="CollectionsTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="base.CollectionsTest" />
       <module name="LandmarkTestAutomation" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="generic_pages.*" />
+          <option name="PATTERN" value="base.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -153,10 +147,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="TestNG./Users/ataurrahman/Documents/TabTestAutomation/TabTestAutomation/testng.xml" />
+        <item itemvalue="Application.CollectionsTest" />
         <item itemvalue="JUnit.Opportunity.Opp_Record_Listing_Info in LandmarkTestAutomation" />
         <item itemvalue="TestNG.LoginTest.loginTest" />
         <item itemvalue="Application.WithoutCollection" />
-        <item itemvalue="Application.ArrayOutput" />
       </list>
     </recent_temporary>
   </component>
@@ -190,58 +184,42 @@
     <option name="LAST_COMMIT_MESSAGE" value="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="491" y="298" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog" timestamp="1593791794966">
+    <state x="483" y="136" key="#xdebugger.evaluate" timestamp="1611672979789">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="491" y="298" key="#com.intellij.refactoring.move.moveInstanceMethod.MoveInstanceMethodDialog/0.23.1440.797@0.23.1440.797" timestamp="1593791794966" />
-    <state x="458" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590677560462">
+    <state x="483" y="136" key="#xdebugger.evaluate/0.23.1440.797@0.23.1440.797" timestamp="1611672979789" />
+    <state width="1398" height="379" key="GridCell.Tab.0.bottom" timestamp="1611719833693">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="458" y="175" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.797@0.23.1440.797" timestamp="1590677560462" />
-    <state x="826" y="165" key="#xdebugger.evaluate" timestamp="1594140083434">
+    <state width="1398" height="379" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1611719833693" />
+    <state width="1398" height="379" key="GridCell.Tab.0.center" timestamp="1611719833693">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state x="826" y="165" key="#xdebugger.evaluate/0.23.1440.797@0.23.1440.797" timestamp="1594140083434" />
-    <state width="1398" height="260" key="GridCell.Tab.0.bottom" timestamp="1594141535673">
+    <state width="1398" height="379" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1611719833693" />
+    <state width="1398" height="379" key="GridCell.Tab.0.left" timestamp="1611719833692">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1594141535673" />
-    <state width="1398" height="260" key="GridCell.Tab.0.center" timestamp="1594141535672">
+    <state width="1398" height="379" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1611719833692" />
+    <state width="1398" height="379" key="GridCell.Tab.0.right" timestamp="1611719833693">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1594141535672" />
-    <state width="1398" height="260" key="GridCell.Tab.0.left" timestamp="1594141535671">
+    <state width="1398" height="379" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1611719833693" />
+    <state width="1398" height="379" key="GridCell.Tab.1.bottom" timestamp="1611719833695">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1594141535671" />
-    <state width="1398" height="260" key="GridCell.Tab.0.right" timestamp="1594141535673">
+    <state width="1398" height="379" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1611719833695" />
+    <state width="1398" height="379" key="GridCell.Tab.1.center" timestamp="1611719833694">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1594141535673" />
-    <state width="1398" height="260" key="GridCell.Tab.1.bottom" timestamp="1594141535678">
+    <state width="1398" height="379" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1611719833694" />
+    <state width="1398" height="379" key="GridCell.Tab.1.left" timestamp="1611719833694">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1594141535678" />
-    <state width="1398" height="260" key="GridCell.Tab.1.center" timestamp="1594141535676">
+    <state width="1398" height="379" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1611719833694" />
+    <state width="1398" height="379" key="GridCell.Tab.1.right" timestamp="1611719833695">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1594141535676" />
-    <state width="1398" height="260" key="GridCell.Tab.1.left" timestamp="1594141535675">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1594141535675" />
-    <state width="1398" height="260" key="GridCell.Tab.1.right" timestamp="1594141535678">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state width="1398" height="260" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1594141535678" />
-    <state x="327" y="39" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1592139094261">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="327" y="39" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.23.1440.797@0.23.1440.797" timestamp="1592139094261" />
-    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup" timestamp="1593874862869">
-      <screen x="0" y="23" width="1440" height="797" />
-    </state>
-    <state x="385" y="144" width="670" height="676" key="search.everywhere.popup/0.23.1440.797@0.23.1440.797" timestamp="1593874862869" />
+    <state width="1398" height="379" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1611719833695" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -458,11 +436,6 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoSheepClassified.java</url>
-          <line>25</line>
-          <option name="timeStamp" value="196" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoSheepClassified.java</url>
           <line>104</line>
           <option name="timeStamp" value="199" />
         </line-breakpoint>
@@ -473,8 +446,43 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoSheepClassified.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="201" />
+          <line>73</line>
+          <option name="timeStamp" value="204" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoSheepClassified.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="205" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoSheepClassified.java</url>
+          <line>96</line>
+          <option name="timeStamp" value="206" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>49</line>
+          <option name="timeStamp" value="208" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="210" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>70</line>
+          <option name="timeStamp" value="211" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityTest.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="212" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

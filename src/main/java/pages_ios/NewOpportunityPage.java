@@ -31,7 +31,7 @@ public class NewOpportunityPage {
     private static WebElement newOpportunityTile;
     @iOSXCUITFindBy(accessibility = "Sale Information")
     private static WebElement salesInformationLabel;
-    @iOSXCUITFindBy(accessibility = "Vendor Info")
+    @iOSXCUITFindBy(accessibility = "Vendor Information")
     private static WebElement vendorInfoLabel;
     @iOSXCUITFindBy(accessibility = "Lots")
     private static WebElement lotsLabel;

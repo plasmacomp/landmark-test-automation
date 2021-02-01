@@ -948,6 +948,19 @@ public class ListingInfoPage {
         return !commonFunctions.getElementText(typeOfSeedTextField, 10).isEmpty();
     }
 
+    public boolean fillMulesedFieldWoolSkinDetailsForSheep() {
+
+        commonFunctions.scrollDownToElement(mulesedDropDown);
+
+        if(commonFunctions.clickElement(mulesedDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, "Yes");
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        return true;
+
+    }
+
     public boolean fillJoiningDetails(String joiningStatus, String numberOfHeadsScanned) {
         commonFunctions.scrollDownToElement(joiningStatusDropDown);
 
