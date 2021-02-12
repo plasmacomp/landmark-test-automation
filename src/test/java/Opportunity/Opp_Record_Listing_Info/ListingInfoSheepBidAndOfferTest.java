@@ -168,7 +168,7 @@ public class ListingInfoSheepBidAndOfferTest {
         String sheepAreFreeOfLice="Yes";
         String withinWithHoldingPeriod="No";
 
-        isResult = listingInfoPage.fillHealthVetDetailsDetails(sheepAreFreeOfFootrot, sheepHaveNoHistoryOfFootrot, sheepAreFreeOfLice, withinWithHoldingPeriod);
+        isResult = listingInfoPage.fillHealthVetDetailsForSheep(sheepAreFreeOfFootrot, sheepHaveNoHistoryOfFootrot, sheepAreFreeOfLice, withinWithHoldingPeriod);
         Utils.logStepInfo(isResult, "Fill Health Vet details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Health Vet details!!");
     }

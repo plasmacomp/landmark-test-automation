@@ -323,7 +323,7 @@ public class ListingInfoPage {
     private static IOSElement breedingQualityDropdown;
     @iOSXCUITFindBy(accessibility = "Horn Status")
     private static IOSElement hornStatusLabel;
-    @iOSXCUITFindBy(accessibility = "lmkopesdmoshhornstatus") ////XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoldhornstatus") ////XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament *")
     private static IOSElement temperamentLabel;
@@ -470,11 +470,15 @@ public class ListingInfoPage {
     //************ Classified type specific locators
     @iOSXCUITFindBy(accessibility = "Classified Duration *")
     private static IOSElement classifiedDurationLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Classified Duration *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoclassduration") //XCUIElementTypeStaticText[@name='Classified Duration *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement classifiedDurationDropdown;
+
+    @iOSXCUITFindBy(accessibility = "lmkopesdmolodatelisted") //XCUIElementTypeStaticText[@name='Classified Start Date/Time *']//following-sibling::XCUIElementTypeTextField
+    private static IOSElement classifiedStartDateTimeDropDown;
+
     @iOSXCUITFindBy(accessibility = "Price (ex GST) *")
     private static IOSElement priceLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Price (ex GST) *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopecesdmolotprcper") //XCUIElementTypeStaticText[@name='Price (ex GST) *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement priceTextBox;
     @iOSXCUITFindBy(accessibility = "Description *")
     private static IOSElement descriptionClassifiedLabel;
@@ -482,11 +486,11 @@ public class ListingInfoPage {
     private static IOSElement descriptionClassifiedTextView;
     @iOSXCUITFindBy(accessibility = "Weight Range - Low *")
     private static IOSElement weightRangeLowLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(xpath = "lmkopesdmoldwghtranlow") //XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField
     private static IOSElement weightRangeLowTextBox;
     @iOSXCUITFindBy(accessibility = "Weight Range - High *")
     private static IOSElement weightRangeHighLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(xpath = "lmkopesdmoldwghtranhigh") //XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement weightRangeHighTextBox;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
     private static IOSElement hgpTreatedClassifiedLabel;
@@ -566,10 +570,12 @@ public class ListingInfoPage {
     public boolean verifyListingTypeSelection(boolean isClassifiedTrue, String transactionType, String saleType) {
         boolean isResult=false;
         if(isClassifiedTrue){
-            if(commonFunctions.clickElement(classifiedRadioButton)){
-                commonFunctions.clickElement(availableRadioButton);
-            }
-            isResult=commonFunctions.isElementDisplayed(availableLabel, 10);
+//            if(commonFunctions.clickElement(classifiedRadioButton)){
+//                commonFunctions.clickElement(availableRadioButton); //This is now removed
+//            }
+            //Code change after SSO removal build
+            isResult=commonFunctions.clickElement(classifiedRadioButton, 15);
+            //isResult=commonFunctions.isElementDisplayed(availableLabel, 10);
 
         }
         else{
@@ -771,7 +777,7 @@ public class ListingInfoPage {
     public boolean addBreedingDetailsDetails() {
         return false;
     }
-    public boolean addHealthVetDetailsDetails(String hgpTreated, String withinWithholdingPeriod) {
+    public boolean addHealthVetDetails(String hgpTreated, String withinWithholdingPeriod) {
         boolean isResult=false;
         commonFunctions.scrollDownToElement(hgpTreatedDropdown);
         //movePickerWheel(hgpTreatedDropdown, hgpTreated);
@@ -815,6 +821,7 @@ public class ListingInfoPage {
     }
 
     public boolean fillClassifiedListingOverviewDetails(String classifiedDuration, int price, String description) {
+
         commonFunctions.clickElement(classifiedDurationDropdown);
         commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
         //movePickerWheel(classifiedDurationDropdown, classifiedDuration);
@@ -828,9 +835,14 @@ public class ListingInfoPage {
         String townText="";
         String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
 
-        commonFunctions.clickElement(classifiedDurationDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(classifiedStartDateTimeDropDown)) {
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(classifiedDurationDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(priceTextBox, price);
         commonFunctions.sendKey(descriptionTextView, description);
@@ -842,15 +854,19 @@ public class ListingInfoPage {
                 townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
             }
         }
-        return town.contains(townText);
+        //return town.contains(townText);
+        return townText.contains(town);
 
     }
     public boolean fillClassifiedLotDetails(String hornStatus, String weightRangeLow, String weightRangeHigh) {
         //movePickerWheel(hornStatusDropdown, hornStatus);
-        commonFunctions.clickElement(hornStatusDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, hornStatus);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
+        //Commenting the horn status drop down handling as it is not mandatory now
+//        commonFunctions.clickElement(hornStatusDropdown);
+//        commonFunctions.sendKeyToDropDown(dropdownPicker, hornStatus);
+//        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+        //commonFunctions.scrollDownToElementWithPointerInput(weightRangeLowLabel);
         commonFunctions.scrollDownToElement(weightRangeLowLabel);
         commonFunctions.sendKey(weightRangeLowTextBox, weightRangeLow);
         commonFunctions.sendKey(weightRangeHighTextBox, weightRangeHigh);
@@ -972,7 +988,34 @@ public class ListingInfoPage {
         return commonFunctions.clickElement(hideKeyboardButton);
     }
 
-    public boolean fillHealthVetDetailsDetails(String sheepAreFreeOfFootrot, String sheepHaveNoHistoryOfFootrot, String sheepAreFreeOfLice, String withinWithHoldingPeriod) {
+    public boolean fillHealthVetDetailsForSheep(String sheepAreFreeOfFootrot, String sheepHaveNoHistoryOfFootrot, String sheepAreFreeOfLice, String withinWithHoldingPeriod) {
+        boolean isResult=false;
+        commonFunctions.scrollDownToElement(sheepHaveNoHistoryOfFootrotDropDown);
+
+        if(commonFunctions.clickElement(sheepAreFreeOfFootrotDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepAreFreeOfFootrot);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(sheepHaveNoHistoryOfFootrotDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepHaveNoHistoryOfFootrot);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(sheepAreFreeOfLicetDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, sheepAreFreeOfLice);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(withinWithHoldingPeriodDropDown)){
+            commonFunctions.sendKeyToDropDown(dropdownPicker, withinWithHoldingPeriod);
+            isResult=commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        return isResult;
+    }
+
+    public boolean fillHealthVetDetailsDetailsForClassifiedSheep(String sheepAreFreeOfFootrot, String sheepHaveNoHistoryOfFootrot, String sheepAreFreeOfLice, String withinWithHoldingPeriod) {
         boolean isResult=false;
         commonFunctions.scrollDownToElement(sheepHaveNoHistoryOfFootrotDropDown);
 

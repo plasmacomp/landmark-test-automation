@@ -448,9 +448,10 @@ public class NewContractPage {
         boolean isResult=false;
         String branchNameXpath="//XCUIElementTypeStaticText[@name='"+branchName+"']";
 
-        commonFunctions.clickElement(contractDateDropdown);
-        //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(contractDateDropdown)) {
+            //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.clickElement(salesTypeDropdown);
         commonFunctions.sendKeyToDropDown(dropdownPicker, salesType);

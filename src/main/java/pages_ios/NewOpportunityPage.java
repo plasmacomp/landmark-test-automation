@@ -2,6 +2,7 @@ package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
@@ -55,13 +56,13 @@ public class NewOpportunityPage {
     private static WebElement deleteButtonPopup;
     @iOSXCUITFindBy(accessibility = "Cancel")
     private static WebElement cancelButtonPopup;
-    @iOSXCUITFindBy(accessibility = "lmkopecesdmovendor") //## //XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "LMSearchInputViewCell-button-tap-to-search") //lmkopecesdmovendor## //XCUIElementTypeTextField
     private static WebElement vendorInfoTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     private static WebElement vendorInfoTextboxPopup;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther")
     private static WebElement vendorInfoPopupWindow;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")      // ***** Till build-167 //XCUIElementTypeSearchField
+    @iOSXCUITFindBy(accessibility = "Customer-SearchBar-0") ////XCUIElementTypeTextField      // ***** Till build-167 //XCUIElementTypeSearchField
     private static WebElement vendorInfoSearchBoxPopupWindow;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
@@ -122,13 +123,13 @@ public class NewOpportunityPage {
     private static WebElement cameraRollButton;
     @iOSXCUITFindBy(accessibility = "Photo Gallery")
     private static WebElement photoGalleryButton;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[1]")
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[2]")
     private static WebElement firstImage;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Continue']")
     private static WebElement continueButtonFileUploadWindow;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[6]")
     private static WebElement imagePreviewAttachmentsTab;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[6]/*[5]")
+    @iOSXCUITFindBy(accessibility = "attachment options") //(//XCUIElementTypeCell)[6]/*[5]
     private static WebElement tripleDotImagePreview;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse']")
     private static WebElement browseButton;
@@ -142,7 +143,8 @@ public class NewOpportunityPage {
     private static WebElement sendIconNotes;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit & View Record']")
     private static WebElement submitAndViewRecordButton;
-
+    @iOSXCUITFindBy(accessibility = "Hide keyboard")
+    private static IOSElement hideKeyboardButton;
 
 
 
@@ -208,10 +210,18 @@ public class NewOpportunityPage {
     
     public boolean addVendorInfo(String searchText) {
         //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]"; ************* For STG3
-        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
+        //String vendorNameXpath="//XCUIElementTypeStaticText[@name='Trading Name: BR&C Consignment Stock - GST']";
+
+        //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
         commonFunctions.clickElement(vendorInfoTextbox);
-        //commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+
+        commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
+        commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
         //commonFunctions.clickElementByXpath(vendorNameXpath);
+
+        //commonFunctions.clickElementByAccessibilityId(searchText);
+        commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText);
+
         //commonFunctions.clickElement(vendorInfoPopupWindow);
         commonFunctions.clickElement(nextButton);
         return commonFunctions.isElementDisplayed(quantityTextBox);
@@ -256,34 +266,45 @@ public class NewOpportunityPage {
 
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
-        commonFunctions.sendKey(quantityTextBox, quantity);
-        commonFunctions.clickElement(productCategoryDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
-        commonFunctions.clickElement(doneButtonWheelPicker);
 
-        commonFunctions.clickElement(productDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        commonFunctions.clickElement(quantityTextBox);
+        commonFunctions.sendKeyWithActions(quantityTextBox, quantity);
 
-        commonFunctions.clickElement(breedDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productCategoryDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-        commonFunctions.clickElement(priceTypeDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(breedDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(priceTypeDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(priceGstTextBox, price);
         commonFunctions.sendKey(ageTextBox1, age1);
-        commonFunctions.sendKey(ageTextBox2, age2);
+        //commonFunctions.sendKey(ageTextBox2, age2);
 
-        commonFunctions.clickElement(monthsDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(monthsDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(descriptionTextBox, description);
-        driver.hideKeyboard();
-        commonFunctions.clickElement(saveAndReviewButton);
+        commonFunctions.clickElement(hideKeyboardButton);
+        //driver.hideKeyboard();
+        if(commonFunctions.clickElement(nextButton, 10)) {
+            commonFunctions.clickElement(saveAndReviewButton);
+        }
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
         //commonFunctions.clickElement(nextButton);
@@ -351,36 +372,36 @@ public class NewOpportunityPage {
 
     public boolean addAttachments() {
         boolean isResult=false;
-//        if(commonFunctions.clickElement(uploadAttachtmentsButton)){
-//            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
-//                try{
-//                    Thread.sleep(2000);
-//                }
-//                catch (InterruptedException ex){
-//                    ex.printStackTrace();
-//                }
-//                if(commonFunctions.clickElement(firstImage)){
-//                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
-//                }
-//            }
-//        }
+        if(commonFunctions.clickElement(uploadAttachtmentsButton)){
+            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
+                try{
+                    Thread.sleep(2000);
+                }
+                catch (InterruptedException ex){
+                    ex.printStackTrace();
+                }
+                if(commonFunctions.clickElementWithActions(firstImage)){   //commonFunctions.clickElement(firstImage)
+                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
+                }
+            }
+        }
 
         //****************Commented the above code block as the new build 169 has changes in photo list so currently there's no locator for photos
-        return true;
+        return isResult;
     }
 
     public boolean verifyAttachments() {
         boolean isResult1=false;
         boolean isResult2=false;
-        //isResult1= commonFunctions.isElementDisplayed(tripleDotImagePreview);
+        isResult1= commonFunctions.isElementDisplayed(tripleDotImagePreview);
         if(commonFunctions.clickElement(nextButton)){
             isResult2=commonFunctions.isElementDisplayed(notesTextField, 10);
         }
-        return isResult2;
+        return isResult1;
     }
 
     public boolean addNotes(String note) {
-        boolean isResult=false;
+        boolean isResult;
         commonFunctions.clickElement(notesTextField);
         commonFunctions.sendKey(notesTextField, note);
         commonFunctions.clickElement(sendIconNotes);
@@ -390,7 +411,9 @@ public class NewOpportunityPage {
 
     public boolean verifyNotes(String note) {
         boolean isResult=false;
-        String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
+        //String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
+        String notesTextXpath="//XCUIElementTypeStaticText[contains(@value,'"+note+"')]";
+
         isResult=commonFunctions.isElementDisplayedByXpath(notesTextXpath);
         commonFunctions.clickElement(submitAndViewRecordButton);
         return isResult;
@@ -399,19 +422,24 @@ public class NewOpportunityPage {
     public boolean addLotsInformationOnlyMandatoryFields(String quantity, String productCategory, String product, String breed) {
         boolean isResult=false;
         commonFunctions.sendKey(quantityTextBox, quantity);
-        commonFunctions.clickElement(productCategoryDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
-        commonFunctions.clickElement(doneButtonWheelPicker);
 
-        commonFunctions.clickElement(productDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productCategoryDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-        commonFunctions.clickElement(breedDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-        driver.hideKeyboard();
+        if(commonFunctions.clickElement(breedDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        //driver.hideKeyboard();
+        commonFunctions.clickElement(hideKeyboardButton, 10);
         commonFunctions.clickElement(saveAndReviewButton);
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);

@@ -161,7 +161,7 @@ public class ListingInfoClassifiedTest {
         catch (ArrayIndexOutOfBoundsException ex){
             ex.printStackTrace();
         }
-        isResult = listingInfoPage.addHealthVetDetailsDetails(hgpTreated, withinWithholdingPeriod);
+        isResult = listingInfoPage.addHealthVetDetails(hgpTreated, withinWithholdingPeriod);
         Utils.logStepInfo(isResult, "Fill Health Vet details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Health Vet details!!");
     }

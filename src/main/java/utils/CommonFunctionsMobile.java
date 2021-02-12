@@ -14,6 +14,10 @@ import io.appium.java_client.touch.offset.PointOption;
 import logger.Log;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.Pause;
+import org.openqa.selenium.interactions.PointerInput;
+import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -22,6 +26,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -70,6 +75,22 @@ public class CommonFunctionsMobile {
         Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
         return isElementClicked;
     }
+
+    public boolean clickElementWithActions(WebElement element) {
+        boolean isElementClicked=false;
+        Actions actions=new Actions(driver);
+        try{
+            actions.moveToElement(element).click().build().perform();
+            isElementClicked=true;
+        }
+        catch (Exception e) {
+            logger.error("Exception occurred in clickElementWithActions method: "+e.getMessage());
+        }
+        Utils.logFunctionLevelLogs(isElementClicked, "clickElementWithActions");
+        return isElementClicked;
+    }
+
+
     public boolean clickElementByXpath(String xpath) {
         boolean isElementClicked=false;
         try{
@@ -95,6 +116,18 @@ public class CommonFunctionsMobile {
         return isElementClicked;
     }
 
+
+    public void sendKeyWithActions(WebElement element, String key) {
+        try {
+            Actions actions=new Actions(driver);
+
+            actions.moveToElement(element).sendKeys(key).build().perform();
+
+            Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
+        } catch (Exception e) {
+            logger.error("Exception occurred in sendKey method: "+e.getMessage());
+        }
+    }
 
     public void sendKey(WebElement element, String key) {
         try {
@@ -242,6 +275,9 @@ public class CommonFunctionsMobile {
         driver.executeScript("mobile:swipe", scrollObject);
         driver.executeScript("mobile:scroll", scrollObject);*/
 
+        //new IOSTouchAction(driver).press(elementToScroll).moveTo(elementToScroll).release().perform();
+
+
         for(int i=0; i<4; i++){
             new TouchAction(driver).press(PointOption.point(500, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
                     moveTo(PointOption.point(500, 400)).release().perform();
@@ -250,6 +286,25 @@ public class CommonFunctionsMobile {
         }
 
     }
+
+
+    public void scrollDownToElementWithPointerInput(WebElement elementToScroll) {
+        Point source = elementToScroll.getLocation();
+
+        PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+        Sequence dragNDrop = new Sequence(finger, 1);
+        dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(0),
+                PointerInput.Origin.viewport(),
+                source.x / 2, source.y + 400));
+        dragNDrop.addAction(finger.createPointerDown(PointerInput.MouseButton.MIDDLE.asArg()));
+        dragNDrop.addAction(finger.createPointerMove(Duration.ofMillis(600),
+                PointerInput.Origin.viewport(), source.getX() / 2, source.y / 2));
+        dragNDrop.addAction(finger.createPointerUp(PointerInput.MouseButton.MIDDLE.asArg()));
+        driver.perform(Arrays.asList(dragNDrop));
+
+    }
+
+
     public void scrollUpToElement(WebElement elementToScroll) {
         for(int i=0; i<7; i++){
             new TouchAction(driver).press(PointOption.point(500, 400)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
