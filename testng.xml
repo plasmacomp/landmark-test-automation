@@ -86,6 +86,7 @@
                     <include name="verifyNewContractAddLotsInfo"/>
                     <include name="verifyAddAdditionalCharges"/>
                     <include name="verifyAddCommissionAndAgents"/>
+                    <include name="verifyNewContractAddAttachments"/>
                     <include name="verifyNewContractAttachments"/>
                     <include name="verifyNewContractAddNotes"/>
                     <include name="verifyNewContractNotes"/>

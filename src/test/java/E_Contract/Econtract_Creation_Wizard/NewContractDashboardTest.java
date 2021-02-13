@@ -207,23 +207,24 @@ public class NewContractDashboardTest {
         Assert.isTrue(isResult, "Step-1: Adding Commission And Agent information failed!!");
     }
 
-//    @Test
-//    public void verifyNewContractAddAttachments() {
-//        boolean isResult=false;
-//        isResult = newContractPage.addAttachments();
-//        Utils.logStepInfo(isResult, "Add an attachment file to the Contract");
-//        Assert.isTrue(isResult, "Step-1: Attachment file addition failed!!");
-//    }
+    @Test
+    public void verifyNewContractAddAttachments() {
+        boolean isResult;
+        isResult = newContractPage.addAttachments();
+        Utils.logStepInfo(isResult, "Add an attachment file to the Contract");
+        Assert.isTrue(isResult, "Step-1: Attachment file addition failed!!");
+    }
+
     @Test
     public void verifyNewContractAttachments() {
-        boolean isResult=false;
+        boolean isResult;
         isResult = newContractPage.verifyAttachments();
         Utils.logStepInfo(isResult, "Verify that the attachment file has been uploaded");
         Assert.isTrue(isResult, "Step-1: Uploaded file verification in attachments tab failed!");
     }
     @Test
     public void verifyNewContractAddNotes() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyNewContractAddNotes");
         String noteText=params[0];
         isResult = newContractPage.addNotes(noteText);
@@ -232,7 +233,7 @@ public class NewContractDashboardTest {
     }
     @Test
     public void verifyNewContractNotes() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyNewContractNotes");
         String noteText=params[0];
         isResult = newContractPage.verifyNotes(noteText);
@@ -241,10 +242,12 @@ public class NewContractDashboardTest {
     }
     @Test
     public void verifyValidateContract() {
-        boolean isResult=false;
+        boolean isResult;
         String[] params=globalVars.getParamsData("verifyValidateContract");
-        String signatureText=params[0];
-        isResult = reviewAndSignPage.signedForAndOnBehalfOfLandmarkAsAgent(signatureText);
+        String agentSignature=params[0];
+        String buyerSignature=params[0];
+        String vendorSignature=params[0];
+        isResult = reviewAndSignPage.signedForAndOnBehalfOfLandmarkAsAgent(agentSignature, buyerSignature, vendorSignature);
         Utils.logStepInfo(isResult, "Verify that user is able to sign the contract");
         Assert.isTrue(isResult, "Step-9: Failed to sign contract!!");
     }

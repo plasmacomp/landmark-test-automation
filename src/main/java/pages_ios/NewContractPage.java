@@ -1,6 +1,7 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
 import org.openqa.selenium.WebElement;
@@ -22,9 +23,9 @@ public class NewContractPage {
     private static WebElement newContractTile;
     @iOSXCUITFindBy(accessibility = "Sale Information")
     private static WebElement salesInformationLabel;
-    @iOSXCUITFindBy(accessibility = "Vendor Info")
+    @iOSXCUITFindBy(accessibility = "Vendor Information")
     private static WebElement vendorInfoLabel;
-    @iOSXCUITFindBy(accessibility = "Buyer Info")
+    @iOSXCUITFindBy(accessibility = "Buyer Information")
     private static WebElement buyerInfoLabel;
     @iOSXCUITFindBy(accessibility = "Delivery")
     private static WebElement deliveryInfoLabel;
@@ -56,7 +57,7 @@ public class NewContractPage {
     private static WebElement deleteButtonPopup;
     @iOSXCUITFindBy(accessibility = "Cancel")
     private static WebElement cancelButtonPopup;
-    @iOSXCUITFindBy(accessibility = "lmkopecesdmovendor") //## //XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "LMSearchInputViewCell-button-tap-to-search") //lmkopecesdmovendor//## //XCUIElementTypeTextField
     private static WebElement vendorInfoTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
     private static WebElement vendorInfoTextboxPopup;
@@ -135,7 +136,11 @@ public class NewContractPage {
     private static WebElement cameraRollButton;
     @iOSXCUITFindBy(accessibility = "Photo Gallery")
     private static WebElement photoGalleryLink;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[1]")
+
+    @iOSXCUITFindBy(accessibility = "Photo Gallery")
+    private static WebElement photoGalleryButton;
+
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[2]")
     private static WebElement firstImage;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Continue']")
     private static WebElement continueButtonFileUploadWindow;
@@ -143,6 +148,10 @@ public class NewContractPage {
     private static WebElement imagePreviewAttachmentsTab;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse']")
     private static WebElement browseButton;
+
+    @iOSXCUITFindBy(accessibility = "attachment options")
+    private static WebElement attachmentOptionsEllipsis;
+
 
     //******** Notes tab elements ***************
     @iOSXCUITFindBy(accessibility = "add")
@@ -230,6 +239,8 @@ public class NewContractPage {
     private static WebElement phoneTextField;
 
 
+    @iOSXCUITFindBy(accessibility = "Hide keyboard")
+    private static IOSElement hideKeyboardButton;
 
 
 
@@ -295,35 +306,51 @@ public class NewContractPage {
     
     public boolean addVendorInfo(String searchText) {
         boolean isResult=false;
-        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
-        commonFunctions.clickElement(vendorInfoTextbox);
-        //commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
-        //commonFunctions.clickElementByXpath(vendorNameXpath);
-        //commonFunctions.clickElement(vendorInfoPopupWindow);
-        if(commonFunctions.clickElement(nextButton)){
-            isResult=commonFunctions.isElementDisplayed(buyerInfoSearchButton, 15);
+//        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
+        if(commonFunctions.clickElement(vendorInfoTextbox)) {
+
+//            commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
+            commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
+            commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
+
+
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {   //commonFunctions.clickElementByXpath(vendorNameXpath)
+                //commonFunctions.clickElement(vendorInfoPopupWindow);
+                if (commonFunctions.clickElement(nextButton)) {
+                    isResult = commonFunctions.isElementDisplayed(buyerInfoSearchButton, 15);
+                }
+            }
         }
         return isResult;
     }
+
     public boolean addBuyerInfo(String searchText) {
         boolean isResult=false;
-        String buyerNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
-        commonFunctions.clickElement(buyerInfoSearchButton);
-//        commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
-//        commonFunctions.clickElementByXpath(buyerNameXpath);
-        //commonFunctions.clickElement(vendorInfoPopupWindow);
-        if(commonFunctions.clickElement(nextButton)){
-            isResult=commonFunctions.isElementDisplayed(deliveryPointTextField, 15);
+
+        if(commonFunctions.clickElement(vendorInfoTextbox)) {
+
+            commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
+            commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
+
+
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {   //commonFunctions.clickElementByXpath(vendorNameXpath)
+                if (commonFunctions.clickElement(nextButton)) {
+                    isResult = commonFunctions.isElementDisplayed(deliveryPointTextField, 15);
+                }
+            }
         }
+
         return isResult;
     }
 
     public boolean addDeliveryInfo(String deliveryPoint, String month, int day, int year) {
         boolean isResult=false;
         commonFunctions.sendKey(deliveryPointTextField, deliveryPoint);
-        commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown);
-        //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+
+        if(commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown)) {
+            //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
         if(commonFunctions.clickElement(nextButton)){
             isResult=commonFunctions.isElementDisplayed(quantityTextBox, 15);
         }
@@ -332,35 +359,48 @@ public class NewContractPage {
 
     
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
-        boolean isResult=false;
-        commonFunctions.sendKey(quantityTextBox, quantity);
-        commonFunctions.clickElement(productCategoryDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        boolean isResult;
+        //commonFunctions.sendKey(quantityTextBox, quantity);
+        commonFunctions.clickElement(quantityTextBox);
+        commonFunctions.sendKeyWithActions(quantityTextBox, quantity);
 
-        commonFunctions.clickElement(productDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, product);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productCategoryDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-        commonFunctions.clickElement(breedDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(productDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, product);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
-        commonFunctions.clickElement(priceTypeDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(breedDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, breed);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(priceTypeDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, priceType);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(priceGstTextBox, price);
         commonFunctions.sendKey(ageTextBox1, age1);
-        commonFunctions.sendKey(ageTextBox2, age2);
+        //commonFunctions.sendKey(ageTextBox2, age2);
 
-        commonFunctions.clickElement(monthsDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(monthsDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, monthDropdown);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(descriptionTextBox, description);
-        driver.hideKeyboard();
-        commonFunctions.clickElement(saveAndReviewButton);
+        //driver.hideKeyboard();
+
+        commonFunctions.clickElement(hideKeyboardButton, 10);
+
+        if(commonFunctions.clickElement(nextButton, 10)) {
+            commonFunctions.clickElement(saveAndReviewButton);
+        }
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
         commonFunctions.clickElement(nextButton);
@@ -396,29 +436,31 @@ public class NewContractPage {
 
 
     public boolean addAttachments() {
+
         boolean isResult=false;
         if(commonFunctions.clickElement(uploadAttachtmentsButton)){
-            if(commonFunctions.clickElement(photoGalleryLink)){ //cameraRollButton
-                if(commonFunctions.clickElement(firstImage)){
+            if(commonFunctions.clickElement(photoGalleryButton)){ // //photoGalleryButton
+                try{
+                    Thread.sleep(2000);
+                }
+                catch (InterruptedException ex){
+                    ex.printStackTrace();
+                }
+                if(commonFunctions.clickElementWithActions(firstImage)){   //commonFunctions.clickElement(firstImage)
                     isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
                 }
             }
         }
+
         return isResult;
     }
 
     
     public boolean verifyAttachments() {
-        boolean isResult=false;
-//        if(commonFunctions.isElementDisplayed(imagePreviewAttachmentsTab)){
-//            if(commonFunctions.clickElement(nextButton)){
-//                isResult=commonFunctions.isElementDisplayed(notesTextField);
-//            }
-//        }
+        boolean isResult=commonFunctions.isElementDisplayed(attachmentOptionsEllipsis);
 
-        if(commonFunctions.clickElement(nextButton)){
-            isResult=commonFunctions.isElementDisplayed(notesTextField);
-        }
+        commonFunctions.clickElement(nextButton);
+
         return isResult;
     }
 
@@ -453,14 +495,14 @@ public class NewContractPage {
             commonFunctions.clickElement(doneButtonWheelPicker);
         }
 
-        commonFunctions.clickElement(salesTypeDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, salesType);
-        //commonFunctions.movePickerWheel(dropdownPicker, salesTypeDropdown, salesType);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(salesTypeDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, salesType);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         if(commonFunctions.clickElement(branchSearchButton)) {
-//            commonFunctions.sendKey(searchTextBoxPopupWindowBranch, branchName);
-//            commonFunctions.clickElementByXpath(branchNameXpath);
+            commonFunctions.sendKey(searchTextBoxPopupWindowBranch, branchName);
+            commonFunctions.clickElementByXpath(branchNameXpath);
         }
         if(commonFunctions.clickElement(nextButton)){
             isResult=commonFunctions.isElementDisplayed(vendorInfoTextbox, 15);
