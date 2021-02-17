@@ -65,7 +65,7 @@ public class NewContractPage {
     private static WebElement vendorInfoPopupWindow;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
     private static WebElement vendorName; //to get the name attribute's value for the name of the vendor
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")      // ***** Till build-167 //XCUIElementTypeSearchField
+    @iOSXCUITFindBy(accessibility = "Customer-SearchBar-0") ////XCUIElementTypeTextField     // ***** Till build-167 //XCUIElementTypeSearchField
     private static WebElement vendorInfoSearchBoxPopupWindow;
     //******Lots page elements**********
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoquantity") //## (//XCUIElementTypeTextField)[1]
@@ -123,7 +123,7 @@ public class NewContractPage {
     private static WebElement totalWeightLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Sale Value']")
     private static WebElement totalSaleValueLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@value='###'])[1]")
+    //@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@value='###'])[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add New Lot']") //XCUIElementTypeButton[@name='Add new Lot']
     private static WebElement addNewLotButton;
 
@@ -446,8 +446,8 @@ public class NewContractPage {
                 catch (InterruptedException ex){
                     ex.printStackTrace();
                 }
-                if(commonFunctions.clickElementWithActions(firstImage)){   //commonFunctions.clickElement(firstImage)
-                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow);
+                if(commonFunctions.clickElementWithActions(firstImage, 10)){   //commonFunctions.clickElement(firstImage)
+                    isResult=commonFunctions.clickElement(continueButtonFileUploadWindow, 10);
                 }
             }
         }

@@ -59,8 +59,11 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in clickElement method: "+e.getMessage());
             manageImplicitTimeOut(globalVars.getImplicitWait());
         }
-        manageImplicitTimeOut(globalVars.getImplicitWait());
-        Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
+        finally {
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+            Utils.logFunctionLevelLogs(isElementClicked, "clickElement");
+        }
+
         return isElementClicked;
     }
     public boolean clickElement(WebElement element) {
@@ -80,13 +83,41 @@ public class CommonFunctionsMobile {
         boolean isElementClicked=false;
         Actions actions=new Actions(driver);
         try{
+            manageImplicitTimeOut(0);
             actions.moveToElement(element).click().build().perform();
             isElementClicked=true;
         }
         catch (Exception e) {
             logger.error("Exception occurred in clickElementWithActions method: "+e.getMessage());
         }
-        Utils.logFunctionLevelLogs(isElementClicked, "clickElementWithActions");
+
+        finally {
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+            Utils.logFunctionLevelLogs(isElementClicked, "clickElementWithActions");
+        }
+
+        return isElementClicked;
+    }
+
+    public boolean clickElementWithActions(WebElement element, int timeOutInSec) {
+        boolean isElementClicked=false;
+        Actions actions=new Actions(driver);
+        WebDriverWait wait;
+        try{
+            manageImplicitTimeOut(0);
+            wait=new WebDriverWait(driver, timeOutInSec);
+            wait.until(ExpectedConditions.elementToBeClickable(element));
+            actions.moveToElement(element).click().build().perform();
+            isElementClicked=true;
+        }
+        catch (Exception e) {
+            logger.error("Exception occurred in clickElementWithActions method: "+e.getMessage());
+        }
+        finally {
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+            Utils.logFunctionLevelLogs(isElementClicked, "clickElementWithActions");
+        }
+
         return isElementClicked;
     }
 
@@ -121,7 +152,7 @@ public class CommonFunctionsMobile {
         try {
             Actions actions=new Actions(driver);
 
-            actions.moveToElement(element).sendKeys(key).build().perform();
+            actions.sendKeys(key).build().perform();
 
             Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
         } catch (Exception e) {
@@ -239,8 +270,11 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in getElementText method: "+e.getMessage());
             manageImplicitTimeOut(globalVars.getImplicitWait());
         }
-        manageImplicitTimeOut(globalVars.getImplicitWait());
-        logger.info("Element text found :"+ text);
+        finally {
+            manageImplicitTimeOut(globalVars.getImplicitWait());
+            logger.info("Element text found :"+ text);
+        }
+
         return text;
     }
     public String getElementTextByXpath(String xpath, int timeOutInSsec) {
