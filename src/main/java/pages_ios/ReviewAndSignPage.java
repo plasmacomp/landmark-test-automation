@@ -33,9 +33,9 @@ public class ReviewAndSignPage {
 
     @iOSXCUITFindBy(accessibility = "ReivewAndSign-PartiesAgreementView-Agent-signature-UIImageView-0")
     private static IOSElement signedForAndOnBehalfOfLandmarkAsAgentTextView;
-    @iOSXCUITFindBy(xpath = "ReivewAndSign-PartiesAgreementView-Buyer-signature-UIImageView-0")
+    @iOSXCUITFindBy(accessibility = "ReivewAndSign-PartiesAgreementView-Buyer-signature-UIImageView-0")
     private static IOSElement signedForAndOnBehalfOfBuyerTextView;
-    @iOSXCUITFindBy(xpath = "ReivewAndSign-PartiesAgreementView-Vendor-signature-UIImageView-0")
+    @iOSXCUITFindBy(accessibility = "ReivewAndSign-PartiesAgreementView-Vendor-signature-UIImageView-0")
     private static IOSElement signedForAndOnBehalfOfVendorTextView;
     @iOSXCUITFindBy(accessibility = "ReviewAndSign-letterButton")
     private static IOSElement aIconOnSignBelowPage;
@@ -98,18 +98,17 @@ public class ReviewAndSignPage {
             commonFunctions.clickElement(agentSignedOnBehalfOfVendorCheckBox);
             commonFunctions.clickElement(buyerAgreementCommunicatedToLandmarkCheckBox);
 
-            isSignSuccessful=commonFunctions.clickElement(doneButtonReviewAndSignScreen);
+            if(commonFunctions.clickElement(doneButtonReviewAndSignScreen)) {
+                isSignSuccessful = commonFunctions.clickElement(saveAndCloseButtonReviewAndSignInScreen, 15);
+                commonFunctions.clickElement(returnToContractsGridButton, 25);
+            }
 
-            Utils.logFunctionLevelLogs(isSignSuccessful, "Login"+ globalVars.getPlatform());
+            Utils.logFunctionLevelLogs(isSignSuccessful, "signedForAndOnBehalfOfLandmarkAsAgent"+ globalVars.getPlatform());
         } catch (Exception e) {
-            Log.error("Exception occurred in Login method"+e.getMessage());
+            Log.error("Exception occurred in signedForAndOnBehalfOfLandmarkAsAgent method"+e.getMessage());
             e.printStackTrace();
         }
 
-        if(isSignSuccessful){
-            commonFunctions.clickElement(returnToDashboardButton, 15);
-            commonFunctions.clickElement(returnToContractsGridButton, 15);
-        }
         return isSignSuccessful;
     }
 

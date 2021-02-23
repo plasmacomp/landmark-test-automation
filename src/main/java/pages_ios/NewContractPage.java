@@ -1,6 +1,7 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -20,223 +21,223 @@ public class NewContractPage {
 
 
     @iOSXCUITFindBy(accessibility = "new contract")
-    private static WebElement newContractTile;
+    private static MobileElement newContractTile;
     @iOSXCUITFindBy(accessibility = "Sale Information")
-    private static WebElement salesInformationLabel;
+    private static MobileElement salesInformationLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Information")
-    private static WebElement vendorInfoLabel;
+    private static MobileElement vendorInfoLabel;
     @iOSXCUITFindBy(accessibility = "Buyer Information")
-    private static WebElement buyerInfoLabel;
+    private static MobileElement buyerInfoLabel;
     @iOSXCUITFindBy(accessibility = "Delivery")
-    private static WebElement deliveryInfoLabel;
+    private static MobileElement deliveryInfoLabel;
     @iOSXCUITFindBy(accessibility = "Additional Charges")
-    private static WebElement additionalChargesLabel;
+    private static MobileElement additionalChargesLabel;
     @iOSXCUITFindBy(accessibility = "Lots")
-    private static WebElement lotsLabel;
+    private static MobileElement lotsLabel;
     @iOSXCUITFindBy(accessibility = "Additional Charges")
-    private static WebElement additionalChargeLabel;
+    private static MobileElement additionalChargeLabel;
     @iOSXCUITFindBy(accessibility = "Commission & Agents")
-    private static WebElement commissionAndAgentsLabel;
+    private static MobileElement commissionAndAgentsLabel;
     @iOSXCUITFindBy(accessibility = "Attachments")
-    private static WebElement attachmentsLabel;
+    private static MobileElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
-    private static WebElement notesLabel;
+    private static MobileElement notesLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='New Contract']")
-    private static WebElement newContractHeaderLabel;
+    private static MobileElement newContractHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
-    private static WebElement doneButton;
+    private static MobileElement doneButton;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]") //*** //XCUIElementTypeStaticText[@value='Title *']//preceding-sibling::XCUIElementTypeTextField
-    private static WebElement titleTextbox;
+    private static MobileElement titleTextbox;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]") //****//XCUIElementTypeStaticText[@value='Expected Sale Date ']//preceding-sibling::XCUIElementTypeTextField
-    private static WebElement expectedSaleDateTextbox;
+    private static MobileElement expectedSaleDateTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Next']")
-    private static WebElement nextButton;
+    private static MobileElement nextButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Cancel']")
-    private static WebElement cancelButton;
+    private static MobileElement cancelButton;
     @iOSXCUITFindBy(accessibility = "Delete")
-    private static WebElement deleteButtonPopup;
+    private static MobileElement deleteButtonPopup;
     @iOSXCUITFindBy(accessibility = "Cancel")
-    private static WebElement cancelButtonPopup;
+    private static MobileElement cancelButtonPopup;
     @iOSXCUITFindBy(accessibility = "LMSearchInputViewCell-button-tap-to-search") //lmkopecesdmovendor//## //XCUIElementTypeTextField
-    private static WebElement vendorInfoTextbox;
+    private static MobileElement vendorInfoTextbox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
-    private static WebElement vendorInfoTextboxPopup;
+    private static MobileElement vendorInfoTextboxPopup;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther")
-    private static WebElement vendorInfoPopupWindow;
+    private static MobileElement vendorInfoPopupWindow;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Vendor *']//following-sibling:: XCUIElementTypeButton")
-    private static WebElement vendorName; //to get the name attribute's value for the name of the vendor
+    private static MobileElement vendorName; //to get the name attribute's value for the name of the vendor
     @iOSXCUITFindBy(accessibility = "Customer-SearchBar-0") ////XCUIElementTypeTextField     // ***** Till build-167 //XCUIElementTypeSearchField
-    private static WebElement vendorInfoSearchBoxPopupWindow;
+    private static MobileElement vendorInfoSearchBoxPopupWindow;
     //******Lots page elements**********
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoquantity") //## (//XCUIElementTypeTextField)[1]
-    private static WebElement quantityTextBox;
+    private static MobileElement quantityTextBox;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
-    private static WebElement dropdownPicker;
+    private static MobileElement dropdownPicker;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypePickerWheel")
-    private static List<WebElement> dropdownPickers;
+    private static List<MobileElement> dropdownPickers;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoproductcat") //# (//XCUIElementTypeTextField)[2]
-    private static WebElement productCategoryDropdown;
+    private static MobileElement productCategoryDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoproduct") //## (//XCUIElementTypeTextField)[3]
-    private static WebElement productDropdown;
+    private static MobileElement productDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmobreed") //## (//XCUIElementTypeTextField)[4]
-    private static WebElement breedDropdown;
+    private static MobileElement breedDropdown;
     @iOSXCUITFindBy(accessibility = "lmkfmdmocostper") //## (//XCUIElementTypeTextField)[5]
-    private static WebElement priceTypeDropdown;
+    private static MobileElement priceTypeDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmopriceaud") //(//XCUIElementTypeTextField)[6]
-    private static WebElement priceGstTextBox;
+    private static MobileElement priceGstTextBox;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmosex") //## (//XCUIElementTypeTextField)[7]
-    private static WebElement sexDropdown;
+    private static MobileElement sexDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoage-from") //## (//XCUIElementTypeTextField)[8]
-    private static WebElement ageTextBox1;
+    private static MobileElement ageTextBox1;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoage-to") //(//XCUIElementTypeTextField)[9]
-    private static WebElement ageTextBox2;
+    private static MobileElement ageTextBox2;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmoagemonyr") //## (//XCUIElementTypeTextField)[10]
-    private static WebElement monthsDropdown;
+    private static MobileElement monthsDropdown;
     @iOSXCUITFindBy(accessibility = "lmkoeelotdmolistgdesc") //## //XCUIElementTypeTextView
-    private static WebElement descriptionTextBox;
+    private static MobileElement descriptionTextBox;
     @iOSXCUITFindBy(accessibility = "Live Weight Range")
-    private static WebElement liveWeightRangeLabel;
+    private static MobileElement liveWeightRangeLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Live Weight Range ']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement liveWeightRangeTextField;
+    private static MobileElement liveWeightRangeTextField;
     @iOSXCUITFindBy(accessibility = "Fat Score Range")
-    private static WebElement fatScoreRangeLabel;
+    private static MobileElement fatScoreRangeLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Fat Score Range ']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement fatScoreRangeTextField;
+    private static MobileElement fatScoreRangeTextField;
     @iOSXCUITFindBy(accessibility = "Have Hormone Growth Promotants Been Used")
-    private static WebElement haveHormoneGrowthPromotantsBeenUsedLabel;
+    private static MobileElement haveHormoneGrowthPromotantsBeenUsedLabel;
     @iOSXCUITFindBy(accessibility = "Additional Information")
-    private static WebElement additionalInformationLabel;
+    private static MobileElement additionalInformationLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Additional Information ']//preceding-sibling:: XCUIElementTypeTextView")
-    private static WebElement additionalInformationTextView;
+    private static MobileElement additionalInformationTextView;
     @iOSXCUITFindBy(accessibility = "Carthage Required")
-    private static WebElement carthageRequiredLabel;
+    private static MobileElement carthageRequiredLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='COMMISSION']")
-    private static WebElement commissionHeaderLabel;
+    private static MobileElement commissionHeaderLabel;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Save & Review']")
-    private static WebElement saveAndReviewButton;
+    private static MobileElement saveAndReviewButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='LIVESTOCK SUMMARY (SUBJECT TO DELIVERY)']")
-    private static WebElement liveStockSummaryHeader;
+    private static MobileElement liveStockSummaryHeader;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Quantity']")
-    private static WebElement totalQuantityLabel;
+    private static MobileElement totalQuantityLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[contains(@value,'Total Weight')]")
-    private static WebElement totalWeightLabel;
+    private static MobileElement totalWeightLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@value='Total Sale Value']")
-    private static WebElement totalSaleValueLabel;
+    private static MobileElement totalSaleValueLabel;
     //@iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@value='###'])[1]")
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add New Lot']") //XCUIElementTypeButton[@name='Add new Lot']
-    private static WebElement addNewLotButton;
+    private static MobileElement addNewLotButton;
 
     //********* Attachments elements ************
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Upload Attachments']")
-    private static WebElement uploadAttachtmentsButton;
+    private static MobileElement uploadAttachtmentsButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse Files']")
-    private static WebElement browseFilesButton;
+    private static MobileElement browseFilesButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Camera Roll']")
-    private static WebElement cameraRollButton;
+    private static MobileElement cameraRollButton;
     @iOSXCUITFindBy(accessibility = "Photo Gallery")
-    private static WebElement photoGalleryLink;
+    private static MobileElement photoGalleryLink;
 
     @iOSXCUITFindBy(accessibility = "Photo Gallery")
-    private static WebElement photoGalleryButton;
+    private static MobileElement photoGalleryButton;
 
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeCell)[2]")
-    private static WebElement firstImage;
+    private static MobileElement firstImage;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Continue']")
-    private static WebElement continueButtonFileUploadWindow;
+    private static MobileElement continueButtonFileUploadWindow;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeImage)[6]")
-    private static WebElement imagePreviewAttachmentsTab;
+    private static MobileElement imagePreviewAttachmentsTab;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Browse']")
-    private static WebElement browseButton;
+    private static MobileElement browseButton;
 
     @iOSXCUITFindBy(accessibility = "attachment options")
-    private static WebElement attachmentOptionsEllipsis;
+    private static MobileElement attachmentOptionsEllipsis;
 
 
     //******** Notes tab elements ***************
     @iOSXCUITFindBy(accessibility = "add")
-    private static WebElement plusIconNotes;
+    private static MobileElement plusIconNotes;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextView")
-    private static WebElement notesTextField;
+    private static MobileElement notesTextField;
     @iOSXCUITFindBy(accessibility = "send")
-    private static WebElement sendIconNotes;
+    private static MobileElement sendIconNotes;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Validate & Sign Contract']")
-    private static WebElement validateAndSignContractButton;
+    private static MobileElement validateAndSignContractButton;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Submit & View Record']")
-    private static WebElement submitAndViewRecordButton;
-//******* New contract sales information elements
+    private static MobileElement submitAndViewRecordButton;
+    //******* New contract sales information elements
     @iOSXCUITFindBy(accessibility = "lmkecondmocontractdate") //  **//XCUIElementTypeStaticText[@name='Contract Date *']//preceding-sibling:: XCUIElementTypeTextField
-    private static WebElement contractDateDropdown;
+    private static MobileElement contractDateDropdown;
     @iOSXCUITFindBy(accessibility = "lmkopecdmosaletype") //*** //XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling:: XCUIElementTypeTextField
-    private static WebElement salesTypeDropdown;
+    private static MobileElement salesTypeDropdown;
     @iOSXCUITFindBy(accessibility = "lmkecondmobranch") //## //XCUIElementTypeStaticText[@name=' Branch *']//following-sibling:: XCUIElementTypeButton
-    private static WebElement branchSearchButton;
+    private static MobileElement branchSearchButton;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeTextField")
-    private static WebElement searchTextBoxPopupWindowBranch;
+    private static MobileElement searchTextBoxPopupWindowBranch;
     @iOSXCUITFindBy(accessibility = "Buyer Info")
-    private static WebElement buyerInfoHeaderLabel;
+    private static MobileElement buyerInfoHeaderLabel;
     @iOSXCUITFindBy(accessibility = "lmkecondmobuyer")  // ## //XCUIElementTypeStaticText[@name='Buyer *']//following-sibling::XCUIElementTypeButton
-    private static WebElement buyerInfoSearchButton;
+    private static MobileElement buyerInfoSearchButton;
     @iOSXCUITFindBy(accessibility = "Delivery")
-    private static WebElement deliveryHeaderLabel;
+    private static MobileElement deliveryHeaderLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Horn Status *']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement hornStatusDropdown;
+    private static MobileElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "lmkecondmodeliverypoint") // ### //XCUIElementTypeStaticText[@name='Delivery Point *']//preceding-sibling:: XCUIElementTypeTextField
-    private static WebElement deliveryPointTextField;
+    private static MobileElement deliveryPointTextField;
     @iOSXCUITFindBy(accessibility = "lmkecondmoestfidelidate") //## //XCUIElementTypeStaticText[@name='Est. Final Delivery Date *']//following-sibling:: XCUIElementTypeTextField
-    private static WebElement estimatedFinalDeliveryDateDropdown;
+    private static MobileElement estimatedFinalDeliveryDateDropdown;
     @iOSXCUITFindBy(accessibility = "Multiple Deliveries?")
-    private static WebElement multipleDeliveriesLabel;
+    private static MobileElement multipleDeliveriesLabel;
     @iOSXCUITFindBy(accessibility = "Pickup/Delivery Notes")
-    private static WebElement pickUpDeliveryNotesLabel;
+    private static MobileElement pickUpDeliveryNotesLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Pickup/Delivery Notes ']//preceding-sibling::XCUIElementTypeTextView")
-    private static WebElement pickUpDeliveryNotesTextView;
+    private static MobileElement pickUpDeliveryNotesTextView;
     @iOSXCUITFindBy(accessibility = "Date of Inspection")
-    private static WebElement dateOfInspectionLabel;
+    private static MobileElement dateOfInspectionLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Date of Inspection ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement dateOfInspectionDropDown;
+    private static MobileElement dateOfInspectionDropDown;
     @iOSXCUITFindBy(accessibility = "Location of Inspection")
-    private static WebElement locationOfInspectionLabel;
+    private static MobileElement locationOfInspectionLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Location of Inspection ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement locationOfInspectionTextField;
+    private static MobileElement locationOfInspectionTextField;
     @iOSXCUITFindBy(accessibility = "Location of Livestock Until Delivery")
-    private static WebElement locationOfLiveStockUntilDeliveryLabel;
+    private static MobileElement locationOfLiveStockUntilDeliveryLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Location of Livestock Until Delivery ']//preceding-sibling::XCUIElementTypeTextField")
-    private static WebElement locationOfLiveStockUntilDeliveryTextField;
+    private static MobileElement locationOfLiveStockUntilDeliveryTextField;
 
     @iOSXCUITFindBy(accessibility = "Submit")
-    private static WebElement submitLink;
+    private static MobileElement submitLink;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeButton[@name='Done'])[2]")
-    private static WebElement doneButtonWheelPicker;
+    private static MobileElement doneButtonWheelPicker;
     @iOSXCUITFindBy(accessibility = "Is this an AuctionPlus Sale?")
-    private static WebElement isThisAnAuctionPlusSaleLabel;
+    private static MobileElement isThisAnAuctionPlusSaleLabel;
     @iOSXCUITFindBy(accessibility = "Split Agreement Proceeds?")
-    private static WebElement SpitAgreementsProceedsLabel;
+    private static MobileElement SpitAgreementsProceedsLabel;
     @iOSXCUITFindBy(accessibility = "Add Authorised Representative")
-    private static WebElement addAuthorisedRepresentativeLabel;
+    private static MobileElement addAuthorisedRepresentativeLabel;
     @iOSXCUITFindBy(accessibility = "Split Proceeds With *")
-    private static WebElement splitProceedsWithLabel;
+    private static MobileElement splitProceedsWithLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Split Proceeds With *']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement splitProceedsWithTextField;
+    private static MobileElement splitProceedsWithTextField;
     @iOSXCUITFindBy(accessibility = "Add Authorised Representative")
-    private static WebElement AddAuthorisedRepresentativeLabel;
+    private static MobileElement AddAuthorisedRepresentativeLabel;
     @iOSXCUITFindBy(accessibility = "First Name *")
-    private static WebElement firstNameLabel;
+    private static MobileElement firstNameLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='First Name *']//following-sibling:: XCUIElementTypeTextField")
-    private static WebElement firstNameTextField;
+    private static MobileElement firstNameTextField;
     @iOSXCUITFindBy(accessibility = "Last Name *")
-    private static WebElement lastNameLabel;
+    private static MobileElement lastNameLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Last Name *']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement lastNameTextField;
+    private static MobileElement lastNameTextField;
     @iOSXCUITFindBy(accessibility = "Email *")
-    private static WebElement emailLabel;
+    private static MobileElement emailLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Email *']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement emailTextField;
+    private static MobileElement emailTextField;
     @iOSXCUITFindBy(accessibility = "Phone *")
-    private static WebElement phoneLabel;
+    private static MobileElement phoneLabel;
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Phone *']//preceding-sibling:: XCUIElementTypeTextField")
-    private static WebElement phoneTextField;
+    private static MobileElement phoneTextField;
 
 
     @iOSXCUITFindBy(accessibility = "Hide keyboard")
@@ -250,7 +251,7 @@ public class NewContractPage {
         this.driver = globalVars.getDriver();
         PageFactory.initElements(new AppiumFieldDecorator(driver), this);
         commonFunctions=CommonFunctionsMobile.getInstance();
-        
+
     }
     public static NewContractPage getInstance(){
         if(newContractPage ==null){
@@ -263,17 +264,17 @@ public class NewContractPage {
         return commonFunctions.clickElement(newContractTile, 15);
     }
 
-    
+
     public boolean verifyNewContractHeaderLabel() {
         return commonFunctions.isElementDisplayed(newContractHeaderLabel, 15);
     }
 
-    
+
     public boolean verifySalesInformationLabel() {
         return commonFunctions.isElementDisplayed(salesInformationLabel, 15);
     }
 
-    
+
     public boolean verifyVendorInfoLabel() {
         return commonFunctions.isElementDisplayed(vendorInfoLabel, 15);
     }
@@ -294,16 +295,16 @@ public class NewContractPage {
         return commonFunctions.isElementDisplayed(lotsLabel, 15);
     }
 
-    
+
     public boolean verifyNotesLabel() {
         return commonFunctions.isElementDisplayed(notesLabel, 15);
     }
 
-    
+
     public boolean verifyAttachmentsLabel() {
         return commonFunctions.isElementDisplayed(attachmentsLabel, 15);
     }
-    
+
     public boolean addVendorInfo(String searchText) {
         boolean isResult=false;
 //        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
@@ -317,7 +318,7 @@ public class NewContractPage {
             if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {   //commonFunctions.clickElementByXpath(vendorNameXpath)
                 //commonFunctions.clickElement(vendorInfoPopupWindow);
                 if (commonFunctions.clickElement(nextButton)) {
-                    isResult = commonFunctions.isElementDisplayed(buyerInfoSearchButton, 15);
+                    isResult = commonFunctions.isElementDisplayed(vendorInfoTextbox, 15);
                 }
             }
         }
@@ -345,7 +346,9 @@ public class NewContractPage {
 
     public boolean addDeliveryInfo(String deliveryPoint, String month, int day, int year) {
         boolean isResult=false;
+        commonFunctions.rightClickElement(deliveryPointTextField, 10);
         commonFunctions.sendKey(deliveryPointTextField, deliveryPoint);
+        //commonFunctions.sendKeyWithActions(deliveryPointTextField, deliveryPoint);
 
         if(commonFunctions.clickElement(estimatedFinalDeliveryDateDropdown)) {
             //commonFunctions.selectDateFromDatePicker(dropdownPickers, month, day, year);
@@ -357,7 +360,7 @@ public class NewContractPage {
         return isResult;
     }
 
-    
+
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult;
         //commonFunctions.sendKey(quantityTextBox, quantity);
@@ -422,12 +425,12 @@ public class NewContractPage {
         return isResult;
     }
 
-    
+
     public boolean verifyLotSummaryPageHeaderLabels() {
         return (commonFunctions.isElementDisplayed(totalQuantityLabel) && commonFunctions.isElementDisplayed(totalWeightLabel) && commonFunctions.isElementDisplayed(totalSaleValueLabel));
     }
 
-    
+
     public boolean verifyLotSummaryPageValues(String quantity, String totalWeight, String totalSaleValue) {
         return commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",quantity)) &&
                 commonFunctions.isElementDisplayedByXpath(valueXpathLotsSummary.replace("###",totalWeight)) &&
@@ -455,7 +458,7 @@ public class NewContractPage {
         return isResult;
     }
 
-    
+
     public boolean verifyAttachments() {
         boolean isResult=commonFunctions.isElementDisplayed(attachmentOptionsEllipsis);
 
@@ -464,25 +467,21 @@ public class NewContractPage {
         return isResult;
     }
 
-    
+
     public boolean addNotes(String note) {
         commonFunctions.sendKey(notesTextField, note);
         commonFunctions.clickElement(sendIconNotes);
         return commonFunctions.clickElement(sendIconNotes);
     }
 
-    
+
     public boolean verifyNotes(String note) {
-        boolean isResult=false;
-        String notesTextXpath="//XCUIElementTypeStaticText[@value='"+note+"']";
-        commonFunctions.isElementDisplayedByXpath(notesTextXpath);
-        isResult=commonFunctions.clickElement(validateAndSignContractButton);
-            try{
-                Thread.sleep(15000);
-            }
-            catch (InterruptedException ex){
-                ex.printStackTrace();
-            }
+        boolean isResult;
+        String notesTextXpath="//XCUIElementTypeStaticText[contains(@name,'"+note+"')]";
+        //XCUIElementTypeStaticText[contains(@name,'Automation note')]
+        isResult=commonFunctions.isElementDisplayedByXpath(notesTextXpath);
+        commonFunctions.clickElement(validateAndSignContractButton);
+
         return isResult;
     }
 
@@ -509,5 +508,6 @@ public class NewContractPage {
         }
         return isResult;
     }
-    
+
 }
+

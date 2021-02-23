@@ -36,9 +36,9 @@ public class ListingInfoPage {
     private static IOSElement attachmentsLabel;
     @iOSXCUITFindBy(accessibility = "Notes")
     private static IOSElement notesLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Bid & Offer'])[2]")
+    @iOSXCUITFindBy(accessibility = "label-lmkopesdmololistingtype-Bid & Offer") //(//XCUIElementTypeStaticText[@name='Bid & Offer'])[2]
     private static IOSElement bidAndOfferLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Classified'])[2]")
+    @iOSXCUITFindBy(accessibility = "label-lmkopesdmololistingtype-Classified") //(//XCUIElementTypeStaticText[@name='Classified'])[2]
     private static IOSElement classifiedLabel;
     @iOSXCUITFindBy(accessibility = "lmkopesdmololistingtype-Bid & Offer")
     private static IOSElement bidAndOfferRadioButton;
@@ -48,9 +48,9 @@ public class ListingInfoPage {
     private static IOSElement transactionTypeLabel;
     @iOSXCUITFindBy(accessibility = "Sale Type *")
     private static IOSElement saleTypeLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Transaction Type ']//preceding-sibling::*")
+    @iOSXCUITFindBy(accessibility = "lmkopecdmotranstype") ////XCUIElementTypeStaticText[@name='Transaction Type ']//preceding-sibling::*
     private static IOSElement transactionTypeDropdown;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling::*")
+    @iOSXCUITFindBy(xpath = "lmkopecdmosaletype") //XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling::*
     private static IOSElement saleTypeDropdown;
     @iOSXCUITFindBy(accessibility = "Classified Listing Status")
     private static IOSElement classifiedListingStatusLabel;
@@ -564,7 +564,13 @@ public class ListingInfoPage {
         return commonFunctions.clickElement(classifiedRadioButton);
     }
     public boolean verifyBidAndOfferListingType() {
-        return commonFunctions.clickElement(bidAndOfferRadioButton);
+        boolean isResult=false;
+        if(commonFunctions.clickElement(bidAndOfferRadioButton)){
+            isResult=commonFunctions.isElementDisplayed(saleTypeDropdown, 30);
+            commonFunctions.clickElement(bidAndOfferRadioButton);
+        }
+
+        return isResult;
     }
 
     public boolean verifyListingTypeSelection(boolean isClassifiedTrue, String transactionType, String saleType) {
@@ -579,15 +585,18 @@ public class ListingInfoPage {
 
         }
         else{
-            commonFunctions.clickElement(transactionTypeDropdown);
-            //movePickerWheel(transactionTypeDropdown, transactionType);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, transactionType);
-            commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
-            commonFunctions.clickElement(saleTypeDropdown);
-            //movePickerWheel(saleTypeDropdown, saleType);
-            commonFunctions.sendKeyToDropDown(dropdownPicker, saleType);
-            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+            //commenting out transaction type dropdown as the same has been disabled after SSO build
+//            commonFunctions.clickElement(transactionTypeDropdown);
+//            commonFunctions.sendKeyToDropDown(dropdownPicker, transactionType);
+//            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+
+            if(commonFunctions.clickElement(bidAndOfferRadioButton)) {
+                if (commonFunctions.clickElement(saleTypeDropdown)) {
+                    commonFunctions.sendKeyToDropDown(dropdownPicker, saleType);
+                    commonFunctions.clickElement(doneButtonWheelPicker, 10);
+                }
+            }
 
             isResult=commonFunctions.getElementText(saleTypeDropdown, 10).trim().equalsIgnoreCase(saleType);
         }
@@ -631,25 +640,31 @@ public class ListingInfoPage {
     public boolean fillListingOverviewDetails(String biddingDuration, String closingSoonStatusDuration, String startingPrice, String description, String reservePrice, String town) {
         String townText="";
         String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
-        commonFunctions.clickElement(biddingStartDateTimeDropdown);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(biddingStartDateTimeDropdown)) {
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
         //movePickerWheel(biddingDurationDropdown, biddingDuration);
-        commonFunctions.clickElement(biddingDurationDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, biddingDuration);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        if(commonFunctions.clickElement(biddingDurationDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, biddingDuration);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
 
-        commonFunctions.clickElement(closingSoonStatusDurationDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, closingSoonStatusDuration);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        if(commonFunctions.clickElement(closingSoonStatusDurationDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, closingSoonStatusDuration);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
 
         //movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
         commonFunctions.sendKey(startingPriceTextBox, startingPrice);
         commonFunctions.sendKey(reservePriceTextBox, reservePrice);
         commonFunctions.sendKey(descriptionTextView, description);
-        commonFunctions.clickElement(townTextBoxButton);
-        commonFunctions.sendKey(townSearchBox, town);
-        commonFunctions.clickElementByXpath(townNameXpath);
-        townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
+
+        if(commonFunctions.clickElement(townTextBoxButton)) {
+            commonFunctions.sendKey(townSearchBox, town);
+            commonFunctions.clickElementByXpath(townNameXpath);
+            townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
+        }
+
         return town.contains(townText);
     }
     public boolean fillLotDetails(String pregStatus) {
@@ -691,7 +706,7 @@ public class ListingInfoPage {
         commonFunctions.scrollDownToElement(numberOfHeadWeighedTextBox);
         commonFunctions.sendKey(numberOfHeadWeighedTextBox, numberOfHeadWeighted+"");
 
-        commonFunctions.clickElement(hideKeyboardButton);
+        commonFunctions.clickElement(hideKeyboardButton, 10);
 
         commonFunctions.scrollDownToElement(hoursOffFeedTextBox);
         commonFunctions.sendKey(hoursOffFeedTextBox, hoursOffFeed+"");
@@ -700,20 +715,20 @@ public class ListingInfoPage {
         commonFunctions.sendKey(estimatedDressingTextBox, estimatedDressing+"");
 
         //driver.hideKeyboard();
-        commonFunctions.clickElement(hideKeyboardButton);
+        commonFunctions.clickElement(hideKeyboardButton, 10);
         //commonFunctions.scrollDownToElement(estimatedDaysToDeliveryTextBox);
 
         commonFunctions.sendKey(estimatedDaysToDeliveryTextBox, estimatedDaysToDelivery+"");
-        //driver.hideKeyboard();
-        commonFunctions.clickElement(hideKeyboardButton);
+
+        commonFunctions.clickElement(hideKeyboardButton, 10);
         commonFunctions.sendKey(estimatedWeightGainTextBox, estimatedWeightGain+"");
-        //driver.hideKeyboard();
-        commonFunctions.clickElement(hideKeyboardButton);
+
+        commonFunctions.clickElement(hideKeyboardButton, 10);
         commonFunctions.sendKey(deliveryAdjustmentTextBox, deliveryAdjustment+"");
-        //driver.hideKeyboard();
-        commonFunctions.clickElement(hideKeyboardButton);
-        return true;
-        //return !commonFunctions.getElementText(deliveryAdjustmentTextBox, 10).isEmpty();
+
+        commonFunctions.clickElement(hideKeyboardButton, 10);
+        //return true;
+        return !commonFunctions.getElementText(deliveryAdjustmentTextBox, 10).isEmpty();
     }
     public boolean fillAssessmentOverviewDetails(String frame, String condition, String agentComments) {
         commonFunctions.scrollDownToElement(agentCommentsTextView);
@@ -743,16 +758,17 @@ public class ListingInfoPage {
     public boolean fillBreedingOverviewDetails(String vendorBred, String temperament) {
         commonFunctions.scrollDownToElement(vendorBredDropdown);
 
-        commonFunctions.clickElement(vendorBredDropdown);
-        //movePickerWheel(vendorBredDropdown, vendorBred);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, vendorBred);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        if(commonFunctions.clickElement(vendorBredDropdown, 20)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, vendorBred);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
 
         commonFunctions.scrollDownToElement(temperamentDropdown);
-        commonFunctions.clickElement(temperamentDropdown);
-        //movePickerWheel(temperamentDropdown, temperament);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, temperament);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        if(commonFunctions.clickElement(temperamentDropdown, 15)) {
+            //movePickerWheel(temperamentDropdown, temperament);
+            commonFunctions.sendKeyToDropDown(dropdownPicker, temperament);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
 
         return !commonFunctions.getElementText(temperamentDropdown, 10).isEmpty();
     }
