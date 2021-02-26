@@ -254,7 +254,7 @@ public class ListingInfoPage {
     private static IOSElement conditionTextBox;
     @iOSXCUITFindBy(accessibility = "Agent Comments *")
     private static IOSElement agentCommentsLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Agent Comments *']//preceding-sibling::XCUIElementTypeTextView")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoagentcomments") //XCUIElementTypeStaticText[@name='Agent Comments *']//preceding-sibling::XCUIElementTypeTextView
     private static IOSElement agentCommentsTextView;
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='ADDITIONAL LOT DETAILS']")
@@ -307,7 +307,7 @@ public class ListingInfoPage {
     private static IOSElement breedingOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Bred *")
     private static IOSElement vendorBredLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotemperament") //XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement vendorBredDropdown;
     @iOSXCUITFindBy(accessibility = "Bloodlines")
     private static IOSElement bloodLinesLabel;
@@ -327,7 +327,7 @@ public class ListingInfoPage {
     private static IOSElement hornStatusDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament *")
     private static IOSElement temperamentLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Temperament *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmotemperament") //XCUIElementTypeStaticText[@name='Temperament *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement temperamentDropdown;
     @iOSXCUITFindBy(accessibility = "Temperament in Crush")
     private static IOSElement temperamentInCrushLabel;
@@ -347,7 +347,7 @@ public class ListingInfoPage {
     private static IOSElement healthVetDetailsHeaderLabel;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
     private static IOSElement hgpTreatedLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='HGP Treated *']//following-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopesdmohgptreated") //XCUIElementTypeStaticText[@name='HGP Treated *']//following-sibling::XCUIElementTypeTextField
     private static IOSElement hgpTreatedDropdown;
     @iOSXCUITFindBy(accessibility = "Product")
     private static IOSElement productLabel;
@@ -355,7 +355,7 @@ public class ListingInfoPage {
     private static IOSElement productTextBox;
     @iOSXCUITFindBy(accessibility = "Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *")
     private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsLabel;
-    @iOSXCUITFindBy(xpath = "//XCUIElementTypeStaticText[@name='Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *']//preceding-sibling::XCUIElementTypeTextField")
+    @iOSXCUITFindBy(accessibility = "lmkopeswthwithholdgprd") //XCUIElementTypeStaticText[@name='Within Withholding Period (WHP) or Export Slaughter Intervals (ESI) *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement withinWithholdingPeriodOrExportSlaughterIntervalsDropdown;
     @iOSXCUITFindBy(accessibility = "Market Eligibility Details")
     private static IOSElement marketEligibilityLabel;

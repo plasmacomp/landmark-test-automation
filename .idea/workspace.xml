@@ -22,11 +22,8 @@
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/ReviewAndSignPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/ReviewAndSignPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/testdata.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/.~testdata.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="SHOW_DIALOG" value="false" />
@@ -194,38 +191,38 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state width="426" height="466" key="DebuggerActiveHint/0.23.1440.797@0.23.1440.797" timestamp="1613915684539" />
-    <state width="1398" height="307" key="GridCell.Tab.0.bottom" timestamp="1614053057004">
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom" timestamp="1614351171664">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1614053057004" />
-    <state width="1398" height="307" key="GridCell.Tab.0.center" timestamp="1614053057003">
+    <state width="1398" height="254" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1614351171664" />
+    <state width="1398" height="254" key="GridCell.Tab.0.center" timestamp="1614351171663">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1614053057003" />
-    <state width="1398" height="307" key="GridCell.Tab.0.left" timestamp="1614053057002">
+    <state width="1398" height="254" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1614351171663" />
+    <state width="1398" height="254" key="GridCell.Tab.0.left" timestamp="1614351171662">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1614053057002" />
-    <state width="1398" height="307" key="GridCell.Tab.0.right" timestamp="1614053057004">
+    <state width="1398" height="254" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1614351171662" />
+    <state width="1398" height="254" key="GridCell.Tab.0.right" timestamp="1614351171663">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1614053057004" />
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1613969143366">
+    <state width="1398" height="254" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1614351171663" />
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1614351630221">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1613969143366" />
-    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1613969143365">
+    <state width="1398" height="254" key="GridCell.Tab.1.bottom/0.23.1440.797@0.23.1440.797" timestamp="1614351630221" />
+    <state width="1398" height="254" key="GridCell.Tab.1.center" timestamp="1614351630220">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1613969143365" />
-    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1613969143364">
+    <state width="1398" height="254" key="GridCell.Tab.1.center/0.23.1440.797@0.23.1440.797" timestamp="1614351630220" />
+    <state width="1398" height="254" key="GridCell.Tab.1.left" timestamp="1614351630217">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1613969143364" />
-    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1613969143366">
+    <state width="1398" height="254" key="GridCell.Tab.1.left/0.23.1440.797@0.23.1440.797" timestamp="1614351630217" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right" timestamp="1614351630221">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="254" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1613969143366" />
+    <state width="1398" height="254" key="GridCell.Tab.1.right/0.23.1440.797@0.23.1440.797" timestamp="1614351630221" />
     <state width="720" height="398" key="XDebugger.FullValuePopup" timestamp="1613587905265">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
@@ -282,21 +279,6 @@
           <url>file://$PROJECT_DIR$/src/test/java/E_Contract/Econtract_Creation_Wizard/NewContractTest.java</url>
           <line>39</line>
           <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="171" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
-          <line>33</line>
-          <option name="timeStamp" value="172" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="173" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/Opportunity/NewOpportunityConditionalTest.java</url>
@@ -427,6 +409,31 @@
           <url>file://$PROJECT_DIR$/src/main/java/pages_ios/NewContractPage.java</url>
           <line>324</line>
           <option name="timeStamp" value="218" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
+          <line>50</line>
+          <option name="timeStamp" value="220" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="221" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java</url>
+          <line>661</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/Opportunity/Opp_Record_Listing_Info/ListingInfoTest.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="223" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java</url>
+          <line>728</line>
+          <option name="timeStamp" value="224" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
