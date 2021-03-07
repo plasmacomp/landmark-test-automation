@@ -5,6 +5,7 @@ import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -698,6 +699,9 @@ public class ListingInfoPage {
 
         if(commonFunctions.clickElement(townTextBoxButton)) {
             commonFunctions.sendKey(townSearchBox, town);
+            townSearchBox.sendKeys(Keys.BACK_SPACE);
+            //commonFunctions.sendKeyEachCharacter(townSearchBox, town);
+
             commonFunctions.clickElementByXpath(townNameXpath);
             townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
         }
@@ -725,9 +729,7 @@ public class ListingInfoPage {
 
     public boolean addBreedingDetails(String sire, String dam, int noOfHead) {
         boolean isResult=false;
-        commonFunctions.scrollDownToElement(addDetailsButton);
-        commonFunctions.scrollDownToElement(addDetailsButton);
-        commonFunctions.scrollDownToElement(addDetailsButton);
+        commonFunctions.scrollDownToElementLong(addDetailsButton);
 
         if(commonFunctions.clickElement(addDetailsButton, 10)) {
             if (commonFunctions.clickElement(sireTextField, 10)) {

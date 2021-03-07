@@ -305,9 +305,9 @@ public class NewOpportunityPage {
         commonFunctions.clickElement(hideKeyboardButton);
         //driver.hideKeyboard();
         commonFunctions.clickElement(saveAndReviewButton, 10);
-        if(commonFunctions.clickElement(nextButton, 10)) {
-            commonFunctions.clickElement(saveAndReviewButton, 10);
-        }
+//        if(commonFunctions.clickElement(nextButton, 10)) {
+//            commonFunctions.clickElement(saveAndReviewButton, 10);
+//        }
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
         //commonFunctions.clickElement(nextButton);

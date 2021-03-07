@@ -555,6 +555,22 @@ public class CommonFunctionsMobile {
             logger.error("Exception occurred in sendKey method: "+e.getMessage());
         }
     }
+
+    public void sendKeyEachCharacter(MobileElement element, String key) {
+        char[] chars=key.toCharArray();
+        try {
+            for(char c : chars){
+                element.sendKeys(c+"");
+                Thread.sleep(50);
+            }
+
+            element.sendKeys(Keys.BACK_SPACE);
+            Utils.logFunctionLevelLogs(true, "sendKey");
+        } catch (Exception e) {
+            logger.error("Exception occurred in sendKey method: "+e.getMessage());
+        }
+    }
+
     public void sendKeyToDropDown(MobileElement pickerWheelElement, String key) {
         try {
             pickerWheelElement.sendKeys(key);
@@ -658,6 +674,17 @@ public class CommonFunctionsMobile {
 
 
         for(int i=0; i<4; i++){
+            new TouchAction(driver).press(PointOption.point(500, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
+                    moveTo(PointOption.point(500, 400)).release().perform();
+            if(isElementDisplayed(elementToScroll, 5))
+                break;
+        }
+
+    }
+
+    public void scrollDownToElementLong(MobileElement elementToScroll) {
+
+        for(int i=0; i<15; i++){
             new TouchAction(driver).press(PointOption.point(500, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
                     moveTo(PointOption.point(500, 400)).release().perform();
             if(isElementDisplayed(elementToScroll, 5))
