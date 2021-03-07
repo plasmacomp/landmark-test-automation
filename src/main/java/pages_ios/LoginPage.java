@@ -63,7 +63,7 @@ public class LoginPage
 
             if(commonFunctions.clickElement(loginButtonNew)){
                 Thread.sleep(40000);
-                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 120);
+                isUserLoggedIn=commonFunctions.isElementDisplayed(userIcon, 160);
             }
             Utils.logFunctionLevelLogs(isUserLoggedIn, "Login"+ globalVars.getPlatform());
         } catch (Exception e) {

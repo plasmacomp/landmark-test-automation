@@ -21,9 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="87f105c4-2d8b-47f7-adce-3508b6bab0c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/ListingInfoPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/NewOpportunityPage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/CommonFunctionsMobile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages_ios/LoginPage.java" afterDir="false" />
     </list>
     <list id="bea24418-9ff8-4eba-8d92-d0529ab44194" name="Revert &quot;login script&quot;" comment="Revert &quot;login script&quot;&#10;&#10;This reverts commit f3383e00" />
     <option name="SHOW_DIALOG" value="false" />
@@ -191,22 +189,22 @@
       <screen x="0" y="23" width="1440" height="797" />
     </state>
     <state width="426" height="466" key="DebuggerActiveHint/0.23.1440.797@0.23.1440.797" timestamp="1613915684539" />
-    <state width="1398" height="307" key="GridCell.Tab.0.bottom" timestamp="1615099494888">
+    <state width="1398" height="307" key="GridCell.Tab.0.bottom" timestamp="1615115928008">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1615099494888" />
-    <state width="1398" height="307" key="GridCell.Tab.0.center" timestamp="1615099494887">
+    <state width="1398" height="307" key="GridCell.Tab.0.bottom/0.23.1440.797@0.23.1440.797" timestamp="1615115928008" />
+    <state width="1398" height="307" key="GridCell.Tab.0.center" timestamp="1615115928007">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1615099494887" />
-    <state width="1398" height="307" key="GridCell.Tab.0.left" timestamp="1615099494886">
+    <state width="1398" height="307" key="GridCell.Tab.0.center/0.23.1440.797@0.23.1440.797" timestamp="1615115928007" />
+    <state width="1398" height="307" key="GridCell.Tab.0.left" timestamp="1615115928006">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1615099494886" />
-    <state width="1398" height="307" key="GridCell.Tab.0.right" timestamp="1615099494887">
+    <state width="1398" height="307" key="GridCell.Tab.0.left/0.23.1440.797@0.23.1440.797" timestamp="1615115928006" />
+    <state width="1398" height="307" key="GridCell.Tab.0.right" timestamp="1615115928007">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
-    <state width="1398" height="307" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1615099494887" />
+    <state width="1398" height="307" key="GridCell.Tab.0.right/0.23.1440.797@0.23.1440.797" timestamp="1615115928007" />
     <state width="1398" height="254" key="GridCell.Tab.1.bottom" timestamp="1615099448572">
       <screen x="0" y="23" width="1440" height="797" />
     </state>
