@@ -45,6 +45,7 @@
                     <include name="verifyFillingHealthVetDetails"/>
                     <include name="verifyFillingDeliveryDetails"/>
                     <include name="verifyFillingLiveWeightDetails"/>
+                    <include name="verifyFillingBreedingDetails"/>
                     <include name="verifyPublishListing"/>
                 </methods>
             </class>

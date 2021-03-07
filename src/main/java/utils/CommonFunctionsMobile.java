@@ -536,7 +536,8 @@ public class CommonFunctionsMobile {
         try {
             Actions actions=new Actions(driver);
 
-            actions.sendKeys(key).build().perform();
+            element.click();
+            actions.moveToElement(element).sendKeys(key).build().perform();
 
             Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
         } catch (Exception e) {
@@ -659,7 +660,7 @@ public class CommonFunctionsMobile {
         for(int i=0; i<4; i++){
             new TouchAction(driver).press(PointOption.point(500, 700)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
                     moveTo(PointOption.point(500, 400)).release().perform();
-            if(isElementDisplayed(elementToScroll, 8))
+            if(isElementDisplayed(elementToScroll, 5))
                 break;
         }
 
@@ -687,7 +688,7 @@ public class CommonFunctionsMobile {
         for(int i=0; i<7; i++){
             new TouchAction(driver).press(PointOption.point(500, 400)).waitAction(WaitOptions.waitOptions(Duration.ofMillis(1000))).
                     moveTo(PointOption.point(500, 1000)).release().perform();
-            if(isElementDisplayed(elementToScroll, 8))
+            if(isElementDisplayed(elementToScroll, 5))
                 break;
         }
 

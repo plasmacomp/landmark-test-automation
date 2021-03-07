@@ -268,8 +268,9 @@ public class NewOpportunityPage {
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
 
-        commonFunctions.clickElement(quantityTextBox);
-        commonFunctions.sendKeyWithActions(quantityTextBox, quantity);
+        if(commonFunctions.clickElement(quantityTextBox, 10)) {
+            commonFunctions.sendKey(quantityTextBox, quantity);
+        }
 
         if(commonFunctions.clickElement(productCategoryDropdown)) {
             commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
@@ -303,8 +304,9 @@ public class NewOpportunityPage {
         commonFunctions.sendKey(descriptionTextBox, description);
         commonFunctions.clickElement(hideKeyboardButton);
         //driver.hideKeyboard();
+        commonFunctions.clickElement(saveAndReviewButton, 10);
         if(commonFunctions.clickElement(nextButton, 10)) {
-            commonFunctions.clickElement(saveAndReviewButton);
+            commonFunctions.clickElement(saveAndReviewButton, 10);
         }
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);

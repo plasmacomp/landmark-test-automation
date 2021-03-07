@@ -1,6 +1,7 @@
 package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
@@ -50,7 +51,7 @@ public class ListingInfoPage {
     private static IOSElement saleTypeLabel;
     @iOSXCUITFindBy(accessibility = "lmkopecdmotranstype") ////XCUIElementTypeStaticText[@name='Transaction Type ']//preceding-sibling::*
     private static IOSElement transactionTypeDropdown;
-    @iOSXCUITFindBy(xpath = "lmkopecdmosaletype") //XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling::*
+    @iOSXCUITFindBy(accessibility = "lmkopecdmosaletype") //XCUIElementTypeStaticText[@name='Sale Type *']//preceding-sibling::*
     private static IOSElement saleTypeDropdown;
     @iOSXCUITFindBy(accessibility = "Classified Listing Status")
     private static IOSElement classifiedListingStatusLabel;
@@ -136,7 +137,7 @@ public class ListingInfoPage {
     private static IOSElement numberOfHeadTextField;
     @iOSXCUITFindBy(xpath = "(//XCUIElementTypeStaticText[@name='Fat Score'])[1]")
     private static IOSElement fatScoreLabel;
-    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]") //(//XCUIElementTypeStaticText[@name='Fat Score'])[1]//following-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]") //(//XCUIElementTypeTextField)[3] //(//XCUIElementTypeStaticText[@name='Fat Score'])[1]//following-sibling::XCUIElementTypeTextField
     private static IOSElement fatScoreTextField;
     @iOSXCUITFindBy(accessibility = "add 1")
     private static IOSElement plusIcon;
@@ -307,7 +308,7 @@ public class ListingInfoPage {
     private static IOSElement breedingOverviewHeaderLabel;
     @iOSXCUITFindBy(accessibility = "Vendor Bred *")
     private static IOSElement vendorBredLabel;
-    @iOSXCUITFindBy(accessibility = "lmkopesdmotemperament") //XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkopesdmovendorbred") //XCUIElementTypeStaticText[@name='Vendor Bred *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement vendorBredDropdown;
     @iOSXCUITFindBy(accessibility = "Bloodlines")
     private static IOSElement bloodLinesLabel;
@@ -340,8 +341,16 @@ public class ListingInfoPage {
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='BREEDING DETAILS']")
     private static IOSElement breedingDetailsHeaderLabel;
-    @iOSXCUITFindBy(accessibility = "Add details")
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Add details']") //Add details
     private static IOSElement addDetailsButton;
+
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[1]")
+    private static IOSElement sireTextField;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[2]")
+    private static IOSElement damTextField;
+    @iOSXCUITFindBy(xpath = "(//XCUIElementTypeTextField)[3]")
+    private static IOSElement noOfHeadTextField;
+
 
     @iOSXCUITFindBy(xpath = "//XCUIElementTypeOther[@name='HEALTH VET DETAILS']")
     private static IOSElement healthVetDetailsHeaderLabel;
@@ -466,6 +475,8 @@ public class ListingInfoPage {
     private static IOSElement publishListingLink;
     @iOSXCUITFindBy(accessibility = "Hide keyboard")  ////XCUIElementTypeKey[@name='space']//following-sibling::*[3]
     private static IOSElement hideKeyboardButton;
+    @iOSXCUITFindBy(xpath = "//XCUIElementTypeButton[@name='Done']")
+    private static MobileElement doneButton;
 
     //************ Classified type specific locators
     @iOSXCUITFindBy(accessibility = "Classified Duration *")
@@ -565,10 +576,20 @@ public class ListingInfoPage {
     }
     public boolean verifyBidAndOfferListingType() {
         boolean isResult=false;
-        if(commonFunctions.clickElement(bidAndOfferRadioButton)){
+
+        try {
+            driver.findElementByAccessibilityId("lmkopesdmololistingtype-Bid & Offer").click();
             isResult=commonFunctions.isElementDisplayed(saleTypeDropdown, 30);
             commonFunctions.clickElement(bidAndOfferRadioButton);
         }
+        catch (Exception exception){
+            System.out.println(exception.getMessage());
+        }
+
+//        if(commonFunctions.clickElementWithActions(bidAndOfferRadioButton)){
+//            isResult=commonFunctions.isElementDisplayed(saleTypeDropdown, 30);
+//            commonFunctions.clickElement(bidAndOfferRadioButton);
+//        }
 
         return isResult;
     }
@@ -591,14 +612,26 @@ public class ListingInfoPage {
 //            commonFunctions.sendKeyToDropDown(dropdownPicker, transactionType);
 //            commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
-            if(commonFunctions.clickElement(bidAndOfferRadioButton)) {
-                if (commonFunctions.clickElement(saleTypeDropdown)) {
+            try {
+                driver.findElementByAccessibilityId("lmkopesdmololistingtype-Bid & Offer").click();
+                if (commonFunctions.clickElement(saleTypeDropdown, 10)) {
                     commonFunctions.sendKeyToDropDown(dropdownPicker, saleType);
                     commonFunctions.clickElement(doneButtonWheelPicker, 10);
+                    isResult=commonFunctions.getElementText(saleTypeDropdown, 10).trim().equalsIgnoreCase(saleType);
                 }
             }
+            catch (Exception exception){
+                System.out.println(exception.getMessage());
+            }
 
-            isResult=commonFunctions.getElementText(saleTypeDropdown, 10).trim().equalsIgnoreCase(saleType);
+//            if(commonFunctions.clickElement(bidAndOfferRadioButton, 10)) {
+//                if (commonFunctions.clickElement(saleTypeDropdown, 10)) {
+//                    commonFunctions.sendKeyToDropDown(dropdownPicker, saleType);
+//                    commonFunctions.clickElement(doneButtonWheelPicker, 10);
+//                }
+//            }
+
+
         }
         return isResult;
     }
@@ -655,8 +688,12 @@ public class ListingInfoPage {
         }
 
         //movePickerWheel(closingSoonStatusDurationDropdown, closingSoonStatusDuration);
-        commonFunctions.sendKey(startingPriceTextBox, startingPrice);
-        commonFunctions.sendKey(reservePriceTextBox, reservePrice);
+        if(commonFunctions.clickElement(startingPriceTextBox, 10)) {
+            commonFunctions.sendKey(startingPriceTextBox, startingPrice);
+        }
+        if(commonFunctions.clickElement(reservePriceTextBox, 10)) {
+            commonFunctions.sendKey(reservePriceTextBox, reservePrice);
+        }
         commonFunctions.sendKey(descriptionTextView, description);
 
         if(commonFunctions.clickElement(townTextBoxButton)) {
@@ -665,7 +702,7 @@ public class ListingInfoPage {
             townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
         }
 
-        return town.contains(townText);
+        return townText.contains(town);
     }
     public boolean fillLotDetails(String pregStatus) {
         commonFunctions.sendKey(pregnancyStatusTextBox, pregStatus);
@@ -674,7 +711,7 @@ public class ListingInfoPage {
     public boolean enterLiveWeightToPopulate(int liveWeightKg, String fatScore) {
         boolean isResult=false;
         commonFunctions.scrollUpToElement(enterLiveWeightToPopulateButton);
-        if(commonFunctions.clickElement(enterLiveWeightToPopulateButton)){
+        if(commonFunctions.clickElement(enterLiveWeightToPopulateButton, 10)){
             commonFunctions.sendKey(liveWeightKgTextField, liveWeightKg+"");
             commonFunctions.clickElement(fatScoreTextField);
             //movePickerWheelFatScore(fatScoreTextField, fatScore);
@@ -683,6 +720,33 @@ public class ListingInfoPage {
             isResult=commonFunctions.clickElement(plusIcon);
             commonFunctions.dragAndDropFromTopToBottom();
         }
+        return isResult;
+    }
+
+    public boolean addBreedingDetails(String sire, String dam, int noOfHead) {
+        boolean isResult=false;
+        commonFunctions.scrollDownToElement(addDetailsButton);
+        commonFunctions.scrollDownToElement(addDetailsButton);
+        commonFunctions.scrollDownToElement(addDetailsButton);
+
+        if(commonFunctions.clickElement(addDetailsButton, 10)) {
+            if (commonFunctions.clickElement(sireTextField, 10)) {
+                commonFunctions.sendKey(sireTextField, sire);
+
+            }
+
+            if (commonFunctions.clickElement(damTextField, 10)) {
+                commonFunctions.sendKey(damTextField, dam);
+            }
+
+            if (commonFunctions.clickElement(noOfHeadTextField, 10)) {
+                commonFunctions.sendKey(noOfHeadTextField, noOfHead + "");
+            }
+
+            isResult = commonFunctions.clickElement(plusIcon);
+        }
+        commonFunctions.dragAndDropFromTopToBottom();
+
         return isResult;
     }
 
@@ -709,10 +773,9 @@ public class ListingInfoPage {
         commonFunctions.clickElement(hideKeyboardButton, 10);
 
         commonFunctions.scrollDownToElement(hoursOffFeedTextBox);
-        commonFunctions.sendKey(hoursOffFeedTextBox, hoursOffFeed+"");
+        commonFunctions.sendKey(hoursOffFeedTextBox, hoursOffFeed + "");
 
-
-        commonFunctions.sendKey(estimatedDressingTextBox, estimatedDressing+"");
+        commonFunctions.sendKey(estimatedDressingTextBox, estimatedDressing + "");
 
         //driver.hideKeyboard();
         commonFunctions.clickElement(hideKeyboardButton, 10);
@@ -798,14 +861,18 @@ public class ListingInfoPage {
         commonFunctions.scrollDownToElement(hgpTreatedDropdown);
         //movePickerWheel(hgpTreatedDropdown, hgpTreated);
         //commonFunctions.clickElement(doneButtonWheelPicker, 10);
-        commonFunctions.clickElement(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown);
-        //movePickerWheel(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, withinWithholdingPeriod);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, withinWithholdingPeriod);
-        commonFunctions.clickElement(doneButtonWheelPicker, 10);
 
-        commonFunctions.clickElement(hgpTreatedDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, hgpTreated);
-        isResult=commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        if(commonFunctions.clickElement(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10)) {
+
+            commonFunctions.sendKeyToDropDown(dropdownPicker, withinWithholdingPeriod);
+            commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
+
+        if(commonFunctions.clickElement(hgpTreatedDropdown, 10)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, hgpTreated);
+            isResult = commonFunctions.clickElement(doneButtonWheelPicker, 10);
+        }
+
         return isResult;
         //return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
     }
@@ -817,22 +884,26 @@ public class ListingInfoPage {
     }
     public boolean fillDeliveryDetails() {
         commonFunctions.scrollDownToElement(estimatedFinalDeliveryDateTextBox);
-        commonFunctions.clickElement(estimatedFinalDeliveryDateTextBox);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(estimatedFinalDeliveryDateTextBox, 10)) {
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
         return !commonFunctions.getElementText(estimatedFinalDeliveryDateTextBox, 10).isEmpty();
     }
     public boolean publishListing() {
         boolean isResult=false;
         globalVars.setRecordId(commonFunctions.getElementText(recordIdText, 10).trim());
         if(commonFunctions.clickElement(actionButtonListingInfoPage)){
-            isResult=commonFunctions.clickElement(publishListingLink);
+            isResult=commonFunctions.clickElement(publishListingLink, 10);
+            commonFunctions.clickElement(doneButton, 10);
             try{
-                Thread.sleep(5000); //Static wait to see the screen after publishing
+                Thread.sleep(3000); //Static wait to see the screen after publishing
             }
             catch (InterruptedException ex){
                 ex.printStackTrace();
             }
         }
+
+
         return isResult;
     }
 

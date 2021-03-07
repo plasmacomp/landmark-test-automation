@@ -185,6 +185,28 @@ public class ListingInfoTest {
     }
 
     @Test
+    public void verifyFillingBreedingDetails() {
+        boolean isResult;
+        String sire="";
+        String dam="";
+        int noOfHead=0;
+        String[] params=globalVars.getParamsData("verifyFillingBreedingDetails");
+        try{
+            sire=params[0];
+            dam=params[1];
+            noOfHead=Integer.parseInt(params[2]);
+
+        }
+        catch (ArrayIndexOutOfBoundsException ex){
+            ex.printStackTrace();
+        }
+        isResult = listingInfoPage.addBreedingDetails(sire, dam, noOfHead);
+        Utils.logStepInfo(isResult, "Fill Breeding details");
+        Assert.isTrue(isResult, "Step-1: Failed to fill Breeding details!!");
+    }
+
+
+    @Test
     public void verifyPublishListing() {
         boolean isResult;
         isResult = listingInfoPage.publishListing();
