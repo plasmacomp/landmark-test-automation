@@ -939,6 +939,7 @@ public class ListingInfoPage {
 
         if(commonFunctions.clickElement(townTextBoxButton)){
             commonFunctions.sendKey(townSearchBox, town);
+            townSearchBox.sendKeys(Keys.BACK_SPACE);
             if(commonFunctions.clickElementByXpath(townNameXpath)){
                 townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
             }
