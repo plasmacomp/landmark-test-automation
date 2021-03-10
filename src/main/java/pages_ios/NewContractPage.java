@@ -307,17 +307,15 @@ public class NewContractPage {
 
     public boolean addVendorInfo(String searchText) {
         boolean isResult=false;
-//        String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
+
         if(commonFunctions.clickElement(vendorInfoTextbox)) {
 
-//            commonFunctions.sendKey(vendorInfoSearchBoxPopupWindow, searchText);
             commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
             commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
 
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {
 
-            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {   //commonFunctions.clickElementByXpath(vendorNameXpath)
-                //commonFunctions.clickElement(vendorInfoPopupWindow);
-                if (commonFunctions.clickElement(nextButton)) {
+                if (commonFunctions.clickElement(nextButton, 10)) {
                     isResult = commonFunctions.isElementDisplayed(vendorInfoTextbox, 15);
                 }
             }
@@ -333,8 +331,7 @@ public class NewContractPage {
             commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
             commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
 
-
-            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {   //commonFunctions.clickElementByXpath(vendorNameXpath)
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText)) {
                 if (commonFunctions.clickElement(nextButton)) {
                     isResult = commonFunctions.isElementDisplayed(deliveryPointTextField, 15);
                 }
@@ -363,9 +360,9 @@ public class NewContractPage {
 
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult;
-        //commonFunctions.sendKey(quantityTextBox, quantity);
-        commonFunctions.clickElement(quantityTextBox);
-        commonFunctions.sendKeyWithActions(quantityTextBox, quantity);
+        if(commonFunctions.clickElement(quantityTextBox, 20)) {
+            commonFunctions.sendKey(quantityTextBox, quantity);
+        }
 
         if(commonFunctions.clickElement(productCategoryDropdown)) {
             commonFunctions.sendKeyToDropDown(dropdownPicker, productCategory);
@@ -397,16 +394,20 @@ public class NewContractPage {
         }
 
         commonFunctions.sendKey(descriptionTextBox, description);
-        //driver.hideKeyboard();
 
         commonFunctions.clickElement(hideKeyboardButton, 10);
 
-        if(commonFunctions.clickElement(nextButton, 10)) {
-            commonFunctions.clickElement(saveAndReviewButton);
-        }
+        commonFunctions.clickElement(saveAndReviewButton);
+
+//        if(commonFunctions.clickElement(nextButton, 10)) {
+//            commonFunctions.clickElement(saveAndReviewButton);
+//        }
 
         isResult= commonFunctions.isElementDisplayed(addNewLotButton, 10);
-        commonFunctions.clickElement(nextButton);
+
+        if(isResult) {
+            commonFunctions.clickElement(nextButton);
+        }
         return isResult;
 
     }

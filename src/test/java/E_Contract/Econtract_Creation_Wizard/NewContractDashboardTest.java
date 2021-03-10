@@ -245,8 +245,8 @@ public class NewContractDashboardTest {
         boolean isResult;
         String[] params=globalVars.getParamsData("verifyValidateContract");
         String agentSignature=params[0];
-        String buyerSignature=params[0];
-        String vendorSignature=params[0];
+        String buyerSignature=params[1];
+        String vendorSignature=params[2];
         isResult = reviewAndSignPage.signedForAndOnBehalfOfLandmarkAsAgent(agentSignature, buyerSignature, vendorSignature);
         Utils.logStepInfo(isResult, "Verify that user is able to sign the contract");
         Assert.isTrue(isResult, "Step-9: Failed to sign contract!!");

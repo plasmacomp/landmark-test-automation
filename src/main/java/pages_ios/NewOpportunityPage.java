@@ -210,22 +210,21 @@ public class NewOpportunityPage {
 
     
     public boolean addVendorInfo(String searchText) {
-        //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[2]"; ************* For STG3
-        //String vendorNameXpath="//XCUIElementTypeStaticText[@name='Trading Name: BR&C Consignment Stock - GST']";
+        boolean isResult=false;
 
-        //String vendorNameXpath="(//XCUIElementTypeStaticText[contains(@value,'"+searchText+"')])[1]";
-        commonFunctions.clickElement(vendorInfoTextbox);
+        if(commonFunctions.clickElement(vendorInfoTextbox)) {
 
-        commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
-        commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
-        //commonFunctions.clickElementByXpath(vendorNameXpath);
+            commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
+            commonFunctions.sendKeyWithActions(vendorInfoSearchBoxPopupWindow, searchText);
 
-        //commonFunctions.clickElementByAccessibilityId(searchText);
-        commonFunctions.clickElementByAccessibilityId("Trading Name: "+searchText);
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: " + searchText)) {
 
-        //commonFunctions.clickElement(vendorInfoPopupWindow);
-        commonFunctions.clickElement(nextButton);
-        return commonFunctions.isElementDisplayed(quantityTextBox);
+                if (commonFunctions.clickElement(nextButton, 20)) {
+                    isResult = commonFunctions.isElementDisplayed(quantityTextBox, 15);
+                }
+            }
+        }
+        return isResult;
     }
 
 //    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
@@ -268,7 +267,7 @@ public class NewOpportunityPage {
     public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
         boolean isResult=false;
 
-        if(commonFunctions.clickElement(quantityTextBox, 10)) {
+        if(commonFunctions.clickElement(quantityTextBox, 20)) {
             commonFunctions.sendKey(quantityTextBox, quantity);
         }
 
