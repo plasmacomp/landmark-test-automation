@@ -909,16 +909,34 @@ public class ListingInfoPage {
         return isResult;
     }
 
-    public boolean fillClassifiedListingOverviewDetails(String classifiedDuration, int price, String description) {
+    public boolean fillClassifiedListingOverviewDetails(String classifiedDuration, String price, String description, String town) {
+        String townText="";
+        String townNameXpath="(//XCUIElementTypeStaticText[contains(@name,'"+town+"')])[1]";
 
-        commonFunctions.clickElement(classifiedDurationDropdown);
-        commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
-        //movePickerWheel(classifiedDurationDropdown, classifiedDuration);
-        commonFunctions.clickElement(doneButtonWheelPicker);
+        if(commonFunctions.clickElement(classifiedStartDateTimeDropDown)) {
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
+
+        if(commonFunctions.clickElement(classifiedDurationDropdown)) {
+            commonFunctions.sendKeyToDropDown(dropdownPicker, classifiedDuration);
+            commonFunctions.clickElement(doneButtonWheelPicker);
+        }
 
         commonFunctions.sendKey(priceTextBox, price+"");
         commonFunctions.sendKey(descriptionTextView, description);
-        return commonFunctions.clickElement(hideKeyboardButton, 8);
+        commonFunctions.clickElement(hideKeyboardButton, 8);
+
+        if(commonFunctions.clickElement(townTextBoxButton)){
+            commonFunctions.sendKey(townSearchBox, town);
+            townSearchBox.sendKeys(Keys.BACK_SPACE);
+            if(commonFunctions.clickElementByXpath(townNameXpath)){
+                townText=commonFunctions.getElementText(townTextBoxButton, 10).trim();
+            }
+        }
+
+        return townText.contains(town);
+
+
     }
     public boolean fillClassifiedListingOverviewDetailsForSheep(String classifiedDuration, String price, String description, String town) {
         String townText="";

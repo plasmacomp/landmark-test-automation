@@ -28,8 +28,8 @@ public class ListingInfoClassifiedTest {
 
     @Test
     public void CreateOpportunityForClassified() {
-        TestBase.quitDriver();
-        initialization();
+//        TestBase.quitDriver();
+//        initialization();
         listingInfoPage=new ListingInfoPage();
         loginPage=new LoginPage();
         newOpportunityPage=new NewOpportunityPage();
@@ -50,8 +50,8 @@ public class ListingInfoClassifiedTest {
             ex.printStackTrace();
         }
 
-        isResult = loginPage.login(username, password);
-        Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
+//        isResult = loginPage.login(username, password);
+//        Utils.logStepInfo(isResult, "Go to login page, enter the user name and password and click login button");
         //Assert.isTrue(isResult, "Step-1: User failed to login!!");
 
         isResult = newOpportunityPage.verifyNewOpportunityNavigation();
@@ -85,7 +85,7 @@ public class ListingInfoClassifiedTest {
 
     @Test
     public void verifyListingTypeSelectionClassified() {
-        boolean isResult=false;
+        boolean isResult;
         String transactionType="";
         String saleType="";
         String[] params=globalVars.getParamsData("verifyListingTypeSelectionClassified");
@@ -111,40 +111,30 @@ public class ListingInfoClassifiedTest {
     @Test
     public void verifyFillingClassifiedListingOverviewDetails() {
         boolean isResult;
-        String classifiedDuration="";
-        int price=150;
-        String description="";
+        String classifiedDuration, price, description, town;
         String[] params=globalVars.getParamsData("verifyFillingClassifiedListingOverviewDetails");
-        try{
-            classifiedDuration=params[0];
-            price=Integer.parseInt(params[1]);
-            description=params[2];
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
-        isResult = listingInfoPage.fillClassifiedListingOverviewDetails(classifiedDuration, price, description);
+
+        classifiedDuration=params[0];
+        price=params[1];
+        description=params[2];
+        town=params[3];
+
+        isResult = listingInfoPage.fillClassifiedListingOverviewDetails(classifiedDuration, price, description, town);
         Utils.logStepInfo(isResult, "Fill listing overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill listing overview details!!");
     }
 
     @Test
     public void verifyFillingClassifiedLotDetails() {
-        boolean isResult=false;
-        String hornStatus="";
-        int weightRangeLow=0;
-        int weightRangeHigh=0;
+        boolean isResult;
+        String hornStatus, weightRangeLow, weightRangeHigh;
         String[] params=globalVars.getParamsData("verifyFillingClassifiedLotDetails");
-        try{
-            hornStatus=params[0];
-            weightRangeLow=Integer.parseInt(params[1]);
-            weightRangeHigh=Integer.parseInt(params[2]);
-        }
-        catch (Exception ex){
-            ex.printStackTrace();
-        }
 
-        isResult = listingInfoPage.fillClassifiedLotDetails(hornStatus,weightRangeLow+"", weightRangeHigh+"");
+        hornStatus=params[0];
+        weightRangeLow=params[1];
+        weightRangeHigh=params[2];
+
+        isResult = listingInfoPage.fillClassifiedLotDetails(hornStatus,weightRangeLow, weightRangeHigh);
         Utils.logStepInfo(isResult, "Fill Breeding overview details");
         Assert.isTrue(isResult, "Step-1: Failed to fill Breeding overview details!!");
     }
