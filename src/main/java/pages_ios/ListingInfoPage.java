@@ -498,11 +498,11 @@ public class ListingInfoPage {
     private static IOSElement descriptionClassifiedTextView;
     @iOSXCUITFindBy(accessibility = "Weight Range - Low *")
     private static IOSElement weightRangeLowLabel;
-    @iOSXCUITFindBy(xpath = "lmkopesdmoldwghtranlow") //XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoldwghtranlow") //XCUIElementTypeStaticText[@name='Weight Range - Low *']//following-sibling::XCUIElementTypeTextField
     private static IOSElement weightRangeLowTextBox;
     @iOSXCUITFindBy(accessibility = "Weight Range - High *")
     private static IOSElement weightRangeHighLabel;
-    @iOSXCUITFindBy(xpath = "lmkopesdmoldwghtranhigh") //XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField
+    @iOSXCUITFindBy(accessibility = "lmkopesdmoldwghtranhigh") //XCUIElementTypeStaticText[@name='Weight Range - High *']//preceding-sibling::XCUIElementTypeTextField
     private static IOSElement weightRangeHighTextBox;
     @iOSXCUITFindBy(accessibility = "HGP Treated *")
     private static IOSElement hgpTreatedClassifiedLabel;
@@ -876,6 +876,8 @@ public class ListingInfoPage {
         }
 
         return isResult;
+
+        //Commented out the text verification of the drop down because on selecting the value the screen scrolls automatically
         //return !commonFunctions.getElementText(withinWithholdingPeriodOrExportSlaughterIntervalsDropdown, 10).isEmpty();
     }
     public boolean fillTreatmentDetails() {
@@ -926,7 +928,7 @@ public class ListingInfoPage {
         commonFunctions.sendKey(descriptionTextView, description);
         commonFunctions.clickElement(hideKeyboardButton, 8);
 
-        if(commonFunctions.clickElement(townTextBoxButton)){
+        if(commonFunctions.clickElement(townTextBoxButton, 15)){
             commonFunctions.sendKey(townSearchBox, town);
             townSearchBox.sendKeys(Keys.BACK_SPACE);
             if(commonFunctions.clickElementByXpath(townNameXpath)){

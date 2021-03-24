@@ -545,6 +545,21 @@ public class CommonFunctionsMobile {
         }
     }
 
+    public void sendKeyWithActionsWithWait(MobileElement element, String key) {
+        try {
+            Actions actions=new Actions(driver);
+
+            element.click();
+            Thread.sleep(2000);
+            actions.moveToElement(element).sendKeys(key).build().perform();
+
+            Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
+        } catch (Exception e) {
+            logger.error("Exception occurred in sendKey method: "+e.getMessage());
+        }
+    }
+
+
     public void sendKey(MobileElement element, String key) {
         try {
             //element.click();

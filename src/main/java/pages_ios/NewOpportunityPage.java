@@ -227,6 +227,24 @@ public class NewOpportunityPage {
         return isResult;
     }
 
+    public boolean addVendorInfoForClassified(String searchText) {
+        boolean isResult=false;
+
+        if(commonFunctions.clickElement(vendorInfoTextbox)) {
+
+            commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
+
+            commonFunctions.sendKeyWithActionsWithWait(vendorInfoSearchBoxPopupWindow, searchText);
+            if(commonFunctions.clickElementByAccessibilityId("Trading Name: " + searchText)) {
+
+                if (commonFunctions.clickElement(nextButton, 20)) {
+                    isResult = commonFunctions.isElementDisplayed(quantityTextBox, 15);
+                }
+            }
+        }
+        return isResult;
+    }
+
 //    public boolean addLotsInformation(String quantity, String productCategory, String product, String breed, String priceType, String price, String age1, String age2, String monthDropdown, String description) {
 //        boolean isResult=false;
 //        commonFunctions.sendKey(quantityTextBox, quantity);

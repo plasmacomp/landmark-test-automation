@@ -62,7 +62,7 @@ public class ListingInfoClassifiedTest {
         Utils.logStepInfo(isResult, "Add sales information and click next");
         //Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
 
-        isResult = newOpportunityPage.addVendorInfo(vendorName);
+        isResult = newOpportunityPage.addVendorInfoForClassified(vendorName);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
         //Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
 
@@ -158,7 +158,7 @@ public class ListingInfoClassifiedTest {
 
     @Test
     public void verifyClassifiedPublishListing() {
-        boolean isResult=false;
+        boolean isResult;
 
         isResult = listingInfoPage.publishListing();
         Utils.logStepInfo(isResult, "Click on publish listing to publish the opportunity");
