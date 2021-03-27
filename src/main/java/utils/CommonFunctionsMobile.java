@@ -152,7 +152,7 @@ public class CommonFunctionsMobile {
         try {
             Actions actions=new Actions(driver);
 
-            actions.sendKeys(key).build().perform();
+            actions.moveToElement(element).sendKeys(key).build().perform();
 
             Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
         } catch (Exception e) {
@@ -545,13 +545,14 @@ public class CommonFunctionsMobile {
         }
     }
 
-    public void sendKeyWithActionsWithWait(MobileElement element, String key) {
+    public void sendKeyWithActionsAndWait(MobileElement element, String key) {
         try {
             Actions actions=new Actions(driver);
 
-            element.click();
-            Thread.sleep(2000);
-            actions.moveToElement(element).sendKeys(key).build().perform();
+            //element.click();
+            //Thread.sleep(2000);
+            actions.sendKeys(key).build().perform();
+
 
             Utils.logFunctionLevelLogs(true, "sendKeyWithActions()");
         } catch (Exception e) {

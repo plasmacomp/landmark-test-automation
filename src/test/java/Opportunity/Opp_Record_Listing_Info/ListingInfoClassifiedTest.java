@@ -60,11 +60,11 @@ public class ListingInfoClassifiedTest {
 
         isResult = newOpportunityPage.addSalesInformation(title);
         Utils.logStepInfo(isResult, "Add sales information and click next");
-        //Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
+        Assert.isTrue(isResult, "Step-1: Adding sales information failed!!");
 
         isResult = newOpportunityPage.addVendorInfoForClassified(vendorName);
         Utils.logStepInfo(isResult, "Add Vendor information and click next");
-        //Assert.isTrue(isResult, "Step-1: Adding Vendor information failed!!");
+        Assert.isTrue(isResult, "Step-2: Adding Vendor information failed!!");
 
         isResult = newOpportunityPage.addLotsInformation(quantity, productCategory, product, breed, priceType, price, age1, age2, monthsDropdown, description);
         newOpportunityPage.verifyLotSummaryPageValues(quantity, "0", price);

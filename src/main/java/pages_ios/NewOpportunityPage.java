@@ -2,17 +2,13 @@ package pages_ios;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.MobileElement;
-import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.IOSElement;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSXCUITFindBy;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebElement;
 import org.openqa.selenium.support.PageFactory;
-import utils.CommonFunctions;
 import utils.CommonFunctionsMobile;
 import utils.GlobalVars;
-import utils.Utils;
 
 import java.awt.*;
 import java.awt.datatransfer.Clipboard;
@@ -234,7 +230,7 @@ public class NewOpportunityPage {
 
             commonFunctions.clickElement(vendorInfoSearchBoxPopupWindow);
 
-            commonFunctions.sendKeyWithActionsWithWait(vendorInfoSearchBoxPopupWindow, searchText);
+            commonFunctions.sendKeyWithActionsAndWait(vendorInfoSearchBoxPopupWindow, searchText);
             if(commonFunctions.clickElementByAccessibilityId("Trading Name: " + searchText)) {
 
                 if (commonFunctions.clickElement(nextButton, 20)) {
